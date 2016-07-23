@@ -19,6 +19,10 @@ namespace KibotController
         /// <param name="log"></param>
         public void Write(string log)
         {
+            if (log == "")
+            {
+                return;
+            }
             string c = String.Format("{0} {1}\n", DateTime.Now.ToLongTimeString(), log);
             this.textboxLog.AppendText(c);
         }
