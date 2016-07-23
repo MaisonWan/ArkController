@@ -1,0 +1,7 @@
+*.exe
+
+# Folder
+bin/
+obj/
+
+# Generated files
