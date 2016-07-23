@@ -88,7 +88,7 @@ namespace KibotController
         /// <param name="e"></param>
         private void buttonInstall_Click(object sender, EventArgs e)
         {
-            this.openFileDialogInstall.Filter = "Android程序(*.apk)|*.apk";
+            this.openFileDialogInstall.Filter = "Android程序(*.apk)|*.apk|所有文件(*.*)|*.*";
             this.openFileDialogInstall.RestoreDirectory = true;
             this.openFileDialogInstall.FileName = "";
             if (this.openFileDialogInstall.ShowDialog() == DialogResult.OK)
