@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonPower = new System.Windows.Forms.Button();
             this.buttonVolumeDown = new System.Windows.Forms.Button();
@@ -52,11 +53,16 @@
             this.listViewPackage = new System.Windows.Forms.ListView();
             this.buttonPackageList = new System.Windows.Forms.Button();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.contextMenuStripListview = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemUninstall = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.contextMenuStripListview.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -137,9 +143,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.textBoxLog);
-            this.groupBox2.Location = new System.Drawing.Point(781, 26);
+            this.groupBox2.Location = new System.Drawing.Point(13, 512);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(338, 676);
+            this.groupBox2.Size = new System.Drawing.Size(761, 190);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "运行日志";
@@ -147,12 +153,12 @@
             // textBoxLog
             // 
             this.textBoxLog.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxLog.Location = new System.Drawing.Point(7, 21);
+            this.textBoxLog.Location = new System.Drawing.Point(6, 20);
             this.textBoxLog.Multiline = true;
             this.textBoxLog.Name = "textBoxLog";
             this.textBoxLog.ReadOnly = true;
             this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxLog.Size = new System.Drawing.Size(325, 649);
+            this.textBoxLog.Size = new System.Drawing.Size(749, 164);
             this.textBoxLog.TabIndex = 0;
             // 
             // groupBox3
@@ -218,14 +224,12 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.buttonPackageList);
-            this.groupBox5.Controls.Add(this.listViewPackage);
             this.groupBox5.Controls.Add(this.buttonSystemSetting);
             this.groupBox5.Controls.Add(this.buttonDeviceDetect);
             this.groupBox5.Controls.Add(this.buttonInstall);
             this.groupBox5.Location = new System.Drawing.Point(13, 294);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(762, 402);
+            this.groupBox5.Size = new System.Drawing.Size(762, 212);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "程序";
@@ -235,7 +239,7 @@
             this.buttonInstall.AllowDrop = true;
             this.buttonInstall.BackgroundImage = global::KibotController.Properties.Resources.plus39;
             this.buttonInstall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonInstall.Location = new System.Drawing.Point(24, 260);
+            this.buttonInstall.Location = new System.Drawing.Point(23, 73);
             this.buttonInstall.Name = "buttonInstall";
             this.buttonInstall.Size = new System.Drawing.Size(120, 120);
             this.buttonInstall.TabIndex = 0;
@@ -283,18 +287,22 @@
             // 
             this.listViewPackage.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
-            this.listViewPackage.Location = new System.Drawing.Point(567, 54);
+            this.listViewPackage.ContextMenuStrip = this.contextMenuStripListview;
+            this.listViewPackage.FullRowSelect = true;
+            this.listViewPackage.GridLines = true;
+            this.listViewPackage.Location = new System.Drawing.Point(12, 55);
             this.listViewPackage.Name = "listViewPackage";
-            this.listViewPackage.Size = new System.Drawing.Size(189, 342);
+            this.listViewPackage.Size = new System.Drawing.Size(326, 615);
             this.listViewPackage.TabIndex = 2;
             this.listViewPackage.UseCompatibleStateImageBehavior = false;
-            this.listViewPackage.View = System.Windows.Forms.View.Tile;
+            this.listViewPackage.View = System.Windows.Forms.View.Details;
+            this.listViewPackage.Resize += new System.EventHandler(this.listViewPackage_Resize);
             // 
             // buttonPackageList
             // 
-            this.buttonPackageList.Location = new System.Drawing.Point(567, 21);
+            this.buttonPackageList.Location = new System.Drawing.Point(74, 20);
             this.buttonPackageList.Name = "buttonPackageList";
-            this.buttonPackageList.Size = new System.Drawing.Size(189, 23);
+            this.buttonPackageList.Size = new System.Drawing.Size(200, 23);
             this.buttonPackageList.TabIndex = 3;
             this.buttonPackageList.Text = "程序列表";
             this.buttonPackageList.UseVisualStyleBackColor = true;
@@ -303,16 +311,44 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "包名";
+            this.columnHeader1.Width = 232;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.listViewPackage);
+            this.groupBox6.Controls.Add(this.buttonPackageList);
+            this.groupBox6.Location = new System.Drawing.Point(781, 26);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(338, 676);
+            this.groupBox6.TabIndex = 5;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "安装程序";
+            // 
+            // contextMenuStripListview
+            // 
+            this.contextMenuStripListview.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemUninstall});
+            this.contextMenuStripListview.Name = "contextMenuStripListview";
+            this.contextMenuStripListview.Size = new System.Drawing.Size(153, 48);
+            this.contextMenuStripListview.Text = "删除";
+            // 
+            // toolStripMenuItemUninstall
+            // 
+            this.toolStripMenuItemUninstall.Name = "toolStripMenuItemUninstall";
+            this.toolStripMenuItemUninstall.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemUninstall.Text = "卸载(&U)";
+            this.toolStripMenuItemUninstall.Click += new System.EventHandler(this.toolStripMenuItemUninstall_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1131, 714);
+            this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
             this.Name = "FormMain";
@@ -325,6 +361,8 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.contextMenuStripListview.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -355,6 +393,9 @@
         private System.Windows.Forms.Button buttonPackageList;
         private System.Windows.Forms.ListView listViewPackage;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripListview;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemUninstall;
     }
 }
 

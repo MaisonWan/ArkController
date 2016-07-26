@@ -160,13 +160,27 @@ namespace KibotController
         {
             string[] packages = connect.GetPackageList();
             this.listViewPackage.BeginUpdate();
+            this.listViewPackage.Items.Clear();
             foreach (string p in packages)
             {
-                ListViewItem item = new ListViewItem();
-                item.Text = p;
-                this.listViewPackage.Items.Add(item);
+                string pkg = p.Replace("package:", "");
+                this.listViewPackage.Items.Add(pkg);
             }
             this.listViewPackage.EndUpdate();
+        }
+
+        private void listViewPackage_Resize(object sender, EventArgs e)
+        {
+            this.listViewPackage.Columns[0].Width = this.listViewPackage.Width;
+        }
+
+        private void toolStripMenuItemUninstall_Click(object sender, EventArgs e)
+        {
+            if (this.listViewPackage.SelectedItems.Count > 0)
+            {
+                string packageName = this.listViewPackage.SelectedItems[0].Text;
+                connect.Uninstall(packageName);
+            }
         }
     }
 }
