@@ -135,5 +135,38 @@ namespace KibotController
                 MessageBox.Show(filePath + "安装失败", "安装", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void buttonDeviceDetect_Click(object sender, EventArgs e)
+        {
+            const string package = "com.qihoo360.homecamera.devicedetect";
+            const string activity = "com.qihoo360.homecamera.devicedetect.MainActivity";
+            connect.StartAm(package, activity);
+        }
+
+        private void buttonSystemSetting_Click(object sender, EventArgs e)
+        {
+            const string package = "com.android.settings";
+            const string activity = "com.android.settings.Settings";
+            connect.StartAm(package, activity);
+        }
+
+        private void buttonRestartAdb_Click(object sender, EventArgs e)
+        {
+            connect.InputCommand("kill-server");
+            connect.InputCommand("start-server");
+        }
+
+        private void buttonPackageList_Click(object sender, EventArgs e)
+        {
+            string[] packages = connect.GetPackageList();
+            this.listViewPackage.BeginUpdate();
+            foreach (string p in packages)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Text = p;
+                this.listViewPackage.Items.Add(item);
+            }
+            this.listViewPackage.EndUpdate();
+        }
     }
 }

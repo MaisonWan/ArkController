@@ -109,6 +109,31 @@ namespace KibotController
             return false;
         }
 
+        /// <summary>
+        /// 启动一个程序
+        /// </summary>
+        /// <param name="package"></param>
+        /// <param name="activity"></param>
+        /// <returns></returns>
+        public bool StartAm(string package, string activity)
+        {
+            string cmd = String.Format("shell am start -n {0}/{1}", package, activity);
+            string result = executeAdb(cmd);
+            log.Write(result);
+            return true;
+        }
+
+        /// <summary>
+        /// 得到程序列表
+        /// </summary>
+        /// <returns></returns>
+        public string[] GetPackageList()
+        {
+            const string cmd = "shell pm list package";
+            string result = executeAdb(cmd);
+            return result.Split("\n".ToCharArray());
+        }
+
         private string executeAdb(string cmd)
         {
             p.StartInfo.CreateNoWindow = true;

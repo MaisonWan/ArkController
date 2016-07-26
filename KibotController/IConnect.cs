@@ -134,5 +134,19 @@ namespace KibotController
         /// <param name="packageName"></param>
         /// <returns></returns>
         bool Uninstall(string packageName);
+
+        /// <summary>
+        /// 启动一个程序
+        /// </summary>
+        /// <param name="package">程序包名</param>
+        /// <param name="activity">程序Activity名字</param>
+        /// <returns></returns>
+        bool StartAm(string package, string activity);
+
+        /// <summary>
+        /// 获取程序列表
+        /// </summary>
+        /// <returns></returns>
+        string[] GetPackageList();
     }
 }
