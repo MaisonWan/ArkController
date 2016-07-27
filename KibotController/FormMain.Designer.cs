@@ -42,27 +42,27 @@
             this.buttonSendText = new System.Windows.Forms.Button();
             this.textBoxSendText = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.buttonRestartAdb = new System.Windows.Forms.Button();
             this.buttonScreen = new System.Windows.Forms.Button();
             this.buttonDevices = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.buttonSystemSetting = new System.Windows.Forms.Button();
+            this.buttonDeviceDetect = new System.Windows.Forms.Button();
             this.buttonInstall = new System.Windows.Forms.Button();
             this.openFileDialogInstall = new System.Windows.Forms.OpenFileDialog();
-            this.buttonDeviceDetect = new System.Windows.Forms.Button();
-            this.buttonSystemSetting = new System.Windows.Forms.Button();
-            this.buttonRestartAdb = new System.Windows.Forms.Button();
             this.listViewPackage = new System.Windows.Forms.ListView();
-            this.buttonPackageList = new System.Windows.Forms.Button();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.contextMenuStripListview = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemUninstall = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonPackageList = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -202,6 +202,16 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "系统";
             // 
+            // buttonRestartAdb
+            // 
+            this.buttonRestartAdb.Location = new System.Drawing.Point(215, 37);
+            this.buttonRestartAdb.Name = "buttonRestartAdb";
+            this.buttonRestartAdb.Size = new System.Drawing.Size(75, 23);
+            this.buttonRestartAdb.TabIndex = 2;
+            this.buttonRestartAdb.Text = "重启Adb";
+            this.buttonRestartAdb.UseVisualStyleBackColor = true;
+            this.buttonRestartAdb.Click += new System.EventHandler(this.buttonRestartAdb_Click);
+            // 
             // buttonScreen
             // 
             this.buttonScreen.Location = new System.Drawing.Point(119, 37);
@@ -234,6 +244,26 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "程序";
             // 
+            // buttonSystemSetting
+            // 
+            this.buttonSystemSetting.Location = new System.Drawing.Point(119, 21);
+            this.buttonSystemSetting.Name = "buttonSystemSetting";
+            this.buttonSystemSetting.Size = new System.Drawing.Size(75, 23);
+            this.buttonSystemSetting.TabIndex = 1;
+            this.buttonSystemSetting.Text = "系统设置";
+            this.buttonSystemSetting.UseVisualStyleBackColor = true;
+            this.buttonSystemSetting.Click += new System.EventHandler(this.buttonSystemSetting_Click);
+            // 
+            // buttonDeviceDetect
+            // 
+            this.buttonDeviceDetect.Location = new System.Drawing.Point(24, 21);
+            this.buttonDeviceDetect.Name = "buttonDeviceDetect";
+            this.buttonDeviceDetect.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeviceDetect.TabIndex = 1;
+            this.buttonDeviceDetect.Text = "硬件检测";
+            this.buttonDeviceDetect.UseVisualStyleBackColor = true;
+            this.buttonDeviceDetect.Click += new System.EventHandler(this.buttonDeviceDetect_Click);
+            // 
             // buttonInstall
             // 
             this.buttonInstall.AllowDrop = true;
@@ -253,36 +283,6 @@
             // 
             this.openFileDialogInstall.FileName = "openFileDialog1";
             // 
-            // buttonDeviceDetect
-            // 
-            this.buttonDeviceDetect.Location = new System.Drawing.Point(24, 21);
-            this.buttonDeviceDetect.Name = "buttonDeviceDetect";
-            this.buttonDeviceDetect.Size = new System.Drawing.Size(75, 23);
-            this.buttonDeviceDetect.TabIndex = 1;
-            this.buttonDeviceDetect.Text = "硬件检测";
-            this.buttonDeviceDetect.UseVisualStyleBackColor = true;
-            this.buttonDeviceDetect.Click += new System.EventHandler(this.buttonDeviceDetect_Click);
-            // 
-            // buttonSystemSetting
-            // 
-            this.buttonSystemSetting.Location = new System.Drawing.Point(119, 21);
-            this.buttonSystemSetting.Name = "buttonSystemSetting";
-            this.buttonSystemSetting.Size = new System.Drawing.Size(75, 23);
-            this.buttonSystemSetting.TabIndex = 1;
-            this.buttonSystemSetting.Text = "系统设置";
-            this.buttonSystemSetting.UseVisualStyleBackColor = true;
-            this.buttonSystemSetting.Click += new System.EventHandler(this.buttonSystemSetting_Click);
-            // 
-            // buttonRestartAdb
-            // 
-            this.buttonRestartAdb.Location = new System.Drawing.Point(215, 37);
-            this.buttonRestartAdb.Name = "buttonRestartAdb";
-            this.buttonRestartAdb.Size = new System.Drawing.Size(75, 23);
-            this.buttonRestartAdb.TabIndex = 2;
-            this.buttonRestartAdb.Text = "重启Adb";
-            this.buttonRestartAdb.UseVisualStyleBackColor = true;
-            this.buttonRestartAdb.Click += new System.EventHandler(this.buttonRestartAdb_Click);
-            // 
             // listViewPackage
             // 
             this.listViewPackage.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -298,6 +298,26 @@
             this.listViewPackage.View = System.Windows.Forms.View.Details;
             this.listViewPackage.Resize += new System.EventHandler(this.listViewPackage_Resize);
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "包名";
+            this.columnHeader1.Width = 322;
+            // 
+            // contextMenuStripListview
+            // 
+            this.contextMenuStripListview.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemUninstall});
+            this.contextMenuStripListview.Name = "contextMenuStripListview";
+            this.contextMenuStripListview.Size = new System.Drawing.Size(118, 26);
+            this.contextMenuStripListview.Text = "删除";
+            // 
+            // toolStripMenuItemUninstall
+            // 
+            this.toolStripMenuItemUninstall.Name = "toolStripMenuItemUninstall";
+            this.toolStripMenuItemUninstall.Size = new System.Drawing.Size(117, 22);
+            this.toolStripMenuItemUninstall.Text = "卸载(&U)";
+            this.toolStripMenuItemUninstall.Click += new System.EventHandler(this.toolStripMenuItemUninstall_Click);
+            // 
             // buttonPackageList
             // 
             this.buttonPackageList.Location = new System.Drawing.Point(74, 20);
@@ -307,11 +327,6 @@
             this.buttonPackageList.Text = "程序列表";
             this.buttonPackageList.UseVisualStyleBackColor = true;
             this.buttonPackageList.Click += new System.EventHandler(this.buttonPackageList_Click);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "包名";
-            this.columnHeader1.Width = 232;
             // 
             // groupBox6
             // 
@@ -324,21 +339,6 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "安装程序";
             // 
-            // contextMenuStripListview
-            // 
-            this.contextMenuStripListview.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemUninstall});
-            this.contextMenuStripListview.Name = "contextMenuStripListview";
-            this.contextMenuStripListview.Size = new System.Drawing.Size(153, 48);
-            this.contextMenuStripListview.Text = "删除";
-            // 
-            // toolStripMenuItemUninstall
-            // 
-            this.toolStripMenuItemUninstall.Name = "toolStripMenuItemUninstall";
-            this.toolStripMenuItemUninstall.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItemUninstall.Text = "卸载(&U)";
-            this.toolStripMenuItemUninstall.Click += new System.EventHandler(this.toolStripMenuItemUninstall_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -350,6 +350,7 @@
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -361,8 +362,8 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
             this.contextMenuStripListview.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
