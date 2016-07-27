@@ -12,6 +12,8 @@ namespace KibotController
     {
         private Log log = null;
         private IConnect connect = null;
+        private FormScreenShot screenShot = null;
+
         public FormMain()
         {
             InitializeComponent();
@@ -74,10 +76,21 @@ namespace KibotController
             string localPath = Environment.CurrentDirectory + "\\screen.png";
             if (connect.GetScreenShot(localPath))
             {
-                FormScreenShot screenShot = new FormScreenShot();
+                if (screenShot == null || screenShot.IsDisposed)
+                {
+                    screenShot = new FormScreenShot();
+                }
                 screenShot.ScreenShotPath = localPath;
                 screenShot.Connect = connect;
-                screenShot.ShowDialog();
+                if (screenShot.Visible)
+                {
+                    screenShot.ReloadPicture();
+                    screenShot.Activate();
+                }
+                else
+                {
+                    screenShot.Show();
+                }
             }
         }
 

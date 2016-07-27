@@ -40,6 +40,11 @@ namespace KibotController
 
         private void FormScreenShot_Load(object sender, EventArgs e)
         {
+            ReloadPicture();
+        }
+
+        public void ReloadPicture()
+        {
             if (File.Exists(screenShotPath))
             {
                 this.pictureBox1.ImageLocation = this.screenShotPath;
