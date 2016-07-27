@@ -83,5 +83,10 @@ namespace KibotController
                 this.pictureBox1.ImageLocation = this.screenShotPath;
             }
         }
+
+        private void buttonClip_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetDataObject(this.pictureBox1.Image);
+        }
     }
 }

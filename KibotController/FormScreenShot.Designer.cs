@@ -34,6 +34,7 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonQuit = new System.Windows.Forms.Button();
             this.saveFileDialogImage = new System.Windows.Forms.SaveFileDialog();
+            this.buttonClip = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +53,8 @@
             // 
             // buttonRefresh
             // 
-            this.buttonRefresh.Location = new System.Drawing.Point(68, 27);
+            this.buttonRefresh.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonRefresh.Location = new System.Drawing.Point(44, 27);
             this.buttonRefresh.Name = "buttonRefresh";
             this.buttonRefresh.Size = new System.Drawing.Size(75, 23);
             this.buttonRefresh.TabIndex = 1;
@@ -62,7 +64,8 @@
             // 
             // buttonRotate
             // 
-            this.buttonRotate.Location = new System.Drawing.Point(263, 27);
+            this.buttonRotate.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonRotate.Location = new System.Drawing.Point(193, 27);
             this.buttonRotate.Name = "buttonRotate";
             this.buttonRotate.Size = new System.Drawing.Size(75, 23);
             this.buttonRotate.TabIndex = 1;
@@ -71,7 +74,8 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(469, 27);
+            this.buttonSave.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonSave.Location = new System.Drawing.Point(358, 27);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 1;
@@ -81,6 +85,7 @@
             // 
             // buttonQuit
             // 
+            this.buttonQuit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.buttonQuit.Location = new System.Drawing.Point(681, 27);
             this.buttonQuit.Name = "buttonQuit";
             this.buttonQuit.Size = new System.Drawing.Size(75, 23);
@@ -89,11 +94,23 @@
             this.buttonQuit.UseVisualStyleBackColor = true;
             this.buttonQuit.Click += new System.EventHandler(this.buttonQuit_Click);
             // 
+            // buttonClip
+            // 
+            this.buttonClip.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonClip.Location = new System.Drawing.Point(514, 27);
+            this.buttonClip.Name = "buttonClip";
+            this.buttonClip.Size = new System.Drawing.Size(75, 23);
+            this.buttonClip.TabIndex = 2;
+            this.buttonClip.Text = "复制";
+            this.buttonClip.UseVisualStyleBackColor = true;
+            this.buttonClip.Click += new System.EventHandler(this.buttonClip_Click);
+            // 
             // FormScreenShot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 649);
+            this.Controls.Add(this.buttonClip);
             this.Controls.Add(this.buttonQuit);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonRotate);
@@ -116,5 +133,6 @@
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonQuit;
         private System.Windows.Forms.SaveFileDialog saveFileDialogImage;
+        private System.Windows.Forms.Button buttonClip;
     }
 }
