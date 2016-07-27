@@ -71,6 +71,7 @@
             this.buttonRotate.TabIndex = 1;
             this.buttonRotate.Text = "旋转";
             this.buttonRotate.UseVisualStyleBackColor = true;
+            this.buttonRotate.Click += new System.EventHandler(this.buttonRotate_Click);
             // 
             // buttonSave
             // 

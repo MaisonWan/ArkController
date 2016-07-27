@@ -88,5 +88,12 @@ namespace KibotController
         {
             Clipboard.SetDataObject(this.pictureBox1.Image);
         }
+
+        private void buttonRotate_Click(object sender, EventArgs e)
+        {
+            Image img = pictureBox1.Image;
+            img.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            this.pictureBox1.Image = img;
+        }
     }
 }
