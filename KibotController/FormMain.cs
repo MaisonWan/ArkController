@@ -178,7 +178,7 @@ namespace KibotController
         {
             if (this.listViewPackage.SelectedItems.Count > 0)
             {
-                string packageName = this.listViewPackage.SelectedItems[0].Text;
+                string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
                 connect.Uninstall(packageName);
             }
         }
