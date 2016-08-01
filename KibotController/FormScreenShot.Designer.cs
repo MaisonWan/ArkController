@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormScreenShot));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.buttonRotate = new System.Windows.Forms.Button();
@@ -117,6 +118,7 @@
             this.Controls.Add(this.buttonRotate);
             this.Controls.Add(this.buttonRefresh);
             this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormScreenShot";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "屏幕截图";
