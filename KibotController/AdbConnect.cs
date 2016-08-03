@@ -9,12 +9,12 @@ namespace KibotController
     public class AdbConnect : IConnect
     {
         private Log log = null;
-        private Process p = null;
+        private Command command = null;
 
         public AdbConnect(Log log)
         {
             this.log = log;
-            p = new Process();
+            command = new Command();
         }
 
         /// <summary>
@@ -136,17 +136,7 @@ namespace KibotController
 
         private string executeAdb(string cmd)
         {
-            p.StartInfo.CreateNoWindow = true;
-            p.StartInfo.FileName = "./adb/adb.exe";
-            p.StartInfo.Arguments = cmd;
-            p.StartInfo.UseShellExecute = false;
-            p.StartInfo.RedirectStandardError = true;
-            p.StartInfo.RedirectStandardInput = true;
-            p.StartInfo.RedirectStandardOutput = true;
-            p.Start();
-            string outStr = p.StandardOutput.ReadToEnd();
-            p.Close();
-            return outStr;
+            return command.ExecuteAdb(cmd);
         }
     }
 }

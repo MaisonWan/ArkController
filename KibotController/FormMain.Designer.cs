@@ -43,7 +43,7 @@
             this.buttonSendText = new System.Windows.Forms.Button();
             this.textBoxSendText = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.buttonRestartAdb = new System.Windows.Forms.Button();
+            this.buttonLogcat = new System.Windows.Forms.Button();
             this.buttonScreen = new System.Windows.Forms.Button();
             this.buttonDevices = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -57,6 +57,7 @@
             this.toolStripMenuItemUninstall = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonPackageList = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -193,7 +194,8 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.buttonRestartAdb);
+            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Controls.Add(this.buttonLogcat);
             this.groupBox4.Controls.Add(this.buttonScreen);
             this.groupBox4.Controls.Add(this.buttonDevices);
             this.groupBox4.Location = new System.Drawing.Point(12, 202);
@@ -203,15 +205,15 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "系统";
             // 
-            // buttonRestartAdb
+            // buttonLogcat
             // 
-            this.buttonRestartAdb.Location = new System.Drawing.Point(215, 37);
-            this.buttonRestartAdb.Name = "buttonRestartAdb";
-            this.buttonRestartAdb.Size = new System.Drawing.Size(75, 23);
-            this.buttonRestartAdb.TabIndex = 2;
-            this.buttonRestartAdb.Text = "重启Adb";
-            this.buttonRestartAdb.UseVisualStyleBackColor = true;
-            this.buttonRestartAdb.Click += new System.EventHandler(this.buttonRestartAdb_Click);
+            this.buttonLogcat.Location = new System.Drawing.Point(215, 37);
+            this.buttonLogcat.Name = "buttonLogcat";
+            this.buttonLogcat.Size = new System.Drawing.Size(75, 23);
+            this.buttonLogcat.TabIndex = 2;
+            this.buttonLogcat.Text = "Logcat";
+            this.buttonLogcat.UseVisualStyleBackColor = true;
+            this.buttonLogcat.Click += new System.EventHandler(this.buttonLogcat_Click);
             // 
             // buttonScreen
             // 
@@ -340,6 +342,16 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "安装程序";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(305, 37);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "重启Adb";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.buttonRestartAdb_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -392,13 +404,14 @@
         private System.Windows.Forms.OpenFileDialog openFileDialogInstall;
         private System.Windows.Forms.Button buttonDeviceDetect;
         private System.Windows.Forms.Button buttonSystemSetting;
-        private System.Windows.Forms.Button buttonRestartAdb;
+        private System.Windows.Forms.Button buttonLogcat;
         private System.Windows.Forms.Button buttonPackageList;
         private System.Windows.Forms.ListView listViewPackage;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripListview;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemUninstall;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -13,6 +13,7 @@ namespace KibotController
         private Log log = null;
         private IConnect connect = null;
         private FormScreenShot screenShot = null;
+        private FormLogcat logcat = null;
 
         public FormMain()
         {
@@ -194,6 +195,15 @@ namespace KibotController
                 string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
                 connect.Uninstall(packageName);
             }
+        }
+
+        private void buttonLogcat_Click(object sender, EventArgs e)
+        {
+            if (logcat == null || logcat.IsDisposed)
+            {
+                logcat = new FormLogcat();
+            }
+            logcat.ShowDialog();
         }
     }
 }
