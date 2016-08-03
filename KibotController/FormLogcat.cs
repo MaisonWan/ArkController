@@ -83,5 +83,10 @@ namespace KibotController
                 this.buttonStop.Enabled = false;
             }
         }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            this.textBoxContent.Clear();
+        }
     }
 }

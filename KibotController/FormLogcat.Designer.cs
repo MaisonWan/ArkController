@@ -36,6 +36,7 @@
             this.buttonStart = new System.Windows.Forms.Button();
             this.textBoxContent = new System.Windows.Forms.TextBox();
             this.buttonStop = new System.Windows.Forms.Button();
+            this.buttonClear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -115,11 +116,23 @@
             this.buttonStop.UseVisualStyleBackColor = true;
             this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
+            // buttonClear
+            // 
+            this.buttonClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonClear.Location = new System.Drawing.Point(942, 7);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(75, 23);
+            this.buttonClear.TabIndex = 7;
+            this.buttonClear.Text = "清空";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
             // FormLogcat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1029, 711);
+            this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.buttonStop);
             this.Controls.Add(this.textBoxContent);
             this.Controls.Add(this.buttonStart);
@@ -147,5 +160,6 @@
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.TextBox textBoxContent;
         private System.Windows.Forms.Button buttonStop;
+        private System.Windows.Forms.Button buttonClear;
     }
 }
