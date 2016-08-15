@@ -32,9 +32,9 @@ namespace KibotController
             connect.InputKey(3);
         }
 
-        private void buttonMenu_Click(object sender, EventArgs e)
+        private void buttonReboot_Click(object sender, EventArgs e)
         {
-            connect.InputKey(65);
+            connect.InputCommand("reboot");
         }
 
         private void buttonVolumeUp_Click(object sender, EventArgs e)
@@ -187,6 +187,17 @@ namespace KibotController
             this.listViewPackage.Columns[0].Width = this.listViewPackage.Width;
         }
 
+        private void ToolStripMenuItemDetail_Click(object sender, EventArgs e)
+        {
+            if (this.listViewPackage.SelectedItems.Count > 0)
+            {
+                string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
+                const string action = "android.settings.APPLICATION_DETAILS_SETTINGS";
+                string param = string.Format("-a {0} -d package:{1}", action, packageName);
+                connect.StartAm(param);
+            }
+        }
+
         private void toolStripMenuItemUninstall_Click(object sender, EventArgs e)
         {
             if (this.listViewPackage.SelectedItems.Count > 0)
@@ -204,5 +215,6 @@ namespace KibotController
             }
             logcat.ShowDialog();
         }
+
     }
 }

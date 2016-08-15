@@ -144,6 +144,13 @@ namespace KibotController
         bool StartAm(string package, string activity);
 
         /// <summary>
+        /// 执行启动一个程序
+        /// </summary>
+        /// <param name="param">自定义组合参数</param>
+        /// <returns></returns>
+        bool StartAm(string param);
+
+        /// <summary>
         /// 获取程序列表
         /// </summary>
         /// <returns></returns>

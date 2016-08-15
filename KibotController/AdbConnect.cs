@@ -124,6 +124,19 @@ namespace KibotController
         }
 
         /// <summary>
+        /// 启动一个程序
+        /// </summary>
+        /// <param name="param">自定义组合参数</param>
+        /// <returns></returns>
+        public bool StartAm(string param)
+        {
+            string cmd = String.Format("shell am start {0}", param);
+            string result = executeAdb(cmd);
+            log.Write(result);
+            return true;
+        }
+
+        /// <summary>
         /// 得到程序列表
         /// </summary>
         /// <returns></returns>
