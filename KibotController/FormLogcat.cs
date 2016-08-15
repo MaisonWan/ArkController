@@ -34,6 +34,12 @@ namespace KibotController
         {
             Command cmd = new Command();
             string args = "logcat";
+            if (this.comboBoxPriority.SelectedIndex > 0)
+            {
+                string[] priority = { "V", "D", "I", "W", "E", "F", "S" };
+                int index = this.comboBoxPriority.SelectedIndex;
+                args = args + " *:" + priority[index - 1];
+            }
             cmd.ExecuteAdb(args, this);
         }
 
@@ -44,7 +50,7 @@ namespace KibotController
         void Command.Callback.onReceive(string line)
         {
             this.textBoxContent.AppendText(line);
-            this.textBoxContent.AppendText("\n");
+            this.textBoxContent.AppendText(Environment.NewLine);
         }
 
         private void FormLogcat_FormClosing(object sender, FormClosingEventArgs e)
@@ -65,7 +71,7 @@ namespace KibotController
         {
             if (state)
             {
-                if (thread == null || thread.ThreadState == ThreadState.Stopped)
+                if (thread == null || thread.ThreadState != ThreadState.Running)
                 {
                     thread = new Thread(new ThreadStart(startLogcat));
                 }

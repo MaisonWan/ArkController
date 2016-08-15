@@ -139,14 +139,13 @@ namespace KibotController
 
         private void install(string path)
         {
-            string filePath = this.openFileDialogInstall.FileName;
-            if (connect.Install(filePath))
+            if (connect.Install(path))
             {
-                MessageBox.Show(filePath + "安装成功", "安装", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(path + "安装成功", "安装", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show(filePath + "安装失败", "安装", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(path + "安装失败", "安装", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
