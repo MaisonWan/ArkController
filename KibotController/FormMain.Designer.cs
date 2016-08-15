@@ -59,6 +59,8 @@
             this.buttonPackageList = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.ToolStripMenuItemDetail = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonDeviceInfo = new System.Windows.Forms.Button();
+            this.buttonDeveloper = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -248,6 +250,8 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.buttonDeveloper);
+            this.groupBox5.Controls.Add(this.buttonDeviceInfo);
             this.groupBox5.Controls.Add(this.buttonSystemSetting);
             this.groupBox5.Controls.Add(this.buttonDeviceDetect);
             this.groupBox5.Controls.Add(this.buttonInstall);
@@ -323,7 +327,7 @@
             this.ToolStripMenuItemDetail,
             this.toolStripMenuItemUninstall});
             this.contextMenuStripListview.Name = "contextMenuStripListview";
-            this.contextMenuStripListview.Size = new System.Drawing.Size(166, 70);
+            this.contextMenuStripListview.Size = new System.Drawing.Size(166, 48);
             this.contextMenuStripListview.Text = "删除";
             // 
             // toolStripMenuItemUninstall
@@ -360,6 +364,26 @@
             this.ToolStripMenuItemDetail.Size = new System.Drawing.Size(165, 22);
             this.ToolStripMenuItemDetail.Text = "详细程序信息(&D)";
             this.ToolStripMenuItemDetail.Click += new System.EventHandler(this.ToolStripMenuItemDetail_Click);
+            // 
+            // buttonDeviceInfo
+            // 
+            this.buttonDeviceInfo.Location = new System.Drawing.Point(214, 21);
+            this.buttonDeviceInfo.Name = "buttonDeviceInfo";
+            this.buttonDeviceInfo.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeviceInfo.TabIndex = 15;
+            this.buttonDeviceInfo.Text = "设备信息";
+            this.buttonDeviceInfo.UseVisualStyleBackColor = true;
+            this.buttonDeviceInfo.Click += new System.EventHandler(this.buttonDeviceInfo_Click);
+            // 
+            // buttonDeveloper
+            // 
+            this.buttonDeveloper.Location = new System.Drawing.Point(304, 20);
+            this.buttonDeveloper.Name = "buttonDeveloper";
+            this.buttonDeveloper.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeveloper.TabIndex = 16;
+            this.buttonDeveloper.Text = "开发者选项";
+            this.buttonDeveloper.UseVisualStyleBackColor = true;
+            this.buttonDeveloper.Click += new System.EventHandler(this.buttonDeveloper_Click);
             // 
             // FormMain
             // 
@@ -422,6 +446,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemUninstall;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemDetail;
+        private System.Windows.Forms.Button buttonDeviceInfo;
+        private System.Windows.Forms.Button buttonDeveloper;
     }
 }
 
