@@ -63,6 +63,8 @@
             this.checkBoxFilter = new System.Windows.Forms.CheckBox();
             this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.PToolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonAbout = new System.Windows.Forms.ToolStripButton();
             this.buttonInstall = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -71,6 +73,7 @@
             this.groupBox5.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -402,6 +405,26 @@
             this.PToolStripMenuItemCopy.Text = "复制(&C)";
             this.PToolStripMenuItemCopy.Click += new System.EventHandler(this.PToolStripMenuItemCopy_Click);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonAbout});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1131, 25);
+            this.toolStrip1.TabIndex = 6;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButtonAbout
+            // 
+            this.toolStripButtonAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonAbout.Image = global::KibotController.Properties.Resources.about;
+            this.toolStripButtonAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAbout.Name = "toolStripButtonAbout";
+            this.toolStripButtonAbout.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonAbout.Text = "关于";
+            this.toolStripButtonAbout.Click += new System.EventHandler(this.toolStripButtonAbout_Click);
+            // 
             // buttonInstall
             // 
             this.buttonInstall.AllowDrop = true;
@@ -422,6 +445,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1131, 714);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox5);
@@ -445,7 +469,10 @@
             this.contextMenuStripListview.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -485,6 +512,8 @@
         private System.Windows.Forms.TextBox textBoxFilter;
         private System.Windows.Forms.CheckBox checkBoxFilter;
         private System.Windows.Forms.ToolStripMenuItem PToolStripMenuItemCopy;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripButtonAbout;
     }
 }
 

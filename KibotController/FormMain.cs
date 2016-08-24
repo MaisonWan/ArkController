@@ -258,5 +258,11 @@ namespace KibotController
             connect.StartAm(param);
         }
 
+        private void toolStripButtonAbout_Click(object sender, EventArgs e)
+        {
+            AboutBoxKibot aboutBox = new AboutBoxKibot();
+            aboutBox.ShowDialog();
+        }
+
     }
 }

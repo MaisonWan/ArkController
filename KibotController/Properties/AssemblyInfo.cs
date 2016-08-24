@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("KibotController")]
+[assembly: AssemblyTitle("Kibot控制器")]
 [assembly: AssemblyDescription("Android设备控制程序，简化人工命令行操作。")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
