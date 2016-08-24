@@ -48,6 +48,8 @@
             this.buttonScreen = new System.Windows.Forms.Button();
             this.buttonDevices = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.buttonDeveloper = new System.Windows.Forms.Button();
+            this.buttonDeviceInfo = new System.Windows.Forms.Button();
             this.buttonSystemSetting = new System.Windows.Forms.Button();
             this.buttonDeviceDetect = new System.Windows.Forms.Button();
             this.buttonInstall = new System.Windows.Forms.Button();
@@ -55,12 +57,12 @@
             this.listViewPackage = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStripListview = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ToolStripMenuItemDetail = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemUninstall = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonPackageList = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.ToolStripMenuItemDetail = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonDeviceInfo = new System.Windows.Forms.Button();
-            this.buttonDeveloper = new System.Windows.Forms.Button();
+            this.checkBoxFilter = new System.Windows.Forms.CheckBox();
+            this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -210,7 +212,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(305, 37);
+            this.button1.Location = new System.Drawing.Point(314, 37);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 11;
@@ -261,6 +263,26 @@
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "程序";
+            // 
+            // buttonDeveloper
+            // 
+            this.buttonDeveloper.Location = new System.Drawing.Point(313, 20);
+            this.buttonDeveloper.Name = "buttonDeveloper";
+            this.buttonDeveloper.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeveloper.TabIndex = 16;
+            this.buttonDeveloper.Text = "开发者选项";
+            this.buttonDeveloper.UseVisualStyleBackColor = true;
+            this.buttonDeveloper.Click += new System.EventHandler(this.buttonDeveloper_Click);
+            // 
+            // buttonDeviceInfo
+            // 
+            this.buttonDeviceInfo.Location = new System.Drawing.Point(214, 21);
+            this.buttonDeviceInfo.Name = "buttonDeviceInfo";
+            this.buttonDeviceInfo.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeviceInfo.TabIndex = 15;
+            this.buttonDeviceInfo.Text = "设备信息";
+            this.buttonDeviceInfo.UseVisualStyleBackColor = true;
+            this.buttonDeviceInfo.Click += new System.EventHandler(this.buttonDeviceInfo_Click);
             // 
             // buttonSystemSetting
             // 
@@ -330,6 +352,13 @@
             this.contextMenuStripListview.Size = new System.Drawing.Size(166, 48);
             this.contextMenuStripListview.Text = "删除";
             // 
+            // ToolStripMenuItemDetail
+            // 
+            this.ToolStripMenuItemDetail.Name = "ToolStripMenuItemDetail";
+            this.ToolStripMenuItemDetail.Size = new System.Drawing.Size(165, 22);
+            this.ToolStripMenuItemDetail.Text = "详细程序信息(&D)";
+            this.ToolStripMenuItemDetail.Click += new System.EventHandler(this.ToolStripMenuItemDetail_Click);
+            // 
             // toolStripMenuItemUninstall
             // 
             this.toolStripMenuItemUninstall.Name = "toolStripMenuItemUninstall";
@@ -339,9 +368,9 @@
             // 
             // buttonPackageList
             // 
-            this.buttonPackageList.Location = new System.Drawing.Point(74, 20);
+            this.buttonPackageList.Location = new System.Drawing.Point(12, 20);
             this.buttonPackageList.Name = "buttonPackageList";
-            this.buttonPackageList.Size = new System.Drawing.Size(200, 23);
+            this.buttonPackageList.Size = new System.Drawing.Size(77, 23);
             this.buttonPackageList.TabIndex = 15;
             this.buttonPackageList.Text = "程序列表";
             this.buttonPackageList.UseVisualStyleBackColor = true;
@@ -349,6 +378,8 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.textBoxFilter);
+            this.groupBox6.Controls.Add(this.checkBoxFilter);
             this.groupBox6.Controls.Add(this.listViewPackage);
             this.groupBox6.Controls.Add(this.buttonPackageList);
             this.groupBox6.Location = new System.Drawing.Point(781, 26);
@@ -358,32 +389,24 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "安装程序";
             // 
-            // ToolStripMenuItemDetail
+            // checkBoxFilter
             // 
-            this.ToolStripMenuItemDetail.Name = "ToolStripMenuItemDetail";
-            this.ToolStripMenuItemDetail.Size = new System.Drawing.Size(165, 22);
-            this.ToolStripMenuItemDetail.Text = "详细程序信息(&D)";
-            this.ToolStripMenuItemDetail.Click += new System.EventHandler(this.ToolStripMenuItemDetail_Click);
+            this.checkBoxFilter.AutoSize = true;
+            this.checkBoxFilter.Checked = true;
+            this.checkBoxFilter.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxFilter.Location = new System.Drawing.Point(284, 22);
+            this.checkBoxFilter.Name = "checkBoxFilter";
+            this.checkBoxFilter.Size = new System.Drawing.Size(48, 16);
+            this.checkBoxFilter.TabIndex = 16;
+            this.checkBoxFilter.Text = "过滤";
+            this.checkBoxFilter.UseVisualStyleBackColor = true;
             // 
-            // buttonDeviceInfo
+            // textBoxFilter
             // 
-            this.buttonDeviceInfo.Location = new System.Drawing.Point(214, 21);
-            this.buttonDeviceInfo.Name = "buttonDeviceInfo";
-            this.buttonDeviceInfo.Size = new System.Drawing.Size(75, 23);
-            this.buttonDeviceInfo.TabIndex = 15;
-            this.buttonDeviceInfo.Text = "设备信息";
-            this.buttonDeviceInfo.UseVisualStyleBackColor = true;
-            this.buttonDeviceInfo.Click += new System.EventHandler(this.buttonDeviceInfo_Click);
-            // 
-            // buttonDeveloper
-            // 
-            this.buttonDeveloper.Location = new System.Drawing.Point(304, 20);
-            this.buttonDeveloper.Name = "buttonDeveloper";
-            this.buttonDeveloper.Size = new System.Drawing.Size(75, 23);
-            this.buttonDeveloper.TabIndex = 16;
-            this.buttonDeveloper.Text = "开发者选项";
-            this.buttonDeveloper.UseVisualStyleBackColor = true;
-            this.buttonDeveloper.Click += new System.EventHandler(this.buttonDeveloper_Click);
+            this.textBoxFilter.Location = new System.Drawing.Point(95, 20);
+            this.textBoxFilter.Name = "textBoxFilter";
+            this.textBoxFilter.Size = new System.Drawing.Size(182, 21);
+            this.textBoxFilter.TabIndex = 17;
             // 
             // FormMain
             // 
@@ -411,6 +434,7 @@
             this.groupBox5.ResumeLayout(false);
             this.contextMenuStripListview.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -448,6 +472,8 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemDetail;
         private System.Windows.Forms.Button buttonDeviceInfo;
         private System.Windows.Forms.Button buttonDeveloper;
+        private System.Windows.Forms.TextBox textBoxFilter;
+        private System.Windows.Forms.CheckBox checkBoxFilter;
     }
 }
 

@@ -174,10 +174,22 @@ namespace KibotController
             string[] packages = connect.GetPackageList();
             this.listViewPackage.BeginUpdate();
             this.listViewPackage.Items.Clear();
+            bool needFilter = this.checkBoxFilter.Checked & this.textBoxFilter.Text.Length > 0;
+            string filterName = this.textBoxFilter.Text;
             foreach (string p in packages)
             {
                 string pkg = p.Replace("package:", "");
-                this.listViewPackage.Items.Add(pkg);
+                if (needFilter)
+                {
+                    if (pkg.Contains(filterName))
+                    {
+                        this.listViewPackage.Items.Add(pkg);
+                    }
+                }
+                else
+                {
+                    this.listViewPackage.Items.Add(pkg);
+                }
             }
             this.listViewPackage.EndUpdate();
         }
