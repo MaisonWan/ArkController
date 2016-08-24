@@ -63,6 +63,7 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.checkBoxFilter = new System.Windows.Forms.CheckBox();
             this.textBoxFilter = new System.Windows.Forms.TextBox();
+            this.PToolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -347,9 +348,10 @@
             // 
             this.contextMenuStripListview.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItemDetail,
+            this.PToolStripMenuItemCopy,
             this.toolStripMenuItemUninstall});
             this.contextMenuStripListview.Name = "contextMenuStripListview";
-            this.contextMenuStripListview.Size = new System.Drawing.Size(166, 48);
+            this.contextMenuStripListview.Size = new System.Drawing.Size(166, 92);
             this.contextMenuStripListview.Text = "删除";
             // 
             // ToolStripMenuItemDetail
@@ -407,6 +409,13 @@
             this.textBoxFilter.Name = "textBoxFilter";
             this.textBoxFilter.Size = new System.Drawing.Size(182, 21);
             this.textBoxFilter.TabIndex = 17;
+            // 
+            // PToolStripMenuItemCopy
+            // 
+            this.PToolStripMenuItemCopy.Name = "PToolStripMenuItemCopy";
+            this.PToolStripMenuItemCopy.Size = new System.Drawing.Size(165, 22);
+            this.PToolStripMenuItemCopy.Text = "复制(&C)";
+            this.PToolStripMenuItemCopy.Click += new System.EventHandler(this.PToolStripMenuItemCopy_Click);
             // 
             // FormMain
             // 
@@ -474,6 +483,7 @@
         private System.Windows.Forms.Button buttonDeveloper;
         private System.Windows.Forms.TextBox textBoxFilter;
         private System.Windows.Forms.CheckBox checkBoxFilter;
+        private System.Windows.Forms.ToolStripMenuItem PToolStripMenuItemCopy;
     }
 }
 

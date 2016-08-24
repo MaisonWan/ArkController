@@ -219,6 +219,15 @@ namespace KibotController
             }
         }
 
+        private void PToolStripMenuItemCopy_Click(object sender, EventArgs e)
+        {
+            if (this.listViewPackage.SelectedItems.Count > 0)
+            {
+                string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
+                Clipboard.SetText(packageName);
+            }
+        }
+
         private void buttonLogcat_Click(object sender, EventArgs e)
         {
             if (logcat == null || logcat.IsDisposed)
