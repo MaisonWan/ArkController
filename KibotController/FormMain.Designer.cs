@@ -32,11 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonPower = new System.Windows.Forms.Button();
-            this.buttonVolumeDown = new System.Windows.Forms.Button();
-            this.buttonVolumeUp = new System.Windows.Forms.Button();
             this.buttonReboot = new System.Windows.Forms.Button();
             this.buttonHome = new System.Windows.Forms.Button();
-            this.buttonBack = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBoxLog = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -64,8 +61,12 @@
             this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.PToolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.PToolStripMenuItemPackageInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButtonAbout = new System.Windows.Forms.ToolStripButton();
             this.buttonInstall = new System.Windows.Forms.Button();
+            this.buttonVolumeDown = new System.Windows.Forms.Button();
+            this.buttonVolumeUp = new System.Windows.Forms.Button();
+            this.buttonBack = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -101,26 +102,6 @@
             this.buttonPower.UseVisualStyleBackColor = true;
             this.buttonPower.Click += new System.EventHandler(this.buttonPower_Click);
             // 
-            // buttonVolumeDown
-            // 
-            this.buttonVolumeDown.Location = new System.Drawing.Point(471, 32);
-            this.buttonVolumeDown.Name = "buttonVolumeDown";
-            this.buttonVolumeDown.Size = new System.Drawing.Size(75, 23);
-            this.buttonVolumeDown.TabIndex = 3;
-            this.buttonVolumeDown.Text = "声音小";
-            this.buttonVolumeDown.UseVisualStyleBackColor = true;
-            this.buttonVolumeDown.Click += new System.EventHandler(this.buttonVolumeDown_Click);
-            // 
-            // buttonVolumeUp
-            // 
-            this.buttonVolumeUp.Location = new System.Drawing.Point(370, 32);
-            this.buttonVolumeUp.Name = "buttonVolumeUp";
-            this.buttonVolumeUp.Size = new System.Drawing.Size(75, 23);
-            this.buttonVolumeUp.TabIndex = 2;
-            this.buttonVolumeUp.Text = "声音大";
-            this.buttonVolumeUp.UseVisualStyleBackColor = true;
-            this.buttonVolumeUp.Click += new System.EventHandler(this.buttonVolumeUp_Click);
-            // 
             // buttonReboot
             // 
             this.buttonReboot.Location = new System.Drawing.Point(663, 32);
@@ -140,16 +121,6 @@
             this.buttonHome.Text = "主页";
             this.buttonHome.UseVisualStyleBackColor = true;
             this.buttonHome.Click += new System.EventHandler(this.buttonHome_Click);
-            // 
-            // buttonBack
-            // 
-            this.buttonBack.Location = new System.Drawing.Point(24, 32);
-            this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(75, 23);
-            this.buttonBack.TabIndex = 0;
-            this.buttonBack.Text = "返回";
-            this.buttonBack.UseVisualStyleBackColor = true;
-            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // groupBox2
             // 
@@ -336,17 +307,18 @@
             // 
             this.contextMenuStripListview.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItemDetail,
+            this.PToolStripMenuItemPackageInfo,
             this.PToolStripMenuItemCopy,
             this.toolStripMenuItemUninstall});
             this.contextMenuStripListview.Name = "contextMenuStripListview";
-            this.contextMenuStripListview.Size = new System.Drawing.Size(166, 70);
+            this.contextMenuStripListview.Size = new System.Drawing.Size(166, 92);
             this.contextMenuStripListview.Text = "删除";
             // 
             // ToolStripMenuItemDetail
             // 
             this.ToolStripMenuItemDetail.Name = "ToolStripMenuItemDetail";
             this.ToolStripMenuItemDetail.Size = new System.Drawing.Size(165, 22);
-            this.ToolStripMenuItemDetail.Text = "详细程序信息(&D)";
+            this.ToolStripMenuItemDetail.Text = "打开详细信息(&D)";
             this.ToolStripMenuItemDetail.Click += new System.EventHandler(this.ToolStripMenuItemDetail_Click);
             // 
             // toolStripMenuItemUninstall
@@ -394,6 +366,7 @@
             // textBoxFilter
             // 
             this.textBoxFilter.Location = new System.Drawing.Point(95, 20);
+            this.textBoxFilter.MaxLength = 255;
             this.textBoxFilter.Name = "textBoxFilter";
             this.textBoxFilter.Size = new System.Drawing.Size(182, 21);
             this.textBoxFilter.TabIndex = 17;
@@ -414,6 +387,12 @@
             this.toolStrip1.Size = new System.Drawing.Size(1131, 25);
             this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // PToolStripMenuItemPackageInfo
+            // 
+            this.PToolStripMenuItemPackageInfo.Name = "PToolStripMenuItemPackageInfo";
+            this.PToolStripMenuItemPackageInfo.Size = new System.Drawing.Size(165, 22);
+            this.PToolStripMenuItemPackageInfo.Text = "显示包信息(&P)";
             // 
             // toolStripButtonAbout
             // 
@@ -439,6 +418,40 @@
             this.buttonInstall.Click += new System.EventHandler(this.buttonInstall_Click);
             this.buttonInstall.DragDrop += new System.Windows.Forms.DragEventHandler(this.buttonInstall_DragDrop);
             this.buttonInstall.DragEnter += new System.Windows.Forms.DragEventHandler(this.buttonInstall_DragEnter);
+            // 
+            // buttonVolumeDown
+            // 
+            this.buttonVolumeDown.AccessibleDescription = "";
+            this.buttonVolumeDown.BackgroundImage = global::KibotController.Properties.Resources.volume_down;
+            this.buttonVolumeDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonVolumeDown.Location = new System.Drawing.Point(401, 13);
+            this.buttonVolumeDown.Name = "buttonVolumeDown";
+            this.buttonVolumeDown.Size = new System.Drawing.Size(60, 60);
+            this.buttonVolumeDown.TabIndex = 3;
+            this.buttonVolumeDown.UseVisualStyleBackColor = true;
+            this.buttonVolumeDown.Click += new System.EventHandler(this.buttonVolumeDown_Click);
+            // 
+            // buttonVolumeUp
+            // 
+            this.buttonVolumeUp.BackgroundImage = global::KibotController.Properties.Resources.volume_up;
+            this.buttonVolumeUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonVolumeUp.Location = new System.Drawing.Point(479, 13);
+            this.buttonVolumeUp.Name = "buttonVolumeUp";
+            this.buttonVolumeUp.Size = new System.Drawing.Size(60, 60);
+            this.buttonVolumeUp.TabIndex = 2;
+            this.buttonVolumeUp.UseVisualStyleBackColor = true;
+            this.buttonVolumeUp.Click += new System.EventHandler(this.buttonVolumeUp_Click);
+            // 
+            // buttonBack
+            // 
+            this.buttonBack.BackgroundImage = global::KibotController.Properties.Resources.back;
+            this.buttonBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonBack.Location = new System.Drawing.Point(24, 13);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(60, 60);
+            this.buttonBack.TabIndex = 0;
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // FormMain
             // 
@@ -514,6 +527,7 @@
         private System.Windows.Forms.ToolStripMenuItem PToolStripMenuItemCopy;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButtonAbout;
+        private System.Windows.Forms.ToolStripMenuItem PToolStripMenuItemPackageInfo;
     }
 }
 

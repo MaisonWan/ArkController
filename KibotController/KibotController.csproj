@@ -137,6 +137,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <None Include="Resources\volume_up1.png" />
+    <None Include="Resources\volume_down1.png" />
+    <None Include="Resources\settings_1.png" />
+    <None Include="Resources\setting_2.png" />
+    <None Include="Resources\camera.png" />
+    <None Include="Resources\back.png" />
+    <None Include="Resources\about1.png" />
+    <None Include="Resources\volume_up.png" />
+    <None Include="Resources\volume_down.png" />
     <None Include="Resources\about.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
