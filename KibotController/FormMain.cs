@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -20,6 +21,12 @@ namespace KibotController
             InitializeComponent();
             log = new Log(textBoxLog);
             connect = new AdbConnect(log);
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            // 显示名称，带版本号
+            this.Text += " " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
         private void buttonBack_Click(object sender, EventArgs e)

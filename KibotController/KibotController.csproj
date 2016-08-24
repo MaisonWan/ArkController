@@ -11,6 +11,7 @@
     <AssemblyName>KibotController</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>发布\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,7 +24,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutBoxKibot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBoxKibot.Designer.cs">
+      <DependentUpon>AboutBoxKibot.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdbConnect.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="FormLogcat.cs">
@@ -82,6 +88,9 @@
     <Compile Include="Log.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AboutBoxKibot.resx">
+      <DependentUpon>AboutBoxKibot.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLogcat.resx">
       <DependentUpon>FormLogcat.cs</DependentUpon>
     </EmbeddedResource>

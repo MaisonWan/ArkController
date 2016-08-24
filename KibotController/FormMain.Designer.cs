@@ -52,7 +52,6 @@
             this.buttonDeviceInfo = new System.Windows.Forms.Button();
             this.buttonSystemSetting = new System.Windows.Forms.Button();
             this.buttonDeviceDetect = new System.Windows.Forms.Button();
-            this.buttonInstall = new System.Windows.Forms.Button();
             this.openFileDialogInstall = new System.Windows.Forms.OpenFileDialog();
             this.listViewPackage = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -64,6 +63,7 @@
             this.checkBoxFilter = new System.Windows.Forms.CheckBox();
             this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.PToolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonInstall = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -305,21 +305,6 @@
             this.buttonDeviceDetect.UseVisualStyleBackColor = true;
             this.buttonDeviceDetect.Click += new System.EventHandler(this.buttonDeviceDetect_Click);
             // 
-            // buttonInstall
-            // 
-            this.buttonInstall.AllowDrop = true;
-            this.buttonInstall.BackgroundImage = global::KibotController.Properties.Resources.plus39;
-            this.buttonInstall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonInstall.Location = new System.Drawing.Point(23, 73);
-            this.buttonInstall.Name = "buttonInstall";
-            this.buttonInstall.Size = new System.Drawing.Size(120, 120);
-            this.buttonInstall.TabIndex = 14;
-            this.buttonInstall.Text = "button1";
-            this.buttonInstall.UseVisualStyleBackColor = true;
-            this.buttonInstall.Click += new System.EventHandler(this.buttonInstall_Click);
-            this.buttonInstall.DragDrop += new System.Windows.Forms.DragEventHandler(this.buttonInstall_DragDrop);
-            this.buttonInstall.DragEnter += new System.Windows.Forms.DragEventHandler(this.buttonInstall_DragEnter);
-            // 
             // openFileDialogInstall
             // 
             this.openFileDialogInstall.FileName = "openFileDialog1";
@@ -351,7 +336,7 @@
             this.PToolStripMenuItemCopy,
             this.toolStripMenuItemUninstall});
             this.contextMenuStripListview.Name = "contextMenuStripListview";
-            this.contextMenuStripListview.Size = new System.Drawing.Size(166, 92);
+            this.contextMenuStripListview.Size = new System.Drawing.Size(166, 70);
             this.contextMenuStripListview.Text = "删除";
             // 
             // ToolStripMenuItemDetail
@@ -417,6 +402,21 @@
             this.PToolStripMenuItemCopy.Text = "复制(&C)";
             this.PToolStripMenuItemCopy.Click += new System.EventHandler(this.PToolStripMenuItemCopy_Click);
             // 
+            // buttonInstall
+            // 
+            this.buttonInstall.AllowDrop = true;
+            this.buttonInstall.BackgroundImage = global::KibotController.Properties.Resources.plus39;
+            this.buttonInstall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonInstall.Location = new System.Drawing.Point(23, 73);
+            this.buttonInstall.Name = "buttonInstall";
+            this.buttonInstall.Size = new System.Drawing.Size(120, 120);
+            this.buttonInstall.TabIndex = 14;
+            this.buttonInstall.Text = "button1";
+            this.buttonInstall.UseVisualStyleBackColor = true;
+            this.buttonInstall.Click += new System.EventHandler(this.buttonInstall_Click);
+            this.buttonInstall.DragDrop += new System.Windows.Forms.DragEventHandler(this.buttonInstall_DragDrop);
+            this.buttonInstall.DragEnter += new System.Windows.Forms.DragEventHandler(this.buttonInstall_DragEnter);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -434,6 +434,7 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kobit控制器";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
