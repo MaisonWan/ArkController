@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <None Include="Resources\menu.png" />
     <None Include="Resources\rounded.png" />
     <None Include="Resources\up.png" />
     <None Include="Resources\right.png" />

@@ -56,16 +56,18 @@ namespace KibotController
             {
                 connect.InputKey(23);
             }
-        }
-
-        private void buttonBack_Click(object sender, EventArgs e)
-        {
-            connect.InputKey(4);
-        }
-
-        private void buttonHome_Click(object sender, EventArgs e)
-        {
-            connect.InputKey(3);
+            else if (sender == this.buttonBack)
+            {
+                connect.InputKey(4);
+            }
+            else if (sender == this.buttonHome)
+            {
+                connect.InputKey(3);
+            }
+            else if (sender == this.buttonMenu)
+            {
+                connect.InputKey(82);
+            }
         }
 
         private void buttonReboot_Click(object sender, EventArgs e)
@@ -294,13 +296,6 @@ namespace KibotController
         {
             AboutBoxKibot aboutBox = new AboutBoxKibot();
             aboutBox.ShowDialog();
-        }
-
-        private void buttonDeveloper_MouseEnter(object sender, EventArgs e)
-        {
-            ToolTip p = new ToolTip();
-            p.ShowAlways = true;
-            p.SetToolTip((Control)sender, "打开开发者选项");
         }
 
     }
