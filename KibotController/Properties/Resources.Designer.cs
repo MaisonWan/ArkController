@@ -113,6 +113,26 @@ namespace KibotController.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap control_panel {
+            get {
+                object obj = ResourceManager.GetObject("control_panel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap device_hardware {
+            get {
+                object obj = ResourceManager.GetObject("device_hardware", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap home {
             get {
                 object obj = ResourceManager.GetObject("home", resourceCulture);
@@ -166,6 +186,26 @@ namespace KibotController.Properties {
         internal static System.Drawing.Bitmap settings_1 {
             get {
                 object obj = ResourceManager.GetObject("settings_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap system_information {
+            get {
+                object obj = ResourceManager.GetObject("system_information", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap usb {
+            get {
+                object obj = ResourceManager.GetObject("usb", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -138,6 +138,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <None Include="Resources\usb.png" />
+    <None Include="Resources\system_information.png" />
+    <None Include="Resources\control_panel.png" />
+    <None Include="Resources\device_hardware.png" />
     <None Include="bin\Debug\adb\adb.exe" />
     <None Include="Resources\cmd.png" />
     <None Include="Resources\home1.png" />

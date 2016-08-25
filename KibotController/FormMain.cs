@@ -41,7 +41,10 @@ namespace KibotController
 
         private void buttonReboot_Click(object sender, EventArgs e)
         {
-            connect.InputCommand("reboot");
+            if (MessageBox.Show("确定要重启设备？", "重启确认", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+                connect.InputCommand("reboot");
+            }
         }
 
         private void buttonVolumeUp_Click(object sender, EventArgs e)
