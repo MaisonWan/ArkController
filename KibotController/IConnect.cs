@@ -155,5 +155,12 @@ namespace KibotController
         /// </summary>
         /// <returns></returns>
         string[] GetPackageList();
+
+        /// <summary>
+        /// 直接将执行命令结果的文本返回
+        /// </summary>
+        /// <param name="cmd"></param>
+        /// <returns></returns>
+        string ExecuteAdb(string cmd);
     }
 }

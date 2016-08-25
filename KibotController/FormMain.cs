@@ -110,7 +110,16 @@ namespace KibotController
 
         private void buttonDevices_Click(object sender, EventArgs e)
         {
-            connect.InputCommand("devices");
+            string log = connect.ExecuteAdb("devices -l");
+            string[] lines = log.Split('\n');
+            if (lines.Length > 1)
+            {
+                string[] info = lines[1].Split("device".ToCharArray());
+                if (info.Length > 0)
+                {
+                    this.labelDeviceNo.Text = info[0].Trim();
+                }
+            }
         }
 
         private void buttonScreen_Click(object sender, EventArgs e)

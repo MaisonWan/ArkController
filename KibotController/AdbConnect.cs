@@ -25,7 +25,7 @@ namespace KibotController
         public bool InputKey(int keyCode)
         {
             string cmd = "shell input keyevent " + keyCode;
-            string result = executeAdb(cmd);
+            string result = ExecuteAdb(cmd);
             log.Write(result);
             return true;
         }
@@ -42,7 +42,7 @@ namespace KibotController
                 return false;
             }
             string cmd = String.Format("shell input text \"{0}\"", text);
-            string result = executeAdb(cmd);
+            string result = ExecuteAdb(cmd);
             log.Write("发送\"" + text + "\"成功");
             return true;
         }
@@ -54,7 +54,7 @@ namespace KibotController
         /// <returns></returns>
         public bool InputCommand(string cmd)
         {
-            string result = executeAdb(cmd);
+            string result = ExecuteAdb(cmd);
             log.Write(result);
             return true;
         }
@@ -69,8 +69,8 @@ namespace KibotController
             string cmdshot = "shell /system/bin/screencap -p /sdcard/screenshot.png";
             string pullFile = "pull /sdcard/screenshot.png \"" + localPath + "\"";
             File.Delete(localPath);
-            executeAdb(cmdshot);
-            executeAdb(pullFile);
+            ExecuteAdb(cmdshot);
+            ExecuteAdb(pullFile);
             if (File.Exists(localPath))
             {
                 log.Write("获取屏幕截图成功");
@@ -87,7 +87,7 @@ namespace KibotController
         public bool Install(string apkPath)
         {
             string cmd = String.Format("install -r \"{0}\"", apkPath);
-            string result = executeAdb(cmd);
+            string result = ExecuteAdb(cmd);
             log.Write(result);
             if (result.Contains("Success"))
             {
@@ -104,7 +104,7 @@ namespace KibotController
         public bool Uninstall(string packageName)
         {
             string cmd = "uninstall " + packageName;
-            string result = executeAdb(cmd);
+            string result = ExecuteAdb(cmd);
             log.Write(result);
             return false;
         }
@@ -118,7 +118,7 @@ namespace KibotController
         public bool StartAm(string package, string activity)
         {
             string cmd = String.Format("shell am start -n {0}/{1}", package, activity);
-            string result = executeAdb(cmd);
+            string result = ExecuteAdb(cmd);
             log.Write(result);
             return true;
         }
@@ -131,7 +131,7 @@ namespace KibotController
         public bool StartAm(string param)
         {
             string cmd = String.Format("shell am start {0}", param);
-            string result = executeAdb(cmd);
+            string result = ExecuteAdb(cmd);
             log.Write(result);
             return true;
         }
@@ -143,11 +143,11 @@ namespace KibotController
         public string[] GetPackageList()
         {
             const string cmd = "shell pm list package";
-            string result = executeAdb(cmd);
+            string result = ExecuteAdb(cmd);
             return result.Split("\n".ToCharArray());
         }
 
-        private string executeAdb(string cmd)
+        public string ExecuteAdb(string cmd)
         {
             return command.ExecuteAdb(cmd);
         }
