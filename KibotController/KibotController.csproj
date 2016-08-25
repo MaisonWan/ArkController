@@ -137,6 +137,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <None Include="Resources\cmd.png" />
+    <None Include="Resources\home1.png" />
+    <None Include="Resources\camera1.png" />
+    <None Include="Resources\rebot.png" />
+    <None Include="Resources\power.png" />
+    <None Include="Resources\home.png" />
     <None Include="Resources\volume_up1.png" />
     <None Include="Resources\volume_down1.png" />
     <None Include="Resources\settings_1.png" />

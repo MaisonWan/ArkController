@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.buttonPower = new System.Windows.Forms.Button();
-            this.buttonReboot = new System.Windows.Forms.Button();
-            this.buttonHome = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBoxLog = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -41,31 +38,34 @@
             this.textBoxSendText = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.buttonLogcat = new System.Windows.Forms.Button();
-            this.buttonScreen = new System.Windows.Forms.Button();
             this.buttonDevices = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.buttonDeveloper = new System.Windows.Forms.Button();
             this.buttonDeviceInfo = new System.Windows.Forms.Button();
-            this.buttonSystemSetting = new System.Windows.Forms.Button();
             this.buttonDeviceDetect = new System.Windows.Forms.Button();
             this.openFileDialogInstall = new System.Windows.Forms.OpenFileDialog();
             this.listViewPackage = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStripListview = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemDetail = new System.Windows.Forms.ToolStripMenuItem();
+            this.PToolStripMenuItemPackageInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.PToolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemUninstall = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonPackageList = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.checkBoxFilter = new System.Windows.Forms.CheckBox();
             this.textBoxFilter = new System.Windows.Forms.TextBox();
-            this.PToolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkBoxFilter = new System.Windows.Forms.CheckBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.PToolStripMenuItemPackageInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButtonAbout = new System.Windows.Forms.ToolStripButton();
+            this.buttonSystemSetting = new System.Windows.Forms.Button();
             this.buttonInstall = new System.Windows.Forms.Button();
+            this.buttonLogcat = new System.Windows.Forms.Button();
+            this.buttonScreen = new System.Windows.Forms.Button();
+            this.buttonPower = new System.Windows.Forms.Button();
             this.buttonVolumeDown = new System.Windows.Forms.Button();
             this.buttonVolumeUp = new System.Windows.Forms.Button();
+            this.buttonReboot = new System.Windows.Forms.Button();
+            this.buttonHome = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -91,36 +91,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "按键";
-            // 
-            // buttonPower
-            // 
-            this.buttonPower.Location = new System.Drawing.Point(567, 32);
-            this.buttonPower.Name = "buttonPower";
-            this.buttonPower.Size = new System.Drawing.Size(75, 23);
-            this.buttonPower.TabIndex = 4;
-            this.buttonPower.Text = "电源";
-            this.buttonPower.UseVisualStyleBackColor = true;
-            this.buttonPower.Click += new System.EventHandler(this.buttonPower_Click);
-            // 
-            // buttonReboot
-            // 
-            this.buttonReboot.Location = new System.Drawing.Point(663, 32);
-            this.buttonReboot.Name = "buttonReboot";
-            this.buttonReboot.Size = new System.Drawing.Size(75, 23);
-            this.buttonReboot.TabIndex = 5;
-            this.buttonReboot.Text = "重启";
-            this.buttonReboot.UseVisualStyleBackColor = true;
-            this.buttonReboot.Click += new System.EventHandler(this.buttonReboot_Click);
-            // 
-            // buttonHome
-            // 
-            this.buttonHome.Location = new System.Drawing.Point(136, 32);
-            this.buttonHome.Name = "buttonHome";
-            this.buttonHome.Size = new System.Drawing.Size(75, 23);
-            this.buttonHome.TabIndex = 1;
-            this.buttonHome.Text = "主页";
-            this.buttonHome.UseVisualStyleBackColor = true;
-            this.buttonHome.Click += new System.EventHandler(this.buttonHome_Click);
             // 
             // groupBox2
             // 
@@ -195,31 +165,11 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.buttonRestartAdb_Click);
             // 
-            // buttonLogcat
-            // 
-            this.buttonLogcat.Location = new System.Drawing.Point(215, 37);
-            this.buttonLogcat.Name = "buttonLogcat";
-            this.buttonLogcat.Size = new System.Drawing.Size(75, 23);
-            this.buttonLogcat.TabIndex = 10;
-            this.buttonLogcat.Text = "Logcat";
-            this.buttonLogcat.UseVisualStyleBackColor = true;
-            this.buttonLogcat.Click += new System.EventHandler(this.buttonLogcat_Click);
-            // 
-            // buttonScreen
-            // 
-            this.buttonScreen.Location = new System.Drawing.Point(119, 37);
-            this.buttonScreen.Name = "buttonScreen";
-            this.buttonScreen.Size = new System.Drawing.Size(75, 23);
-            this.buttonScreen.TabIndex = 9;
-            this.buttonScreen.Text = "屏幕截图";
-            this.buttonScreen.UseVisualStyleBackColor = true;
-            this.buttonScreen.Click += new System.EventHandler(this.buttonScreen_Click);
-            // 
             // buttonDevices
             // 
-            this.buttonDevices.Location = new System.Drawing.Point(24, 37);
+            this.buttonDevices.Location = new System.Drawing.Point(24, 18);
             this.buttonDevices.Name = "buttonDevices";
-            this.buttonDevices.Size = new System.Drawing.Size(75, 23);
+            this.buttonDevices.Size = new System.Drawing.Size(60, 60);
             this.buttonDevices.TabIndex = 8;
             this.buttonDevices.Text = "查看设备";
             this.buttonDevices.UseVisualStyleBackColor = true;
@@ -259,21 +209,11 @@
             this.buttonDeviceInfo.UseVisualStyleBackColor = true;
             this.buttonDeviceInfo.Click += new System.EventHandler(this.buttonDeviceInfo_Click);
             // 
-            // buttonSystemSetting
-            // 
-            this.buttonSystemSetting.Location = new System.Drawing.Point(119, 21);
-            this.buttonSystemSetting.Name = "buttonSystemSetting";
-            this.buttonSystemSetting.Size = new System.Drawing.Size(75, 23);
-            this.buttonSystemSetting.TabIndex = 13;
-            this.buttonSystemSetting.Text = "系统设置";
-            this.buttonSystemSetting.UseVisualStyleBackColor = true;
-            this.buttonSystemSetting.Click += new System.EventHandler(this.buttonSystemSetting_Click);
-            // 
             // buttonDeviceDetect
             // 
             this.buttonDeviceDetect.Location = new System.Drawing.Point(24, 21);
             this.buttonDeviceDetect.Name = "buttonDeviceDetect";
-            this.buttonDeviceDetect.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeviceDetect.Size = new System.Drawing.Size(60, 60);
             this.buttonDeviceDetect.TabIndex = 12;
             this.buttonDeviceDetect.Text = "硬件检测";
             this.buttonDeviceDetect.UseVisualStyleBackColor = true;
@@ -321,6 +261,19 @@
             this.ToolStripMenuItemDetail.Text = "打开详细信息(&D)";
             this.ToolStripMenuItemDetail.Click += new System.EventHandler(this.ToolStripMenuItemDetail_Click);
             // 
+            // PToolStripMenuItemPackageInfo
+            // 
+            this.PToolStripMenuItemPackageInfo.Name = "PToolStripMenuItemPackageInfo";
+            this.PToolStripMenuItemPackageInfo.Size = new System.Drawing.Size(165, 22);
+            this.PToolStripMenuItemPackageInfo.Text = "显示包信息(&P)";
+            // 
+            // PToolStripMenuItemCopy
+            // 
+            this.PToolStripMenuItemCopy.Name = "PToolStripMenuItemCopy";
+            this.PToolStripMenuItemCopy.Size = new System.Drawing.Size(165, 22);
+            this.PToolStripMenuItemCopy.Text = "复制(&C)";
+            this.PToolStripMenuItemCopy.Click += new System.EventHandler(this.PToolStripMenuItemCopy_Click);
+            // 
             // toolStripMenuItemUninstall
             // 
             this.toolStripMenuItemUninstall.Name = "toolStripMenuItemUninstall";
@@ -351,6 +304,14 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "安装程序";
             // 
+            // textBoxFilter
+            // 
+            this.textBoxFilter.Location = new System.Drawing.Point(95, 20);
+            this.textBoxFilter.MaxLength = 255;
+            this.textBoxFilter.Name = "textBoxFilter";
+            this.textBoxFilter.Size = new System.Drawing.Size(182, 21);
+            this.textBoxFilter.TabIndex = 17;
+            // 
             // checkBoxFilter
             // 
             this.checkBoxFilter.AutoSize = true;
@@ -363,21 +324,6 @@
             this.checkBoxFilter.Text = "过滤";
             this.checkBoxFilter.UseVisualStyleBackColor = true;
             // 
-            // textBoxFilter
-            // 
-            this.textBoxFilter.Location = new System.Drawing.Point(95, 20);
-            this.textBoxFilter.MaxLength = 255;
-            this.textBoxFilter.Name = "textBoxFilter";
-            this.textBoxFilter.Size = new System.Drawing.Size(182, 21);
-            this.textBoxFilter.TabIndex = 17;
-            // 
-            // PToolStripMenuItemCopy
-            // 
-            this.PToolStripMenuItemCopy.Name = "PToolStripMenuItemCopy";
-            this.PToolStripMenuItemCopy.Size = new System.Drawing.Size(165, 22);
-            this.PToolStripMenuItemCopy.Text = "复制(&C)";
-            this.PToolStripMenuItemCopy.Click += new System.EventHandler(this.PToolStripMenuItemCopy_Click);
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -387,12 +333,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(1131, 25);
             this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // PToolStripMenuItemPackageInfo
-            // 
-            this.PToolStripMenuItemPackageInfo.Name = "PToolStripMenuItemPackageInfo";
-            this.PToolStripMenuItemPackageInfo.Size = new System.Drawing.Size(165, 22);
-            this.PToolStripMenuItemPackageInfo.Text = "显示包信息(&P)";
             // 
             // toolStripButtonAbout
             // 
@@ -404,20 +344,63 @@
             this.toolStripButtonAbout.Text = "关于";
             this.toolStripButtonAbout.Click += new System.EventHandler(this.toolStripButtonAbout_Click);
             // 
+            // buttonSystemSetting
+            // 
+            this.buttonSystemSetting.BackgroundImage = global::KibotController.Properties.Resources.settings_1;
+            this.buttonSystemSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSystemSetting.Location = new System.Drawing.Point(102, 21);
+            this.buttonSystemSetting.Name = "buttonSystemSetting";
+            this.buttonSystemSetting.Size = new System.Drawing.Size(60, 60);
+            this.buttonSystemSetting.TabIndex = 13;
+            this.buttonSystemSetting.UseVisualStyleBackColor = true;
+            this.buttonSystemSetting.Click += new System.EventHandler(this.buttonSystemSetting_Click);
+            // 
             // buttonInstall
             // 
             this.buttonInstall.AllowDrop = true;
             this.buttonInstall.BackgroundImage = global::KibotController.Properties.Resources.plus39;
             this.buttonInstall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonInstall.Location = new System.Drawing.Point(23, 73);
+            this.buttonInstall.Location = new System.Drawing.Point(23, 114);
             this.buttonInstall.Name = "buttonInstall";
-            this.buttonInstall.Size = new System.Drawing.Size(120, 120);
+            this.buttonInstall.Size = new System.Drawing.Size(60, 60);
             this.buttonInstall.TabIndex = 14;
-            this.buttonInstall.Text = "button1";
             this.buttonInstall.UseVisualStyleBackColor = true;
             this.buttonInstall.Click += new System.EventHandler(this.buttonInstall_Click);
             this.buttonInstall.DragDrop += new System.Windows.Forms.DragEventHandler(this.buttonInstall_DragDrop);
             this.buttonInstall.DragEnter += new System.Windows.Forms.DragEventHandler(this.buttonInstall_DragEnter);
+            // 
+            // buttonLogcat
+            // 
+            this.buttonLogcat.BackgroundImage = global::KibotController.Properties.Resources.cmd;
+            this.buttonLogcat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonLogcat.Location = new System.Drawing.Point(181, 18);
+            this.buttonLogcat.Name = "buttonLogcat";
+            this.buttonLogcat.Size = new System.Drawing.Size(60, 60);
+            this.buttonLogcat.TabIndex = 10;
+            this.buttonLogcat.UseVisualStyleBackColor = true;
+            this.buttonLogcat.Click += new System.EventHandler(this.buttonLogcat_Click);
+            // 
+            // buttonScreen
+            // 
+            this.buttonScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonScreen.BackgroundImage")));
+            this.buttonScreen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonScreen.Location = new System.Drawing.Point(103, 18);
+            this.buttonScreen.Name = "buttonScreen";
+            this.buttonScreen.Size = new System.Drawing.Size(60, 60);
+            this.buttonScreen.TabIndex = 9;
+            this.buttonScreen.UseVisualStyleBackColor = true;
+            this.buttonScreen.Click += new System.EventHandler(this.buttonScreen_Click);
+            // 
+            // buttonPower
+            // 
+            this.buttonPower.BackgroundImage = global::KibotController.Properties.Resources.power;
+            this.buttonPower.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonPower.Location = new System.Drawing.Point(612, 13);
+            this.buttonPower.Name = "buttonPower";
+            this.buttonPower.Size = new System.Drawing.Size(60, 60);
+            this.buttonPower.TabIndex = 4;
+            this.buttonPower.UseVisualStyleBackColor = true;
+            this.buttonPower.Click += new System.EventHandler(this.buttonPower_Click);
             // 
             // buttonVolumeDown
             // 
@@ -442,11 +425,33 @@
             this.buttonVolumeUp.UseVisualStyleBackColor = true;
             this.buttonVolumeUp.Click += new System.EventHandler(this.buttonVolumeUp_Click);
             // 
+            // buttonReboot
+            // 
+            this.buttonReboot.BackgroundImage = global::KibotController.Properties.Resources.rebot;
+            this.buttonReboot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonReboot.Location = new System.Drawing.Point(678, 13);
+            this.buttonReboot.Name = "buttonReboot";
+            this.buttonReboot.Size = new System.Drawing.Size(60, 60);
+            this.buttonReboot.TabIndex = 5;
+            this.buttonReboot.UseVisualStyleBackColor = true;
+            this.buttonReboot.Click += new System.EventHandler(this.buttonReboot_Click);
+            // 
+            // buttonHome
+            // 
+            this.buttonHome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonHome.BackgroundImage")));
+            this.buttonHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonHome.Location = new System.Drawing.Point(102, 19);
+            this.buttonHome.Name = "buttonHome";
+            this.buttonHome.Size = new System.Drawing.Size(60, 60);
+            this.buttonHome.TabIndex = 1;
+            this.buttonHome.UseVisualStyleBackColor = true;
+            this.buttonHome.Click += new System.EventHandler(this.buttonHome_Click);
+            // 
             // buttonBack
             // 
             this.buttonBack.BackgroundImage = global::KibotController.Properties.Resources.back;
             this.buttonBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonBack.Location = new System.Drawing.Point(24, 13);
+            this.buttonBack.Location = new System.Drawing.Point(23, 19);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(60, 60);
             this.buttonBack.TabIndex = 0;
@@ -506,7 +511,6 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button buttonDevices;
-        private System.Windows.Forms.Button buttonScreen;
         private System.Windows.Forms.Button buttonInstall;
         private System.Windows.Forms.OpenFileDialog openFileDialogInstall;
         private System.Windows.Forms.Button buttonDeviceDetect;
@@ -528,6 +532,7 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButtonAbout;
         private System.Windows.Forms.ToolStripMenuItem PToolStripMenuItemPackageInfo;
+        private System.Windows.Forms.Button buttonScreen;
     }
 }
 
