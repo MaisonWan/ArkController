@@ -29,6 +29,35 @@ namespace KibotController
             this.Text += " " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
+        /// <summary>
+        /// 所有按键都统一执行的方法
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonKey_Click(object sender, EventArgs e)
+        {
+            if (sender == this.buttonLeft)
+            {
+                connect.InputKey(21);
+            }
+            else if (sender == this.buttonRight)
+            {
+                connect.InputKey(22);
+            }
+            else if (sender == this.buttonUp)
+            {
+                connect.InputKey(19);
+            }
+            else if (sender == this.buttonDown)
+            {
+                connect.InputKey(20);
+            }
+            else if (sender == this.buttonCenter)
+            {
+                connect.InputKey(23);
+            }
+        }
+
         private void buttonBack_Click(object sender, EventArgs e)
         {
             connect.InputKey(4);
@@ -265,6 +294,13 @@ namespace KibotController
         {
             AboutBoxKibot aboutBox = new AboutBoxKibot();
             aboutBox.ShowDialog();
+        }
+
+        private void buttonDeveloper_MouseEnter(object sender, EventArgs e)
+        {
+            ToolTip p = new ToolTip();
+            p.ShowAlways = true;
+            p.SetToolTip((Control)sender, "打开开发者选项");
         }
 
     }
