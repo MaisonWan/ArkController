@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace KibotController
@@ -12,9 +14,11 @@ namespace KibotController
         [STAThread]
         static void Main()
         {
+            Protect.CheckAdb();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormMain());
         }
+
     }
 }

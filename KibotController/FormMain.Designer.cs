@@ -31,6 +31,12 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonPower = new System.Windows.Forms.Button();
+            this.buttonVolumeDown = new System.Windows.Forms.Button();
+            this.buttonVolumeUp = new System.Windows.Forms.Button();
+            this.buttonReboot = new System.Windows.Forms.Button();
+            this.buttonHome = new System.Windows.Forms.Button();
+            this.buttonBack = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBoxLog = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -38,11 +44,15 @@
             this.textBoxSendText = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.buttonLogcat = new System.Windows.Forms.Button();
+            this.buttonScreen = new System.Windows.Forms.Button();
             this.buttonDevices = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.buttonDeveloper = new System.Windows.Forms.Button();
             this.buttonDeviceInfo = new System.Windows.Forms.Button();
+            this.buttonSystemSetting = new System.Windows.Forms.Button();
             this.buttonDeviceDetect = new System.Windows.Forms.Button();
+            this.buttonInstall = new System.Windows.Forms.Button();
             this.openFileDialogInstall = new System.Windows.Forms.OpenFileDialog();
             this.listViewPackage = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -57,16 +67,6 @@
             this.checkBoxFilter = new System.Windows.Forms.CheckBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonAbout = new System.Windows.Forms.ToolStripButton();
-            this.buttonSystemSetting = new System.Windows.Forms.Button();
-            this.buttonInstall = new System.Windows.Forms.Button();
-            this.buttonLogcat = new System.Windows.Forms.Button();
-            this.buttonScreen = new System.Windows.Forms.Button();
-            this.buttonPower = new System.Windows.Forms.Button();
-            this.buttonVolumeDown = new System.Windows.Forms.Button();
-            this.buttonVolumeUp = new System.Windows.Forms.Button();
-            this.buttonReboot = new System.Windows.Forms.Button();
-            this.buttonHome = new System.Windows.Forms.Button();
-            this.buttonBack = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -92,12 +92,79 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "按键";
             // 
+            // buttonPower
+            // 
+            this.buttonPower.BackgroundImage = global::KibotController.Properties.Resources.power;
+            this.buttonPower.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonPower.Location = new System.Drawing.Point(612, 13);
+            this.buttonPower.Name = "buttonPower";
+            this.buttonPower.Size = new System.Drawing.Size(60, 60);
+            this.buttonPower.TabIndex = 4;
+            this.buttonPower.UseVisualStyleBackColor = true;
+            this.buttonPower.Click += new System.EventHandler(this.buttonPower_Click);
+            // 
+            // buttonVolumeDown
+            // 
+            this.buttonVolumeDown.AccessibleDescription = "";
+            this.buttonVolumeDown.BackgroundImage = global::KibotController.Properties.Resources.volume_down;
+            this.buttonVolumeDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonVolumeDown.Location = new System.Drawing.Point(401, 13);
+            this.buttonVolumeDown.Name = "buttonVolumeDown";
+            this.buttonVolumeDown.Size = new System.Drawing.Size(60, 60);
+            this.buttonVolumeDown.TabIndex = 3;
+            this.buttonVolumeDown.UseVisualStyleBackColor = true;
+            this.buttonVolumeDown.Click += new System.EventHandler(this.buttonVolumeDown_Click);
+            // 
+            // buttonVolumeUp
+            // 
+            this.buttonVolumeUp.BackgroundImage = global::KibotController.Properties.Resources.volume_up;
+            this.buttonVolumeUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonVolumeUp.Location = new System.Drawing.Point(479, 13);
+            this.buttonVolumeUp.Name = "buttonVolumeUp";
+            this.buttonVolumeUp.Size = new System.Drawing.Size(60, 60);
+            this.buttonVolumeUp.TabIndex = 2;
+            this.buttonVolumeUp.UseVisualStyleBackColor = true;
+            this.buttonVolumeUp.Click += new System.EventHandler(this.buttonVolumeUp_Click);
+            // 
+            // buttonReboot
+            // 
+            this.buttonReboot.BackgroundImage = global::KibotController.Properties.Resources.rebot;
+            this.buttonReboot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonReboot.Location = new System.Drawing.Point(678, 13);
+            this.buttonReboot.Name = "buttonReboot";
+            this.buttonReboot.Size = new System.Drawing.Size(60, 60);
+            this.buttonReboot.TabIndex = 5;
+            this.buttonReboot.UseVisualStyleBackColor = true;
+            this.buttonReboot.Click += new System.EventHandler(this.buttonReboot_Click);
+            // 
+            // buttonHome
+            // 
+            this.buttonHome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonHome.BackgroundImage")));
+            this.buttonHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonHome.Location = new System.Drawing.Point(102, 19);
+            this.buttonHome.Name = "buttonHome";
+            this.buttonHome.Size = new System.Drawing.Size(60, 60);
+            this.buttonHome.TabIndex = 1;
+            this.buttonHome.UseVisualStyleBackColor = true;
+            this.buttonHome.Click += new System.EventHandler(this.buttonHome_Click);
+            // 
+            // buttonBack
+            // 
+            this.buttonBack.BackgroundImage = global::KibotController.Properties.Resources.back;
+            this.buttonBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonBack.Location = new System.Drawing.Point(23, 19);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(60, 60);
+            this.buttonBack.TabIndex = 0;
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.textBoxLog);
-            this.groupBox2.Location = new System.Drawing.Point(13, 512);
+            this.groupBox2.Location = new System.Drawing.Point(13, 486);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(761, 190);
+            this.groupBox2.Size = new System.Drawing.Size(761, 216);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "运行日志";
@@ -110,7 +177,7 @@
             this.textBoxLog.Name = "textBoxLog";
             this.textBoxLog.ReadOnly = true;
             this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxLog.Size = new System.Drawing.Size(749, 164);
+            this.textBoxLog.Size = new System.Drawing.Size(749, 190);
             this.textBoxLog.TabIndex = 0;
             // 
             // groupBox3
@@ -157,13 +224,35 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(314, 37);
+            this.button1.Location = new System.Drawing.Point(258, 18);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(60, 60);
             this.button1.TabIndex = 11;
             this.button1.Text = "重启Adb";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.buttonRestartAdb_Click);
+            // 
+            // buttonLogcat
+            // 
+            this.buttonLogcat.BackgroundImage = global::KibotController.Properties.Resources.cmd;
+            this.buttonLogcat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonLogcat.Location = new System.Drawing.Point(183, 18);
+            this.buttonLogcat.Name = "buttonLogcat";
+            this.buttonLogcat.Size = new System.Drawing.Size(60, 60);
+            this.buttonLogcat.TabIndex = 10;
+            this.buttonLogcat.UseVisualStyleBackColor = true;
+            this.buttonLogcat.Click += new System.EventHandler(this.buttonLogcat_Click);
+            // 
+            // buttonScreen
+            // 
+            this.buttonScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonScreen.BackgroundImage")));
+            this.buttonScreen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonScreen.Location = new System.Drawing.Point(103, 18);
+            this.buttonScreen.Name = "buttonScreen";
+            this.buttonScreen.Size = new System.Drawing.Size(60, 60);
+            this.buttonScreen.TabIndex = 9;
+            this.buttonScreen.UseVisualStyleBackColor = true;
+            this.buttonScreen.Click += new System.EventHandler(this.buttonScreen_Click);
             // 
             // buttonDevices
             // 
@@ -184,16 +273,16 @@
             this.groupBox5.Controls.Add(this.buttonInstall);
             this.groupBox5.Location = new System.Drawing.Point(13, 294);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(762, 212);
+            this.groupBox5.Size = new System.Drawing.Size(762, 186);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "程序";
             // 
             // buttonDeveloper
             // 
-            this.buttonDeveloper.Location = new System.Drawing.Point(313, 20);
+            this.buttonDeveloper.Location = new System.Drawing.Point(257, 20);
             this.buttonDeveloper.Name = "buttonDeveloper";
-            this.buttonDeveloper.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeveloper.Size = new System.Drawing.Size(60, 60);
             this.buttonDeveloper.TabIndex = 16;
             this.buttonDeveloper.Text = "开发者选项";
             this.buttonDeveloper.UseVisualStyleBackColor = true;
@@ -201,13 +290,24 @@
             // 
             // buttonDeviceInfo
             // 
-            this.buttonDeviceInfo.Location = new System.Drawing.Point(214, 21);
+            this.buttonDeviceInfo.Location = new System.Drawing.Point(182, 20);
             this.buttonDeviceInfo.Name = "buttonDeviceInfo";
-            this.buttonDeviceInfo.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeviceInfo.Size = new System.Drawing.Size(60, 60);
             this.buttonDeviceInfo.TabIndex = 15;
             this.buttonDeviceInfo.Text = "设备信息";
             this.buttonDeviceInfo.UseVisualStyleBackColor = true;
             this.buttonDeviceInfo.Click += new System.EventHandler(this.buttonDeviceInfo_Click);
+            // 
+            // buttonSystemSetting
+            // 
+            this.buttonSystemSetting.BackgroundImage = global::KibotController.Properties.Resources.settings_1;
+            this.buttonSystemSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSystemSetting.Location = new System.Drawing.Point(102, 21);
+            this.buttonSystemSetting.Name = "buttonSystemSetting";
+            this.buttonSystemSetting.Size = new System.Drawing.Size(60, 60);
+            this.buttonSystemSetting.TabIndex = 13;
+            this.buttonSystemSetting.UseVisualStyleBackColor = true;
+            this.buttonSystemSetting.Click += new System.EventHandler(this.buttonSystemSetting_Click);
             // 
             // buttonDeviceDetect
             // 
@@ -218,6 +318,20 @@
             this.buttonDeviceDetect.Text = "硬件检测";
             this.buttonDeviceDetect.UseVisualStyleBackColor = true;
             this.buttonDeviceDetect.Click += new System.EventHandler(this.buttonDeviceDetect_Click);
+            // 
+            // buttonInstall
+            // 
+            this.buttonInstall.AllowDrop = true;
+            this.buttonInstall.BackgroundImage = global::KibotController.Properties.Resources.plus39;
+            this.buttonInstall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonInstall.Location = new System.Drawing.Point(23, 105);
+            this.buttonInstall.Name = "buttonInstall";
+            this.buttonInstall.Size = new System.Drawing.Size(60, 60);
+            this.buttonInstall.TabIndex = 14;
+            this.buttonInstall.UseVisualStyleBackColor = true;
+            this.buttonInstall.Click += new System.EventHandler(this.buttonInstall_Click);
+            this.buttonInstall.DragDrop += new System.Windows.Forms.DragEventHandler(this.buttonInstall_DragDrop);
+            this.buttonInstall.DragEnter += new System.Windows.Forms.DragEventHandler(this.buttonInstall_DragEnter);
             // 
             // openFileDialogInstall
             // 
@@ -343,120 +457,6 @@
             this.toolStripButtonAbout.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonAbout.Text = "关于";
             this.toolStripButtonAbout.Click += new System.EventHandler(this.toolStripButtonAbout_Click);
-            // 
-            // buttonSystemSetting
-            // 
-            this.buttonSystemSetting.BackgroundImage = global::KibotController.Properties.Resources.settings_1;
-            this.buttonSystemSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSystemSetting.Location = new System.Drawing.Point(102, 21);
-            this.buttonSystemSetting.Name = "buttonSystemSetting";
-            this.buttonSystemSetting.Size = new System.Drawing.Size(60, 60);
-            this.buttonSystemSetting.TabIndex = 13;
-            this.buttonSystemSetting.UseVisualStyleBackColor = true;
-            this.buttonSystemSetting.Click += new System.EventHandler(this.buttonSystemSetting_Click);
-            // 
-            // buttonInstall
-            // 
-            this.buttonInstall.AllowDrop = true;
-            this.buttonInstall.BackgroundImage = global::KibotController.Properties.Resources.plus39;
-            this.buttonInstall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonInstall.Location = new System.Drawing.Point(23, 114);
-            this.buttonInstall.Name = "buttonInstall";
-            this.buttonInstall.Size = new System.Drawing.Size(60, 60);
-            this.buttonInstall.TabIndex = 14;
-            this.buttonInstall.UseVisualStyleBackColor = true;
-            this.buttonInstall.Click += new System.EventHandler(this.buttonInstall_Click);
-            this.buttonInstall.DragDrop += new System.Windows.Forms.DragEventHandler(this.buttonInstall_DragDrop);
-            this.buttonInstall.DragEnter += new System.Windows.Forms.DragEventHandler(this.buttonInstall_DragEnter);
-            // 
-            // buttonLogcat
-            // 
-            this.buttonLogcat.BackgroundImage = global::KibotController.Properties.Resources.cmd;
-            this.buttonLogcat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonLogcat.Location = new System.Drawing.Point(181, 18);
-            this.buttonLogcat.Name = "buttonLogcat";
-            this.buttonLogcat.Size = new System.Drawing.Size(60, 60);
-            this.buttonLogcat.TabIndex = 10;
-            this.buttonLogcat.UseVisualStyleBackColor = true;
-            this.buttonLogcat.Click += new System.EventHandler(this.buttonLogcat_Click);
-            // 
-            // buttonScreen
-            // 
-            this.buttonScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonScreen.BackgroundImage")));
-            this.buttonScreen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonScreen.Location = new System.Drawing.Point(103, 18);
-            this.buttonScreen.Name = "buttonScreen";
-            this.buttonScreen.Size = new System.Drawing.Size(60, 60);
-            this.buttonScreen.TabIndex = 9;
-            this.buttonScreen.UseVisualStyleBackColor = true;
-            this.buttonScreen.Click += new System.EventHandler(this.buttonScreen_Click);
-            // 
-            // buttonPower
-            // 
-            this.buttonPower.BackgroundImage = global::KibotController.Properties.Resources.power;
-            this.buttonPower.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonPower.Location = new System.Drawing.Point(612, 13);
-            this.buttonPower.Name = "buttonPower";
-            this.buttonPower.Size = new System.Drawing.Size(60, 60);
-            this.buttonPower.TabIndex = 4;
-            this.buttonPower.UseVisualStyleBackColor = true;
-            this.buttonPower.Click += new System.EventHandler(this.buttonPower_Click);
-            // 
-            // buttonVolumeDown
-            // 
-            this.buttonVolumeDown.AccessibleDescription = "";
-            this.buttonVolumeDown.BackgroundImage = global::KibotController.Properties.Resources.volume_down;
-            this.buttonVolumeDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonVolumeDown.Location = new System.Drawing.Point(401, 13);
-            this.buttonVolumeDown.Name = "buttonVolumeDown";
-            this.buttonVolumeDown.Size = new System.Drawing.Size(60, 60);
-            this.buttonVolumeDown.TabIndex = 3;
-            this.buttonVolumeDown.UseVisualStyleBackColor = true;
-            this.buttonVolumeDown.Click += new System.EventHandler(this.buttonVolumeDown_Click);
-            // 
-            // buttonVolumeUp
-            // 
-            this.buttonVolumeUp.BackgroundImage = global::KibotController.Properties.Resources.volume_up;
-            this.buttonVolumeUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonVolumeUp.Location = new System.Drawing.Point(479, 13);
-            this.buttonVolumeUp.Name = "buttonVolumeUp";
-            this.buttonVolumeUp.Size = new System.Drawing.Size(60, 60);
-            this.buttonVolumeUp.TabIndex = 2;
-            this.buttonVolumeUp.UseVisualStyleBackColor = true;
-            this.buttonVolumeUp.Click += new System.EventHandler(this.buttonVolumeUp_Click);
-            // 
-            // buttonReboot
-            // 
-            this.buttonReboot.BackgroundImage = global::KibotController.Properties.Resources.rebot;
-            this.buttonReboot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonReboot.Location = new System.Drawing.Point(678, 13);
-            this.buttonReboot.Name = "buttonReboot";
-            this.buttonReboot.Size = new System.Drawing.Size(60, 60);
-            this.buttonReboot.TabIndex = 5;
-            this.buttonReboot.UseVisualStyleBackColor = true;
-            this.buttonReboot.Click += new System.EventHandler(this.buttonReboot_Click);
-            // 
-            // buttonHome
-            // 
-            this.buttonHome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonHome.BackgroundImage")));
-            this.buttonHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonHome.Location = new System.Drawing.Point(102, 19);
-            this.buttonHome.Name = "buttonHome";
-            this.buttonHome.Size = new System.Drawing.Size(60, 60);
-            this.buttonHome.TabIndex = 1;
-            this.buttonHome.UseVisualStyleBackColor = true;
-            this.buttonHome.Click += new System.EventHandler(this.buttonHome_Click);
-            // 
-            // buttonBack
-            // 
-            this.buttonBack.BackgroundImage = global::KibotController.Properties.Resources.back;
-            this.buttonBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonBack.Location = new System.Drawing.Point(23, 19);
-            this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(60, 60);
-            this.buttonBack.TabIndex = 0;
-            this.buttonBack.UseVisualStyleBackColor = true;
-            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // FormMain
             // 

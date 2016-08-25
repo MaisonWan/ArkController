@@ -88,6 +88,7 @@
     <Compile Include="Log.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Protect.cs" />
     <EmbeddedResource Include="AboutBoxKibot.resx">
       <DependentUpon>AboutBoxKibot.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <None Include="bin\Debug\adb\adb.exe" />
     <None Include="Resources\cmd.png" />
     <None Include="Resources\home1.png" />
     <None Include="Resources\camera1.png" />
