@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace KibotController
@@ -15,6 +16,7 @@ namespace KibotController
         private IConnect connect = null;
         private FormScreenShot screenShot = null;
         private FormLogcat logcat = null;
+        private FormPackageInfo packageInfo = null;
 
         public FormMain()
         {
@@ -111,14 +113,13 @@ namespace KibotController
         private void buttonDevices_Click(object sender, EventArgs e)
         {
             string log = connect.ExecuteAdb("devices -l");
-            string[] lines = log.Split('\n');
-            if (lines.Length > 1)
+            Match match = Regex.Match(log, @"(.*)\sdevice product:(\w+)\smodel:(\w+)\sdevice:(\w+)\r");
+            if (match.Groups.Count > 4)
             {
-                string[] info = lines[1].Split("device".ToCharArray());
-                if (info.Length > 0)
-                {
-                    this.labelDeviceNo.Text = info[0].Trim();
-                }
+                this.labelDeviceInfo.Text = match.Groups[1].Value;
+                this.labelProduct.Text = "Product:" + match.Groups[2].Value;
+                this.labelModel.Text = "Model:" + match.Groups[3].Value;
+                this.labelDevice.Text = "Device:" + match.Groups[4].Value;
             }
         }
 
@@ -257,6 +258,28 @@ namespace KibotController
                 const string action = "android.settings.APPLICATION_DETAILS_SETTINGS";
                 string param = string.Format("-a {0} -d package:{1}", action, packageName);
                 connect.StartAm(param);
+            }
+        }
+
+        private void PToolStripMenuItemPackageInfo_Click(object sender, EventArgs e)
+        {
+            if (this.listViewPackage.SelectedItems.Count > 0)
+            {
+                string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
+                if (packageInfo == null || packageInfo.IsDisposed)
+                {
+                    packageInfo = new FormPackageInfo(this.connect);
+                }
+                packageInfo.PakcageName = packageName;
+                if (packageInfo.Visible)
+                {
+                    packageInfo.UpdatePackageInfo(packageName);
+                    packageInfo.Activate();
+                }
+                else
+                {
+                    packageInfo.Show();
+                }
             }
         }
 

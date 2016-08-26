@@ -78,6 +78,12 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPackageInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPackageInfo.Designer.cs">
+      <DependentUpon>FormPackageInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormScreenShot.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPackageInfo.resx">
+      <DependentUpon>FormPackageInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormScreenShot.resx">
       <DependentUpon>FormScreenShot.cs</DependentUpon>

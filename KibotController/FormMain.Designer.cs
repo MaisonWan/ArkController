@@ -49,6 +49,10 @@
             this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
             this.tabControlDeviceInfo = new System.Windows.Forms.TabControl();
             this.tabPageDeviceInfo = new System.Windows.Forms.TabPage();
+            this.labelDevice = new System.Windows.Forms.Label();
+            this.labelModel = new System.Windows.Forms.Label();
+            this.labelDeviceInfo = new System.Windows.Forms.Label();
+            this.labelProduct = new System.Windows.Forms.Label();
             this.tabPageKeyboard = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -62,9 +66,8 @@
             this.运行信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.labelDeviceNo = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonDevices = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonVolumeUp = new System.Windows.Forms.Button();
             this.buttonVolumeDown = new System.Windows.Forms.Button();
             this.buttonReboot = new System.Windows.Forms.Button();
@@ -107,7 +110,7 @@
             this.groupBox2.Controls.Add(this.textBoxLog);
             this.groupBox2.Location = new System.Drawing.Point(12, 621);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1107, 127);
+            this.groupBox2.Size = new System.Drawing.Size(1107, 140);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "运行日志";
@@ -120,7 +123,7 @@
             this.textBoxLog.Name = "textBoxLog";
             this.textBoxLog.ReadOnly = true;
             this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxLog.Size = new System.Drawing.Size(1090, 91);
+            this.textBoxLog.Size = new System.Drawing.Size(1090, 114);
             this.textBoxLog.TabIndex = 0;
             // 
             // buttonSendText
@@ -188,6 +191,7 @@
             this.PToolStripMenuItemPackageInfo.Name = "PToolStripMenuItemPackageInfo";
             this.PToolStripMenuItemPackageInfo.Size = new System.Drawing.Size(165, 22);
             this.PToolStripMenuItemPackageInfo.Text = "显示包信息(&P)";
+            this.PToolStripMenuItemPackageInfo.Click += new System.EventHandler(this.PToolStripMenuItemPackageInfo_Click);
             // 
             // PToolStripMenuItemCopy
             // 
@@ -261,9 +265,12 @@
             // tabPageDeviceInfo
             // 
             this.tabPageDeviceInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.tabPageDeviceInfo.Controls.Add(this.labelDeviceNo);
-            this.tabPageDeviceInfo.Controls.Add(this.pictureBox1);
             this.tabPageDeviceInfo.Controls.Add(this.buttonDevices);
+            this.tabPageDeviceInfo.Controls.Add(this.labelDevice);
+            this.tabPageDeviceInfo.Controls.Add(this.labelModel);
+            this.tabPageDeviceInfo.Controls.Add(this.labelDeviceInfo);
+            this.tabPageDeviceInfo.Controls.Add(this.labelProduct);
+            this.tabPageDeviceInfo.Controls.Add(this.pictureBox1);
             this.tabPageDeviceInfo.ImageKey = "info.png";
             this.tabPageDeviceInfo.Location = new System.Drawing.Point(4, 44);
             this.tabPageDeviceInfo.Name = "tabPageDeviceInfo";
@@ -273,6 +280,50 @@
             this.tabPageDeviceInfo.Text = "设备信息";
             this.tabPageDeviceInfo.ToolTipText = "显示当前设备的基本信息";
             this.tabPageDeviceInfo.UseVisualStyleBackColor = true;
+            // 
+            // labelDevice
+            // 
+            this.labelDevice.AutoSize = true;
+            this.labelDevice.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelDevice.Location = new System.Drawing.Point(90, 69);
+            this.labelDevice.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.labelDevice.MinimumSize = new System.Drawing.Size(0, 21);
+            this.labelDevice.Name = "labelDevice";
+            this.labelDevice.Size = new System.Drawing.Size(0, 21);
+            this.labelDevice.TabIndex = 10;
+            // 
+            // labelModel
+            // 
+            this.labelModel.AutoSize = true;
+            this.labelModel.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelModel.Location = new System.Drawing.Point(90, 51);
+            this.labelModel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.labelModel.MinimumSize = new System.Drawing.Size(0, 21);
+            this.labelModel.Name = "labelModel";
+            this.labelModel.Size = new System.Drawing.Size(0, 21);
+            this.labelModel.TabIndex = 10;
+            // 
+            // labelDeviceInfo
+            // 
+            this.labelDeviceInfo.AutoSize = true;
+            this.labelDeviceInfo.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelDeviceInfo.Location = new System.Drawing.Point(90, 15);
+            this.labelDeviceInfo.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.labelDeviceInfo.MinimumSize = new System.Drawing.Size(0, 21);
+            this.labelDeviceInfo.Name = "labelDeviceInfo";
+            this.labelDeviceInfo.Size = new System.Drawing.Size(0, 21);
+            this.labelDeviceInfo.TabIndex = 10;
+            // 
+            // labelProduct
+            // 
+            this.labelProduct.AutoSize = true;
+            this.labelProduct.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelProduct.Location = new System.Drawing.Point(90, 33);
+            this.labelProduct.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.labelProduct.MinimumSize = new System.Drawing.Size(0, 21);
+            this.labelProduct.Name = "labelProduct";
+            this.labelProduct.Size = new System.Drawing.Size(0, 21);
+            this.labelProduct.TabIndex = 10;
             // 
             // tabPageKeyboard
             // 
@@ -343,14 +394,14 @@
             this.tabPagePackage.Padding = new System.Windows.Forms.Padding(3);
             this.tabPagePackage.Size = new System.Drawing.Size(1099, 514);
             this.tabPagePackage.TabIndex = 2;
-            this.tabPagePackage.Text = "安装程序";
+            this.tabPagePackage.Text = "程序列表";
             this.tabPagePackage.ToolTipText = "列举出来已经安装程序列表";
             this.tabPagePackage.UseVisualStyleBackColor = true;
             // 
             // tabPageControl
             // 
             this.tabPageControl.Controls.Add(this.tableLayoutPanel1);
-            this.tabPageControl.ImageKey = "info.png";
+            this.tabPageControl.ImageKey = "system.png";
             this.tabPageControl.Location = new System.Drawing.Point(4, 44);
             this.tabPageControl.Name = "tabPageControl";
             this.tabPageControl.Padding = new System.Windows.Forms.Padding(3);
@@ -395,6 +446,7 @@
             this.imageListTabs.Images.SetKeyName(0, "info.png");
             this.imageListTabs.Images.SetKeyName(1, "Keyboard.png");
             this.imageListTabs.Images.SetKeyName(2, "point_list.png");
+            this.imageListTabs.Images.SetKeyName(3, "system.png");
             // 
             // menuStrip1
             // 
@@ -435,14 +487,16 @@
             this.ToolStripMenuItemAbout.Text = "关于(&A)";
             this.ToolStripMenuItemAbout.Click += new System.EventHandler(this.toolStripButtonAbout_Click);
             // 
-            // labelDeviceNo
+            // buttonDevices
             // 
-            this.labelDeviceNo.AutoSize = true;
-            this.labelDeviceNo.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelDeviceNo.Location = new System.Drawing.Point(90, 70);
-            this.labelDeviceNo.Name = "labelDeviceNo";
-            this.labelDeviceNo.Size = new System.Drawing.Size(0, 18);
-            this.labelDeviceNo.TabIndex = 10;
+            this.buttonDevices.BackgroundImage = global::KibotController.Properties.Resources.update;
+            this.buttonDevices.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonDevices.Location = new System.Drawing.Point(34, 39);
+            this.buttonDevices.Name = "buttonDevices";
+            this.buttonDevices.Size = new System.Drawing.Size(30, 30);
+            this.buttonDevices.TabIndex = 8;
+            this.buttonDevices.UseVisualStyleBackColor = true;
+            this.buttonDevices.Click += new System.EventHandler(this.buttonDevices_Click);
             // 
             // pictureBox1
             // 
@@ -453,17 +507,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
-            // 
-            // buttonDevices
-            // 
-            this.buttonDevices.BackgroundImage = global::KibotController.Properties.Resources.update;
-            this.buttonDevices.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonDevices.Location = new System.Drawing.Point(93, 15);
-            this.buttonDevices.Name = "buttonDevices";
-            this.buttonDevices.Size = new System.Drawing.Size(30, 30);
-            this.buttonDevices.TabIndex = 8;
-            this.buttonDevices.UseVisualStyleBackColor = true;
-            this.buttonDevices.Click += new System.EventHandler(this.buttonDevices_Click);
             // 
             // buttonVolumeUp
             // 
@@ -818,7 +861,10 @@
         private System.Windows.Forms.Button buttonMenu;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label labelDeviceNo;
+        private System.Windows.Forms.Label labelProduct;
+        private System.Windows.Forms.Label labelDevice;
+        private System.Windows.Forms.Label labelModel;
+        private System.Windows.Forms.Label labelDeviceInfo;
     }
 }
 
