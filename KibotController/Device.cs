@@ -30,7 +30,7 @@ namespace KibotController
             foreach (string line in lines)
             {
                 string l = line.Trim();
-                if (l.StartsWith("List"))
+                if (l.StartsWith("List") || l.StartsWith("*"))
                 {
                     continue;
                 }
@@ -70,9 +70,9 @@ namespace KibotController
                 if (match.Groups.Count > 4)
                 {
                     result[0] = match.Groups[1].Value;
-                    result[1] = "Product:" + match.Groups[2].Value;
-                    result[2] = "Model:" + match.Groups[3].Value;
-                    result[3] = "Device:" + match.Groups[4].Value;
+                    result[1] = match.Groups[2].Value;
+                    result[2] = match.Groups[3].Value;
+                    result[3] = match.Groups[4].Value;
                     return result;
                 }
             }
