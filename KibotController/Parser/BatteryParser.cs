@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 
 namespace KibotController.Parser
@@ -150,7 +151,7 @@ namespace KibotController.Parser
         /// <summary>
         /// 电池容量百分比最大1
         /// </summary>
-        public float BatteryCapacityPresent
+        public float BatteryCapacityPercent
         {
             get
             {
@@ -185,13 +186,54 @@ namespace KibotController.Parser
                 StringBuilder builder = new StringBuilder("电池信息\n");
                 builder.Append("电源类型：").Append(BatteryPlugged).Append("\n");
                 builder.Append("充电状态：").Append(BatteryStatus).Append("\n");
-                builder.Append("电池电量：").AppendFormat("{0}%\n", BatteryCapacityPresent * 100);
+                builder.Append("电池电量：").AppendFormat("{0}%\n", BatteryCapacityPercent * 100);
                 builder.Append("当前电压：").AppendFormat("{0}mV\n", BatteryVoltage);
                 builder.Append("电池情况：").Append(BatteryHealth).Append("\n");
                 builder.Append("电池温度：").AppendFormat("{0}℃", BatteryTemperature).Append("\n");
                 builder.Append("电池类型：").Append(BatteryType).Append("\n");
                 info = builder.ToString();
                 return info;
+            }
+        }
+
+        /// <summary>
+        /// 显示电池图标
+        /// </summary>
+        public Image BatteryImage
+        {
+            get
+            {
+                float percent = BatteryCapacityPercent;
+                Bitmap batteryImage = global::KibotController.Properties.Resources.battery_5;
+                if (percent <= 0.05)
+                {
+                    batteryImage = global::KibotController.Properties.Resources.battery_0;
+                }
+                else if (percent > 0.05 && percent <= 0.2)
+                {
+                    batteryImage = global::KibotController.Properties.Resources.battery_1;
+                }
+                else if (percent > 0.2 && percent <= 0.4)
+                {
+                    batteryImage = global::KibotController.Properties.Resources.battery_2;
+                }
+                else if (percent > 0.4 && percent <= 0.6)
+                {
+                    batteryImage = global::KibotController.Properties.Resources.battery_3;
+                }
+                else if (percent > 0.6 && percent <= 0.8)
+                {
+                    batteryImage = global::KibotController.Properties.Resources.battery_4;
+                }
+                else if (percent >= 0.8 && percent < 1)
+                {
+                    batteryImage = global::KibotController.Properties.Resources.battery_5;
+                }
+                else if (percent == 1)
+                {
+                    batteryImage = global::KibotController.Properties.Resources.battery_6;
+                }
+                return batteryImage;
             }
         }
     }

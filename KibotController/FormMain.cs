@@ -31,7 +31,7 @@ namespace KibotController
         {
             // 显示名称，带版本号
             this.Text += " " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            updateBatteryInfo();
+            // updateBatteryInfo();
         }
 
         /// <summary>
@@ -42,6 +42,7 @@ namespace KibotController
             string cmd = "shell dumpsys battery";
             string info = connect.ExecuteAdb(cmd);
             batterParser = BatteryParser.Parser(info);
+            this.pictureBoxBattery.Image = batterParser.BatteryImage;
         }
 
         /// <summary>
@@ -134,6 +135,7 @@ namespace KibotController
                 this.labelModel.Text = "Model:" + match.Groups[3].Value;
                 this.labelDevice.Text = "Device:" + match.Groups[4].Value;
             }
+            updateBatteryInfo();
         }
 
         private void buttonScreen_Click(object sender, EventArgs e)
