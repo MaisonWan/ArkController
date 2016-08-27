@@ -143,8 +143,9 @@ namespace ArkController
         /// <returns></returns>
         public string[] GetPackageList()
         {
-            const string cmd = "shell pm list package";
-            string result = ExecuteAdb(cmd);
+            // -f带安装位置
+            const string cmd = "shell pm list package -f";
+            string result = ExecuteAdb(cmd).Trim();
             return result.Split("\n".ToCharArray());
         }
 

@@ -36,6 +36,7 @@ namespace ArkController
         {
             // 显示名称，带版本号
             this.Text += " " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            //this.listViewPackage.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             updateDeviceList();
         }
 
@@ -285,7 +286,8 @@ namespace ArkController
 
         private void listViewPackage_Resize(object sender, EventArgs e)
         {
-            this.listViewPackage.Columns[0].Width = this.listViewPackage.Width;
+            this.listViewPackage.Columns[0].Width = this.listViewPackage.Width / 4;
+            this.listViewPackage.Columns[1].Width = this.listViewPackage.Width * 3 / 4;
         }
 
         private void ToolStripMenuItemDetail_Click(object sender, EventArgs e)
@@ -404,11 +406,6 @@ namespace ArkController
                 this.labelDevice.Text = "Device:" + values[3];
             }
             updateBatteryInfo();
-        }
-
-        private void textBoxFilter_KeyDown(object sender, KeyPressEventArgs e)
-        {
-
         }
 
     }

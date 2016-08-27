@@ -31,17 +31,17 @@ namespace ArkController.Data
             //string filterName = this.textBoxFilter.Text;
             foreach (string p in packages)
             {
-                string pkg = p.Replace("package:", "");
-                if (need)
+                string pkg = p.Replace("package:", "").Trim();
+                string[] items = pkg.Split("=".ToCharArray());
+                // 不需要过滤，或者其中包含这个关键词
+                if (!need || items[0].Contains(filterName))
                 {
-                    if (pkg.Contains(filterName))
+                    if (items[0].Contains(filterName))
                     {
-                        listView.Items.Add(pkg);
+                        ListViewItem item = new ListViewItem(items[1]);
+                        item.SubItems.Add(items[0]);
+                        listView.Items.Add(item);
                     }
-                }
-                else
-                {
-                    listView.Items.Add(pkg);
                 }
             }
             listView.EndUpdate();
