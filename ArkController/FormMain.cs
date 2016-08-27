@@ -36,7 +36,9 @@ namespace ArkController
         {
             // 显示名称，带版本号
             this.Text += " " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            //this.listViewPackage.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            // 初始化列宽
+            this.listViewPackage.Columns[0].Width = this.listViewPackage.Width / 4;
+            this.listViewPackage.Columns[1].Width = this.listViewPackage.Width * 3 / 4;
             updateDeviceList();
         }
 

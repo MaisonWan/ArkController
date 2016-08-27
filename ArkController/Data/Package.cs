@@ -36,12 +36,9 @@ namespace ArkController.Data
                 // 不需要过滤，或者其中包含这个关键词
                 if (!need || items[0].Contains(filterName))
                 {
-                    if (items[0].Contains(filterName))
-                    {
-                        ListViewItem item = new ListViewItem(items[1]);
-                        item.SubItems.Add(items[0]);
-                        listView.Items.Add(item);
-                    }
+                    ListViewItem item = new ListViewItem(items[1]);
+                    item.SubItems.Add(items[0]);
+                    listView.Items.Add(item);
                 }
             }
             listView.EndUpdate();
