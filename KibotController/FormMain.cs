@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using KibotController.Parser;
 
 namespace KibotController
 {
@@ -17,6 +18,7 @@ namespace KibotController
         private FormScreenShot screenShot = null;
         private FormLogcat logcat = null;
         private FormPackageInfo packageInfo = null;
+        private BatteryParser batterParser = null;
 
         public FormMain()
         {
@@ -29,6 +31,17 @@ namespace KibotController
         {
             // 显示名称，带版本号
             this.Text += " " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            updateBatteryInfo();
+        }
+
+        /// <summary>
+        /// 初始化工具显示
+        /// </summary>
+        private void updateBatteryInfo()
+        {
+            string cmd = "shell dumpsys battery";
+            string info = connect.ExecuteAdb(cmd);
+            batterParser = BatteryParser.Parser(info);
         }
 
         /// <summary>
@@ -328,6 +341,15 @@ namespace KibotController
         {
             AboutBoxKibot aboutBox = new AboutBoxKibot();
             aboutBox.ShowDialog();
+        }
+
+        private void pictureBoxBattery_MouseEnter(object sender, EventArgs e)
+        {
+            string info = batterParser.BatteryFormatInfo;
+            if (info != null)
+            {
+                this.toolTipBattery.SetToolTip(this.pictureBoxBattery, batterParser.BatteryFormatInfo);
+            }
         }
 
     }
