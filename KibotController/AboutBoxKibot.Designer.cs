@@ -1,4 +1,4 @@
-﻿namespace KibotController
+﻿namespace ArkController
 {
     partial class AboutBoxKibot
     {

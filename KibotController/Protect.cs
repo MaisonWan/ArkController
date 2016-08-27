@@ -4,7 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 
-namespace KibotController
+namespace ArkController
 {
     /// <summary>
     /// 守护类

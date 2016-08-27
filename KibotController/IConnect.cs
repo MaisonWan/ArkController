@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace KibotController
+namespace ArkController
 {
     public interface IConnect
     {

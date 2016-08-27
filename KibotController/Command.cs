@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace KibotController
+namespace ArkController
 {
     /// <summary>
     /// 执行命令

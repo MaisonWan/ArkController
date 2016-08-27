@@ -7,9 +7,9 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using KibotController.Parser;
+using ArkController.Parser;
 
-namespace KibotController
+namespace ArkController
 {
     public partial class FormMain : Form
     {
@@ -95,6 +95,40 @@ namespace KibotController
             else if (sender == this.buttonMenu)
             {
                 connect.InputKey(82);
+            }
+        }
+
+        /// <summary>
+        /// 菜单按键
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menu_Click(object sender, EventArgs e)
+        {
+            if (sender == this.toolStripMenuItemDeviceInfo)
+            {
+                tabControlHomePage.SelectedIndex = 0;
+            }
+            else if (sender == this.toolStripMenuItemKey)
+            {
+                tabControlHomePage.SelectedIndex = 1;
+            }
+            else if (sender == this.toolStripMenuItemPackage)
+            {
+                tabControlHomePage.SelectedIndex = 2;
+            }
+            else if (sender == this.toolStripMenuItemProcess)
+            {
+                tabControlHomePage.SelectedIndex = 3;
+            }
+            else if (sender == this.toolStripMenuItemSystem)
+            {
+                tabControlHomePage.SelectedIndex = 4;
+            }
+            else if (sender == this.toolStripMenuItemDeviceRefreash
+                || sender == this.toolStripButtonRefresh)
+            {
+                updateDeviceList();
             }
         }
 
@@ -353,11 +387,6 @@ namespace KibotController
                     this.toolTipBattery.SetToolTip(this.pictureBoxBattery, batterParser.BatteryFormatInfo);
                 }
             }
-        }
-
-        private void toolStripButtonRefresh_Click(object sender, EventArgs e)
-        {
-            updateDeviceList();
         }
 
         private void toolStripComboBoxDeviceList_SelectedIndexChanged(object sender, EventArgs e)

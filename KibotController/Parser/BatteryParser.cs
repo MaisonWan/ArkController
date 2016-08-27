@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 
-namespace KibotController.Parser
+namespace ArkController.Parser
 {
     /// <summary>
     /// 识别解析电池详细信息
@@ -204,34 +204,34 @@ namespace KibotController.Parser
             get
             {
                 float percent = BatteryCapacityPercent;
-                Bitmap batteryImage = global::KibotController.Properties.Resources.battery_5;
+                Bitmap batteryImage = global::ArkController.Properties.Resources.battery_5;
                 if (percent <= 0.05)
                 {
-                    batteryImage = global::KibotController.Properties.Resources.battery_0;
+                    batteryImage = global::ArkController.Properties.Resources.battery_0;
                 }
                 else if (percent > 0.05 && percent <= 0.2)
                 {
-                    batteryImage = global::KibotController.Properties.Resources.battery_1;
+                    batteryImage = global::ArkController.Properties.Resources.battery_1;
                 }
                 else if (percent > 0.2 && percent <= 0.4)
                 {
-                    batteryImage = global::KibotController.Properties.Resources.battery_2;
+                    batteryImage = global::ArkController.Properties.Resources.battery_2;
                 }
                 else if (percent > 0.4 && percent <= 0.6)
                 {
-                    batteryImage = global::KibotController.Properties.Resources.battery_3;
+                    batteryImage = global::ArkController.Properties.Resources.battery_3;
                 }
                 else if (percent > 0.6 && percent <= 0.8)
                 {
-                    batteryImage = global::KibotController.Properties.Resources.battery_4;
+                    batteryImage = global::ArkController.Properties.Resources.battery_4;
                 }
                 else if (percent >= 0.8 && percent < 1)
                 {
-                    batteryImage = global::KibotController.Properties.Resources.battery_5;
+                    batteryImage = global::ArkController.Properties.Resources.battery_5;
                 }
                 else if (percent == 1)
                 {
-                    batteryImage = global::KibotController.Properties.Resources.battery_6;
+                    batteryImage = global::ArkController.Properties.Resources.battery_6;
                 }
                 return batteryImage;
             }

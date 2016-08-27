@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace KibotController
+namespace ArkController
 {
     public partial class FormLogcat : Form, Command.Callback
     {

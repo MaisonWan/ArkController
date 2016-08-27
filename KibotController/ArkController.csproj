@@ -7,7 +7,7 @@
     <ProjectGuid>{A141CC1F-ECCA-4900-84BD-B9707E78A1EA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KibotController</RootNamespace>
+    <RootNamespace>ArkController</RootNamespace>
     <AssemblyName>KibotController</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

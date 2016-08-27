@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace KibotController
+namespace ArkController
 {
     partial class AboutBoxKibot : Form
     {

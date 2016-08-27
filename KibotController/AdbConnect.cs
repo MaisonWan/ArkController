@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace KibotController
+namespace ArkController
 {
     public class AdbConnect : IConnect
     {

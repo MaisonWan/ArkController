@@ -1,4 +1,4 @@
-﻿namespace KibotController
+﻿namespace ArkController
 {
     partial class FormMain
     {
@@ -46,12 +46,13 @@
             this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.checkBoxFilter = new System.Windows.Forms.CheckBox();
             this.toolStripKibot = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripComboBoxDeviceList = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonAbout = new System.Windows.Forms.ToolStripButton();
-            this.tabControlDeviceInfo = new System.Windows.Forms.TabControl();
+            this.tabControlHomePage = new System.Windows.Forms.TabControl();
             this.tabPageDeviceInfo = new System.Windows.Forms.TabPage();
             this.pictureBoxBattery = new System.Windows.Forms.PictureBox();
             this.labelDevice = new System.Windows.Forms.Label();
@@ -90,22 +91,21 @@
             this.imageListTabs = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.设备信息IToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemDeviceRefreash = new System.Windows.Forms.ToolStripMenuItem();
             this.运行信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.窗口WToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemDeviceInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemKey = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemPackage = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemProcess = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSystem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipBattery = new System.Windows.Forms.ToolTip(this.components);
-            this.ToolStripMenuItemDeviceRefreash = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.窗口WToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.设备信息IToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.按键控制KToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.程序列表LToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.当前进程PToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.系统控制SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.toolStripKibot.SuspendLayout();
-            this.tabControlDeviceInfo.SuspendLayout();
+            this.tabControlHomePage.SuspendLayout();
             this.tabPageDeviceInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBattery)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -268,6 +268,11 @@
             this.toolStripKibot.TabIndex = 6;
             this.toolStripKibot.Text = "电池电量";
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 23);
+            // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
@@ -286,13 +291,13 @@
             // toolStripButtonRefresh
             // 
             this.toolStripButtonRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonRefresh.Image = global::KibotController.Properties.Resources.update;
+            this.toolStripButtonRefresh.Image = global::ArkController.Properties.Resources.update;
             this.toolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonRefresh.Name = "toolStripButtonRefresh";
             this.toolStripButtonRefresh.Size = new System.Drawing.Size(23, 20);
             this.toolStripButtonRefresh.Text = "toolStripButton1";
             this.toolStripButtonRefresh.ToolTipText = "刷新设备列表";
-            this.toolStripButtonRefresh.Click += new System.EventHandler(this.toolStripButtonRefresh_Click);
+            this.toolStripButtonRefresh.Click += new System.EventHandler(this.menu_Click);
             // 
             // toolStripSeparator1
             // 
@@ -302,28 +307,28 @@
             // toolStripButtonAbout
             // 
             this.toolStripButtonAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAbout.Image = global::KibotController.Properties.Resources.about;
+            this.toolStripButtonAbout.Image = global::ArkController.Properties.Resources.about;
             this.toolStripButtonAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAbout.Name = "toolStripButtonAbout";
             this.toolStripButtonAbout.Size = new System.Drawing.Size(23, 20);
             this.toolStripButtonAbout.Text = "关于";
             this.toolStripButtonAbout.Click += new System.EventHandler(this.toolStripButtonAbout_Click);
             // 
-            // tabControlDeviceInfo
+            // tabControlHomePage
             // 
-            this.tabControlDeviceInfo.Controls.Add(this.tabPageDeviceInfo);
-            this.tabControlDeviceInfo.Controls.Add(this.tabPageKeyboard);
-            this.tabControlDeviceInfo.Controls.Add(this.tabPagePackage);
-            this.tabControlDeviceInfo.Controls.Add(this.tabPageProcess);
-            this.tabControlDeviceInfo.Controls.Add(this.tabPageControl);
-            this.tabControlDeviceInfo.ImageList = this.imageListTabs;
-            this.tabControlDeviceInfo.ItemSize = new System.Drawing.Size(60, 40);
-            this.tabControlDeviceInfo.Location = new System.Drawing.Point(12, 53);
-            this.tabControlDeviceInfo.Name = "tabControlDeviceInfo";
-            this.tabControlDeviceInfo.SelectedIndex = 0;
-            this.tabControlDeviceInfo.ShowToolTips = true;
-            this.tabControlDeviceInfo.Size = new System.Drawing.Size(1107, 562);
-            this.tabControlDeviceInfo.TabIndex = 7;
+            this.tabControlHomePage.Controls.Add(this.tabPageDeviceInfo);
+            this.tabControlHomePage.Controls.Add(this.tabPageKeyboard);
+            this.tabControlHomePage.Controls.Add(this.tabPagePackage);
+            this.tabControlHomePage.Controls.Add(this.tabPageProcess);
+            this.tabControlHomePage.Controls.Add(this.tabPageControl);
+            this.tabControlHomePage.ImageList = this.imageListTabs;
+            this.tabControlHomePage.ItemSize = new System.Drawing.Size(60, 40);
+            this.tabControlHomePage.Location = new System.Drawing.Point(12, 53);
+            this.tabControlHomePage.Name = "tabControlHomePage";
+            this.tabControlHomePage.SelectedIndex = 0;
+            this.tabControlHomePage.ShowToolTips = true;
+            this.tabControlHomePage.Size = new System.Drawing.Size(1107, 562);
+            this.tabControlHomePage.TabIndex = 7;
             // 
             // tabPageDeviceInfo
             // 
@@ -346,8 +351,8 @@
             // 
             // pictureBoxBattery
             // 
-            this.pictureBoxBattery.Image = global::KibotController.Properties.Resources.battery_5;
-            this.pictureBoxBattery.Location = new System.Drawing.Point(963, 33);
+            this.pictureBoxBattery.Image = global::ArkController.Properties.Resources.battery_5;
+            this.pictureBoxBattery.Location = new System.Drawing.Point(959, 36);
             this.pictureBoxBattery.Name = "pictureBoxBattery";
             this.pictureBoxBattery.Size = new System.Drawing.Size(100, 50);
             this.pictureBoxBattery.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -359,7 +364,7 @@
             // 
             this.labelDevice.AutoSize = true;
             this.labelDevice.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelDevice.Location = new System.Drawing.Point(90, 87);
+            this.labelDevice.Location = new System.Drawing.Point(90, 72);
             this.labelDevice.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.labelDevice.MinimumSize = new System.Drawing.Size(0, 21);
             this.labelDevice.Name = "labelDevice";
@@ -370,7 +375,7 @@
             // 
             this.labelModel.AutoSize = true;
             this.labelModel.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelModel.Location = new System.Drawing.Point(90, 69);
+            this.labelModel.Location = new System.Drawing.Point(90, 54);
             this.labelModel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.labelModel.MinimumSize = new System.Drawing.Size(0, 21);
             this.labelModel.Name = "labelModel";
@@ -381,7 +386,7 @@
             // 
             this.labelDeviceInfo.AutoSize = true;
             this.labelDeviceInfo.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelDeviceInfo.Location = new System.Drawing.Point(90, 33);
+            this.labelDeviceInfo.Location = new System.Drawing.Point(90, 18);
             this.labelDeviceInfo.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.labelDeviceInfo.MinimumSize = new System.Drawing.Size(0, 21);
             this.labelDeviceInfo.Name = "labelDeviceInfo";
@@ -392,7 +397,7 @@
             // 
             this.labelProduct.AutoSize = true;
             this.labelProduct.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelProduct.Location = new System.Drawing.Point(90, 51);
+            this.labelProduct.Location = new System.Drawing.Point(90, 36);
             this.labelProduct.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.labelProduct.MinimumSize = new System.Drawing.Size(0, 21);
             this.labelProduct.Name = "labelProduct";
@@ -401,8 +406,8 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::KibotController.Properties.Resources.phone;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 33);
+            this.pictureBox1.Image = global::ArkController.Properties.Resources.phone;
+            this.pictureBox1.Location = new System.Drawing.Point(16, 18);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(68, 84);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -442,7 +447,7 @@
             // 
             // buttonVolumeUp
             // 
-            this.buttonVolumeUp.BackgroundImage = global::KibotController.Properties.Resources.volume_up;
+            this.buttonVolumeUp.BackgroundImage = global::ArkController.Properties.Resources.volume_up;
             this.buttonVolumeUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonVolumeUp.Location = new System.Drawing.Point(170, 20);
             this.buttonVolumeUp.Name = "buttonVolumeUp";
@@ -454,7 +459,7 @@
             // buttonVolumeDown
             // 
             this.buttonVolumeDown.AccessibleDescription = "";
-            this.buttonVolumeDown.BackgroundImage = global::KibotController.Properties.Resources.volume_down;
+            this.buttonVolumeDown.BackgroundImage = global::ArkController.Properties.Resources.volume_down;
             this.buttonVolumeDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonVolumeDown.Location = new System.Drawing.Point(29, 18);
             this.buttonVolumeDown.Name = "buttonVolumeDown";
@@ -476,7 +481,7 @@
             // 
             // buttonReboot
             // 
-            this.buttonReboot.BackgroundImage = global::KibotController.Properties.Resources.rebot;
+            this.buttonReboot.BackgroundImage = global::ArkController.Properties.Resources.rebot;
             this.buttonReboot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonReboot.Location = new System.Drawing.Point(170, 20);
             this.buttonReboot.Name = "buttonReboot";
@@ -487,7 +492,7 @@
             // 
             // buttonPower
             // 
-            this.buttonPower.BackgroundImage = global::KibotController.Properties.Resources.power;
+            this.buttonPower.BackgroundImage = global::ArkController.Properties.Resources.power;
             this.buttonPower.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonPower.Location = new System.Drawing.Point(29, 20);
             this.buttonPower.Name = "buttonPower";
@@ -512,7 +517,7 @@
             // 
             // buttonCenter
             // 
-            this.buttonCenter.BackgroundImage = global::KibotController.Properties.Resources.rounded;
+            this.buttonCenter.BackgroundImage = global::ArkController.Properties.Resources.rounded;
             this.buttonCenter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonCenter.Location = new System.Drawing.Point(100, 94);
             this.buttonCenter.Name = "buttonCenter";
@@ -523,7 +528,7 @@
             // 
             // buttonUp
             // 
-            this.buttonUp.BackgroundImage = global::KibotController.Properties.Resources.up;
+            this.buttonUp.BackgroundImage = global::ArkController.Properties.Resources.up;
             this.buttonUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonUp.Location = new System.Drawing.Point(100, 23);
             this.buttonUp.Name = "buttonUp";
@@ -534,7 +539,7 @@
             // 
             // buttonDown
             // 
-            this.buttonDown.BackgroundImage = global::KibotController.Properties.Resources.down;
+            this.buttonDown.BackgroundImage = global::ArkController.Properties.Resources.down;
             this.buttonDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonDown.Location = new System.Drawing.Point(100, 168);
             this.buttonDown.Name = "buttonDown";
@@ -545,7 +550,7 @@
             // 
             // buttonRight
             // 
-            this.buttonRight.BackgroundImage = global::KibotController.Properties.Resources.right;
+            this.buttonRight.BackgroundImage = global::ArkController.Properties.Resources.right;
             this.buttonRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonRight.Location = new System.Drawing.Point(171, 94);
             this.buttonRight.Name = "buttonRight";
@@ -556,7 +561,7 @@
             // 
             // buttonLeft
             // 
-            this.buttonLeft.BackgroundImage = global::KibotController.Properties.Resources.left;
+            this.buttonLeft.BackgroundImage = global::ArkController.Properties.Resources.left;
             this.buttonLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonLeft.Location = new System.Drawing.Point(30, 94);
             this.buttonLeft.Name = "buttonLeft";
@@ -567,7 +572,7 @@
             // 
             // buttonBack
             // 
-            this.buttonBack.BackgroundImage = global::KibotController.Properties.Resources.back;
+            this.buttonBack.BackgroundImage = global::ArkController.Properties.Resources.back;
             this.buttonBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonBack.Location = new System.Drawing.Point(28, 31);
             this.buttonBack.Name = "buttonBack";
@@ -578,7 +583,7 @@
             // 
             // buttonMenu
             // 
-            this.buttonMenu.BackgroundImage = global::KibotController.Properties.Resources.menu;
+            this.buttonMenu.BackgroundImage = global::ArkController.Properties.Resources.menu;
             this.buttonMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonMenu.Location = new System.Drawing.Point(184, 31);
             this.buttonMenu.Name = "buttonMenu";
@@ -589,7 +594,7 @@
             // 
             // buttonHome
             // 
-            this.buttonHome.BackgroundImage = global::KibotController.Properties.Resources.home;
+            this.buttonHome.BackgroundImage = global::ArkController.Properties.Resources.home;
             this.buttonHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonHome.Location = new System.Drawing.Point(106, 31);
             this.buttonHome.Name = "buttonHome";
@@ -669,7 +674,7 @@
             // 
             // buttonDeviceDetect
             // 
-            this.buttonDeviceDetect.BackgroundImage = global::KibotController.Properties.Resources.device_hardware;
+            this.buttonDeviceDetect.BackgroundImage = global::ArkController.Properties.Resources.device_hardware;
             this.buttonDeviceDetect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonDeviceDetect.Location = new System.Drawing.Point(3, 3);
             this.buttonDeviceDetect.Name = "buttonDeviceDetect";
@@ -681,7 +686,7 @@
             // buttonInstall
             // 
             this.buttonInstall.AllowDrop = true;
-            this.buttonInstall.BackgroundImage = global::KibotController.Properties.Resources.plus39;
+            this.buttonInstall.BackgroundImage = global::ArkController.Properties.Resources.plus39;
             this.buttonInstall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonInstall.Location = new System.Drawing.Point(913, 3);
             this.buttonInstall.Name = "buttonInstall";
@@ -694,7 +699,7 @@
             // 
             // button1
             // 
-            this.button1.BackgroundImage = global::KibotController.Properties.Resources.usb;
+            this.button1.BackgroundImage = global::ArkController.Properties.Resources.usb;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1.Location = new System.Drawing.Point(783, 3);
             this.button1.Name = "button1";
@@ -705,7 +710,7 @@
             // 
             // buttonSystemSetting
             // 
-            this.buttonSystemSetting.BackgroundImage = global::KibotController.Properties.Resources.settings_1;
+            this.buttonSystemSetting.BackgroundImage = global::ArkController.Properties.Resources.settings_1;
             this.buttonSystemSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonSystemSetting.Location = new System.Drawing.Point(133, 3);
             this.buttonSystemSetting.Name = "buttonSystemSetting";
@@ -716,7 +721,7 @@
             // 
             // buttonDeviceInfo
             // 
-            this.buttonDeviceInfo.BackgroundImage = global::KibotController.Properties.Resources.system_information;
+            this.buttonDeviceInfo.BackgroundImage = global::ArkController.Properties.Resources.system_information;
             this.buttonDeviceInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonDeviceInfo.Location = new System.Drawing.Point(263, 3);
             this.buttonDeviceInfo.Name = "buttonDeviceInfo";
@@ -727,7 +732,7 @@
             // 
             // buttonLogcat
             // 
-            this.buttonLogcat.BackgroundImage = global::KibotController.Properties.Resources.cmd;
+            this.buttonLogcat.BackgroundImage = global::ArkController.Properties.Resources.cmd;
             this.buttonLogcat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonLogcat.Location = new System.Drawing.Point(653, 3);
             this.buttonLogcat.Name = "buttonLogcat";
@@ -738,7 +743,7 @@
             // 
             // buttonDeveloper
             // 
-            this.buttonDeveloper.BackgroundImage = global::KibotController.Properties.Resources.control_panel;
+            this.buttonDeveloper.BackgroundImage = global::ArkController.Properties.Resources.control_panel;
             this.buttonDeveloper.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonDeveloper.Location = new System.Drawing.Point(393, 3);
             this.buttonDeveloper.Name = "buttonDeveloper";
@@ -783,16 +788,70 @@
             // 设备信息IToolStripMenuItem
             // 
             this.设备信息IToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemDeviceRefreash});
+            this.toolStripMenuItemDeviceRefreash});
             this.设备信息IToolStripMenuItem.Name = "设备信息IToolStripMenuItem";
             this.设备信息IToolStripMenuItem.Size = new System.Drawing.Size(80, 21);
             this.设备信息IToolStripMenuItem.Text = "设备信息(&I)";
+            // 
+            // toolStripMenuItemDeviceRefreash
+            // 
+            this.toolStripMenuItemDeviceRefreash.Name = "toolStripMenuItemDeviceRefreash";
+            this.toolStripMenuItemDeviceRefreash.Size = new System.Drawing.Size(139, 22);
+            this.toolStripMenuItemDeviceRefreash.Text = "刷新列表(&S)";
+            this.toolStripMenuItemDeviceRefreash.Click += new System.EventHandler(this.menu_Click);
             // 
             // 运行信息ToolStripMenuItem
             // 
             this.运行信息ToolStripMenuItem.Name = "运行信息ToolStripMenuItem";
             this.运行信息ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.运行信息ToolStripMenuItem.Text = "运行信息";
+            // 
+            // 窗口WToolStripMenuItem
+            // 
+            this.窗口WToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemDeviceInfo,
+            this.toolStripMenuItemKey,
+            this.toolStripMenuItemPackage,
+            this.toolStripMenuItemProcess,
+            this.toolStripMenuItemSystem});
+            this.窗口WToolStripMenuItem.Name = "窗口WToolStripMenuItem";
+            this.窗口WToolStripMenuItem.Size = new System.Drawing.Size(64, 21);
+            this.窗口WToolStripMenuItem.Text = "窗口(W)";
+            // 
+            // toolStripMenuItemDeviceInfo
+            // 
+            this.toolStripMenuItemDeviceInfo.Name = "toolStripMenuItemDeviceInfo";
+            this.toolStripMenuItemDeviceInfo.Size = new System.Drawing.Size(140, 22);
+            this.toolStripMenuItemDeviceInfo.Text = "设备信息(&I)";
+            this.toolStripMenuItemDeviceInfo.Click += new System.EventHandler(this.menu_Click);
+            // 
+            // toolStripMenuItemKey
+            // 
+            this.toolStripMenuItemKey.Name = "toolStripMenuItemKey";
+            this.toolStripMenuItemKey.Size = new System.Drawing.Size(140, 22);
+            this.toolStripMenuItemKey.Text = "按键控制(&K)";
+            this.toolStripMenuItemKey.Click += new System.EventHandler(this.menu_Click);
+            // 
+            // toolStripMenuItemPackage
+            // 
+            this.toolStripMenuItemPackage.Name = "toolStripMenuItemPackage";
+            this.toolStripMenuItemPackage.Size = new System.Drawing.Size(140, 22);
+            this.toolStripMenuItemPackage.Text = "程序列表(&L)";
+            this.toolStripMenuItemPackage.Click += new System.EventHandler(this.menu_Click);
+            // 
+            // toolStripMenuItemProcess
+            // 
+            this.toolStripMenuItemProcess.Name = "toolStripMenuItemProcess";
+            this.toolStripMenuItemProcess.Size = new System.Drawing.Size(140, 22);
+            this.toolStripMenuItemProcess.Text = "当前进程(&P)";
+            this.toolStripMenuItemProcess.Click += new System.EventHandler(this.menu_Click);
+            // 
+            // toolStripMenuItemSystem
+            // 
+            this.toolStripMenuItemSystem.Name = "toolStripMenuItemSystem";
+            this.toolStripMenuItemSystem.Size = new System.Drawing.Size(140, 22);
+            this.toolStripMenuItemSystem.Text = "系统控制(S)";
+            this.toolStripMenuItemSystem.Click += new System.EventHandler(this.menu_Click);
             // 
             // 帮助HToolStripMenuItem
             // 
@@ -816,66 +875,12 @@
             this.toolTipBattery.IsBalloon = true;
             this.toolTipBattery.ReshowDelay = 100;
             // 
-            // ToolStripMenuItemDeviceRefreash
-            // 
-            this.ToolStripMenuItemDeviceRefreash.Name = "ToolStripMenuItemDeviceRefreash";
-            this.ToolStripMenuItemDeviceRefreash.Size = new System.Drawing.Size(152, 22);
-            this.ToolStripMenuItemDeviceRefreash.Text = "刷新列表(&S)";
-            this.ToolStripMenuItemDeviceRefreash.Click += new System.EventHandler(this.toolStripButtonRefresh_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 23);
-            // 
-            // 窗口WToolStripMenuItem
-            // 
-            this.窗口WToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.设备信息IToolStripMenuItem1,
-            this.按键控制KToolStripMenuItem,
-            this.程序列表LToolStripMenuItem,
-            this.当前进程PToolStripMenuItem,
-            this.系统控制SToolStripMenuItem});
-            this.窗口WToolStripMenuItem.Name = "窗口WToolStripMenuItem";
-            this.窗口WToolStripMenuItem.Size = new System.Drawing.Size(64, 21);
-            this.窗口WToolStripMenuItem.Text = "窗口(W)";
-            // 
-            // 设备信息IToolStripMenuItem1
-            // 
-            this.设备信息IToolStripMenuItem1.Name = "设备信息IToolStripMenuItem1";
-            this.设备信息IToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.设备信息IToolStripMenuItem1.Text = "设备信息(&I)";
-            // 
-            // 按键控制KToolStripMenuItem
-            // 
-            this.按键控制KToolStripMenuItem.Name = "按键控制KToolStripMenuItem";
-            this.按键控制KToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.按键控制KToolStripMenuItem.Text = "按键控制(&K)";
-            // 
-            // 程序列表LToolStripMenuItem
-            // 
-            this.程序列表LToolStripMenuItem.Name = "程序列表LToolStripMenuItem";
-            this.程序列表LToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.程序列表LToolStripMenuItem.Text = "程序列表(&L)";
-            // 
-            // 当前进程PToolStripMenuItem
-            // 
-            this.当前进程PToolStripMenuItem.Name = "当前进程PToolStripMenuItem";
-            this.当前进程PToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.当前进程PToolStripMenuItem.Text = "当前进程(&P)";
-            // 
-            // 系统控制SToolStripMenuItem
-            // 
-            this.系统控制SToolStripMenuItem.Name = "系统控制SToolStripMenuItem";
-            this.系统控制SToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.系统控制SToolStripMenuItem.Text = "系统控制(S)";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1131, 773);
-            this.Controls.Add(this.tabControlDeviceInfo);
+            this.Controls.Add(this.tabControlHomePage);
             this.Controls.Add(this.toolStripKibot);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox2);
@@ -885,14 +890,14 @@
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Kobit控制器";
+            this.Text = "方舟控制器";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.contextMenuStripListview.ResumeLayout(false);
             this.toolStripKibot.ResumeLayout(false);
             this.toolStripKibot.PerformLayout();
-            this.tabControlDeviceInfo.ResumeLayout(false);
+            this.tabControlHomePage.ResumeLayout(false);
             this.tabPageDeviceInfo.ResumeLayout(false);
             this.tabPageDeviceInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBattery)).EndInit();
@@ -946,7 +951,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonAbout;
         private System.Windows.Forms.ToolStripMenuItem PToolStripMenuItemPackageInfo;
         private System.Windows.Forms.Button buttonScreen;
-        private System.Windows.Forms.TabControl tabControlDeviceInfo;
+        private System.Windows.Forms.TabControl tabControlHomePage;
         private System.Windows.Forms.TabPage tabPageDeviceInfo;
         private System.Windows.Forms.TabPage tabPageKeyboard;
         private System.Windows.Forms.ImageList imageListTabs;
@@ -979,14 +984,14 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemDeviceRefreash;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDeviceRefreash;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem 窗口WToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 设备信息IToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem 按键控制KToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 程序列表LToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 当前进程PToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 系统控制SToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDeviceInfo;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemKey;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPackage;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemProcess;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSystem;
     }
 }
 
