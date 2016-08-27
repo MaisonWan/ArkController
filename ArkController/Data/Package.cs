@@ -58,6 +58,26 @@ namespace ArkController.Data
         }
 
         /// <summary>
+        /// 打开设备信息
+        /// </summary>
+        public void OpenDeviceInfoSetting()
+        {
+            const string action = "android.settings.DEVICE_INFO_SETTINGS";
+            string param = string.Format("-a {0}", action);
+            connect.StartAm(param);
+        }
+
+        /// <summary>
+        /// 打开开发者选项
+        /// </summary>
+        public void OpenDevementSetting()
+        {
+            const string action = "android.settings.APPLICATION_DEVELOPMENT_SETTINGS";
+            string param = string.Format("-a {0}", action);
+            connect.StartAm(param);
+        }
+
+        /// <summary>
         /// 清空应用数据
         /// </summary>
         /// <param name="packageName"></param>

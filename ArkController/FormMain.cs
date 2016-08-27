@@ -361,16 +361,12 @@ namespace ArkController
 
         private void buttonDeviceInfo_Click(object sender, EventArgs e)
         {
-            const string action = "android.settings.DEVICE_INFO_SETTINGS";
-            string param = string.Format("-a {0}", action);
-            connect.StartAm(param);
+            package.OpenDeviceInfoSetting();
         }
 
         private void buttonDeveloper_Click(object sender, EventArgs e)
         {
-            const string action = "android.settings.APPLICATION_DEVELOPMENT_SETTINGS";
-            string param = string.Format("-a {0}", action);
-            connect.StartAm(param);
+            package.OpenDevementSetting();
         }
 
         private void toolStripButtonAbout_Click(object sender, EventArgs e)

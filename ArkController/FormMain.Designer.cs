@@ -103,6 +103,7 @@
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipBattery = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox2.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.toolStripKibot.SuspendLayout();
@@ -690,6 +691,7 @@
             this.buttonDeviceDetect.Name = "buttonDeviceDetect";
             this.buttonDeviceDetect.Size = new System.Drawing.Size(60, 60);
             this.buttonDeviceDetect.TabIndex = 12;
+            this.toolTipButton.SetToolTip(this.buttonDeviceDetect, "打开硬件测试程序");
             this.buttonDeviceDetect.UseVisualStyleBackColor = true;
             this.buttonDeviceDetect.Click += new System.EventHandler(this.buttonDeviceDetect_Click);
             // 
@@ -702,6 +704,7 @@
             this.buttonInstall.Name = "buttonInstall";
             this.buttonInstall.Size = new System.Drawing.Size(60, 60);
             this.buttonInstall.TabIndex = 14;
+            this.toolTipButton.SetToolTip(this.buttonInstall, "安装程序");
             this.buttonInstall.UseVisualStyleBackColor = true;
             this.buttonInstall.Click += new System.EventHandler(this.buttonInstall_Click);
             this.buttonInstall.DragDrop += new System.Windows.Forms.DragEventHandler(this.buttonInstall_DragDrop);
@@ -715,6 +718,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(60, 60);
             this.button1.TabIndex = 11;
+            this.toolTipButton.SetToolTip(this.button1, "重启Adb");
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.buttonRestartAdb_Click);
             // 
@@ -726,6 +730,7 @@
             this.buttonSystemSetting.Name = "buttonSystemSetting";
             this.buttonSystemSetting.Size = new System.Drawing.Size(60, 60);
             this.buttonSystemSetting.TabIndex = 13;
+            this.toolTipButton.SetToolTip(this.buttonSystemSetting, "打开系统设置");
             this.buttonSystemSetting.UseVisualStyleBackColor = true;
             this.buttonSystemSetting.Click += new System.EventHandler(this.buttonSystemSetting_Click);
             // 
@@ -737,6 +742,7 @@
             this.buttonDeviceInfo.Name = "buttonDeviceInfo";
             this.buttonDeviceInfo.Size = new System.Drawing.Size(60, 60);
             this.buttonDeviceInfo.TabIndex = 15;
+            this.toolTipButton.SetToolTip(this.buttonDeviceInfo, "打开设备状态信息");
             this.buttonDeviceInfo.UseVisualStyleBackColor = true;
             this.buttonDeviceInfo.Click += new System.EventHandler(this.buttonDeviceInfo_Click);
             // 
@@ -748,6 +754,7 @@
             this.buttonLogcat.Name = "buttonLogcat";
             this.buttonLogcat.Size = new System.Drawing.Size(60, 60);
             this.buttonLogcat.TabIndex = 10;
+            this.toolTipButton.SetToolTip(this.buttonLogcat, "打开Logcat监测");
             this.buttonLogcat.UseVisualStyleBackColor = true;
             this.buttonLogcat.Click += new System.EventHandler(this.buttonLogcat_Click);
             // 
@@ -759,6 +766,7 @@
             this.buttonDeveloper.Name = "buttonDeveloper";
             this.buttonDeveloper.Size = new System.Drawing.Size(60, 60);
             this.buttonDeveloper.TabIndex = 16;
+            this.toolTipButton.SetToolTip(this.buttonDeveloper, "打开开发者选项");
             this.buttonDeveloper.UseVisualStyleBackColor = true;
             this.buttonDeveloper.Click += new System.EventHandler(this.buttonDeveloper_Click);
             // 
@@ -770,6 +778,7 @@
             this.buttonScreen.Name = "buttonScreen";
             this.buttonScreen.Size = new System.Drawing.Size(60, 60);
             this.buttonScreen.TabIndex = 9;
+            this.toolTipButton.SetToolTip(this.buttonScreen, "屏幕截图");
             this.buttonScreen.UseVisualStyleBackColor = true;
             this.buttonScreen.Click += new System.EventHandler(this.buttonScreen_Click);
             // 
@@ -1003,6 +1012,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemProcess;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSystem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemClearData;
+        private System.Windows.Forms.ToolTip toolTipButton;
     }
 }
 
