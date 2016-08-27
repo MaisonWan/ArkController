@@ -94,6 +94,14 @@
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipBattery = new System.Windows.Forms.ToolTip(this.components);
+            this.ToolStripMenuItemDeviceRefreash = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.窗口WToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.设备信息IToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.按键控制KToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.程序列表LToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.当前进程PToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.系统控制SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.toolStripKibot.SuspendLayout();
@@ -246,6 +254,7 @@
             // toolStripKibot
             // 
             this.toolStripKibot.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator2,
             this.toolStripLabel1,
             this.toolStripComboBoxDeviceList,
             this.toolStripButtonRefresh,
@@ -254,7 +263,7 @@
             this.toolStripKibot.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.toolStripKibot.Location = new System.Drawing.Point(0, 25);
             this.toolStripKibot.Name = "toolStripKibot";
-            this.toolStripKibot.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStripKibot.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStripKibot.Size = new System.Drawing.Size(1131, 25);
             this.toolStripKibot.TabIndex = 6;
             this.toolStripKibot.Text = "电池电量";
@@ -262,7 +271,7 @@
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(56, 22);
+            this.toolStripLabel1.Size = new System.Drawing.Size(56, 17);
             this.toolStripLabel1.Text = "设备列表";
             // 
             // toolStripComboBoxDeviceList
@@ -288,7 +297,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 23);
             // 
             // toolStripButtonAbout
             // 
@@ -296,7 +305,7 @@
             this.toolStripButtonAbout.Image = global::KibotController.Properties.Resources.about;
             this.toolStripButtonAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAbout.Name = "toolStripButtonAbout";
-            this.toolStripButtonAbout.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonAbout.Size = new System.Drawing.Size(23, 20);
             this.toolStripButtonAbout.Text = "关于";
             this.toolStripButtonAbout.Click += new System.EventHandler(this.toolStripButtonAbout_Click);
             // 
@@ -763,6 +772,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.设备信息IToolStripMenuItem,
             this.运行信息ToolStripMenuItem,
+            this.窗口WToolStripMenuItem,
             this.帮助HToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -772,6 +782,8 @@
             // 
             // 设备信息IToolStripMenuItem
             // 
+            this.设备信息IToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemDeviceRefreash});
             this.设备信息IToolStripMenuItem.Name = "设备信息IToolStripMenuItem";
             this.设备信息IToolStripMenuItem.Size = new System.Drawing.Size(80, 21);
             this.设备信息IToolStripMenuItem.Text = "设备信息(&I)";
@@ -803,6 +815,60 @@
             this.toolTipBattery.InitialDelay = 500;
             this.toolTipBattery.IsBalloon = true;
             this.toolTipBattery.ReshowDelay = 100;
+            // 
+            // ToolStripMenuItemDeviceRefreash
+            // 
+            this.ToolStripMenuItemDeviceRefreash.Name = "ToolStripMenuItemDeviceRefreash";
+            this.ToolStripMenuItemDeviceRefreash.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItemDeviceRefreash.Text = "刷新列表(&S)";
+            this.ToolStripMenuItemDeviceRefreash.Click += new System.EventHandler(this.toolStripButtonRefresh_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 23);
+            // 
+            // 窗口WToolStripMenuItem
+            // 
+            this.窗口WToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.设备信息IToolStripMenuItem1,
+            this.按键控制KToolStripMenuItem,
+            this.程序列表LToolStripMenuItem,
+            this.当前进程PToolStripMenuItem,
+            this.系统控制SToolStripMenuItem});
+            this.窗口WToolStripMenuItem.Name = "窗口WToolStripMenuItem";
+            this.窗口WToolStripMenuItem.Size = new System.Drawing.Size(64, 21);
+            this.窗口WToolStripMenuItem.Text = "窗口(W)";
+            // 
+            // 设备信息IToolStripMenuItem1
+            // 
+            this.设备信息IToolStripMenuItem1.Name = "设备信息IToolStripMenuItem1";
+            this.设备信息IToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.设备信息IToolStripMenuItem1.Text = "设备信息(&I)";
+            // 
+            // 按键控制KToolStripMenuItem
+            // 
+            this.按键控制KToolStripMenuItem.Name = "按键控制KToolStripMenuItem";
+            this.按键控制KToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.按键控制KToolStripMenuItem.Text = "按键控制(&K)";
+            // 
+            // 程序列表LToolStripMenuItem
+            // 
+            this.程序列表LToolStripMenuItem.Name = "程序列表LToolStripMenuItem";
+            this.程序列表LToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.程序列表LToolStripMenuItem.Text = "程序列表(&L)";
+            // 
+            // 当前进程PToolStripMenuItem
+            // 
+            this.当前进程PToolStripMenuItem.Name = "当前进程PToolStripMenuItem";
+            this.当前进程PToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.当前进程PToolStripMenuItem.Text = "当前进程(&P)";
+            // 
+            // 系统控制SToolStripMenuItem
+            // 
+            this.系统控制SToolStripMenuItem.Name = "系统控制SToolStripMenuItem";
+            this.系统控制SToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.系统控制SToolStripMenuItem.Text = "系统控制(S)";
             // 
             // FormMain
             // 
@@ -913,6 +979,14 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemDeviceRefreash;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem 窗口WToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 设备信息IToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 按键控制KToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 程序列表LToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 当前进程PToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 系统控制SToolStripMenuItem;
     }
 }
 
