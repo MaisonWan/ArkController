@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using ArkController.Data;
 using ArkController.Parser;
 
 namespace ArkController
@@ -20,6 +21,7 @@ namespace ArkController
         private FormPackageInfo packageInfo = null;
         private BatteryParser batterParser = null;
         private Device device = null;
+        private Package package = null;
 
         public FormMain()
         {
@@ -27,6 +29,7 @@ namespace ArkController
             log = new Log(textBoxLog);
             connect = new AdbConnect(log);
             device = new Device(connect);
+            package = new Package(connect);
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -269,27 +272,15 @@ namespace ArkController
 
         private void buttonPackageList_Click(object sender, EventArgs e)
         {
-            string[] packages = connect.GetPackageList();
-            this.listViewPackage.BeginUpdate();
-            this.listViewPackage.Items.Clear();
-            bool needFilter = this.checkBoxFilter.Checked & this.textBoxFilter.Text.Length > 0;
-            string filterName = this.textBoxFilter.Text;
-            foreach (string p in packages)
+            package.UpdatePackageList(this.listViewPackage, this.textBoxFilter.Text, this.checkBoxFilter.Checked);
+        }
+
+        private void textBoxFilter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
             {
-                string pkg = p.Replace("package:", "");
-                if (needFilter)
-                {
-                    if (pkg.Contains(filterName))
-                    {
-                        this.listViewPackage.Items.Add(pkg);
-                    }
-                }
-                else
-                {
-                    this.listViewPackage.Items.Add(pkg);
-                }
+                package.UpdatePackageList(this.listViewPackage, this.textBoxFilter.Text, this.checkBoxFilter.Checked);
             }
-            this.listViewPackage.EndUpdate();
         }
 
         private void listViewPackage_Resize(object sender, EventArgs e)
@@ -302,9 +293,20 @@ namespace ArkController
             if (this.listViewPackage.SelectedItems.Count > 0)
             {
                 string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
-                const string action = "android.settings.APPLICATION_DETAILS_SETTINGS";
-                string param = string.Format("-a {0} -d package:{1}", action, packageName);
-                connect.StartAm(param);
+                package.OpenApplicationDetail(packageName);
+            }
+        }
+
+        private void toolStripMenuItemClearData_Click(object sender, EventArgs e)
+        {
+            if (this.listViewPackage.SelectedItems.Count > 0)
+            {
+                string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
+                string msg = "确认清空设备上应用" + packageName + "的数据？";
+                if (MessageBox.Show(msg, "清空提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    package.ClearApplicationData(packageName);
+                }
             }
         }
 
@@ -406,6 +408,11 @@ namespace ArkController
                 this.labelDevice.Text = "Device:" + values[3];
             }
             updateBatteryInfo();
+        }
+
+        private void textBoxFilter_KeyDown(object sender, KeyPressEventArgs e)
+        {
+
         }
 
     }

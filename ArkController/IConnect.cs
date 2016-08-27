@@ -182,5 +182,11 @@ namespace ArkController
         /// </summary>
         /// <returns></returns>
         string GetDeviceSerial();
+
+        /// <summary>
+        /// 写log
+        /// </summary>
+        /// <param name="log"></param>
+        void WriteLog(string log);
     }
 }

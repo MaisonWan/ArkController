@@ -179,5 +179,14 @@ namespace ArkController
         {
             return this.serial;
         }
+
+        /// <summary>
+        /// 写log
+        /// </summary>
+        /// <param name="log"></param>
+        public void WriteLog(string log)
+        {
+            this.log.Write(log);
+        }
     }
 }

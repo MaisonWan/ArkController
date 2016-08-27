@@ -66,7 +66,8 @@
     </Compile>
     <Compile Include="AdbConnect.cs" />
     <Compile Include="Command.cs" />
-    <Compile Include="Device.cs" />
+    <Compile Include="Data\Device.cs" />
+    <Compile Include="Data\Package.cs" />
     <Compile Include="FormLogcat.cs">
       <SubType>Form</SubType>
     </Compile>

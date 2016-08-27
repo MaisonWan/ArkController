@@ -39,18 +39,18 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 12);
+            this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "PackageName:";
+            this.label1.Text = "包名：";
             // 
             // textBoxPackage
             // 
             this.textBoxPackage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPackage.Location = new System.Drawing.Point(96, 10);
+            this.textBoxPackage.Location = new System.Drawing.Point(60, 10);
             this.textBoxPackage.MaxLength = 1024;
             this.textBoxPackage.Name = "textBoxPackage";
-            this.textBoxPackage.Size = new System.Drawing.Size(848, 21);
+            this.textBoxPackage.Size = new System.Drawing.Size(884, 21);
             this.textBoxPackage.TabIndex = 1;
             // 
             // textBoxPackageInfo

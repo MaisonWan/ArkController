@@ -39,6 +39,7 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStripListview = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemDetail = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemClearData = new System.Windows.Forms.ToolStripMenuItem();
             this.PToolStripMenuItemPackageInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.PToolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemUninstall = new System.Windows.Forms.ToolStripMenuItem();
@@ -186,38 +187,46 @@
             // 
             this.contextMenuStripListview.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItemDetail,
+            this.toolStripMenuItemClearData,
             this.PToolStripMenuItemPackageInfo,
             this.PToolStripMenuItemCopy,
             this.toolStripMenuItemUninstall});
             this.contextMenuStripListview.Name = "contextMenuStripListview";
-            this.contextMenuStripListview.Size = new System.Drawing.Size(166, 92);
+            this.contextMenuStripListview.Size = new System.Drawing.Size(190, 114);
             this.contextMenuStripListview.Text = "删除";
             // 
             // ToolStripMenuItemDetail
             // 
             this.ToolStripMenuItemDetail.Name = "ToolStripMenuItemDetail";
-            this.ToolStripMenuItemDetail.Size = new System.Drawing.Size(165, 22);
-            this.ToolStripMenuItemDetail.Text = "打开详细信息(&D)";
+            this.ToolStripMenuItemDetail.Size = new System.Drawing.Size(189, 22);
+            this.ToolStripMenuItemDetail.Text = "打开应用详细信息(&D)";
             this.ToolStripMenuItemDetail.Click += new System.EventHandler(this.ToolStripMenuItemDetail_Click);
+            // 
+            // toolStripMenuItemClearData
+            // 
+            this.toolStripMenuItemClearData.Name = "toolStripMenuItemClearData";
+            this.toolStripMenuItemClearData.Size = new System.Drawing.Size(189, 22);
+            this.toolStripMenuItemClearData.Text = "清空应用数据(&A)";
+            this.toolStripMenuItemClearData.Click += new System.EventHandler(this.toolStripMenuItemClearData_Click);
             // 
             // PToolStripMenuItemPackageInfo
             // 
             this.PToolStripMenuItemPackageInfo.Name = "PToolStripMenuItemPackageInfo";
-            this.PToolStripMenuItemPackageInfo.Size = new System.Drawing.Size(165, 22);
-            this.PToolStripMenuItemPackageInfo.Text = "显示包信息(&P)";
+            this.PToolStripMenuItemPackageInfo.Size = new System.Drawing.Size(189, 22);
+            this.PToolStripMenuItemPackageInfo.Text = "本地显示包信息(&P)";
             this.PToolStripMenuItemPackageInfo.Click += new System.EventHandler(this.PToolStripMenuItemPackageInfo_Click);
             // 
             // PToolStripMenuItemCopy
             // 
             this.PToolStripMenuItemCopy.Name = "PToolStripMenuItemCopy";
-            this.PToolStripMenuItemCopy.Size = new System.Drawing.Size(165, 22);
+            this.PToolStripMenuItemCopy.Size = new System.Drawing.Size(189, 22);
             this.PToolStripMenuItemCopy.Text = "复制(&C)";
             this.PToolStripMenuItemCopy.Click += new System.EventHandler(this.PToolStripMenuItemCopy_Click);
             // 
             // toolStripMenuItemUninstall
             // 
             this.toolStripMenuItemUninstall.Name = "toolStripMenuItemUninstall";
-            this.toolStripMenuItemUninstall.Size = new System.Drawing.Size(165, 22);
+            this.toolStripMenuItemUninstall.Size = new System.Drawing.Size(189, 22);
             this.toolStripMenuItemUninstall.Text = "卸载(&U)";
             this.toolStripMenuItemUninstall.Click += new System.EventHandler(this.toolStripMenuItemUninstall_Click);
             // 
@@ -238,6 +247,7 @@
             this.textBoxFilter.Name = "textBoxFilter";
             this.textBoxFilter.Size = new System.Drawing.Size(182, 21);
             this.textBoxFilter.TabIndex = 17;
+            this.textBoxFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxFilter_KeyDown);
             // 
             // checkBoxFilter
             // 
@@ -992,6 +1002,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPackage;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemProcess;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSystem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemClearData;
     }
 }
 

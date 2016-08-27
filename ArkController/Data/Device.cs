@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace ArkController
+namespace ArkController.Data
 {
     /// <summary>
     /// 设备信息
