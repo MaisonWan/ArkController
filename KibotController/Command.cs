@@ -80,5 +80,6 @@ namespace KibotController
             /// <param name="line"></param>
             void onReceive(string line);
         }
+
     }
 }

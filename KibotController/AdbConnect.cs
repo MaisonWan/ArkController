@@ -10,6 +10,7 @@ namespace KibotController
     {
         private Log log = null;
         private Command command = null;
+        private string serial = null;
 
         public AdbConnect(Log log)
         {
@@ -149,7 +150,34 @@ namespace KibotController
 
         public string ExecuteAdb(string cmd)
         {
+            return ExecuteAdb(cmd, true);
+        }
+
+        public string ExecuteAdb(string cmd, bool sure)
+        {
+            if (sure && serial != null)
+            {
+                cmd = "-s " + serial + " " + cmd;
+            }
             return command.ExecuteAdb(cmd);
+        }
+
+        /// <summary>
+        /// 设置当前设备序列号
+        /// </summary>
+        /// <param name="serial"></param>
+        public void SetDeviceSerial(string value)
+        {
+            this.serial = value;
+        }
+
+        /// <summary>
+        /// 获取当前设备序列号
+        /// </summary>
+        /// <returns></returns>
+        public string GetDeviceSerial()
+        {
+            return this.serial;
         }
     }
 }

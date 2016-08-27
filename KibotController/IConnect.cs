@@ -162,5 +162,25 @@ namespace KibotController
         /// <param name="cmd"></param>
         /// <returns></returns>
         string ExecuteAdb(string cmd);
+
+        /// <summary>
+        /// 指定设备
+        /// </summary>
+        /// <param name="cmd"></param>
+        /// <param name="sure">是否指定设备</param>
+        /// <returns></returns>
+        string ExecuteAdb(string cmd, bool sure);
+
+        /// <summary>
+        /// 设置当前设备序列号
+        /// </summary>
+        /// <param name="serial"></param>
+        void SetDeviceSerial(string value);
+
+        /// <summary>
+        /// 获取当前设备序列号
+        /// </summary>
+        /// <returns></returns>
+        string GetDeviceSerial();
     }
 }

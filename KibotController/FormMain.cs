@@ -19,19 +19,31 @@ namespace KibotController
         private FormLogcat logcat = null;
         private FormPackageInfo packageInfo = null;
         private BatteryParser batterParser = null;
+        private Device device = null;
 
         public FormMain()
         {
             InitializeComponent();
             log = new Log(textBoxLog);
             connect = new AdbConnect(log);
+            device = new Device(connect);
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
             // 显示名称，带版本号
             this.Text += " " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            // updateBatteryInfo();
+            updateDeviceList();
+        }
+
+        /// <summary>
+        /// 更新当前连接列表
+        /// </summary>
+        private void updateDeviceList()
+        {
+            this.toolStripComboBoxDeviceList.Items.Clear();
+            this.toolStripComboBoxDeviceList.Items.AddRange(device.DeviceList());
+            this.toolStripComboBoxDeviceList.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -122,20 +134,6 @@ namespace KibotController
                 string text = this.textBoxSendText.Text;
                 connect.InputText(text);
             }
-        }
-
-        private void buttonDevices_Click(object sender, EventArgs e)
-        {
-            string log = connect.ExecuteAdb("devices -l");
-            Match match = Regex.Match(log, @"(.*)\sdevice product:(\w+)\smodel:(\w+)\sdevice:(\w+)\r");
-            if (match.Groups.Count > 4)
-            {
-                this.labelDeviceInfo.Text = match.Groups[1].Value;
-                this.labelProduct.Text = "Product:" + match.Groups[2].Value;
-                this.labelModel.Text = "Model:" + match.Groups[3].Value;
-                this.labelDevice.Text = "Device:" + match.Groups[4].Value;
-            }
-            updateBatteryInfo();
         }
 
         private void buttonScreen_Click(object sender, EventArgs e)
@@ -347,11 +345,38 @@ namespace KibotController
 
         private void pictureBoxBattery_MouseEnter(object sender, EventArgs e)
         {
-            string info = batterParser.BatteryFormatInfo;
-            if (info != null)
+            if (batterParser != null)
             {
-                this.toolTipBattery.SetToolTip(this.pictureBoxBattery, batterParser.BatteryFormatInfo);
+                string info = batterParser.BatteryFormatInfo;
+                if (info != null)
+                {
+                    this.toolTipBattery.SetToolTip(this.pictureBoxBattery, batterParser.BatteryFormatInfo);
+                }
             }
+        }
+
+        private void toolStripButtonRefresh_Click(object sender, EventArgs e)
+        {
+            updateDeviceList();
+        }
+
+        private void toolStripComboBoxDeviceList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = this.toolStripComboBoxDeviceList.SelectedIndex;
+            if (index == 0)
+            {
+                return;
+            }
+            this.connect.SetDeviceSerial(this.toolStripComboBoxDeviceList.Items[index].ToString());
+            string[] values = device.GetCurrentDeviceInfo();
+            if (values != null && values.Length == 4)
+            {
+                this.labelDeviceInfo.Text = values[0];
+                this.labelProduct.Text = "Product:" + values[1];
+                this.labelModel.Text = "Model:" + values[2];
+                this.labelDevice.Text = "Device:" + values[3];
+            }
+            updateBatteryInfo();
         }
 
     }
