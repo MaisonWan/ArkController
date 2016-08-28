@@ -178,13 +178,13 @@
             this.listViewPackage.ContextMenuStrip = this.contextMenuStripListview;
             this.listViewPackage.FullRowSelect = true;
             this.listViewPackage.GridLines = true;
-            this.listViewPackage.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewPackage.Location = new System.Drawing.Point(7, 44);
             this.listViewPackage.Name = "listViewPackage";
             this.listViewPackage.Size = new System.Drawing.Size(1086, 464);
             this.listViewPackage.TabIndex = 2;
             this.listViewPackage.UseCompatibleStateImageBehavior = false;
             this.listViewPackage.View = System.Windows.Forms.View.Details;
+            this.listViewPackage.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewPackage_ColumnClick);
             this.listViewPackage.Resize += new System.EventHandler(this.listViewPackage_Resize);
             // 
             // columnHeaderPackageName
