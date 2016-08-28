@@ -12,6 +12,7 @@ namespace ArkController
     public class Command
     {
         private Process p = null;
+        private bool loopLogcat = true;
 
         public Command()
         {
@@ -49,6 +50,7 @@ namespace ArkController
             {
                 return;
             }
+            loopLogcat = true;
             p.StartInfo.CreateNoWindow = true;
             p.StartInfo.FileName = "./adb/adb.exe";
             p.StartInfo.Arguments = cmd;
@@ -59,7 +61,7 @@ namespace ArkController
             p.Start();
             StreamReader reader = p.StandardOutput;
             string line = reader.ReadLine();//每次读取一行
-            while (!reader.EndOfStream)
+            while (loopLogcat && !reader.EndOfStream)
             {
                 callback.onReceive(line);
                 line = reader.ReadLine();
@@ -67,6 +69,14 @@ namespace ArkController
             p.WaitForExit();//等待程序执行完退出进程
             p.Close();//关闭进程
             reader.Close();//关闭流
+        }
+
+        /// <summary>
+        /// 退出循环执行的adb读取
+        /// </summary>
+        public void ExitExecuteAdb()
+        {
+            loopLogcat = false;
         }
 
         /// <summary>

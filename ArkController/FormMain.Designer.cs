@@ -108,6 +108,7 @@
             this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
             this.columnHeaderType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderInstall = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.toolStripMenuItemLogcat = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.toolStripKibot.SuspendLayout();
@@ -202,10 +203,11 @@
             this.ToolStripMenuItemDetail,
             this.toolStripMenuItemClearData,
             this.PToolStripMenuItemPackageInfo,
+            this.toolStripMenuItemLogcat,
             this.PToolStripMenuItemCopy,
             this.toolStripMenuItemUninstall});
             this.contextMenuStripListview.Name = "contextMenuStripListview";
-            this.contextMenuStripListview.Size = new System.Drawing.Size(190, 114);
+            this.contextMenuStripListview.Size = new System.Drawing.Size(190, 136);
             this.contextMenuStripListview.Text = "删除";
             // 
             // ToolStripMenuItemDetail
@@ -929,6 +931,13 @@
             // 
             this.columnHeaderInstall.Text = "安装者";
             // 
+            // toolStripMenuItemLogcat
+            // 
+            this.toolStripMenuItemLogcat.Name = "toolStripMenuItemLogcat";
+            this.toolStripMenuItemLogcat.Size = new System.Drawing.Size(189, 22);
+            this.toolStripMenuItemLogcat.Text = "显示应用Logcat(&L)";
+            this.toolStripMenuItemLogcat.Click += new System.EventHandler(this.toolStripMenuItemLogcat_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -945,6 +954,7 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "方舟控制器";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -1052,6 +1062,7 @@
         private System.Windows.Forms.ComboBox comboBoxPackageType;
         private System.Windows.Forms.ColumnHeader columnHeaderType;
         private System.Windows.Forms.ColumnHeader columnHeaderInstall;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemLogcat;
     }
 }
 

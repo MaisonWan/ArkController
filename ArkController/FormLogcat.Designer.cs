@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogcat));
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.comboBoxPriority = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonStart = new System.Windows.Forms.Button();
@@ -48,12 +48,12 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "过滤条件";
             // 
-            // textBox1
+            // textBoxFilter
             // 
-            this.textBox1.Location = new System.Drawing.Point(72, 10);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(144, 21);
-            this.textBox1.TabIndex = 1;
+            this.textBoxFilter.Location = new System.Drawing.Point(72, 10);
+            this.textBoxFilter.Name = "textBoxFilter";
+            this.textBoxFilter.Size = new System.Drawing.Size(225, 21);
+            this.textBoxFilter.TabIndex = 1;
             // 
             // comboBoxPriority
             // 
@@ -68,7 +68,7 @@
             "Error",
             "Fatal",
             "Silent"});
-            this.comboBoxPriority.Location = new System.Drawing.Point(300, 10);
+            this.comboBoxPriority.Location = new System.Drawing.Point(360, 11);
             this.comboBoxPriority.Name = "comboBoxPriority";
             this.comboBoxPriority.Size = new System.Drawing.Size(97, 20);
             this.comboBoxPriority.TabIndex = 2;
@@ -76,7 +76,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(243, 13);
+            this.label2.Location = new System.Drawing.Point(303, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 3;
@@ -84,7 +84,7 @@
             // 
             // buttonStart
             // 
-            this.buttonStart.Location = new System.Drawing.Point(418, 7);
+            this.buttonStart.Location = new System.Drawing.Point(478, 8);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(75, 23);
             this.buttonStart.TabIndex = 4;
@@ -108,7 +108,7 @@
             // 
             // buttonStop
             // 
-            this.buttonStop.Location = new System.Drawing.Point(499, 7);
+            this.buttonStop.Location = new System.Drawing.Point(559, 8);
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(75, 23);
             this.buttonStop.TabIndex = 6;
@@ -138,7 +138,7 @@
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxPriority);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxFilter);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormLogcat";
@@ -154,7 +154,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxFilter;
         private System.Windows.Forms.ComboBox comboBoxPriority;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonStart;

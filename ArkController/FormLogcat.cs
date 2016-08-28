@@ -9,9 +9,15 @@ using System.Windows.Forms;
 
 namespace ArkController
 {
+    /// <summary>
+    /// 抓取logcat的界面
+    /// </summary>
     public partial class FormLogcat : Form, Command.Callback
     {
         private Thread thread = null;
+        private Command cmd = null;
+        private bool autoStart = false;
+        private string filter = null;
 
         public FormLogcat()
         {
@@ -22,7 +28,17 @@ namespace ArkController
         private void FormLogcat_Load(object sender, EventArgs e)
         {
             this.comboBoxPriority.SelectedIndex = 0;
-            switchLogcat(false);
+            // 自动启动
+            if (autoStart)
+            {
+                this.textBoxFilter.Text = filter;
+                this.buttonStart.PerformClick();
+                this.textBoxContent.Focus();
+            }
+            else
+            {
+                switchLogcat(false);
+            }
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -30,10 +46,27 @@ namespace ArkController
             switchLogcat(true);
         }
 
-        public void startLogcat()
+        /// <summary>
+        /// 开始抓取logcat
+        /// </summary>
+        /// <param name="filter"></param>
+        public void AutoStartLogcat(string filter)
         {
-            Command cmd = new Command();
+            this.autoStart = true;
+            this.filter = filter;
+        }
+
+        private void startLogcat()
+        {
+            if (cmd == null)
+            {
+                cmd = new Command();
+            }
             string args = "logcat";
+            if (!String.IsNullOrEmpty(this.textBoxFilter.Text))
+            {
+                args = args + " -s " + this.textBoxFilter.Text;
+            }
             if (this.comboBoxPriority.SelectedIndex > 0)
             {
                 string[] priority = { "V", "D", "I", "W", "E", "F", "S" };
@@ -55,7 +88,10 @@ namespace ArkController
 
         private void FormLogcat_FormClosing(object sender, FormClosingEventArgs e)
         {
+            cmd.ExitExecuteAdb();
             switchLogcat(false);
+            this.autoStart = false;
+            this.DialogResult = DialogResult.No;
         }
 
         private void buttonStop_Click(object sender, EventArgs e)
@@ -66,7 +102,7 @@ namespace ArkController
         /// <summary>
         /// 切换状态
         /// </summary>
-        /// <param name="state"></param>
+        /// <param name="state">开始为true，结束为false</param>
         private void switchLogcat(bool state)
         {
             if (state)
@@ -84,6 +120,7 @@ namespace ArkController
                 if (thread != null)
                 {
                     thread.Abort();
+                    thread = null;
                 }
                 this.buttonStart.Enabled = true;
                 this.buttonStop.Enabled = false;

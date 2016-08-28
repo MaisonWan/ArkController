@@ -40,7 +40,8 @@ namespace ArkController
             // 初始化Listview
             listViewPackage_Resize(sender, e);
             this.listViewPackage.ListViewItemSorter = new ListViewColumnSorter();
-            this.comboBoxPackageType.SelectedIndex = 0; // 默认选择
+            // 默认选择所有
+            this.comboBoxPackageType.SelectedIndex = 0; 
             updateDeviceList();
         }
 
@@ -376,6 +377,20 @@ namespace ArkController
             }
         }
 
+        private void toolStripMenuItemLogcat_Click(object sender, EventArgs e)
+        {
+            if (this.listViewPackage.SelectedItems.Count > 0)
+            {
+                string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
+                if (logcat == null || logcat.IsDisposed)
+                {
+                    logcat = new FormLogcat();
+                }
+                logcat.AutoStartLogcat(packageName);
+                logcat.ShowDialog();
+            }
+        }
+
         private void toolStripMenuItemUninstall_Click(object sender, EventArgs e)
         {
             if (this.listViewPackage.SelectedItems.Count > 0)
@@ -448,6 +463,12 @@ namespace ArkController
                 this.labelDevice.Text = "Device:" + values[3];
             }
             updateBatteryInfo();
+        }
+
+        private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            connect.InputCommand("kill-server");
+            Application.Exit();
         }
 
     }
