@@ -22,9 +22,9 @@ namespace ArkController.Data
         /// <param name="listView"></param>
         /// <param name="filterName"></param>
         /// <param name="needFilter"></param>
-        public void UpdatePackageList(ListView listView, string filterName, bool needFilter)
+        public void UpdatePackageList(ListView listView, string args, string filterName, bool needFilter)
         {
-            string[] packages = connect.GetPackageList();
+            string[] packages = connect.GetPackageList(args);
             listView.BeginUpdate();
             listView.Items.Clear();
             bool need = needFilter & filterName.Length > 0;
@@ -36,8 +36,18 @@ namespace ArkController.Data
                 // 不需要过滤，或者其中包含这个关键词
                 if (!need || items[0].Contains(filterName))
                 {
-                    ListViewItem item = new ListViewItem(items[1]);
+                    // 去掉installer
+                    ListViewItem item = new ListViewItem(items[1].Replace("  installer", ""));
                     item.SubItems.Add(items[0]);
+                    if (items[0].StartsWith("/system"))
+                    {
+                        item.SubItems.Add("系统应用");
+                    }
+                    else
+                    {
+                        item.SubItems.Add("第三方应用");
+                    }
+                    item.SubItems.Add(items[2] == "null" ? "无" : items[2]);
                     listView.Items.Add(item);
                 }
             }

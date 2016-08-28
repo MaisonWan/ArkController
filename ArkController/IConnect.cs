@@ -154,7 +154,7 @@ namespace ArkController
         /// 获取程序列表
         /// </summary>
         /// <returns></returns>
-        string[] GetPackageList();
+        string[] GetPackageList(string args);
 
         /// <summary>
         /// 直接将执行命令结果的文本返回

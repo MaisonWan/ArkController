@@ -37,8 +37,8 @@ namespace ArkController
             // 显示名称，带版本号
             this.Text += " " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
             // 初始化列宽
-            this.listViewPackage.Columns[0].Width = this.listViewPackage.Width / 4;
-            this.listViewPackage.Columns[1].Width = this.listViewPackage.Width * 3 / 4;
+            listViewPackage_Resize(sender, e);
+            this.comboBoxPackageType.SelectedIndex = 0; // 默认选择
             updateDeviceList();
         }
 
@@ -275,21 +275,34 @@ namespace ArkController
 
         private void buttonPackageList_Click(object sender, EventArgs e)
         {
-            package.UpdatePackageList(this.listViewPackage, this.textBoxFilter.Text, this.checkBoxFilter.Checked);
+            int index = this.comboBoxPackageType.SelectedIndex;
+            string args = null;
+            if (index == 1)
+            {
+                args = "-s";
+            }
+            else if (index == 2)
+            {
+                args = "-3";
+            }
+            package.UpdatePackageList(this.listViewPackage, args, this.textBoxFilter.Text, this.checkBoxFilter.Checked);
         }
 
         private void textBoxFilter_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                package.UpdatePackageList(this.listViewPackage, this.textBoxFilter.Text, this.checkBoxFilter.Checked);
+                buttonPackageList_Click(sender, null);
             }
         }
 
         private void listViewPackage_Resize(object sender, EventArgs e)
         {
-            this.listViewPackage.Columns[0].Width = this.listViewPackage.Width / 4;
-            this.listViewPackage.Columns[1].Width = this.listViewPackage.Width * 3 / 4;
+            int width = this.listViewPackage.Width;
+            this.listViewPackage.Columns[0].Width = (int)(width * 0.25f);
+            this.listViewPackage.Columns[1].Width = (int)(width * 0.45f);
+            this.listViewPackage.Columns[2].Width = (int)(width * 0.10f);
+            this.listViewPackage.Columns[3].Width = (int)(width * 0.20f);
         }
 
         private void ToolStripMenuItemDetail_Click(object sender, EventArgs e)

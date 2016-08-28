@@ -79,6 +79,7 @@
             this.buttonMenu = new System.Windows.Forms.Button();
             this.buttonHome = new System.Windows.Forms.Button();
             this.tabPagePackage = new System.Windows.Forms.TabPage();
+            this.comboBoxPackageType = new System.Windows.Forms.ComboBox();
             this.tabPageProcess = new System.Windows.Forms.TabPage();
             this.tabPageControl = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -105,6 +106,8 @@
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipBattery = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
+            this.columnHeaderType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderInstall = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.toolStripKibot.SuspendLayout();
@@ -169,7 +172,9 @@
             // 
             this.listViewPackage.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderPackageName,
-            this.columnHeaderPath});
+            this.columnHeaderPath,
+            this.columnHeaderType,
+            this.columnHeaderInstall});
             this.listViewPackage.ContextMenuStrip = this.contextMenuStripListview;
             this.listViewPackage.FullRowSelect = true;
             this.listViewPackage.GridLines = true;
@@ -624,6 +629,7 @@
             // tabPagePackage
             // 
             this.tabPagePackage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.tabPagePackage.Controls.Add(this.comboBoxPackageType);
             this.tabPagePackage.Controls.Add(this.checkBoxFilter);
             this.tabPagePackage.Controls.Add(this.textBoxFilter);
             this.tabPagePackage.Controls.Add(this.listViewPackage);
@@ -637,6 +643,20 @@
             this.tabPagePackage.Text = "程序列表";
             this.tabPagePackage.ToolTipText = "列举出来已经安装程序列表";
             this.tabPagePackage.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxPackageType
+            // 
+            this.comboBoxPackageType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxPackageType.FormattingEnabled = true;
+            this.comboBoxPackageType.Items.AddRange(new object[] {
+            "全部应用",
+            "内置应用",
+            "第三方应用"});
+            this.comboBoxPackageType.Location = new System.Drawing.Point(345, 17);
+            this.comboBoxPackageType.Name = "comboBoxPackageType";
+            this.comboBoxPackageType.Size = new System.Drawing.Size(83, 20);
+            this.comboBoxPackageType.TabIndex = 18;
+            this.toolTipButton.SetToolTip(this.comboBoxPackageType, "选择显示程序类别");
             // 
             // tabPageProcess
             // 
@@ -901,6 +921,14 @@
             this.toolTipBattery.IsBalloon = true;
             this.toolTipBattery.ReshowDelay = 100;
             // 
+            // columnHeaderType
+            // 
+            this.columnHeaderType.Text = "类型";
+            // 
+            // columnHeaderInstall
+            // 
+            this.columnHeaderInstall.Text = "安装者";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1021,6 +1049,9 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemClearData;
         private System.Windows.Forms.ToolTip toolTipButton;
         private System.Windows.Forms.ColumnHeader columnHeaderPath;
+        private System.Windows.Forms.ComboBox comboBoxPackageType;
+        private System.Windows.Forms.ColumnHeader columnHeaderType;
+        private System.Windows.Forms.ColumnHeader columnHeaderInstall;
     }
 }
 

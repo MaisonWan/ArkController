@@ -141,10 +141,14 @@ namespace ArkController
         /// 得到程序列表
         /// </summary>
         /// <returns></returns>
-        public string[] GetPackageList()
+        public string[] GetPackageList(string args)
         {
             // -f带安装位置
-            const string cmd = "shell pm list package -f";
+            string cmd = "shell pm list package -f -i";
+            if (args != null)
+            {
+                cmd += " " + args;
+            }
             string result = ExecuteAdb(cmd).Trim();
             return result.Split("\n".ToCharArray());
         }
