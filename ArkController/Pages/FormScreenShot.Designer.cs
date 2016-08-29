@@ -1,4 +1,4 @@
-﻿namespace ArkController
+﻿namespace ArkController.Pages
 {
     partial class FormScreenShot
     {

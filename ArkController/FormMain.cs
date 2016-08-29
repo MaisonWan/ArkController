@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using ArkController.Component;
 using ArkController.Data;
 using ArkController.Kit;
-using ArkController.Data;
+using ArkController.Pages;
 
 namespace ArkController
 {
@@ -20,6 +20,7 @@ namespace ArkController
         private IConnect connect = null;
         private FormScreenShot screenShot = null;
         private FormLogcat logcat = null;
+        private FormScreenSize screenSize = null;
         private FormPackageInfo packageInfo = null;
         private BatteryParser batterParser = null;
         private Device device = null;
@@ -180,6 +181,47 @@ namespace ArkController
             }
         }
 
+        private void install(string path)
+        {
+            if (connect.Install(path))
+            {
+                MessageBox.Show(path + "安装成功", "安装", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show(path + "安装失败", "安装", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        # region 系统控制按钮
+        private void buttonDeviceDetect_Click(object sender, EventArgs e)
+        {
+            const string package = "com.qihoo360.homecamera.devicedetect";
+            const string activity = "com.qihoo360.homecamera.devicedetect.MainActivity";
+            connect.StartAm(package, activity);
+        }
+
+        private void buttonSystemSetting_Click(object sender, EventArgs e)
+        {
+            const string package = "com.android.settings";
+            const string activity = "com.android.settings.Settings";
+            connect.StartAm(package, activity);
+        }
+
+        private void buttonDeviceInfo_Click(object sender, EventArgs e)
+        {
+            package.OpenDeviceInfoSetting();
+        }
+
+        private void buttonLogcat_Click(object sender, EventArgs e)
+        {
+            if (logcat == null || logcat.IsDisposed)
+            {
+                logcat = new FormLogcat();
+            }
+            logcat.ShowDialog();
+        }
+
         private void buttonScreen_Click(object sender, EventArgs e)
         {
             string localPath = Environment.CurrentDirectory + "\\screen.png";
@@ -203,6 +245,12 @@ namespace ArkController
             }
         }
 
+        private void buttonRestartAdb_Click(object sender, EventArgs e)
+        {
+            connect.InputCommand("kill-server");
+            connect.InputCommand("start-server");
+        }
+
         /// <summary>
         /// 安装程序
         /// </summary>
@@ -218,11 +266,6 @@ namespace ArkController
                 string filePath = this.openFileDialogInstall.FileName;
                 install(filePath);
             }
-        }
-
-        private void buttonScreenSize_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonInstall_DragEnter(object sender, DragEventArgs e)
@@ -250,37 +293,15 @@ namespace ArkController
             }
         }
 
-        private void install(string path)
+        private void buttonScreenSize_Click(object sender, EventArgs e)
         {
-            if (connect.Install(path))
+            if (screenSize == null || screenSize.IsDisposed)
             {
-                MessageBox.Show(path + "安装成功", "安装", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                screenSize = new FormScreenSize();
             }
-            else
-            {
-                MessageBox.Show(path + "安装失败", "安装", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            screenSize.ShowDialog();
         }
-
-        private void buttonDeviceDetect_Click(object sender, EventArgs e)
-        {
-            const string package = "com.qihoo360.homecamera.devicedetect";
-            const string activity = "com.qihoo360.homecamera.devicedetect.MainActivity";
-            connect.StartAm(package, activity);
-        }
-
-        private void buttonSystemSetting_Click(object sender, EventArgs e)
-        {
-            const string package = "com.android.settings";
-            const string activity = "com.android.settings.Settings";
-            connect.StartAm(package, activity);
-        }
-
-        private void buttonRestartAdb_Click(object sender, EventArgs e)
-        {
-            connect.InputCommand("kill-server");
-            connect.InputCommand("start-server");
-        }
+        #endregion
 
         private void buttonPackageList_Click(object sender, EventArgs e)
         {
@@ -413,20 +434,6 @@ namespace ArkController
                 string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
                 Clipboard.SetText(packageName);
             }
-        }
-
-        private void buttonLogcat_Click(object sender, EventArgs e)
-        {
-            if (logcat == null || logcat.IsDisposed)
-            {
-                logcat = new FormLogcat();
-            }
-            logcat.ShowDialog();
-        }
-
-        private void buttonDeviceInfo_Click(object sender, EventArgs e)
-        {
-            package.OpenDeviceInfoSetting();
         }
 
         private void buttonDeveloper_Click(object sender, EventArgs e)

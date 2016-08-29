@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using ArkController.Kit;
 
-namespace ArkController
+namespace ArkController.Pages
 {
     public partial class FormScreenShot : Form
     {

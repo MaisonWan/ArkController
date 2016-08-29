@@ -8,7 +8,7 @@ using System.Threading;
 using System.Windows.Forms;
 using ArkController.Data;
 
-namespace ArkController
+namespace ArkController.Pages
 {
     /// <summary>
     /// 抓取logcat的界面
