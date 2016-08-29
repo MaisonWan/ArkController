@@ -58,10 +58,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBoxKibot.cs">
+    <Compile Include="Pages\AboutBoxKibot.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AboutBoxKibot.Designer.cs">
+    <Compile Include="Pages\AboutBoxKibot.Designer.cs">
       <DependentUpon>AboutBoxKibot.cs</DependentUpon>
     </Compile>
     <Compile Include="Kit\AdbConnect.cs" />
@@ -70,10 +70,10 @@
     <Compile Include="Data\Device.cs" />
     <Compile Include="Data\Package.cs" />
     <Compile Include="Data\Screen.cs" />
-    <Compile Include="FormLogcat.cs">
+    <Compile Include="Pages\FormLogcat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormLogcat.Designer.cs">
+    <Compile Include="Pages\FormLogcat.Designer.cs">
       <DependentUpon>FormLogcat.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain.cs">
@@ -82,37 +82,37 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormPackageInfo.cs">
+    <Compile Include="Pages\FormPackageInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPackageInfo.Designer.cs">
+    <Compile Include="Pages\FormPackageInfo.Designer.cs">
       <DependentUpon>FormPackageInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormScreenShot.cs">
+    <Compile Include="Pages\FormScreenShot.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormScreenShot.Designer.cs">
+    <Compile Include="Pages\FormScreenShot.Designer.cs">
       <DependentUpon>FormScreenShot.cs</DependentUpon>
     </Compile>
     <Compile Include="Kit\IConnect.cs" />
-    <Compile Include="Log.cs" />
+    <Compile Include="Kit\Log.cs" />
     <Compile Include="Data\BatteryParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Kit\Protect.cs" />
-    <EmbeddedResource Include="AboutBoxKibot.resx">
+    <EmbeddedResource Include="Pages\AboutBoxKibot.resx">
       <DependentUpon>AboutBoxKibot.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormLogcat.resx">
+    <EmbeddedResource Include="Pages\FormLogcat.resx">
       <DependentUpon>FormLogcat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormPackageInfo.resx">
+    <EmbeddedResource Include="Pages\FormPackageInfo.resx">
       <DependentUpon>FormPackageInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormScreenShot.resx">
+    <EmbeddedResource Include="Pages\FormScreenShot.resx">
       <DependentUpon>FormScreenShot.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
