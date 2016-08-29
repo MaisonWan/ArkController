@@ -22,9 +22,11 @@ namespace ArkController
         private FormLogcat logcat = null;
         private FormScreenSize screenSize = null;
         private FormPackageInfo packageInfo = null;
+
         private BatteryParser batterParser = null;
         private Device device = null;
         private Package package = null;
+        private ScreenData screenData = null;
 
         public FormMain()
         {
@@ -33,6 +35,7 @@ namespace ArkController
             connect = new AdbConnect(log);
             device = new Device(connect);
             package = new Package(connect);
+            screenData = new ScreenData(connect);
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -297,9 +300,16 @@ namespace ArkController
         {
             if (screenSize == null || screenSize.IsDisposed)
             {
-                screenSize = new FormScreenSize();
+                screenSize = new FormScreenSize(screenData);
             }
-            screenSize.ShowDialog();
+            if (screenSize.Visible)
+            {
+                screenSize.Activate();
+            }
+            else
+            {
+                screenSize.Show();
+            }
         }
         #endregion
 

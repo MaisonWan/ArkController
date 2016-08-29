@@ -69,7 +69,7 @@
     <Compile Include="Component\ListViewColumnSorter.cs" />
     <Compile Include="Data\Device.cs" />
     <Compile Include="Data\Package.cs" />
-    <Compile Include="Data\Screen.cs" />
+    <Compile Include="Data\ScreenData.cs" />
     <Compile Include="Pages\FormLogcat.cs">
       <SubType>Form</SubType>
     </Compile>
