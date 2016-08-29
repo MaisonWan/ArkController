@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\DeviceManager.cs" />
+    <Compile Include="Data\ProcessData.cs" />
     <Compile Include="Pages\AboutBoxKibot.cs">
       <SubType>Form</SubType>
     </Compile>

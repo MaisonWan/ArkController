@@ -14,12 +14,14 @@ namespace ArkController.Data
         private DeviceLink deviceLink = null;
         private Package package = null;
         private ScreenData screenData = null;
+        private ProcessData process = null;
 
         public DeviceManager(IConnect connect)
         {
             deviceLink = new DeviceLink(connect);
             package = new Package(connect);
             screenData = new ScreenData(connect);
+            process = new ProcessData(connect);
         }
 
         /// <summary>
@@ -53,6 +55,14 @@ namespace ArkController.Data
         public ScreenData ScreenData
         {
             get { return this.screenData; }
+        }
+
+        /// <summary>
+        /// 当前进程的操作
+        /// </summary>
+        public ProcessData Process
+        {
+            get { return this.process; }
         }
     }
 }

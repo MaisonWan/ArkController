@@ -39,7 +39,10 @@ namespace ArkController
             this.Text += " " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
             // 初始化Listview
             listViewPackage_Resize(sender, e);
-            this.listViewPackage.ListViewItemSorter = new ListViewColumnSorter();
+            listViewProcessList_Resize(sender, e);
+            ListViewColumnSorter sorter = new ListViewColumnSorter();
+            this.listViewPackage.ListViewItemSorter = sorter;
+            this.listViewProcessList.ListViewItemSorter = sorter;
             // 默认选择所有
             this.comboBoxPackageType.SelectedIndex = 0; 
             updateDeviceList();
@@ -308,6 +311,7 @@ namespace ArkController
         }
         #endregion
 
+        #region 包列表
         private void buttonPackageList_Click(object sender, EventArgs e)
         {
             int index = this.comboBoxPackageType.SelectedIndex;
@@ -364,6 +368,7 @@ namespace ArkController
             }
             listView.Sort();
         }
+        #endregion
 
         private void ToolStripMenuItemDetail_Click(object sender, EventArgs e)
         {
@@ -489,6 +494,34 @@ namespace ArkController
             connect.InputCommand("kill-server");
             Application.Exit();
         }
+
+        #region 当前进程Tab
+        private void buttonProcessList_Click(object sender, EventArgs e)
+        {
+            List<ProcessData.Data> processList = manager.Process.GetCurrentProcessList();
+            foreach (ProcessData.Data data in processList)
+            {
+                ListViewItem item = new ListViewItem(data.User);
+                item.SubItems.Add(data.Pid);
+                item.SubItems.Add(data.Ppid);
+                item.SubItems.Add(data.Vsize);
+                item.SubItems.Add(data.Rss);
+                item.SubItems.Add(data.Name);
+                this.listViewProcessList.Items.Add(item);
+            }
+        }
+
+        private void listViewProcessList_Resize(object sender, EventArgs e)
+        {
+            int width = this.listViewProcessList.Width;
+            this.listViewProcessList.Columns[0].Width = (int)(width * 0.14f);
+            this.listViewProcessList.Columns[1].Width = (int)(width * 0.14f);
+            this.listViewProcessList.Columns[2].Width = (int)(width * 0.14f);
+            this.listViewProcessList.Columns[3].Width = (int)(width * 0.14f);
+            this.listViewProcessList.Columns[4].Width = (int)(width * 0.14f);
+            this.listViewProcessList.Columns[5].Width = (int)(width * 0.30f);
+        }
+        #endregion
 
     }
 }
