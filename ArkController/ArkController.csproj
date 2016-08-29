@@ -64,11 +64,12 @@
     <Compile Include="AboutBoxKibot.Designer.cs">
       <DependentUpon>AboutBoxKibot.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdbConnect.cs" />
-    <Compile Include="Command.cs" />
+    <Compile Include="Kit\AdbConnect.cs" />
+    <Compile Include="Data\Command.cs" />
     <Compile Include="Component\ListViewColumnSorter.cs" />
     <Compile Include="Data\Device.cs" />
     <Compile Include="Data\Package.cs" />
+    <Compile Include="Data\Screen.cs" />
     <Compile Include="FormLogcat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,12 +94,12 @@
     <Compile Include="FormScreenShot.Designer.cs">
       <DependentUpon>FormScreenShot.cs</DependentUpon>
     </Compile>
-    <Compile Include="IConnect.cs" />
+    <Compile Include="Kit\IConnect.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Parser\BatteryParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Protect.cs" />
+    <Compile Include="Kit\Protect.cs" />
     <EmbeddedResource Include="AboutBoxKibot.resx">
       <DependentUpon>AboutBoxKibot.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <None Include="Resources\screen_scale.png" />
     <None Include="Resources\battery_6.png" />
     <None Include="Resources\battery_5.png" />
     <None Include="Resources\battery_4.png" />

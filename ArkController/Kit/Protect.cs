@@ -4,7 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 
-namespace ArkController
+namespace ArkController.Kit
 {
     /// <summary>
     /// 守护类

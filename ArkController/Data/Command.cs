@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace ArkController
+namespace ArkController.Data
 {
     /// <summary>
     /// 执行命令

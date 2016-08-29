@@ -303,6 +303,16 @@ namespace ArkController.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap screen_scale {
+            get {
+                object obj = ResourceManager.GetObject("screen_scale", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap setting_2 {
             get {
                 object obj = ResourceManager.GetObject("setting_2", resourceCulture);

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using ArkController.Data;
 
-namespace ArkController
+namespace ArkController.Kit
 {
     public class AdbConnect : IConnect
     {

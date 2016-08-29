@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ArkController
+namespace ArkController.Kit
 {
     public interface IConnect
     {

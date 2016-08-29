@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using ArkController.Component;
 using ArkController.Data;
+using ArkController.Kit;
 using ArkController.Parser;
 
 namespace ArkController
@@ -217,6 +218,11 @@ namespace ArkController
                 string filePath = this.openFileDialogInstall.FileName;
                 install(filePath);
             }
+        }
+
+        private void buttonScreenSize_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void buttonInstall_DragEnter(object sender, DragEventArgs e)
@@ -467,6 +473,7 @@ namespace ArkController
 
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
         {
+            //退出时退出adb
             connect.InputCommand("kill-server");
             Application.Exit();
         }

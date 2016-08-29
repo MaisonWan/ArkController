@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using ArkController.Kit;
 
 namespace ArkController.Data
 {
@@ -25,8 +26,7 @@ namespace ArkController.Data
         {
             string log = connect.ExecuteAdb("devices", false);
             string[] lines = log.Trim().Split("\n".ToCharArray());
-            string[] result = new string[lines.Length];
-            int index = 1;
+            List<string> list = new List<string>();
             foreach (string line in lines)
             {
                 string l = line.Trim();
@@ -37,18 +37,18 @@ namespace ArkController.Data
                 string[] ds = l.Split("\t".ToCharArray());
                 if (ds.Length > 0 && ds[0] != "")
                 {
-                    result[index++] = ds[0];
+                    list.Add(ds[0]);
                 }
             }
-            if (index == 1)
+            if (list.Count == 0)
             {
-                result[0] = "没有设备";
+                list.Add("没有设备");
             }
             else
             {
-                result[0] = "请选择设备";
+                list.Insert(0, "请选择设备");
             }
-            return result;
+            return list.ToArray();
         }
 
         /// <summary>
