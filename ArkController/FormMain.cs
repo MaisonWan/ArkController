@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using ArkController.Component;
 using ArkController.Data;
 using ArkController.Kit;
-using ArkController.Parser;
+using ArkController.Data;
 
 namespace ArkController
 {

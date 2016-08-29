@@ -96,7 +96,7 @@
     </Compile>
     <Compile Include="Kit\IConnect.cs" />
     <Compile Include="Log.cs" />
-    <Compile Include="Parser\BatteryParser.cs" />
+    <Compile Include="Data\BatteryParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Kit\Protect.cs" />

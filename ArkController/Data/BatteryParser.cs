@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 
-namespace ArkController.Parser
+namespace ArkController.Data
 {
     /// <summary>
     /// 识别解析电池详细信息
