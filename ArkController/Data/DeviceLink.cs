@@ -9,11 +9,11 @@ namespace ArkController.Data
     /// <summary>
     /// 设备信息
     /// </summary>
-    public class Device
+    public class DeviceLink
     {
         private IConnect connect = null;
 
-        public Device(IConnect connect)
+        public DeviceLink(IConnect connect)
         {
             this.connect = connect;
         }

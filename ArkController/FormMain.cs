@@ -23,19 +23,14 @@ namespace ArkController
         private FormScreenSize screenSize = null;
         private FormPackageInfo packageInfo = null;
 
-        private BatteryParser batterParser = null;
-        private Device device = null;
-        private Package package = null;
-        private ScreenData screenData = null;
+        private DeviceManager manager = null;
 
         public FormMain()
         {
             InitializeComponent();
             log = new Log(textBoxLog);
             connect = new AdbConnect(log);
-            device = new Device(connect);
-            package = new Package(connect);
-            screenData = new ScreenData(connect);
+            manager = new DeviceManager(connect);
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -56,7 +51,7 @@ namespace ArkController
         private void updateDeviceList()
         {
             this.toolStripComboBoxDeviceList.Items.Clear();
-            this.toolStripComboBoxDeviceList.Items.AddRange(device.DeviceList());
+            this.toolStripComboBoxDeviceList.Items.AddRange(manager.DeviceLink.DeviceList());
             this.toolStripComboBoxDeviceList.SelectedIndex = 0;
         }
 
@@ -67,8 +62,8 @@ namespace ArkController
         {
             string cmd = "shell dumpsys battery";
             string info = connect.ExecuteAdb(cmd);
-            batterParser = BatteryParser.Parser(info);
-            this.pictureBoxBattery.Image = batterParser.BatteryImage;
+            manager.BatteryParser = BatteryParser.Parser(info);
+            this.pictureBoxBattery.Image = manager.BatteryParser.BatteryImage;
         }
 
         /// <summary>
@@ -213,7 +208,7 @@ namespace ArkController
 
         private void buttonDeviceInfo_Click(object sender, EventArgs e)
         {
-            package.OpenDeviceInfoSetting();
+            manager.Package.OpenDeviceInfoSetting();
         }
 
         private void buttonLogcat_Click(object sender, EventArgs e)
@@ -300,7 +295,7 @@ namespace ArkController
         {
             if (screenSize == null || screenSize.IsDisposed)
             {
-                screenSize = new FormScreenSize(screenData);
+                screenSize = new FormScreenSize(manager.ScreenData);
             }
             if (screenSize.Visible)
             {
@@ -325,7 +320,7 @@ namespace ArkController
             {
                 args = "-3";
             }
-            package.UpdatePackageList(this.listViewPackage, args, this.textBoxFilter.Text, this.checkBoxFilter.Checked);
+            manager.Package.UpdatePackageList(this.listViewPackage, args, this.textBoxFilter.Text, this.checkBoxFilter.Checked);
         }
 
         private void textBoxFilter_KeyDown(object sender, KeyEventArgs e)
@@ -375,7 +370,7 @@ namespace ArkController
             if (this.listViewPackage.SelectedItems.Count > 0)
             {
                 string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
-                package.OpenApplicationDetail(packageName);
+                manager.Package.OpenApplicationDetail(packageName);
             }
         }
 
@@ -387,7 +382,7 @@ namespace ArkController
                 string msg = "确认清空设备上应用" + packageName + "的数据？";
                 if (MessageBox.Show(msg, "清空提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    package.ClearApplicationData(packageName);
+                    manager.Package.ClearApplicationData(packageName);
                 }
             }
         }
@@ -448,7 +443,7 @@ namespace ArkController
 
         private void buttonDeveloper_Click(object sender, EventArgs e)
         {
-            package.OpenDevementSetting();
+            manager.Package.OpenDevementSetting();
         }
 
         private void toolStripButtonAbout_Click(object sender, EventArgs e)
@@ -459,12 +454,12 @@ namespace ArkController
 
         private void pictureBoxBattery_MouseEnter(object sender, EventArgs e)
         {
-            if (batterParser != null)
+            if (manager.BatteryParser != null)
             {
-                string info = batterParser.BatteryFormatInfo;
+                string info = manager.BatteryParser.BatteryFormatInfo;
                 if (info != null)
                 {
-                    this.toolTipBattery.SetToolTip(this.pictureBoxBattery, batterParser.BatteryFormatInfo);
+                    this.toolTipBattery.SetToolTip(this.pictureBoxBattery, manager.BatteryParser.BatteryFormatInfo);
                 }
             }
         }
@@ -477,7 +472,7 @@ namespace ArkController
                 return;
             }
             this.connect.SetDeviceSerial(this.toolStripComboBoxDeviceList.Items[index].ToString());
-            string[] values = device.GetCurrentDeviceInfo();
+            string[] values = manager.DeviceLink.GetCurrentDeviceInfo();
             if (values != null && values.Length == 4)
             {
                 this.labelDeviceInfo.Text = values[0];

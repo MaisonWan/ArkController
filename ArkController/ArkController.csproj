@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\DeviceManager.cs" />
     <Compile Include="Pages\AboutBoxKibot.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,7 +68,7 @@
     <Compile Include="Kit\AdbConnect.cs" />
     <Compile Include="Data\Command.cs" />
     <Compile Include="Component\ListViewColumnSorter.cs" />
-    <Compile Include="Data\Device.cs" />
+    <Compile Include="Data\DeviceLink.cs" />
     <Compile Include="Data\Package.cs" />
     <Compile Include="Data\ScreenData.cs" />
     <Compile Include="Pages\FormLogcat.cs">
