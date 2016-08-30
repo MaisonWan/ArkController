@@ -84,6 +84,14 @@
             this.tabPagePackage = new System.Windows.Forms.TabPage();
             this.comboBoxPackageType = new System.Windows.Forms.ComboBox();
             this.tabPageProcess = new System.Windows.Forms.TabPage();
+            this.buttonProcessList = new System.Windows.Forms.Button();
+            this.listViewProcessList = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageControl = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonDeviceDetect = new System.Windows.Forms.Button();
@@ -110,14 +118,6 @@
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipBattery = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
-            this.listViewProcessList = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.buttonProcessList = new System.Windows.Forms.Button();
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.toolStripKibot.SuspendLayout();
@@ -332,9 +332,10 @@
             // toolStripComboBoxDeviceList
             // 
             this.toolStripComboBoxDeviceList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBoxDeviceList.DropDownWidth = 150;
             this.toolStripComboBoxDeviceList.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
             this.toolStripComboBoxDeviceList.Name = "toolStripComboBoxDeviceList";
-            this.toolStripComboBoxDeviceList.Size = new System.Drawing.Size(121, 25);
+            this.toolStripComboBoxDeviceList.Size = new System.Drawing.Size(150, 25);
             this.toolStripComboBoxDeviceList.ToolTipText = "设备列表";
             this.toolStripComboBoxDeviceList.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxDeviceList_SelectedIndexChanged);
             // 
@@ -698,6 +699,61 @@
             this.tabPageProcess.Text = "进程列表";
             this.tabPageProcess.UseVisualStyleBackColor = true;
             // 
+            // buttonProcessList
+            // 
+            this.buttonProcessList.Location = new System.Drawing.Point(7, 15);
+            this.buttonProcessList.Name = "buttonProcessList";
+            this.buttonProcessList.Size = new System.Drawing.Size(77, 23);
+            this.buttonProcessList.TabIndex = 16;
+            this.buttonProcessList.Text = "进程列表";
+            this.buttonProcessList.UseVisualStyleBackColor = true;
+            this.buttonProcessList.Click += new System.EventHandler(this.buttonProcessList_Click);
+            // 
+            // listViewProcessList
+            // 
+            this.listViewProcessList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
+            this.listViewProcessList.FullRowSelect = true;
+            this.listViewProcessList.GridLines = true;
+            this.listViewProcessList.Location = new System.Drawing.Point(7, 44);
+            this.listViewProcessList.Name = "listViewProcessList";
+            this.listViewProcessList.Size = new System.Drawing.Size(1093, 464);
+            this.listViewProcessList.TabIndex = 3;
+            this.listViewProcessList.UseCompatibleStateImageBehavior = false;
+            this.listViewProcessList.View = System.Windows.Forms.View.Details;
+            this.listViewProcessList.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewPackage_ColumnClick);
+            this.listViewProcessList.Resize += new System.EventHandler(this.listViewProcessList_Resize);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "USER";
+            this.columnHeader1.Width = 40;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "PID";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "PPID";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "VSIZE";
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "RSS";
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "NAME";
+            // 
             // tabPageControl
             // 
             this.tabPageControl.Controls.Add(this.tableLayoutPanel1);
@@ -909,35 +965,35 @@
             // toolStripMenuItemDeviceInfo
             // 
             this.toolStripMenuItemDeviceInfo.Name = "toolStripMenuItemDeviceInfo";
-            this.toolStripMenuItemDeviceInfo.Size = new System.Drawing.Size(140, 22);
+            this.toolStripMenuItemDeviceInfo.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItemDeviceInfo.Text = "设备信息(&I)";
             this.toolStripMenuItemDeviceInfo.Click += new System.EventHandler(this.menu_Click);
             // 
             // toolStripMenuItemKey
             // 
             this.toolStripMenuItemKey.Name = "toolStripMenuItemKey";
-            this.toolStripMenuItemKey.Size = new System.Drawing.Size(140, 22);
+            this.toolStripMenuItemKey.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItemKey.Text = "按键控制(&K)";
             this.toolStripMenuItemKey.Click += new System.EventHandler(this.menu_Click);
             // 
             // toolStripMenuItemPackage
             // 
             this.toolStripMenuItemPackage.Name = "toolStripMenuItemPackage";
-            this.toolStripMenuItemPackage.Size = new System.Drawing.Size(140, 22);
+            this.toolStripMenuItemPackage.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItemPackage.Text = "程序列表(&L)";
             this.toolStripMenuItemPackage.Click += new System.EventHandler(this.menu_Click);
             // 
             // toolStripMenuItemProcess
             // 
             this.toolStripMenuItemProcess.Name = "toolStripMenuItemProcess";
-            this.toolStripMenuItemProcess.Size = new System.Drawing.Size(140, 22);
-            this.toolStripMenuItemProcess.Text = "当前进程(&P)";
+            this.toolStripMenuItemProcess.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemProcess.Text = "进程列表(&P)";
             this.toolStripMenuItemProcess.Click += new System.EventHandler(this.menu_Click);
             // 
             // toolStripMenuItemSystem
             // 
             this.toolStripMenuItemSystem.Name = "toolStripMenuItemSystem";
-            this.toolStripMenuItemSystem.Size = new System.Drawing.Size(140, 22);
+            this.toolStripMenuItemSystem.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItemSystem.Text = "系统控制(S)";
             this.toolStripMenuItemSystem.Click += new System.EventHandler(this.menu_Click);
             // 
@@ -962,61 +1018,6 @@
             this.toolTipBattery.InitialDelay = 500;
             this.toolTipBattery.IsBalloon = true;
             this.toolTipBattery.ReshowDelay = 100;
-            // 
-            // listViewProcessList
-            // 
-            this.listViewProcessList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6});
-            this.listViewProcessList.FullRowSelect = true;
-            this.listViewProcessList.GridLines = true;
-            this.listViewProcessList.Location = new System.Drawing.Point(7, 44);
-            this.listViewProcessList.Name = "listViewProcessList";
-            this.listViewProcessList.Size = new System.Drawing.Size(1093, 464);
-            this.listViewProcessList.TabIndex = 3;
-            this.listViewProcessList.UseCompatibleStateImageBehavior = false;
-            this.listViewProcessList.View = System.Windows.Forms.View.Details;
-            this.listViewProcessList.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewPackage_ColumnClick);
-            this.listViewProcessList.Resize += new System.EventHandler(this.listViewProcessList_Resize);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "USER";
-            this.columnHeader1.Width = 40;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "PID";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "PPID";
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "VSIZE";
-            // 
-            // buttonProcessList
-            // 
-            this.buttonProcessList.Location = new System.Drawing.Point(7, 15);
-            this.buttonProcessList.Name = "buttonProcessList";
-            this.buttonProcessList.Size = new System.Drawing.Size(77, 23);
-            this.buttonProcessList.TabIndex = 16;
-            this.buttonProcessList.Text = "进程列表";
-            this.buttonProcessList.UseVisualStyleBackColor = true;
-            this.buttonProcessList.Click += new System.EventHandler(this.buttonProcessList_Click);
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "RSS";
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "NAME";
             // 
             // FormMain
             // 

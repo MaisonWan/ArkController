@@ -433,7 +433,12 @@ namespace ArkController
             if (this.listViewPackage.SelectedItems.Count > 0)
             {
                 string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
-                connect.Uninstall(packageName);
+                string msg = "确认卸载设备上应用" + packageName + "？";
+                if (MessageBox.Show(msg, "卸载提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    connect.Uninstall(packageName);
+                    buttonPackageList_Click(sender, e);
+                }
             }
         }
 
