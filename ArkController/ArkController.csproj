@@ -162,6 +162,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="adb.exe" />
     <Content Include="app.ico" />
     <None Include="Resources\screen_scale.png" />
     <None Include="Resources\battery_6.png" />

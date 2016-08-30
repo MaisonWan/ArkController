@@ -20,32 +20,12 @@ namespace ArkController.Kit
             if (!File.Exists(adbPath))
             {
                 Directory.CreateDirectory("./adb/");
-                Assembly a = Assembly.GetExecutingAssembly();
-                //注意格式 程序集名称.文件名
-                //AccessEmbedded是我的项目的程序集名称
-                var i = a.GetManifestResourceStream("AccessEmbedded.adb.exe");
                 //释放资源
-                var o = File.Open(adbPath, FileMode.Create);
-                CopyStream(i, o);
-            }
-        }
-
-        /// <summary>
-        /// 拷贝文件流
-        /// </summary>
-        /// <param name="i"></param>
-        /// <param name="o"></param>
-        public static void CopyStream(Stream i, Stream o)
-        {
-            byte[] b = new byte[32768];
-            while (true)
-            {
-                int r = i.Read(b, 0, b.Length);
-                if (r <= 0)
-                {
-                    return;
-                }
-                o.Write(b, 0, r);
+                var outStream = File.Open(adbPath, FileMode.OpenOrCreate);
+                byte[] data = global::ArkController.Properties.Resources.adb;
+                outStream.Write(data, 0, data.Length);
+                outStream.Flush();
+                outStream.Close();
             }
         }
     }
