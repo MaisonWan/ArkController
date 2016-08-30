@@ -89,7 +89,10 @@ namespace ArkController.Pages
 
         private void FormLogcat_FormClosing(object sender, FormClosingEventArgs e)
         {
-            cmd.ExitExecuteAdb();
+            if (cmd != null)
+            {
+                cmd.ExitExecuteAdb();
+            }
             switchLogcat(false);
             this.autoStart = false;
             this.DialogResult = DialogResult.No;
