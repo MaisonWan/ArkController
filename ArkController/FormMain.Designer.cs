@@ -149,12 +149,12 @@
             // textBoxLog
             // 
             this.textBoxLog.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxLog.Location = new System.Drawing.Point(6, 20);
+            this.textBoxLog.Location = new System.Drawing.Point(25, 20);
             this.textBoxLog.Multiline = true;
             this.textBoxLog.Name = "textBoxLog";
             this.textBoxLog.ReadOnly = true;
             this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxLog.Size = new System.Drawing.Size(1090, 114);
+            this.textBoxLog.Size = new System.Drawing.Size(1071, 114);
             this.textBoxLog.TabIndex = 0;
             // 
             // buttonSendText

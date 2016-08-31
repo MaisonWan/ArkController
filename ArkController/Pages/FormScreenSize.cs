@@ -79,6 +79,11 @@ namespace ArkController.Pages
 
         private void buttonSizeSet_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(this.maskedTextBoxSizeWidth.Text) ||
+                string.IsNullOrEmpty(this.maskedTextBoxSizeHeight.Text))
+            {
+                return;
+            }
             int width = Convert.ToInt32(this.maskedTextBoxSizeWidth.Text);
             int height = Convert.ToInt32(this.maskedTextBoxSizeHeight.Text);
             string message = "设置屏幕尺寸失败";
@@ -101,6 +106,10 @@ namespace ArkController.Pages
 
         private void buttonDensitySet_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(this.maskedTextBoxDensity.Text))
+            {
+                return;
+            }
             int density = Convert.ToInt32(this.maskedTextBoxDensity.Text);
             string message = "设置屏幕像素密度失败";
             if (screenData.SetScreenDensity(density))
