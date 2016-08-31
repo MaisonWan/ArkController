@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using ArkController.Data;
+using System.IO;
 
 namespace ArkController.Pages
 {
@@ -68,16 +69,16 @@ namespace ArkController.Pages
             {
                 args = args + " -v time";
             }
-            if (!String.IsNullOrEmpty(this.textBoxFilter.Text))
-            {
-                args = args + " -s " + this.textBoxFilter.Text + ":i";
-            }
             if (this.comboBoxPriority.SelectedIndex > 0)
             {
                 string[] priority = { "V", "D", "I", "W", "E", "F", "S" };
                 int index = this.comboBoxPriority.SelectedIndex;
                 args = args + " *:" + priority[index - 1];
             }
+            //if (!String.IsNullOrEmpty(this.textBoxFilter.Text))
+            //{
+            //    args = args + " | findstr " + this.textBoxFilter.Text;
+            //}
             cmd.ExecuteAdb(args, this);
         }
 
@@ -87,8 +88,11 @@ namespace ArkController.Pages
         /// <param name="line"></param>
         void Command.Callback.onReceive(string line)
         {
-            this.textBoxContent.AppendText(line);
-            this.textBoxContent.AppendText(Environment.NewLine);
+            if (line.Contains(this.textBoxFilter.Text))
+            {
+                this.textBoxContent.AppendText(line);
+                this.textBoxContent.AppendText(Environment.NewLine);
+            }
         }
 
         private void FormLogcat_FormClosing(object sender, FormClosingEventArgs e)
@@ -138,6 +142,32 @@ namespace ArkController.Pages
         private void buttonClear_Click(object sender, EventArgs e)
         {
             this.textBoxContent.Clear();
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            string content = this.textBoxContent.Text;
+            if (!string.IsNullOrEmpty(content))
+            {
+                SaveFileDialog sfd = this.saveFileDialogContent;
+                //设置文件类型 
+                sfd.Filter = "日志文件（*.log）|*.log|文本文件（*.txt）|*.txt";
+                //设置默认文件类型显示顺序 
+                sfd.FilterIndex = 1;
+                sfd.FileName = "logcat_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log";
+                //保存对话框是否记忆上次打开的目录 
+                sfd.RestoreDirectory = true;
+                //点了保存按钮进入 
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    string localFilePath = sfd.FileName.ToString(); //获得文件路径 
+                    FileStream fs = new FileStream(localFilePath, FileMode.Create);
+                    StreamWriter sw = new StreamWriter(fs,Encoding.Default);
+                    sw.Write(content);
+                    sw.Close();
+                    fs.Close();
+                }
+            }
         }
     }
 }

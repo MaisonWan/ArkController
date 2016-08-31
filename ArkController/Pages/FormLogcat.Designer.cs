@@ -38,6 +38,8 @@
             this.buttonStop = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
             this.checkBoxTime = new System.Windows.Forms.CheckBox();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.saveFileDialogContent = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // label1
@@ -120,7 +122,7 @@
             // buttonClear
             // 
             this.buttonClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonClear.Location = new System.Drawing.Point(942, 7);
+            this.buttonClear.Location = new System.Drawing.Point(861, 7);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(75, 23);
             this.buttonClear.TabIndex = 7;
@@ -140,12 +142,24 @@
             this.checkBoxTime.Text = "显示时间";
             this.checkBoxTime.UseVisualStyleBackColor = true;
             // 
+            // buttonSave
+            // 
+            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSave.Location = new System.Drawing.Point(942, 7);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 7;
+            this.buttonSave.Text = "保存";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
             // FormLogcat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1029, 711);
             this.Controls.Add(this.checkBoxTime);
+            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.buttonStop);
             this.Controls.Add(this.textBoxContent);
@@ -176,5 +190,7 @@
         private System.Windows.Forms.Button buttonStop;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.CheckBox checkBoxTime;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.SaveFileDialog saveFileDialogContent;
     }
 }
