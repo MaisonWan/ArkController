@@ -37,6 +37,7 @@
             this.textBoxContent = new System.Windows.Forms.TextBox();
             this.buttonStop = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
+            this.checkBoxTime = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -84,7 +85,7 @@
             // 
             // buttonStart
             // 
-            this.buttonStart.Location = new System.Drawing.Point(478, 8);
+            this.buttonStart.Location = new System.Drawing.Point(540, 8);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(75, 23);
             this.buttonStart.TabIndex = 4;
@@ -108,7 +109,7 @@
             // 
             // buttonStop
             // 
-            this.buttonStop.Location = new System.Drawing.Point(559, 8);
+            this.buttonStop.Location = new System.Drawing.Point(621, 8);
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(75, 23);
             this.buttonStop.TabIndex = 6;
@@ -127,11 +128,24 @@
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
+            // checkBoxTime
+            // 
+            this.checkBoxTime.AutoSize = true;
+            this.checkBoxTime.Checked = true;
+            this.checkBoxTime.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxTime.Location = new System.Drawing.Point(463, 13);
+            this.checkBoxTime.Name = "checkBoxTime";
+            this.checkBoxTime.Size = new System.Drawing.Size(72, 16);
+            this.checkBoxTime.TabIndex = 8;
+            this.checkBoxTime.Text = "显示时间";
+            this.checkBoxTime.UseVisualStyleBackColor = true;
+            // 
             // FormLogcat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1029, 711);
+            this.Controls.Add(this.checkBoxTime);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.buttonStop);
             this.Controls.Add(this.textBoxContent);
@@ -161,5 +175,6 @@
         private System.Windows.Forms.TextBox textBoxContent;
         private System.Windows.Forms.Button buttonStop;
         private System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.CheckBox checkBoxTime;
     }
 }

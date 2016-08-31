@@ -64,9 +64,13 @@ namespace ArkController.Pages
                 cmd = new Command();
             }
             string args = "logcat";
+            if (this.checkBoxTime.Checked)
+            {
+                args = args + " -v time";
+            }
             if (!String.IsNullOrEmpty(this.textBoxFilter.Text))
             {
-                args = args + " -v time -s " + this.textBoxFilter.Text + ":i";
+                args = args + " -s " + this.textBoxFilter.Text + ":i";
             }
             if (this.comboBoxPriority.SelectedIndex > 0)
             {
