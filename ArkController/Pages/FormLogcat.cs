@@ -33,7 +33,7 @@ namespace ArkController.Pages
             if (autoStart)
             {
                 this.textBoxFilter.Text = filter;
-                this.buttonStart.PerformClick();
+                switchLogcat(true);
                 this.textBoxContent.Focus();
             }
             else
@@ -66,7 +66,7 @@ namespace ArkController.Pages
             string args = "logcat";
             if (!String.IsNullOrEmpty(this.textBoxFilter.Text))
             {
-                args = args + " -s " + this.textBoxFilter.Text;
+                args = args + " -v time -s " + this.textBoxFilter.Text + ":i";
             }
             if (this.comboBoxPriority.SelectedIndex > 0)
             {
