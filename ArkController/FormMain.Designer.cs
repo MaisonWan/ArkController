@@ -118,6 +118,9 @@
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipBattery = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonLogClear = new System.Windows.Forms.Button();
+            this.buttonLogSave = new System.Windows.Forms.Button();
+            this.saveFileDialogLog = new System.Windows.Forms.SaveFileDialog();
             this.groupBox2.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.toolStripKibot.SuspendLayout();
@@ -138,6 +141,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.buttonLogSave);
+            this.groupBox2.Controls.Add(this.buttonLogClear);
             this.groupBox2.Controls.Add(this.textBoxLog);
             this.groupBox2.Location = new System.Drawing.Point(12, 621);
             this.groupBox2.Name = "groupBox2";
@@ -149,12 +154,12 @@
             // textBoxLog
             // 
             this.textBoxLog.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxLog.Location = new System.Drawing.Point(25, 20);
+            this.textBoxLog.Location = new System.Drawing.Point(40, 20);
             this.textBoxLog.Multiline = true;
             this.textBoxLog.Name = "textBoxLog";
             this.textBoxLog.ReadOnly = true;
             this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxLog.Size = new System.Drawing.Size(1071, 114);
+            this.textBoxLog.Size = new System.Drawing.Size(1056, 114);
             this.textBoxLog.TabIndex = 0;
             // 
             // buttonSendText
@@ -358,7 +363,7 @@
             // toolStripButtonAbout
             // 
             this.toolStripButtonAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAbout.Image = global::ArkController.Properties.Resources.about;
+            this.toolStripButtonAbout.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAbout.Image")));
             this.toolStripButtonAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAbout.Name = "toolStripButtonAbout";
             this.toolStripButtonAbout.Size = new System.Drawing.Size(23, 20);
@@ -1031,6 +1036,28 @@
             this.toolTipBattery.IsBalloon = true;
             this.toolTipBattery.ReshowDelay = 100;
             // 
+            // buttonLogClear
+            // 
+            this.buttonLogClear.BackgroundImage = global::ArkController.Properties.Resources.empty_trash;
+            this.buttonLogClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonLogClear.Location = new System.Drawing.Point(4, 20);
+            this.buttonLogClear.Name = "buttonLogClear";
+            this.buttonLogClear.Size = new System.Drawing.Size(30, 30);
+            this.buttonLogClear.TabIndex = 1;
+            this.buttonLogClear.UseVisualStyleBackColor = true;
+            this.buttonLogClear.Click += new System.EventHandler(this.buttonLogClear_Click);
+            // 
+            // buttonLogSave
+            // 
+            this.buttonLogSave.BackgroundImage = global::ArkController.Properties.Resources.save;
+            this.buttonLogSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonLogSave.Location = new System.Drawing.Point(4, 56);
+            this.buttonLogSave.Name = "buttonLogSave";
+            this.buttonLogSave.Size = new System.Drawing.Size(30, 30);
+            this.buttonLogSave.TabIndex = 1;
+            this.buttonLogSave.UseVisualStyleBackColor = true;
+            this.buttonLogSave.Click += new System.EventHandler(this.buttonLogSave_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1166,6 +1193,9 @@
         private System.Windows.Forms.Button buttonProcessList;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.Button buttonLogClear;
+        private System.Windows.Forms.Button buttonLogSave;
+        private System.Windows.Forms.SaveFileDialog saveFileDialogLog;
     }
 }
 

@@ -162,6 +162,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\save.png" />
+    <None Include="Resources\empty_trash.png" />
     <EmbeddedResource Include="adb.exe" />
     <Content Include="app.ico" />
     <None Include="Resources\screen_scale.png" />
