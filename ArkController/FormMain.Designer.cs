@@ -504,6 +504,7 @@
             this.buttonVolumeUp.Name = "buttonVolumeUp";
             this.buttonVolumeUp.Size = new System.Drawing.Size(60, 60);
             this.buttonVolumeUp.TabIndex = 2;
+            this.toolTipButton.SetToolTip(this.buttonVolumeUp, "声音大");
             this.buttonVolumeUp.UseVisualStyleBackColor = true;
             this.buttonVolumeUp.Click += new System.EventHandler(this.buttonVolumeUp_Click);
             // 
@@ -516,6 +517,7 @@
             this.buttonVolumeDown.Name = "buttonVolumeDown";
             this.buttonVolumeDown.Size = new System.Drawing.Size(60, 60);
             this.buttonVolumeDown.TabIndex = 3;
+            this.toolTipButton.SetToolTip(this.buttonVolumeDown, "声音小");
             this.buttonVolumeDown.UseVisualStyleBackColor = true;
             this.buttonVolumeDown.Click += new System.EventHandler(this.buttonVolumeDown_Click);
             // 
@@ -538,6 +540,7 @@
             this.buttonReboot.Name = "buttonReboot";
             this.buttonReboot.Size = new System.Drawing.Size(60, 60);
             this.buttonReboot.TabIndex = 5;
+            this.toolTipButton.SetToolTip(this.buttonReboot, "重启");
             this.buttonReboot.UseVisualStyleBackColor = true;
             this.buttonReboot.Click += new System.EventHandler(this.buttonReboot_Click);
             // 
@@ -549,6 +552,7 @@
             this.buttonPower.Name = "buttonPower";
             this.buttonPower.Size = new System.Drawing.Size(60, 60);
             this.buttonPower.TabIndex = 4;
+            this.toolTipButton.SetToolTip(this.buttonPower, "电源");
             this.buttonPower.UseVisualStyleBackColor = true;
             this.buttonPower.Click += new System.EventHandler(this.buttonPower_Click);
             // 
@@ -574,6 +578,7 @@
             this.buttonCenter.Name = "buttonCenter";
             this.buttonCenter.Size = new System.Drawing.Size(60, 60);
             this.buttonCenter.TabIndex = 2;
+            this.toolTipButton.SetToolTip(this.buttonCenter, "确定");
             this.buttonCenter.UseVisualStyleBackColor = true;
             this.buttonCenter.Click += new System.EventHandler(this.buttonKey_Click);
             // 
@@ -585,6 +590,7 @@
             this.buttonUp.Name = "buttonUp";
             this.buttonUp.Size = new System.Drawing.Size(60, 60);
             this.buttonUp.TabIndex = 2;
+            this.toolTipButton.SetToolTip(this.buttonUp, "方向上");
             this.buttonUp.UseVisualStyleBackColor = true;
             this.buttonUp.Click += new System.EventHandler(this.buttonKey_Click);
             // 
@@ -596,6 +602,7 @@
             this.buttonDown.Name = "buttonDown";
             this.buttonDown.Size = new System.Drawing.Size(60, 60);
             this.buttonDown.TabIndex = 2;
+            this.toolTipButton.SetToolTip(this.buttonDown, "方向下");
             this.buttonDown.UseVisualStyleBackColor = true;
             this.buttonDown.Click += new System.EventHandler(this.buttonKey_Click);
             // 
@@ -607,6 +614,7 @@
             this.buttonRight.Name = "buttonRight";
             this.buttonRight.Size = new System.Drawing.Size(60, 60);
             this.buttonRight.TabIndex = 2;
+            this.toolTipButton.SetToolTip(this.buttonRight, "方向右");
             this.buttonRight.UseVisualStyleBackColor = true;
             this.buttonRight.Click += new System.EventHandler(this.buttonKey_Click);
             // 
@@ -618,6 +626,7 @@
             this.buttonLeft.Name = "buttonLeft";
             this.buttonLeft.Size = new System.Drawing.Size(60, 60);
             this.buttonLeft.TabIndex = 2;
+            this.toolTipButton.SetToolTip(this.buttonLeft, "方向左");
             this.buttonLeft.UseVisualStyleBackColor = true;
             this.buttonLeft.Click += new System.EventHandler(this.buttonKey_Click);
             // 
@@ -629,6 +638,7 @@
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(60, 60);
             this.buttonBack.TabIndex = 0;
+            this.toolTipButton.SetToolTip(this.buttonBack, "返回");
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonKey_Click);
             // 
@@ -640,6 +650,7 @@
             this.buttonMenu.Name = "buttonMenu";
             this.buttonMenu.Size = new System.Drawing.Size(60, 60);
             this.buttonMenu.TabIndex = 1;
+            this.toolTipButton.SetToolTip(this.buttonMenu, "菜单");
             this.buttonMenu.UseVisualStyleBackColor = true;
             this.buttonMenu.Click += new System.EventHandler(this.buttonKey_Click);
             // 
@@ -651,6 +662,7 @@
             this.buttonHome.Name = "buttonHome";
             this.buttonHome.Size = new System.Drawing.Size(60, 60);
             this.buttonHome.TabIndex = 1;
+            this.toolTipButton.SetToolTip(this.buttonHome, "主页");
             this.buttonHome.UseVisualStyleBackColor = true;
             this.buttonHome.Click += new System.EventHandler(this.buttonKey_Click);
             // 
@@ -965,35 +977,35 @@
             // toolStripMenuItemDeviceInfo
             // 
             this.toolStripMenuItemDeviceInfo.Name = "toolStripMenuItemDeviceInfo";
-            this.toolStripMenuItemDeviceInfo.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemDeviceInfo.Size = new System.Drawing.Size(140, 22);
             this.toolStripMenuItemDeviceInfo.Text = "设备信息(&I)";
             this.toolStripMenuItemDeviceInfo.Click += new System.EventHandler(this.menu_Click);
             // 
             // toolStripMenuItemKey
             // 
             this.toolStripMenuItemKey.Name = "toolStripMenuItemKey";
-            this.toolStripMenuItemKey.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemKey.Size = new System.Drawing.Size(140, 22);
             this.toolStripMenuItemKey.Text = "按键控制(&K)";
             this.toolStripMenuItemKey.Click += new System.EventHandler(this.menu_Click);
             // 
             // toolStripMenuItemPackage
             // 
             this.toolStripMenuItemPackage.Name = "toolStripMenuItemPackage";
-            this.toolStripMenuItemPackage.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemPackage.Size = new System.Drawing.Size(140, 22);
             this.toolStripMenuItemPackage.Text = "程序列表(&L)";
             this.toolStripMenuItemPackage.Click += new System.EventHandler(this.menu_Click);
             // 
             // toolStripMenuItemProcess
             // 
             this.toolStripMenuItemProcess.Name = "toolStripMenuItemProcess";
-            this.toolStripMenuItemProcess.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemProcess.Size = new System.Drawing.Size(140, 22);
             this.toolStripMenuItemProcess.Text = "进程列表(&P)";
             this.toolStripMenuItemProcess.Click += new System.EventHandler(this.menu_Click);
             // 
             // toolStripMenuItemSystem
             // 
             this.toolStripMenuItemSystem.Name = "toolStripMenuItemSystem";
-            this.toolStripMenuItemSystem.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemSystem.Size = new System.Drawing.Size(140, 22);
             this.toolStripMenuItemSystem.Text = "系统控制(S)";
             this.toolStripMenuItemSystem.Click += new System.EventHandler(this.menu_Click);
             // 
