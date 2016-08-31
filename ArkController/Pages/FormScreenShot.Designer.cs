@@ -120,7 +120,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormScreenShot";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "屏幕截图";
             this.Load += new System.EventHandler(this.FormScreenShot_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

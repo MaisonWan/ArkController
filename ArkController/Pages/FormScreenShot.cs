@@ -15,9 +15,10 @@ namespace ArkController.Pages
         private string screenShotPath = null;
         private IConnect connect = null;
 
-        public FormScreenShot()
+        public FormScreenShot(IConnect connect)
         {
             InitializeComponent();
+            this.connect = connect;
         }
 
         private void buttonQuit_Click(object sender, EventArgs e)
@@ -34,11 +35,6 @@ namespace ArkController.Pages
             get { return this.screenShotPath; }
         }
 
-        public IConnect Connect
-        {
-            set { this.connect = value; }
-        }
-
         private void FormScreenShot_Load(object sender, EventArgs e)
         {
             ReloadPicture();
@@ -46,10 +42,7 @@ namespace ArkController.Pages
 
         public void ReloadPicture()
         {
-            if (File.Exists(screenShotPath))
-            {
-                this.pictureBox1.ImageLocation = this.screenShotPath;
-            }
+            buttonRefresh_Click(null, null);
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -83,11 +76,27 @@ namespace ArkController.Pages
 
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
-            string localPath = Environment.CurrentDirectory + "\\screen.png";
-            if (connect.GetScreenShot(localPath))
+            this.screenShotPath = GetScreemShotPath();
+            if (connect.GetScreenShot(this.screenShotPath))
             {
                 this.pictureBox1.ImageLocation = this.screenShotPath;
             }
+        }
+
+        /// <summary>
+        /// 得到屏幕截图路径
+        /// </summary>
+        /// <returns></returns>
+        private string GetScreemShotPath()
+        {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string appDataPath = path + @"\ArkController\Screen";
+            if (!Directory.Exists(appDataPath))
+            {
+                Directory.CreateDirectory(appDataPath);
+            }
+            string localPath = appDataPath + @"\screenshot";
+            return localPath;
         }
 
         private void buttonClip_Click(object sender, EventArgs e)

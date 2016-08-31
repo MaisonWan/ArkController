@@ -228,24 +228,18 @@ namespace ArkController
 
         private void buttonScreen_Click(object sender, EventArgs e)
         {
-            string localPath = Environment.CurrentDirectory + "\\screen.png";
-            if (connect.GetScreenShot(localPath))
+            if (screenShot == null || screenShot.IsDisposed)
             {
-                if (screenShot == null || screenShot.IsDisposed)
-                {
-                    screenShot = new FormScreenShot();
-                }
-                screenShot.ScreenShotPath = localPath;
-                screenShot.Connect = connect;
-                if (screenShot.Visible)
-                {
-                    screenShot.ReloadPicture();
-                    screenShot.Activate();
-                }
-                else
-                {
-                    screenShot.Show();
-                }
+                screenShot = new FormScreenShot(this.connect);
+            }
+            if (screenShot.Visible)
+            {
+                screenShot.ReloadPicture();
+                screenShot.Activate();
+            }
+            else
+            {
+                screenShot.Show();
             }
         }
 
