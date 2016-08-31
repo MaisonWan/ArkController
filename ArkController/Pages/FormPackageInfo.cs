@@ -20,7 +20,11 @@ namespace ArkController.Pages
         public string PakcageName
         {
             get { return this.packageName; }
-            set { this.packageName = value; }
+            set 
+            { 
+                this.packageName = value;
+                this.textBoxPackage.Text = value;
+            }
         }
 
         public FormPackageInfo(IConnect connect)
@@ -31,13 +35,13 @@ namespace ArkController.Pages
 
         private void FormPackageInfo_Load(object sender, EventArgs e)
         {
-            
-            UpdatePackageInfo(this.packageName);
+
+            UpdatePackageInfo(this.textBoxPackage.Text);
         }
 
         private void buttonGetPackageInfo_Click(object sender, EventArgs e)
         {
-            UpdatePackageInfo(this.packageName);
+            UpdatePackageInfo(this.textBoxPackage.Text);
         }
 
         /// <summary>
@@ -47,7 +51,6 @@ namespace ArkController.Pages
         public void UpdatePackageInfo(string package)
         {
             this.Text = package;
-            this.textBoxPackage.Text = package;
             string cmd = "shell dumpsys package " + package;
             this.textBoxPackageInfo.Text = this.connect.ExecuteAdb(cmd);
         }

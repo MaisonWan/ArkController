@@ -65,8 +65,11 @@ namespace ArkController
         {
             string cmd = "shell dumpsys battery";
             string info = connect.ExecuteAdb(cmd);
-            manager.BatteryParser = BatteryParser.Parser(info);
-            this.pictureBoxBattery.Image = manager.BatteryParser.BatteryImage;
+            if (!String.IsNullOrEmpty(info))
+            {
+                manager.BatteryParser = BatteryParser.Parser(info);
+                this.pictureBoxBattery.Image = manager.BatteryParser.BatteryImage;
+            }
         }
 
         /// <summary>
