@@ -136,6 +136,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -164,7 +165,7 @@
   <ItemGroup>
     <None Include="Resources\save.png" />
     <None Include="Resources\empty_trash.png" />
-    <EmbeddedResource Include="adb.exe" />
+    <None Include="adb" />
     <Content Include="app.ico" />
     <None Include="Resources\screen_scale.png" />
     <None Include="Resources\battery_6.png" />
