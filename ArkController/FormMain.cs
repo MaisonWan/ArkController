@@ -502,20 +502,8 @@ namespace ArkController
         private void buttonProcessList_Click(object sender, EventArgs e)
         {
             List<ProcessData.Data> processList = manager.Process.GetCurrentProcessList();
-            this.listViewProcessList.BeginUpdate();
-            this.listViewProcessList.Items.Clear();
-            bool needFilter = this.checkBoxProcess.Checked && !string.IsNullOrEmpty(this.textBoxProcess.Text);
             foreach (ProcessData.Data data in processList)
             {
-                if (needFilter && !data.User.Contains(this.textBoxProcess.Text))
-                {
-                    // 过滤关键词
-                    continue;
-                }
-                if (this.comboBoxProcess.SelectedIndex > 0)
-                {
-
-                }
                 ListViewItem item = new ListViewItem(data.User);
                 item.SubItems.Add(data.Pid);
                 item.SubItems.Add(data.Ppid);
@@ -524,18 +512,17 @@ namespace ArkController
                 item.SubItems.Add(data.Name);
                 this.listViewProcessList.Items.Add(item);
             }
-            this.listViewProcessList.EndUpdate();
         }
 
         private void listViewProcessList_Resize(object sender, EventArgs e)
         {
             int width = this.listViewProcessList.Width;
-            this.listViewProcessList.Columns[0].Width = (int)(width * 0.1f);
-            this.listViewProcessList.Columns[1].Width = (int)(width * 0.1f);
-            this.listViewProcessList.Columns[2].Width = (int)(width * 0.1f);
-            this.listViewProcessList.Columns[3].Width = (int)(width * 0.1f);
-            this.listViewProcessList.Columns[4].Width = (int)(width * 0.1f);
-            this.listViewProcessList.Columns[5].Width = (int)(width * 0.50f);
+            this.listViewProcessList.Columns[0].Width = (int)(width * 0.14f);
+            this.listViewProcessList.Columns[1].Width = (int)(width * 0.14f);
+            this.listViewProcessList.Columns[2].Width = (int)(width * 0.14f);
+            this.listViewProcessList.Columns[3].Width = (int)(width * 0.14f);
+            this.listViewProcessList.Columns[4].Width = (int)(width * 0.14f);
+            this.listViewProcessList.Columns[5].Width = (int)(width * 0.30f);
         }
         #endregion
 
