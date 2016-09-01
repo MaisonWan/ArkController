@@ -45,7 +45,8 @@ namespace ArkController
             this.listViewPackage.ListViewItemSorter = sorter;
             this.listViewProcessList.ListViewItemSorter = sorter;
             // 默认选择所有
-            this.comboBoxPackageType.SelectedIndex = 0; 
+            this.comboBoxPackageType.SelectedIndex = 0;
+            this.comboBoxProcess.SelectedIndex = 1;
             updateDeviceList();
         }
 
@@ -502,8 +503,21 @@ namespace ArkController
         private void buttonProcessList_Click(object sender, EventArgs e)
         {
             List<ProcessData.Data> processList = manager.Process.GetCurrentProcessList();
+            this.listViewProcessList.BeginUpdate();
+            this.listViewProcessList.Items.Clear();
+            bool needFilter = this.checkBoxProcess.Checked && !string.IsNullOrEmpty(this.textBoxProcessFilter.Text);
             foreach (ProcessData.Data data in processList)
             {
+                if (needFilter && !data.Name.Contains(this.textBoxProcessFilter.Text))
+                {
+                    continue;
+                }
+                int index = this.comboBoxProcess.SelectedIndex;
+                if ((index == 1 && !data.User.StartsWith("u0_")) 
+                    || (index == 2 && data.User.StartsWith("u0_")))
+                {
+                    continue;
+                }
                 ListViewItem item = new ListViewItem(data.User);
                 item.SubItems.Add(data.Pid);
                 item.SubItems.Add(data.Ppid);
@@ -512,17 +526,18 @@ namespace ArkController
                 item.SubItems.Add(data.Name);
                 this.listViewProcessList.Items.Add(item);
             }
+            this.listViewProcessList.EndUpdate();
         }
 
         private void listViewProcessList_Resize(object sender, EventArgs e)
         {
             int width = this.listViewProcessList.Width;
-            this.listViewProcessList.Columns[0].Width = (int)(width * 0.14f);
-            this.listViewProcessList.Columns[1].Width = (int)(width * 0.14f);
-            this.listViewProcessList.Columns[2].Width = (int)(width * 0.14f);
-            this.listViewProcessList.Columns[3].Width = (int)(width * 0.14f);
-            this.listViewProcessList.Columns[4].Width = (int)(width * 0.14f);
-            this.listViewProcessList.Columns[5].Width = (int)(width * 0.30f);
+            this.listViewProcessList.Columns[0].Width = (int)(width * 0.1f);
+            this.listViewProcessList.Columns[1].Width = (int)(width * 0.1f);
+            this.listViewProcessList.Columns[2].Width = (int)(width * 0.1f);
+            this.listViewProcessList.Columns[3].Width = (int)(width * 0.1f);
+            this.listViewProcessList.Columns[4].Width = (int)(width * 0.1f);
+            this.listViewProcessList.Columns[5].Width = (int)(width * 0.50f);
         }
         #endregion
 
@@ -554,6 +569,21 @@ namespace ArkController
                     sw.Close();
                     fs.Close();
                 }
+            }
+        }
+
+        private void toolStripProcessMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.listViewProcessList.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            if (sender == this.toolStripMenuItemKillProcess)
+            {
+                // 结束进程
+                string pid = this.listViewProcessList.SelectedItems[0].SubItems[1].Text.Trim();
+                string result = manager.Process.KillProcess(pid);
+                this.log.Write(result);
             }
         }
 

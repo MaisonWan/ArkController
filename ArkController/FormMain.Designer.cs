@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonLogSave = new System.Windows.Forms.Button();
+            this.buttonLogClear = new System.Windows.Forms.Button();
             this.textBoxLog = new System.Windows.Forms.TextBox();
             this.buttonSendText = new System.Windows.Forms.Button();
             this.textBoxSendText = new System.Windows.Forms.TextBox();
@@ -118,9 +120,12 @@
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipBattery = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
-            this.buttonLogClear = new System.Windows.Forms.Button();
-            this.buttonLogSave = new System.Windows.Forms.Button();
             this.saveFileDialogLog = new System.Windows.Forms.SaveFileDialog();
+            this.comboBoxProcess = new System.Windows.Forms.ComboBox();
+            this.checkBoxProcess = new System.Windows.Forms.CheckBox();
+            this.textBoxProcessFilter = new System.Windows.Forms.TextBox();
+            this.contextMenuStripProcess = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemKillProcess = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.toolStripKibot.SuspendLayout();
@@ -137,6 +142,7 @@
             this.tabPageControl.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.contextMenuStripProcess.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -150,6 +156,28 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "运行日志";
+            // 
+            // buttonLogSave
+            // 
+            this.buttonLogSave.BackgroundImage = global::ArkController.Properties.Resources.save;
+            this.buttonLogSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonLogSave.Location = new System.Drawing.Point(4, 56);
+            this.buttonLogSave.Name = "buttonLogSave";
+            this.buttonLogSave.Size = new System.Drawing.Size(30, 30);
+            this.buttonLogSave.TabIndex = 1;
+            this.buttonLogSave.UseVisualStyleBackColor = true;
+            this.buttonLogSave.Click += new System.EventHandler(this.buttonLogSave_Click);
+            // 
+            // buttonLogClear
+            // 
+            this.buttonLogClear.BackgroundImage = global::ArkController.Properties.Resources.empty_trash;
+            this.buttonLogClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonLogClear.Location = new System.Drawing.Point(4, 20);
+            this.buttonLogClear.Name = "buttonLogClear";
+            this.buttonLogClear.Size = new System.Drawing.Size(30, 30);
+            this.buttonLogClear.TabIndex = 1;
+            this.buttonLogClear.UseVisualStyleBackColor = true;
+            this.buttonLogClear.Click += new System.EventHandler(this.buttonLogClear_Click);
             // 
             // textBoxLog
             // 
@@ -705,6 +733,9 @@
             // 
             // tabPageProcess
             // 
+            this.tabPageProcess.Controls.Add(this.comboBoxProcess);
+            this.tabPageProcess.Controls.Add(this.checkBoxProcess);
+            this.tabPageProcess.Controls.Add(this.textBoxProcessFilter);
             this.tabPageProcess.Controls.Add(this.buttonProcessList);
             this.tabPageProcess.Controls.Add(this.listViewProcessList);
             this.tabPageProcess.ImageKey = "point_list.png";
@@ -735,6 +766,7 @@
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6});
+            this.listViewProcessList.ContextMenuStrip = this.contextMenuStripProcess;
             this.listViewProcessList.FullRowSelect = true;
             this.listViewProcessList.GridLines = true;
             this.listViewProcessList.Location = new System.Drawing.Point(7, 44);
@@ -1036,27 +1068,53 @@
             this.toolTipBattery.IsBalloon = true;
             this.toolTipBattery.ReshowDelay = 100;
             // 
-            // buttonLogClear
+            // comboBoxProcess
             // 
-            this.buttonLogClear.BackgroundImage = global::ArkController.Properties.Resources.empty_trash;
-            this.buttonLogClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonLogClear.Location = new System.Drawing.Point(4, 20);
-            this.buttonLogClear.Name = "buttonLogClear";
-            this.buttonLogClear.Size = new System.Drawing.Size(30, 30);
-            this.buttonLogClear.TabIndex = 1;
-            this.buttonLogClear.UseVisualStyleBackColor = true;
-            this.buttonLogClear.Click += new System.EventHandler(this.buttonLogClear_Click);
+            this.comboBoxProcess.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxProcess.FormattingEnabled = true;
+            this.comboBoxProcess.Items.AddRange(new object[] {
+            "全部进程",
+            "用户进程",
+            "系统进程"});
+            this.comboBoxProcess.Location = new System.Drawing.Point(345, 17);
+            this.comboBoxProcess.Name = "comboBoxProcess";
+            this.comboBoxProcess.Size = new System.Drawing.Size(83, 20);
+            this.comboBoxProcess.TabIndex = 21;
+            this.toolTipButton.SetToolTip(this.comboBoxProcess, "选择显示程序类别");
             // 
-            // buttonLogSave
+            // checkBoxProcess
             // 
-            this.buttonLogSave.BackgroundImage = global::ArkController.Properties.Resources.save;
-            this.buttonLogSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonLogSave.Location = new System.Drawing.Point(4, 56);
-            this.buttonLogSave.Name = "buttonLogSave";
-            this.buttonLogSave.Size = new System.Drawing.Size(30, 30);
-            this.buttonLogSave.TabIndex = 1;
-            this.buttonLogSave.UseVisualStyleBackColor = true;
-            this.buttonLogSave.Click += new System.EventHandler(this.buttonLogSave_Click);
+            this.checkBoxProcess.AutoSize = true;
+            this.checkBoxProcess.Checked = true;
+            this.checkBoxProcess.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxProcess.Location = new System.Drawing.Point(290, 19);
+            this.checkBoxProcess.Name = "checkBoxProcess";
+            this.checkBoxProcess.Size = new System.Drawing.Size(48, 16);
+            this.checkBoxProcess.TabIndex = 19;
+            this.checkBoxProcess.Text = "过滤";
+            this.checkBoxProcess.UseVisualStyleBackColor = true;
+            // 
+            // textBoxProcessFilter
+            // 
+            this.textBoxProcessFilter.Location = new System.Drawing.Point(99, 17);
+            this.textBoxProcessFilter.MaxLength = 255;
+            this.textBoxProcessFilter.Name = "textBoxProcessFilter";
+            this.textBoxProcessFilter.Size = new System.Drawing.Size(182, 21);
+            this.textBoxProcessFilter.TabIndex = 20;
+            // 
+            // contextMenuStripProcess
+            // 
+            this.contextMenuStripProcess.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemKillProcess});
+            this.contextMenuStripProcess.Name = "contextMenuStripProcess";
+            this.contextMenuStripProcess.Size = new System.Drawing.Size(153, 48);
+            // 
+            // toolStripMenuItemKillProcess
+            // 
+            this.toolStripMenuItemKillProcess.Name = "toolStripMenuItemKillProcess";
+            this.toolStripMenuItemKillProcess.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemKillProcess.Text = "结束进程(&K)";
+            this.toolStripMenuItemKillProcess.Click += new System.EventHandler(this.toolStripProcessMenuItem_Click);
             // 
             // FormMain
             // 
@@ -1094,10 +1152,12 @@
             this.tabPagePackage.ResumeLayout(false);
             this.tabPagePackage.PerformLayout();
             this.tabPageProcess.ResumeLayout(false);
+            this.tabPageProcess.PerformLayout();
             this.tabPageControl.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.contextMenuStripProcess.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1196,6 +1256,11 @@
         private System.Windows.Forms.Button buttonLogClear;
         private System.Windows.Forms.Button buttonLogSave;
         private System.Windows.Forms.SaveFileDialog saveFileDialogLog;
+        private System.Windows.Forms.ComboBox comboBoxProcess;
+        private System.Windows.Forms.CheckBox checkBoxProcess;
+        private System.Windows.Forms.TextBox textBoxProcessFilter;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripProcess;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemKillProcess;
     }
 }
 
