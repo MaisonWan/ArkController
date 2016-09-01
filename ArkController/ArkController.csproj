@@ -84,6 +84,12 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\FormMemInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\FormMemInfo.Designer.cs">
+      <DependentUpon>FormMemInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\FormPackageInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\FormMemInfo.resx">
+      <DependentUpon>FormMemInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\FormPackageInfo.resx">
       <DependentUpon>FormPackageInfo.cs</DependentUpon>
