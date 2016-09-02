@@ -58,6 +58,7 @@
             this.textBoxPackageInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxPackageInfo.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxPackageInfo.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxPackageInfo.Location = new System.Drawing.Point(13, 46);
             this.textBoxPackageInfo.Multiline = true;
@@ -66,6 +67,7 @@
             this.textBoxPackageInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxPackageInfo.Size = new System.Drawing.Size(1020, 666);
             this.textBoxPackageInfo.TabIndex = 2;
+            this.textBoxPackageInfo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPackageInfo_KeyDown);
             // 
             // buttonGetPackageInfo
             // 

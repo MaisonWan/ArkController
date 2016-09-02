@@ -54,5 +54,13 @@ namespace ArkController.Pages
             string cmd = "shell dumpsys package " + package;
             this.textBoxPackageInfo.Text = this.connect.ExecuteAdb(cmd);
         }
+
+        private void textBoxPackageInfo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.A)
+            {
+                ((TextBox)sender).SelectAll();
+            }
+        }
     }
 }
