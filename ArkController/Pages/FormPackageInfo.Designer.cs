@@ -32,6 +32,8 @@
             this.textBoxPackage = new System.Windows.Forms.TextBox();
             this.textBoxPackageInfo = new System.Windows.Forms.TextBox();
             this.buttonGetPackageInfo = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.saveFileDialogLog = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // label1
@@ -50,7 +52,7 @@
             this.textBoxPackage.Location = new System.Drawing.Point(60, 10);
             this.textBoxPackage.MaxLength = 1024;
             this.textBoxPackage.Name = "textBoxPackage";
-            this.textBoxPackage.Size = new System.Drawing.Size(884, 21);
+            this.textBoxPackage.Size = new System.Drawing.Size(811, 21);
             this.textBoxPackage.TabIndex = 1;
             // 
             // textBoxPackageInfo
@@ -72,7 +74,7 @@
             // buttonGetPackageInfo
             // 
             this.buttonGetPackageInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonGetPackageInfo.Location = new System.Drawing.Point(958, 8);
+            this.buttonGetPackageInfo.Location = new System.Drawing.Point(877, 8);
             this.buttonGetPackageInfo.Name = "buttonGetPackageInfo";
             this.buttonGetPackageInfo.Size = new System.Drawing.Size(75, 23);
             this.buttonGetPackageInfo.TabIndex = 3;
@@ -80,11 +82,23 @@
             this.buttonGetPackageInfo.UseVisualStyleBackColor = true;
             this.buttonGetPackageInfo.Click += new System.EventHandler(this.buttonGetPackageInfo_Click);
             // 
+            // buttonSave
+            // 
+            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSave.Location = new System.Drawing.Point(958, 8);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 3;
+            this.buttonSave.Text = "保存";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
             // FormPackageInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1045, 714);
+            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonGetPackageInfo);
             this.Controls.Add(this.textBoxPackageInfo);
             this.Controls.Add(this.textBoxPackage);
@@ -104,5 +118,7 @@
         private System.Windows.Forms.TextBox textBoxPackage;
         private System.Windows.Forms.TextBox textBoxPackageInfo;
         private System.Windows.Forms.Button buttonGetPackageInfo;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.SaveFileDialog saveFileDialogLog;
     }
 }
