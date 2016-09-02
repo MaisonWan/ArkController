@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMemInfo));
             this.buttonStop = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
@@ -36,13 +35,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxContent = new System.Windows.Forms.TextBox();
             this.comboBoxInterval = new System.Windows.Forms.ComboBox();
-            this.timerMeminfo = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // buttonStop
             // 
             this.buttonStop.Enabled = false;
-            this.buttonStop.Location = new System.Drawing.Point(489, 10);
+            this.buttonStop.Location = new System.Drawing.Point(463, 10);
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(75, 23);
             this.buttonStop.TabIndex = 4;
@@ -52,7 +50,7 @@
             // 
             // buttonStart
             // 
-            this.buttonStart.Location = new System.Drawing.Point(408, 10);
+            this.buttonStart.Location = new System.Drawing.Point(382, 10);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(75, 23);
             this.buttonStart.TabIndex = 3;
@@ -81,40 +79,39 @@
             this.textBoxContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxContent.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxContent.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxContent.CausesValidation = false;
+            this.textBoxContent.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxContent.Location = new System.Drawing.Point(10, 39);
             this.textBoxContent.Multiline = true;
             this.textBoxContent.Name = "textBoxContent";
             this.textBoxContent.ReadOnly = true;
             this.textBoxContent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxContent.Size = new System.Drawing.Size(902, 426);
-            this.textBoxContent.TabIndex = 11;
+            this.textBoxContent.Size = new System.Drawing.Size(1016, 676);
+            this.textBoxContent.TabIndex = 0;
+            this.textBoxContent.TabStop = false;
+            this.textBoxContent.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxContent_KeyDown);
             // 
             // comboBoxInterval
             // 
             this.comboBoxInterval.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxInterval.FormattingEnabled = true;
             this.comboBoxInterval.Items.AddRange(new object[] {
-            "选择间隔时间",
-            "1秒",
-            "2秒",
-            "5秒",
-            "10秒"});
+            "间隔1秒",
+            "间隔2秒",
+            "间隔3秒",
+            "间隔5秒",
+            "间隔10秒"});
             this.comboBoxInterval.Location = new System.Drawing.Point(298, 12);
             this.comboBoxInterval.Name = "comboBoxInterval";
-            this.comboBoxInterval.Size = new System.Drawing.Size(101, 20);
+            this.comboBoxInterval.Size = new System.Drawing.Size(78, 20);
             this.comboBoxInterval.TabIndex = 2;
-            // 
-            // timerMeminfo
-            // 
-            this.timerMeminfo.Interval = 1000;
-            this.timerMeminfo.Tick += new System.EventHandler(this.timerMeminfo_Tick);
             // 
             // FormMemInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 698);
+            this.ClientSize = new System.Drawing.Size(1027, 962);
             this.Controls.Add(this.comboBoxInterval);
             this.Controls.Add(this.textBoxContent);
             this.Controls.Add(this.buttonStop);
@@ -125,6 +122,7 @@
             this.Name = "FormMemInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "内存监测";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMemInfo_FormClosing);
             this.Load += new System.EventHandler(this.FormMemInfo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -139,6 +137,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxContent;
         private System.Windows.Forms.ComboBox comboBoxInterval;
-        private System.Windows.Forms.Timer timerMeminfo;
     }
 }
