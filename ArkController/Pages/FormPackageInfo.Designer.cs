@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPackageInfo));
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxPackage = new System.Windows.Forms.TextBox();
             this.textBoxPackageInfo = new System.Windows.Forms.TextBox();
@@ -103,9 +104,10 @@
             this.Controls.Add(this.textBoxPackageInfo);
             this.Controls.Add(this.textBoxPackage);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPackageInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormPackageInfo";
+            this.Text = "包信息";
             this.Load += new System.EventHandler(this.FormPackageInfo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -86,6 +86,9 @@
             this.tabPagePackage = new System.Windows.Forms.TabPage();
             this.comboBoxPackageType = new System.Windows.Forms.ComboBox();
             this.tabPageProcess = new System.Windows.Forms.TabPage();
+            this.comboBoxProcess = new System.Windows.Forms.ComboBox();
+            this.checkBoxProcess = new System.Windows.Forms.CheckBox();
+            this.textBoxProcessFilter = new System.Windows.Forms.TextBox();
             this.buttonProcessList = new System.Windows.Forms.Button();
             this.listViewProcessList = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -94,6 +97,8 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStripProcess = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemKillProcess = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageControl = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonDeviceDetect = new System.Windows.Forms.Button();
@@ -121,11 +126,7 @@
             this.toolTipBattery = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
             this.saveFileDialogLog = new System.Windows.Forms.SaveFileDialog();
-            this.comboBoxProcess = new System.Windows.Forms.ComboBox();
-            this.checkBoxProcess = new System.Windows.Forms.CheckBox();
-            this.textBoxProcessFilter = new System.Windows.Forms.TextBox();
-            this.contextMenuStripProcess = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItemKillProcess = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemMeminfo = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.toolStripKibot.SuspendLayout();
@@ -139,10 +140,10 @@
             this.groupBox1.SuspendLayout();
             this.tabPagePackage.SuspendLayout();
             this.tabPageProcess.SuspendLayout();
+            this.contextMenuStripProcess.SuspendLayout();
             this.tabPageControl.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.contextMenuStripProcess.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -747,6 +748,40 @@
             this.tabPageProcess.Text = "进程列表";
             this.tabPageProcess.UseVisualStyleBackColor = true;
             // 
+            // comboBoxProcess
+            // 
+            this.comboBoxProcess.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxProcess.FormattingEnabled = true;
+            this.comboBoxProcess.Items.AddRange(new object[] {
+            "全部进程",
+            "用户进程",
+            "系统进程"});
+            this.comboBoxProcess.Location = new System.Drawing.Point(345, 17);
+            this.comboBoxProcess.Name = "comboBoxProcess";
+            this.comboBoxProcess.Size = new System.Drawing.Size(83, 20);
+            this.comboBoxProcess.TabIndex = 21;
+            this.toolTipButton.SetToolTip(this.comboBoxProcess, "选择显示程序类别");
+            // 
+            // checkBoxProcess
+            // 
+            this.checkBoxProcess.AutoSize = true;
+            this.checkBoxProcess.Checked = true;
+            this.checkBoxProcess.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxProcess.Location = new System.Drawing.Point(290, 19);
+            this.checkBoxProcess.Name = "checkBoxProcess";
+            this.checkBoxProcess.Size = new System.Drawing.Size(48, 16);
+            this.checkBoxProcess.TabIndex = 19;
+            this.checkBoxProcess.Text = "过滤";
+            this.checkBoxProcess.UseVisualStyleBackColor = true;
+            // 
+            // textBoxProcessFilter
+            // 
+            this.textBoxProcessFilter.Location = new System.Drawing.Point(99, 17);
+            this.textBoxProcessFilter.MaxLength = 255;
+            this.textBoxProcessFilter.Name = "textBoxProcessFilter";
+            this.textBoxProcessFilter.Size = new System.Drawing.Size(182, 21);
+            this.textBoxProcessFilter.TabIndex = 20;
+            // 
             // buttonProcessList
             // 
             this.buttonProcessList.Location = new System.Drawing.Point(7, 15);
@@ -802,6 +837,21 @@
             // columnHeader6
             // 
             this.columnHeader6.Text = "NAME";
+            // 
+            // contextMenuStripProcess
+            // 
+            this.contextMenuStripProcess.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemMeminfo,
+            this.toolStripMenuItemKillProcess});
+            this.contextMenuStripProcess.Name = "contextMenuStripProcess";
+            this.contextMenuStripProcess.Size = new System.Drawing.Size(161, 70);
+            // 
+            // toolStripMenuItemKillProcess
+            // 
+            this.toolStripMenuItemKillProcess.Name = "toolStripMenuItemKillProcess";
+            this.toolStripMenuItemKillProcess.Size = new System.Drawing.Size(160, 22);
+            this.toolStripMenuItemKillProcess.Text = "结束进程(&K)";
+            this.toolStripMenuItemKillProcess.Click += new System.EventHandler(this.toolStripProcessMenuItem_Click);
             // 
             // tabPageControl
             // 
@@ -1068,53 +1118,12 @@
             this.toolTipBattery.IsBalloon = true;
             this.toolTipBattery.ReshowDelay = 100;
             // 
-            // comboBoxProcess
+            // toolStripMenuItemMeminfo
             // 
-            this.comboBoxProcess.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxProcess.FormattingEnabled = true;
-            this.comboBoxProcess.Items.AddRange(new object[] {
-            "全部进程",
-            "用户进程",
-            "系统进程"});
-            this.comboBoxProcess.Location = new System.Drawing.Point(345, 17);
-            this.comboBoxProcess.Name = "comboBoxProcess";
-            this.comboBoxProcess.Size = new System.Drawing.Size(83, 20);
-            this.comboBoxProcess.TabIndex = 21;
-            this.toolTipButton.SetToolTip(this.comboBoxProcess, "选择显示程序类别");
-            // 
-            // checkBoxProcess
-            // 
-            this.checkBoxProcess.AutoSize = true;
-            this.checkBoxProcess.Checked = true;
-            this.checkBoxProcess.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxProcess.Location = new System.Drawing.Point(290, 19);
-            this.checkBoxProcess.Name = "checkBoxProcess";
-            this.checkBoxProcess.Size = new System.Drawing.Size(48, 16);
-            this.checkBoxProcess.TabIndex = 19;
-            this.checkBoxProcess.Text = "过滤";
-            this.checkBoxProcess.UseVisualStyleBackColor = true;
-            // 
-            // textBoxProcessFilter
-            // 
-            this.textBoxProcessFilter.Location = new System.Drawing.Point(99, 17);
-            this.textBoxProcessFilter.MaxLength = 255;
-            this.textBoxProcessFilter.Name = "textBoxProcessFilter";
-            this.textBoxProcessFilter.Size = new System.Drawing.Size(182, 21);
-            this.textBoxProcessFilter.TabIndex = 20;
-            // 
-            // contextMenuStripProcess
-            // 
-            this.contextMenuStripProcess.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemKillProcess});
-            this.contextMenuStripProcess.Name = "contextMenuStripProcess";
-            this.contextMenuStripProcess.Size = new System.Drawing.Size(153, 48);
-            // 
-            // toolStripMenuItemKillProcess
-            // 
-            this.toolStripMenuItemKillProcess.Name = "toolStripMenuItemKillProcess";
-            this.toolStripMenuItemKillProcess.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItemKillProcess.Text = "结束进程(&K)";
-            this.toolStripMenuItemKillProcess.Click += new System.EventHandler(this.toolStripProcessMenuItem_Click);
+            this.toolStripMenuItemMeminfo.Name = "toolStripMenuItemMeminfo";
+            this.toolStripMenuItemMeminfo.Size = new System.Drawing.Size(160, 22);
+            this.toolStripMenuItemMeminfo.Text = "进程内存占用(&I)";
+            this.toolStripMenuItemMeminfo.Click += new System.EventHandler(this.toolStripProcessMenuItem_Click);
             // 
             // FormMain
             // 
@@ -1153,11 +1162,11 @@
             this.tabPagePackage.PerformLayout();
             this.tabPageProcess.ResumeLayout(false);
             this.tabPageProcess.PerformLayout();
+            this.contextMenuStripProcess.ResumeLayout(false);
             this.tabPageControl.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.contextMenuStripProcess.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1261,6 +1270,7 @@
         private System.Windows.Forms.TextBox textBoxProcessFilter;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripProcess;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemKillProcess;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemMeminfo;
     }
 }
 

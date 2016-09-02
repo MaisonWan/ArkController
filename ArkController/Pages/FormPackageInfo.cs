@@ -36,7 +36,6 @@ namespace ArkController.Pages
 
         private void FormPackageInfo_Load(object sender, EventArgs e)
         {
-
             UpdatePackageInfo(this.textBoxPackage.Text);
         }
 

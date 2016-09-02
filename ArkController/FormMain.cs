@@ -23,6 +23,7 @@ namespace ArkController
         private FormLogcat logcat = null;
         private FormScreenSize screenSize = null;
         private FormPackageInfo packageInfo = null;
+        private FormMemInfo meminfo = null;
 
         private DeviceManager manager = null;
 
@@ -585,7 +586,25 @@ namespace ArkController
                 string result = manager.Process.KillProcess(pid);
                 this.log.Write(result);
             }
+            else if (sender == this.toolStripMenuItemMeminfo)
+            {
+                string pName = this.listViewProcessList.SelectedItems[0].SubItems[5].Text.Trim();
+                if (meminfo == null || meminfo.IsDisposed)
+                {
+                    meminfo = new FormMemInfo(connect);
+                }
+                meminfo.SetAutoStart(pName);
+                meminfo.Show();
+            }
         }
 
+        /// <summary>
+        /// 获取进程的内存占用
+        /// </summary>
+        /// <param name="pName"></param>
+        private void getProcessMeminfo(string pName)
+        {
+
+        }
     }
 }
