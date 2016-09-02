@@ -61,7 +61,7 @@ namespace ArkController.Pages
         {
             int index = this.comboBoxInterval.SelectedIndex;
             int interval = INTERVAL[index] * 1000;
-            string cmd = "shell dumpsys meminfo " + this.textBoxFilter.Text;
+            string cmd = "shell dumpsys meminfo " + this.textBoxFilter.Text.Trim();
             while (true)
             {
                 this.textBoxContent.Text = this.connect.ExecuteAdb(cmd);
@@ -71,7 +71,6 @@ namespace ArkController.Pages
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            
             switchUpdateThread(true);
         }
 

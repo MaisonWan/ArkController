@@ -172,6 +172,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\performance.png" />
     <None Include="Resources\save.png" />
     <None Include="Resources\empty_trash.png" />
     <Content Include="app.ico" />

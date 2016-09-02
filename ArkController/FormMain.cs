@@ -309,6 +309,22 @@ namespace ArkController
                 screenSize.Show();
             }
         }
+
+        private void buttonMemInfo_Click(object sender, EventArgs e)
+        {
+            if (meminfo == null || meminfo.IsDisposed)
+            {
+                meminfo = new FormMemInfo(connect);
+            }
+            if (meminfo.Visible)
+            {
+                meminfo.Activate();
+            }
+            else
+            {
+                meminfo.Show();
+            }
+        }
         #endregion
 
         #region 包列表
@@ -598,13 +614,5 @@ namespace ArkController
             }
         }
 
-        /// <summary>
-        /// 获取进程的内存占用
-        /// </summary>
-        /// <param name="pName"></param>
-        private void getProcessMeminfo(string pName)
-        {
-
-        }
     }
 }
