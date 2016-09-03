@@ -24,7 +24,7 @@ namespace ArkController.Data
         /// <returns></returns>
         public string[] DeviceList()
         {
-            string log = connect.ExecuteAdb("devices", false);
+            string log = connect.ExecuteAdb("wait-for-device devices", false);
             string[] lines = log.Trim().Split("\n".ToCharArray());
             List<string> list = new List<string>();
             foreach (string line in lines)
@@ -57,7 +57,7 @@ namespace ArkController.Data
         /// <returns></returns>
         public string[] GetCurrentDeviceInfo()
         {
-            string log = connect.ExecuteAdb("devices -l", false);
+            string log = connect.ExecuteAdb("wait-for-device devices -l", false);
             string[] lines = log.Split("\n".ToCharArray());
             string[] result = new string[4];
             foreach (string line in lines)

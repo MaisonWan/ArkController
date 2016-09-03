@@ -528,8 +528,6 @@ namespace ArkController
         {
             //退出时退出adb
             stopAdb();
-            taskThread.Stop();
-            Application.Exit();
         }
 
         /// <summary>
@@ -540,7 +538,18 @@ namespace ArkController
             string cmd = "kill-server";
             TaskInfo t = TaskInfo.Create(TaskType.ExecuteCommand, cmd);
             t.Args = 1;
+            t.ResultHandler = new TaskInfo.EventResultHandler(stopAdbResult);
             taskThread.SendTask(t);
+        }
+
+        /// <summary>
+        /// 停止adb之后回调
+        /// </summary>
+        /// <param name="result"></param>
+        private void stopAdbResult(object result)
+        {
+            taskThread.Stop();
+            Application.Exit();
         }
         #region 当前进程Tab
         private void buttonProcessList_Click(object sender, EventArgs e)

@@ -214,7 +214,7 @@ namespace ArkController.Task
         {
             string cmd = "shell dumpsys battery";
             string result = connect.ExecuteAdb(cmd);
-            if (!String.IsNullOrEmpty(result))
+            if (!String.IsNullOrEmpty(result) && !result.Contains("daemon started successfully "))
             {
                 manager.BatteryParser = BatteryParser.Parser(result);
                 if (task.ResultHandler != null)
