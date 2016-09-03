@@ -124,7 +124,7 @@ namespace ArkController.Task
                 {
                     task.ResultHandler.Invoke(result);
                 }
-                writeLog(string.Format("执行命令：", task.Data));
+                writeLog(string.Format("执行命令：{0}", task.Data));
             }
             else if (task.DataArray != null)
             {

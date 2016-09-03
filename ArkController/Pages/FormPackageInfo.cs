@@ -7,13 +7,14 @@ using System.Text;
 using System.Windows.Forms;
 using ArkController.Kit;
 using System.IO;
+using ArkController.Task;
 
 namespace ArkController.Pages
 {
     public partial class FormPackageInfo : Form
     {
         private string packageName = null;
-        private IConnect connect = null;
+        private ConnectTaskThread taskThread = null;
 
         /// <summary>
         /// 包名，需要获取信息
@@ -31,7 +32,7 @@ namespace ArkController.Pages
         public FormPackageInfo()
         {
             InitializeComponent();
-            //this.connect = connect;
+            taskThread = ConnectTaskThread.GetInstance();
         }
 
         private void FormPackageInfo_Load(object sender, EventArgs e)
@@ -52,7 +53,14 @@ namespace ArkController.Pages
         {
             this.Text = package;
             string cmd = "shell dumpsys package " + package;
-            this.textBoxPackageInfo.Text = this.connect.ExecuteAdb(cmd);
+            TaskInfo tSize = TaskInfo.Create(TaskType.ExecuteCommand, cmd);
+            tSize.ResultHandler = new TaskInfo.EventResultHandler(updatePackageInfoResult);
+            taskThread.SendTask(tSize);
+        }
+
+        private void updatePackageInfoResult(object[] result)
+        {
+            this.textBoxPackageInfo.Text = (string)result[0];
         }
 
         private void textBoxPackageInfo_KeyDown(object sender, KeyEventArgs e)

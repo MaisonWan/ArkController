@@ -77,6 +77,7 @@ namespace ArkController.Pages
             if ((bool)result[0])
             {
                 message = "屏幕尺寸设置成功";
+                getScreenInfo();
             }
             MessageBox.Show(message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -91,6 +92,7 @@ namespace ArkController.Pages
             if ((bool)result[0])
             {
                 message = "设置屏幕像素密度成功";
+                getScreenInfo();
             }
             MessageBox.Show(message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -105,6 +107,7 @@ namespace ArkController.Pages
             if ((bool)result[0])
             {
                 message = "重置屏幕尺寸成功";
+                getScreenInfo();
             }
             MessageBox.Show(message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -119,6 +122,7 @@ namespace ArkController.Pages
             if ((bool)result[0])
             {
                 message = "重置屏幕像素密度成功";
+                getScreenInfo();
             }
             MessageBox.Show(message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

@@ -112,12 +112,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 649);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonClip);
             this.Controls.Add(this.buttonQuit);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonRotate);
             this.Controls.Add(this.buttonRefresh);
-            this.Controls.Add(this.pictureBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormScreenShot";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
