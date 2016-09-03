@@ -7,12 +7,13 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
+using ArkController.Task;
 
 namespace ArkController.Pages
 {
     public partial class FormMemInfo : Form
     {
-        private IConnect connect = null;
+        private ConnectTaskThread taskThread = null;
         private Thread thread = null;
         /// <summary>
         /// 是否自动开始
@@ -28,7 +29,7 @@ namespace ArkController.Pages
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
-            //this.connect = connect;
+            taskThread = ConnectTaskThread.GetInstance();
             this.comboBoxInterval.SelectedIndex = 0;
         }
 
@@ -64,9 +65,16 @@ namespace ArkController.Pages
             string cmd = "shell dumpsys meminfo " + this.textBoxFilter.Text.Trim();
             while (true)
             {
-                this.textBoxContent.Text = this.connect.ExecuteAdb(cmd);
+                TaskInfo tSize = TaskInfo.Create(TaskType.ExecuteCommand, cmd);
+                tSize.ResultHandler = new TaskInfo.EventResultHandler(updateMeminfoResult);
+                taskThread.SendTask(tSize);
                 Thread.Sleep(interval);
             }
+        }
+
+        private void updateMeminfoResult(object[] result)
+        {
+            this.textBoxContent.Text = (string)result[0];
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
