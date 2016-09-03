@@ -183,6 +183,7 @@
             // 
             // textBoxLog
             // 
+            this.textBoxLog.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxLog.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxLog.Location = new System.Drawing.Point(40, 20);
             this.textBoxLog.Multiline = true;
@@ -1080,6 +1081,7 @@
             this.运行信息ToolStripMenuItem.Name = "运行信息ToolStripMenuItem";
             this.运行信息ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.运行信息ToolStripMenuItem.Text = "运行信息";
+            this.运行信息ToolStripMenuItem.Visible = false;
             // 
             // 窗口WToolStripMenuItem
             // 
@@ -1096,35 +1098,35 @@
             // toolStripMenuItemDeviceInfo
             // 
             this.toolStripMenuItemDeviceInfo.Name = "toolStripMenuItemDeviceInfo";
-            this.toolStripMenuItemDeviceInfo.Size = new System.Drawing.Size(140, 22);
+            this.toolStripMenuItemDeviceInfo.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItemDeviceInfo.Text = "设备信息(&I)";
             this.toolStripMenuItemDeviceInfo.Click += new System.EventHandler(this.menu_Click);
             // 
             // toolStripMenuItemKey
             // 
             this.toolStripMenuItemKey.Name = "toolStripMenuItemKey";
-            this.toolStripMenuItemKey.Size = new System.Drawing.Size(140, 22);
+            this.toolStripMenuItemKey.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItemKey.Text = "按键控制(&K)";
             this.toolStripMenuItemKey.Click += new System.EventHandler(this.menu_Click);
             // 
             // toolStripMenuItemPackage
             // 
             this.toolStripMenuItemPackage.Name = "toolStripMenuItemPackage";
-            this.toolStripMenuItemPackage.Size = new System.Drawing.Size(140, 22);
+            this.toolStripMenuItemPackage.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItemPackage.Text = "程序列表(&L)";
             this.toolStripMenuItemPackage.Click += new System.EventHandler(this.menu_Click);
             // 
             // toolStripMenuItemProcess
             // 
             this.toolStripMenuItemProcess.Name = "toolStripMenuItemProcess";
-            this.toolStripMenuItemProcess.Size = new System.Drawing.Size(140, 22);
+            this.toolStripMenuItemProcess.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItemProcess.Text = "进程列表(&P)";
             this.toolStripMenuItemProcess.Click += new System.EventHandler(this.menu_Click);
             // 
             // toolStripMenuItemSystem
             // 
             this.toolStripMenuItemSystem.Name = "toolStripMenuItemSystem";
-            this.toolStripMenuItemSystem.Size = new System.Drawing.Size(140, 22);
+            this.toolStripMenuItemSystem.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItemSystem.Text = "系统控制(S)";
             this.toolStripMenuItemSystem.Click += new System.EventHandler(this.menu_Click);
             // 
