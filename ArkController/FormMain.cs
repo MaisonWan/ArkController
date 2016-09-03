@@ -378,7 +378,7 @@ namespace ArkController
             {
                 string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
                 string cmd = Package.GetOpenApplicationDetail(packageName);
-                taskThread.SendTask(TaskInfo.Create(TaskType.ExecuteCommand, cmd));
+                taskThread.SendTask(TaskInfo.Create(TaskType.StartAM, cmd));
             }
         }
 
