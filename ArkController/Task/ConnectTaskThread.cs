@@ -130,7 +130,8 @@ namespace ArkController.Task
             {
                 foreach (string cmd in task.DataArray)
                 {
-                    connect.ExecuteAdb(cmd);
+                    string result = connect.ExecuteAdb(cmd);
+                    writeLog(string.Format("执行命令：{0}\n{1}", cmd, result));
                 }
             }
         }
