@@ -49,6 +49,7 @@ namespace ArkController
             this.listViewPackage.ListViewItemSorter = sorter;
             this.listViewProcessList.ListViewItemSorter = sorter;
             // 默认选择所有
+            this.toolStripComboBoxDeviceList.SelectedIndex = 0;
             this.comboBoxPackageType.SelectedIndex = 0;
             this.comboBoxProcess.SelectedIndex = 1;
             taskThread.Start();
@@ -197,6 +198,11 @@ namespace ArkController
             if (r[0] == "true")
             {
                 MessageBox.Show(r[1] + "安装成功", "安装", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (tabControlHomePage.SelectedTab == this.tabPagePackage)
+                {
+                    // 当前是包列表刷新列表
+                    buttonPackageList_Click(null, null);
+                }
             }
             else
             {
@@ -478,7 +484,7 @@ namespace ArkController
         private void toolStripComboBoxDeviceList_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = this.toolStripComboBoxDeviceList.SelectedIndex;
-            if (index >= 0)
+            if (index > 0)
             {
                 TaskInfo task = new TaskInfo(TaskType.CurrentDeviceInfo);
                 task.Data = this.toolStripComboBoxDeviceList.Items[index].ToString();

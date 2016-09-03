@@ -128,6 +128,7 @@
             this.toolTipBattery = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
             this.saveFileDialogLog = new System.Windows.Forms.SaveFileDialog();
+            this.buttonTabInstall = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.toolStripKibot.SuspendLayout();
@@ -370,6 +371,8 @@
             this.toolStripComboBoxDeviceList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolStripComboBoxDeviceList.DropDownWidth = 150;
             this.toolStripComboBoxDeviceList.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+            this.toolStripComboBoxDeviceList.Items.AddRange(new object[] {
+            "没有设备"});
             this.toolStripComboBoxDeviceList.Name = "toolStripComboBoxDeviceList";
             this.toolStripComboBoxDeviceList.Size = new System.Drawing.Size(150, 25);
             this.toolStripComboBoxDeviceList.ToolTipText = "设备列表";
@@ -716,6 +719,7 @@
             // tabPagePackage
             // 
             this.tabPagePackage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.tabPagePackage.Controls.Add(this.buttonTabInstall);
             this.tabPagePackage.Controls.Add(this.comboBoxPackageType);
             this.tabPagePackage.Controls.Add(this.checkBoxFilter);
             this.tabPagePackage.Controls.Add(this.textBoxFilter);
@@ -1152,6 +1156,18 @@
             this.toolTipBattery.IsBalloon = true;
             this.toolTipBattery.ReshowDelay = 100;
             // 
+            // buttonTabInstall
+            // 
+            this.buttonTabInstall.BackgroundImage = global::ArkController.Properties.Resources.plus39;
+            this.buttonTabInstall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonTabInstall.Location = new System.Drawing.Point(1053, 3);
+            this.buttonTabInstall.Name = "buttonTabInstall";
+            this.buttonTabInstall.Size = new System.Drawing.Size(40, 40);
+            this.buttonTabInstall.TabIndex = 19;
+            this.toolTipButton.SetToolTip(this.buttonTabInstall, "安装新的程序");
+            this.buttonTabInstall.UseVisualStyleBackColor = true;
+            this.buttonTabInstall.Click += new System.EventHandler(this.buttonInstall_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1299,6 +1315,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemKillProcess;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemMeminfo;
         private System.Windows.Forms.Button buttonMemInfo;
+        private System.Windows.Forms.Button buttonTabInstall;
     }
 }
 
