@@ -53,7 +53,18 @@ namespace ArkController
             this.comboBoxPackageType.SelectedIndex = 0;
             this.comboBoxProcess.SelectedIndex = 1;
             taskThread.Start();
+            startAdb();
             updateDeviceList();
+        }
+
+        /// <summary>
+        /// 启动adb
+        /// </summary>
+        private void startAdb()
+        {
+            TaskInfo t = TaskInfo.Create(TaskType.ExecuteCommand, "start-server");
+            t.Args = 1;
+            taskThread.SendTask(t);
         }
 
         /// <summary>
@@ -247,10 +258,17 @@ namespace ArkController
             FormKit.Show(screenShot, typeof(FormScreenShot));
         }
 
+        /// <summary>
+        /// 重启abd
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonRestartAdb_Click(object sender, EventArgs e)
         {
             string[] cmds = { "kill-server", "start-server" };
-            taskThread.SendTask(TaskInfo.Create(TaskType.ExecuteCommand, cmds));
+            TaskInfo t = TaskInfo.Create(TaskType.ExecuteCommand, cmds);
+            t.Args = 1;
+            taskThread.SendTask(t);
         }
 
         /// <summary>
@@ -509,12 +527,21 @@ namespace ArkController
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             //退出时退出adb
-            string cmd = "kill-server";
-            taskThread.SendTask(TaskInfo.Create(TaskType.ExecuteCommand, cmd));
+            stopAdb();
             taskThread.Stop();
             Application.Exit();
         }
 
+        /// <summary>
+        /// 退出adb
+        /// </summary>
+        private void stopAdb()
+        {
+            string cmd = "kill-server";
+            TaskInfo t = TaskInfo.Create(TaskType.ExecuteCommand, cmd);
+            t.Args = 1;
+            taskThread.SendTask(t);
+        }
         #region 当前进程Tab
         private void buttonProcessList_Click(object sender, EventArgs e)
         {

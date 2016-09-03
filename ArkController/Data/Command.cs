@@ -33,6 +33,7 @@ namespace ArkController.Data
             p.StartInfo.RedirectStandardError = true;
             p.StartInfo.RedirectStandardInput = true;
             p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = "8603";
             p.Start();
             string outStr = p.StandardOutput.ReadToEnd();
             p.Close();
@@ -58,6 +59,7 @@ namespace ArkController.Data
             p.StartInfo.RedirectStandardError = true;
             p.StartInfo.RedirectStandardInput = true;
             p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = "8603";
             p.Start();
             StreamReader reader = p.StandardOutput;
             string line = reader.ReadLine();//每次读取一行

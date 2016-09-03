@@ -16,6 +16,7 @@ namespace ArkController.Task
         public delegate void EventResultHandler(params object[] result);
 
         private TaskType what = 0;
+        private int args;
         private object data = null;
         private object[] dataArray = null;
 
@@ -57,6 +58,15 @@ namespace ArkController.Task
         {
             set { this.what = value; }
             get { return this.what; }
+        }
+
+        /// <summary>
+        /// 数字参数
+        /// </summary>
+        public int Args
+        {
+            set { this.args = value; }
+            get { return this.args; }
         }
 
         /// <summary>

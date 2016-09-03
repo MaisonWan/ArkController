@@ -31,6 +31,10 @@ namespace ArkController.Data
             //string filterName = this.textBoxFilter.Text;
             foreach (string p in packages)
             {
+                if (string.IsNullOrEmpty(p))
+                {
+                    continue;
+                }
                 string pkg = p.Replace("package:", "").Trim();
                 string[] items = pkg.Split("=".ToCharArray());
                 // 不需要过滤，或者其中包含这个关键词

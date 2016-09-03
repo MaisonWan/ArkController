@@ -119,7 +119,7 @@ namespace ArkController.Task
         {
             if (task.Data != null)
             {
-                string result = connect.ExecuteAdb(task.Data.ToString());
+                string result = connect.ExecuteAdb(task.Data.ToString(), task.Args == 1 ? false : true);
                 if (task.ResultHandler != null)
                 {
                     task.ResultHandler.Invoke(result);
@@ -130,7 +130,7 @@ namespace ArkController.Task
             {
                 foreach (string cmd in task.DataArray)
                 {
-                    string result = connect.ExecuteAdb(cmd);
+                    string result = connect.ExecuteAdb(cmd, task.Args == 1 ? false : true);
                     writeLog(string.Format("执行命令：{0}\n{1}", cmd, result));
                 }
             }
