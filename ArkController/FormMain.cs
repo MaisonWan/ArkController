@@ -12,27 +12,32 @@ using ArkController.Data;
 using ArkController.Kit;
 using ArkController.Pages;
 using System.IO;
+using ArkController.Task;
 
 namespace ArkController
 {
     public partial class FormMain : Form
     {
         private Log log = null;
-        private IConnect connect = null;
+        private ConnectTaskThread taskThread = null;
+        private AdbConnect connect = null;
+        private DeviceManager manager = null;
+
         private FormScreenShot screenShot = null;
         private FormLogcat logcat = null;
         private FormScreenSize screenSize = null;
         private FormPackageInfo packageInfo = null;
         private FormMemInfo meminfo = null;
 
-        private DeviceManager manager = null;
-
         public FormMain()
         {
             InitializeComponent();
             log = new Log(textBoxLog);
-            connect = new AdbConnect(log);
+            connect = new AdbConnect();
+            connect.Log = log;
             manager = new DeviceManager(connect);
+            taskThread = ConnectTaskThread.GetInstance();
+            taskThread.Log = log;
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -48,6 +53,7 @@ namespace ArkController
             // 默认选择所有
             this.comboBoxPackageType.SelectedIndex = 0;
             this.comboBoxProcess.SelectedIndex = 1;
+            taskThread.Start();
             updateDeviceList();
         }
 
@@ -56,8 +62,19 @@ namespace ArkController
         /// </summary>
         private void updateDeviceList()
         {
+            TaskInfo task = new TaskInfo(TaskType.DeviceList);
+            task.ResultHandler = new TaskInfo.EventResultHandler(updateDeviceList);
+            taskThread.SendTask(task);
+        }
+
+        /// <summary>
+        /// 设备列表的返回
+        /// </summary>
+        /// <param name="result"></param>
+        private void updateDeviceList(object result)
+        {
             this.toolStripComboBoxDeviceList.Items.Clear();
-            this.toolStripComboBoxDeviceList.Items.AddRange(manager.DeviceLink.DeviceList());
+            this.toolStripComboBoxDeviceList.Items.AddRange((string[])result);
             this.toolStripComboBoxDeviceList.SelectedIndex = 0;
         }
 
@@ -66,8 +83,19 @@ namespace ArkController
         /// </summary>
         private void updateBatteryInfo()
         {
-            string cmd = "shell dumpsys battery";
-            string info = connect.ExecuteAdb(cmd);
+            TaskInfo task = new TaskInfo(TaskType.ExecuteCommand);
+            task.Data = "shell dumpsys battery";
+            task.ResultHandler = new TaskInfo.EventResultHandler(updateBatteryInfoReuslt);
+            taskThread.SendTask(task);
+        }
+
+        /// <summary>
+        /// 电池信息的返回
+        /// </summary>
+        /// <param name="data"></param>
+        private void updateBatteryInfoReuslt(object data)
+        {
+            string info = (string)data;
             if (!String.IsNullOrEmpty(info))
             {
                 manager.BatteryParser = BatteryParser.Parser(info);
@@ -82,37 +110,56 @@ namespace ArkController
         /// <param name="e"></param>
         private void buttonKey_Click(object sender, EventArgs e)
         {
-            if (sender == this.buttonLeft)
+            int data = -1;
+            if (sender == this.buttonUp)
             {
-                connect.InputKey(21);
-            }
-            else if (sender == this.buttonRight)
-            {
-                connect.InputKey(22);
-            }
-            else if (sender == this.buttonUp)
-            {
-                connect.InputKey(19);
+                data = 19;
             }
             else if (sender == this.buttonDown)
             {
-                connect.InputKey(20);
+                data = 20;
+            }
+            else if (sender == this.buttonLeft)
+            {
+                data = 21;
+            }
+            else if (sender == this.buttonRight)
+            {
+                data = 22;
             }
             else if (sender == this.buttonCenter)
             {
-                connect.InputKey(23);
+                data = 23;
+            }
+            else if (sender == this.buttonVolumeUp)
+            {
+                data = 24;
+            }
+            else if (sender == this.buttonVolumeDown)
+            {
+                data = 25;
+            }
+            else if (sender == this.buttonPower)
+            {
+                data = 26;
             }
             else if (sender == this.buttonBack)
             {
-                connect.InputKey(4);
+                data = 4;
             }
             else if (sender == this.buttonHome)
             {
-                connect.InputKey(3);
+                data = 3;
             }
             else if (sender == this.buttonMenu)
             {
-                connect.InputKey(82);
+                data = 82;
+            }
+            if (data > -1)
+            {
+                TaskInfo task = new TaskInfo(TaskType.SendKey);
+                task.Data = data;
+                taskThread.SendTask(task);
             }
         }
 
@@ -156,21 +203,6 @@ namespace ArkController
             {
                 connect.InputCommand("reboot");
             }
-        }
-
-        private void buttonVolumeUp_Click(object sender, EventArgs e)
-        {
-            connect.InputKey(24);
-        }
-
-        private void buttonVolumeDown_Click(object sender, EventArgs e)
-        {
-            connect.InputKey(25);
-        }
-
-        private void buttonPower_Click(object sender, EventArgs e)
-        {
-            connect.InputKey(26);
         }
 
         private void buttonSendText_Click(object sender, EventArgs e)
@@ -231,19 +263,7 @@ namespace ArkController
 
         private void buttonScreen_Click(object sender, EventArgs e)
         {
-            if (screenShot == null || screenShot.IsDisposed)
-            {
-                screenShot = new FormScreenShot(this.connect);
-            }
-            if (screenShot.Visible)
-            {
-                screenShot.ReloadPicture();
-                screenShot.Activate();
-            }
-            else
-            {
-                screenShot.Show();
-            }
+            FormKit.Show(screenShot, typeof(FormScreenShot), connect);
         }
 
         private void buttonRestartAdb_Click(object sender, EventArgs e)
@@ -296,34 +316,12 @@ namespace ArkController
 
         private void buttonScreenSize_Click(object sender, EventArgs e)
         {
-            if (screenSize == null || screenSize.IsDisposed)
-            {
-                screenSize = new FormScreenSize(manager.ScreenData);
-            }
-            if (screenSize.Visible)
-            {
-                screenSize.Activate();
-            }
-            else
-            {
-                screenSize.Show();
-            }
+            FormKit.Show(screenSize, typeof(FormScreenSize), manager.ScreenData);
         }
 
         private void buttonMemInfo_Click(object sender, EventArgs e)
         {
-            if (meminfo == null || meminfo.IsDisposed)
-            {
-                meminfo = new FormMemInfo(connect);
-            }
-            if (meminfo.Visible)
-            {
-                meminfo.Activate();
-            }
-            else
-            {
-                meminfo.Show();
-            }
+            FormKit.Show(meminfo, typeof(FormMemInfo), connect);
         }
         #endregion
 
@@ -513,6 +511,7 @@ namespace ArkController
         {
             //退出时退出adb
             connect.InputCommand("kill-server");
+            taskThread.Stop();
             Application.Exit();
         }
 

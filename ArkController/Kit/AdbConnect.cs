@@ -13,10 +13,18 @@ namespace ArkController.Kit
         private Command command = null;
         private string serial = null;
 
-        public AdbConnect(Log log)
+        public AdbConnect()
         {
-            this.log = log;
             command = new Command();
+        }
+
+        /// <summary>
+        /// 显示log
+        /// </summary>
+        public Log Log
+        {
+            set { this.log = value; }
+            get { return this.log; }
         }
 
         /// <summary>
