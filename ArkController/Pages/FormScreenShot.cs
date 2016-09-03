@@ -7,18 +7,19 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using ArkController.Kit;
+using ArkController.Task;
 
 namespace ArkController.Pages
 {
     public partial class FormScreenShot : Form
     {
         private string screenShotPath = null;
-        private IConnect connect = null;
+        private ConnectTaskThread taskThread = null;
 
-        public FormScreenShot(IConnect connect)
+        public FormScreenShot()
         {
             InitializeComponent();
-            this.connect = connect;
+            taskThread = ConnectTaskThread.GetInstance();
         }
 
         private void buttonQuit_Click(object sender, EventArgs e)
@@ -77,7 +78,18 @@ namespace ArkController.Pages
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
             this.screenShotPath = GetScreemShotPath();
-            if (connect.GetScreenShot(this.screenShotPath))
+            TaskInfo t = TaskInfo.Create(TaskType.ScreenShot, this.screenShotPath);
+            t.ResultHandler = new TaskInfo.EventResultHandler(getScreenShotResult);
+            taskThread.SendTask(t);
+        }
+
+        /// <summary>
+        /// 截图返回结果
+        /// </summary>
+        /// <param name="result"></param>
+        private void getScreenShotResult(object[] result)
+        {
+            if ((bool)result[0])
             {
                 this.pictureBox1.ImageLocation = this.screenShotPath;
             }

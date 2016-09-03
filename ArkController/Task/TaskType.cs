@@ -28,6 +28,38 @@ namespace ArkController.Task
         /// <summary>
         /// 进程列表
         /// </summary>
-        ProcessList
+        ProcessList,
+        /// <summary>
+        /// 当前设备信息
+        /// </summary>
+        CurrentDeviceInfo,
+        /// <summary>
+        /// 电池信息
+        /// </summary>
+        BatteryInfo,
+        /// <summary>
+        /// 启动Activity
+        /// </summary>
+        StartAM,
+        /// <summary>
+        /// 卸载程序
+        /// </summary>
+        Unintall,
+        /// <summary>
+        /// 安装程序
+        /// </summary>
+        Install,
+        /// <summary>
+        /// 
+        /// </summary>
+        InputText,
+        /// <summary>
+        /// 屏幕截图
+        /// </summary>
+        ScreenShot,
+        /// <summary>
+        /// 屏幕尺寸和像素密度
+        /// </summary>
+        ScreenSizeDensity
     }
 }

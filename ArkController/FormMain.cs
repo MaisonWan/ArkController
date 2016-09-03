@@ -20,8 +20,6 @@ namespace ArkController
     {
         private Log log = null;
         private ConnectTaskThread taskThread = null;
-        private AdbConnect connect = null;
-        private DeviceManager manager = null;
 
         private FormScreenShot screenShot = null;
         private FormLogcat logcat = null;
@@ -29,15 +27,15 @@ namespace ArkController
         private FormPackageInfo packageInfo = null;
         private FormMemInfo meminfo = null;
 
+        private string batteryFormatInfo = null;
+
         public FormMain()
         {
             InitializeComponent();
             log = new Log(textBoxLog);
-            connect = new AdbConnect();
-            connect.Log = log;
-            manager = new DeviceManager(connect);
             taskThread = ConnectTaskThread.GetInstance();
             taskThread.Log = log;
+            CheckForIllegalCrossThreadCalls = false;
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -83,8 +81,7 @@ namespace ArkController
         /// </summary>
         private void updateBatteryInfo()
         {
-            TaskInfo task = new TaskInfo(TaskType.ExecuteCommand);
-            task.Data = "shell dumpsys battery";
+            TaskInfo task = new TaskInfo(TaskType.BatteryInfo);
             task.ResultHandler = new TaskInfo.EventResultHandler(updateBatteryInfoReuslt);
             taskThread.SendTask(task);
         }
@@ -93,13 +90,15 @@ namespace ArkController
         /// 电池信息的返回
         /// </summary>
         /// <param name="data"></param>
-        private void updateBatteryInfoReuslt(object data)
+        private void updateBatteryInfoReuslt(object[] data)
         {
-            string info = (string)data;
-            if (!String.IsNullOrEmpty(info))
+            if (data[0].GetType() == typeof(Image))
             {
-                manager.BatteryParser = BatteryParser.Parser(info);
-                this.pictureBoxBattery.Image = manager.BatteryParser.BatteryImage;
+                this.pictureBoxBattery.Image = (Image)data[0];
+            }
+            if (data[1].GetType() == typeof(string))
+            {
+                batteryFormatInfo = data[1].ToString();
             }
         }
 
@@ -115,9 +114,9 @@ namespace ArkController
             {
                 data = Convert.ToInt32(((Button)sender).Tag);
             }
-            catch (Exception ex)
+            catch
             {
-
+                
             }
             if (data > -1)
             {
@@ -165,14 +164,15 @@ namespace ArkController
         {
             if (MessageBox.Show("确定要重启设备？", "重启确认", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
-                connect.InputCommand("reboot");
+                string cmd = "reboot";
+                taskThread.SendTask(TaskInfo.Create(TaskType.ExecuteCommand, cmd));
             }
         }
 
         private void buttonSendText_Click(object sender, EventArgs e)
         {
             string text = this.textBoxSendText.Text;
-            connect.InputText(text);
+            taskThread.SendTask(TaskInfo.Create(TaskType.InputText, text));
         }
 
         private void textBoxSendText_KeyDown(object sender, KeyEventArgs e)
@@ -180,19 +180,27 @@ namespace ArkController
             if (e.KeyCode == Keys.Enter)
             {
                 string text = this.textBoxSendText.Text;
-                connect.InputText(text);
+                taskThread.SendTask(TaskInfo.Create(TaskType.InputText, text));
             }
         }
 
         private void install(string path)
         {
-            if (connect.Install(path))
+            TaskInfo t = TaskInfo.Create(TaskType.Install, path);
+            t.ResultHandler = new TaskInfo.EventResultHandler(installResult);
+            taskThread.SendTask(t);
+        }
+
+        private void installResult(object result)
+        {
+            string[] r = (string[])result;
+            if (r[0] == "true")
             {
-                MessageBox.Show(path + "安装成功", "安装", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(r[1] + "安装成功", "安装", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show(path + "安装失败", "安装", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(r[1] + "安装失败", "安装", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -201,19 +209,22 @@ namespace ArkController
         {
             const string package = "com.qihoo360.homecamera.devicedetect";
             const string activity = "com.qihoo360.homecamera.devicedetect.MainActivity";
-            connect.StartAm(package, activity);
+            string[] actions = { package, activity };
+            taskThread.SendTask(TaskInfo.Create(TaskType.StartAM, actions));
         }
 
         private void buttonSystemSetting_Click(object sender, EventArgs e)
         {
             const string package = "com.android.settings";
             const string activity = "com.android.settings.Settings";
-            connect.StartAm(package, activity);
+            string[] actions = { package, activity };
+            taskThread.SendTask(TaskInfo.Create(TaskType.StartAM, actions));
         }
 
         private void buttonDeviceInfo_Click(object sender, EventArgs e)
         {
-            manager.Package.OpenDeviceInfoSetting();
+            string action = Package.GetOpenDeviceInfoSetting();
+            taskThread.SendTask(TaskInfo.Create(TaskType.StartAM, action));
         }
 
         private void buttonLogcat_Click(object sender, EventArgs e)
@@ -227,13 +238,13 @@ namespace ArkController
 
         private void buttonScreen_Click(object sender, EventArgs e)
         {
-            FormKit.Show(screenShot, typeof(FormScreenShot), connect);
+            FormKit.Show(screenShot, typeof(FormScreenShot));
         }
 
         private void buttonRestartAdb_Click(object sender, EventArgs e)
         {
-            connect.InputCommand("kill-server");
-            connect.InputCommand("start-server");
+            string[] cmds = { "kill-server", "start-server" };
+            taskThread.SendTask(TaskInfo.Create(TaskType.ExecuteCommand, cmds));
         }
 
         /// <summary>
@@ -280,12 +291,12 @@ namespace ArkController
 
         private void buttonScreenSize_Click(object sender, EventArgs e)
         {
-            FormKit.Show(screenSize, typeof(FormScreenSize), manager.ScreenData);
+            FormKit.Show(screenSize, typeof(FormScreenSize));
         }
 
         private void buttonMemInfo_Click(object sender, EventArgs e)
         {
-            FormKit.Show(meminfo, typeof(FormMemInfo), connect);
+            FormKit.Show(meminfo, typeof(FormMemInfo));
         }
         #endregion
 
@@ -315,7 +326,7 @@ namespace ArkController
         private void updatePackageListResult(object result)
         {
             string[] packages = (string[])result;
-            manager.Package.UpdatePackageList(this.listViewPackage, packages, this.textBoxFilter.Text, this.checkBoxFilter.Checked);
+            Package.UpdatePackageList(this.listViewPackage, packages, this.textBoxFilter.Text, this.checkBoxFilter.Checked);
         }
 
         private void textBoxFilter_KeyDown(object sender, KeyEventArgs e)
@@ -366,7 +377,8 @@ namespace ArkController
             if (this.listViewPackage.SelectedItems.Count > 0)
             {
                 string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
-                manager.Package.OpenApplicationDetail(packageName);
+                string cmd = Package.GetOpenApplicationDetail(packageName);
+                taskThread.SendTask(TaskInfo.Create(TaskType.ExecuteCommand, cmd));
             }
         }
 
@@ -378,7 +390,8 @@ namespace ArkController
                 string msg = "确认清空设备上应用" + packageName + "的数据？";
                 if (MessageBox.Show(msg, "清空提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    manager.Package.ClearApplicationData(packageName);
+                    string cmd = Package.GetClearApplicationData(packageName);
+                    taskThread.SendTask(TaskInfo.Create(TaskType.ExecuteCommand, cmd));
                 }
             }
         }
@@ -390,7 +403,7 @@ namespace ArkController
                 string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
                 if (packageInfo == null || packageInfo.IsDisposed)
                 {
-                    packageInfo = new FormPackageInfo(this.connect);
+                    packageInfo = new FormPackageInfo();
                 }
                 packageInfo.PakcageName = packageName;
                 if (packageInfo.Visible)
@@ -427,7 +440,7 @@ namespace ArkController
                 string msg = "确认卸载设备上应用" + packageName + "？";
                 if (MessageBox.Show(msg, "卸载提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    connect.Uninstall(packageName);
+                    taskThread.SendTask(TaskInfo.Create(TaskType.Unintall, packageName));
                     buttonPackageList_Click(sender, e);
                 }
             }
@@ -444,7 +457,8 @@ namespace ArkController
 
         private void buttonDeveloper_Click(object sender, EventArgs e)
         {
-            manager.Package.OpenDevementSetting();
+            TaskInfo task = TaskInfo.Create(TaskType.StartAM, Package.GetOpenDeviceInfoSetting());
+            taskThread.SendTask(task);
         }
 
         private void toolStripButtonAbout_Click(object sender, EventArgs e)
@@ -455,25 +469,28 @@ namespace ArkController
 
         private void pictureBoxBattery_MouseEnter(object sender, EventArgs e)
         {
-            if (manager.BatteryParser != null)
+            if (batteryFormatInfo != null)
             {
-                string info = manager.BatteryParser.BatteryFormatInfo;
-                if (info != null)
-                {
-                    this.toolTipBattery.SetToolTip(this.pictureBoxBattery, manager.BatteryParser.BatteryFormatInfo);
-                }
+                this.toolTipBattery.SetToolTip(this.pictureBoxBattery, batteryFormatInfo);
             }
         }
 
         private void toolStripComboBoxDeviceList_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = this.toolStripComboBoxDeviceList.SelectedIndex;
-            if (index == 0)
+            if (index >= 0)
             {
-                return;
+                TaskInfo task = new TaskInfo(TaskType.CurrentDeviceInfo);
+                task.Data = this.toolStripComboBoxDeviceList.Items[index].ToString();
+                task.ResultHandler = new TaskInfo.EventResultHandler(selectDeviceResult);
+                taskThread.SendTask(task);
             }
-            this.connect.SetDeviceSerial(this.toolStripComboBoxDeviceList.Items[index].ToString());
-            string[] values = manager.DeviceLink.GetCurrentDeviceInfo();
+            updateBatteryInfo();
+        }
+
+        private void selectDeviceResult(object result)
+        {
+            string[] values = (string[])result;
             if (values != null && values.Length == 4)
             {
                 this.labelDeviceInfo.Text = values[0];
@@ -481,13 +498,13 @@ namespace ArkController
                 this.labelModel.Text = "Model:" + values[2];
                 this.labelDevice.Text = "Device:" + values[3];
             }
-            updateBatteryInfo();
         }
 
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             //退出时退出adb
-            connect.InputCommand("kill-server");
+            string cmd = "kill-server";
+            taskThread.SendTask(TaskInfo.Create(TaskType.ExecuteCommand, cmd));
             taskThread.Stop();
             Application.Exit();
         }
@@ -504,9 +521,9 @@ namespace ArkController
         /// 更新进程列表的回调
         /// </summary>
         /// <param name="result"></param>
-        private void updateProcessListResult(object result)
+        private void updateProcessListResult(object[] result)
         {
-            List<ProcessData.Data> processList = (List<ProcessData.Data>)result;
+            List<ProcessData.Data> processList = (List<ProcessData.Data>)result[0];
             this.listViewProcessList.BeginUpdate();
             this.listViewProcessList.Items.Clear();
             bool needFilter = this.checkBoxProcess.Checked && !string.IsNullOrEmpty(this.textBoxProcessFilter.Text);
@@ -586,15 +603,16 @@ namespace ArkController
             {
                 // 结束进程
                 string pid = this.listViewProcessList.SelectedItems[0].SubItems[1].Text.Trim();
-                string result = manager.Process.KillProcess(pid);
-                this.log.Write(result);
+                string cmd = ProcessData.GetKillProcess(pid);
+                taskThread.SendTask(TaskInfo.Create(TaskType.ExecuteCommand, cmd));
             }
             else if (sender == this.toolStripMenuItemMeminfo)
             {
+                // 展现内存界面
                 string pName = this.listViewProcessList.SelectedItems[0].SubItems[5].Text.Trim();
                 if (meminfo == null || meminfo.IsDisposed)
                 {
-                    meminfo = new FormMemInfo(connect);
+                    meminfo = new FormMemInfo();
                 }
                 meminfo.SetAutoStart(pName);
                 meminfo.Show();

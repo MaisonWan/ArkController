@@ -51,9 +51,28 @@ namespace ArkController.Data
         public int GetScreenDensity()
         {
             string cmd = "shell wm density";
-            string log = connect.ExecuteAdb(cmd).Trim();
-            log = log.Replace("Physical density: ", "");
-            return Convert.ToInt32(log);
+            string info = connect.ExecuteAdb(cmd);
+            if (info.Contains("Override density:"))
+            {
+                //被修改之后的
+                string[] infos = info.Split("\r".ToCharArray());
+                foreach (string line in infos)
+                {
+                    if (line.Contains("Override density:"))
+                    {
+                        return Convert.ToInt32(line.Trim().Replace("Override density:", ""));
+                    }
+                }
+            }
+            else
+            {
+                string density = info.Replace("Physical density: ", "");
+                if (density != "")
+                {
+                    return Convert.ToInt32(density);
+                }
+            }
+            return 0;
         }
 
         /// <summary>
@@ -117,6 +136,14 @@ namespace ArkController.Data
                 return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// 屏幕相关操作
+        /// </summary>
+        public enum Action
+        {
+            GetSize, SetSize, GetDensity, SetDensity, ResetSize, ResetDensity
         }
     }
 }

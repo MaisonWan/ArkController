@@ -28,10 +28,10 @@ namespace ArkController.Pages
             }
         }
 
-        public FormPackageInfo(IConnect connect)
+        public FormPackageInfo()
         {
             InitializeComponent();
-            this.connect = connect;
+            //this.connect = connect;
         }
 
         private void FormPackageInfo_Load(object sender, EventArgs e)

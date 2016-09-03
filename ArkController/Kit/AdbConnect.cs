@@ -83,7 +83,6 @@ namespace ArkController.Kit
             ExecuteAdb(pullFile);
             if (File.Exists(localPath))
             {
-                log.Write("获取屏幕截图成功");
                 return true;
             }
             return false;

@@ -24,11 +24,11 @@ namespace ArkController.Pages
         /// </summary>
         private int[] INTERVAL = { 1, 2, 3, 5, 10 };
 
-        public FormMemInfo(IConnect connect)
+        public FormMemInfo()
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
-            this.connect = connect;
+            //this.connect = connect;
             this.comboBoxInterval.SelectedIndex = 0;
         }
 

@@ -17,7 +17,18 @@ namespace ArkController.Kit
         /// <param name="type"></param>
         public static void Show(Form from, Type type)
         {
-            
+            if (from == null || from.IsDisposed)
+            {
+                from = Create<Form>(type);
+            }
+            if (from.Visible)
+            {
+                from.Activate();
+            }
+            else
+            {
+                from.Show();
+            }
         }
 
         /// <summary>

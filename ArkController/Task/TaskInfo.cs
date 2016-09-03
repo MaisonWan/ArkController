@@ -13,14 +13,41 @@ namespace ArkController.Task
         /// 事件结果执行事件
         /// </summary>
         /// <param name="result">执行返回结果</param>
-        public delegate void EventResultHandler(object result);
+        public delegate void EventResultHandler(params object[] result);
 
         private TaskType what = 0;
         private object data = null;
+        private object[] dataArray = null;
 
         public TaskInfo(TaskType type)
         {
             this.what = type;
+        }
+
+        /// <summary>
+        /// 工厂方法
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static TaskInfo Create(TaskType type, object data)
+        {
+            TaskInfo t = new TaskInfo(type);
+            t.data = data;
+            return t;
+        }
+
+        /// <summary>
+        /// 工厂方法，创建一个对象
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static TaskInfo Create(TaskType type, object[] dataArray)
+        {
+            TaskInfo t = new TaskInfo(type);
+            t.dataArray = dataArray;
+            return t;
         }
 
         /// <summary>
@@ -39,6 +66,16 @@ namespace ArkController.Task
         {
             set { this.data = value; }
             get { return this.data; }
+
+        }
+
+        /// <summary>
+        /// 数据数组
+        /// </summary>
+        public object[] DataArray
+        {
+            set { this.dataArray = value; }
+            get { return this.dataArray; }
         }
 
         /// <summary>

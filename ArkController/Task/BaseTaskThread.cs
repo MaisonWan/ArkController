@@ -19,7 +19,7 @@ namespace ArkController.Task
         /// 信号量
         /// </summary>
         private Semaphore taskSemaphore = new Semaphore(0, 256);
-        private Thread thread = null;
+        protected Thread thread = null;
 
         /// <summary>
         /// 启动工作线程

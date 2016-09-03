@@ -52,10 +52,9 @@ namespace ArkController.Data
         /// </summary>
         /// <param name="pid">进程id</param>
         /// <returns></returns>
-        public string KillProcess(string pid)
+        public static string GetKillProcess(string pid)
         {
-            string cmd = "shell kill " + pid;
-            return connect.ExecuteAdb(cmd);
+            return "shell kill " + pid;
         }
 
         /// <summary>
