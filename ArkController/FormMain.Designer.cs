@@ -539,7 +539,7 @@
             this.buttonVolumeUp.Name = "buttonVolumeUp";
             this.buttonVolumeUp.Size = new System.Drawing.Size(60, 60);
             this.buttonVolumeUp.TabIndex = 2;
-            this.buttonVolumeUp.Tag = "25";
+            this.buttonVolumeUp.Tag = "24";
             this.toolTipButton.SetToolTip(this.buttonVolumeUp, "声音大");
             this.buttonVolumeUp.UseVisualStyleBackColor = true;
             this.buttonVolumeUp.Click += new System.EventHandler(this.buttonKey_Click);
@@ -553,7 +553,7 @@
             this.buttonVolumeDown.Name = "buttonVolumeDown";
             this.buttonVolumeDown.Size = new System.Drawing.Size(60, 60);
             this.buttonVolumeDown.TabIndex = 3;
-            this.buttonVolumeDown.Tag = "24";
+            this.buttonVolumeDown.Tag = "25";
             this.toolTipButton.SetToolTip(this.buttonVolumeDown, "声音小");
             this.buttonVolumeDown.UseVisualStyleBackColor = true;
             this.buttonVolumeDown.Click += new System.EventHandler(this.buttonKey_Click);
@@ -589,6 +589,7 @@
             this.buttonPower.Name = "buttonPower";
             this.buttonPower.Size = new System.Drawing.Size(60, 60);
             this.buttonPower.TabIndex = 4;
+            this.buttonPower.Tag = "26";
             this.toolTipButton.SetToolTip(this.buttonPower, "电源");
             this.buttonPower.UseVisualStyleBackColor = true;
             this.buttonPower.Click += new System.EventHandler(this.buttonKey_Click);
@@ -680,6 +681,7 @@
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(60, 60);
             this.buttonBack.TabIndex = 0;
+            this.buttonBack.Tag = "4";
             this.toolTipButton.SetToolTip(this.buttonBack, "返回");
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonKey_Click);
@@ -692,6 +694,7 @@
             this.buttonMenu.Name = "buttonMenu";
             this.buttonMenu.Size = new System.Drawing.Size(60, 60);
             this.buttonMenu.TabIndex = 1;
+            this.buttonMenu.Tag = "82";
             this.toolTipButton.SetToolTip(this.buttonMenu, "菜单");
             this.buttonMenu.UseVisualStyleBackColor = true;
             this.buttonMenu.Click += new System.EventHandler(this.buttonKey_Click);
@@ -704,6 +707,7 @@
             this.buttonHome.Name = "buttonHome";
             this.buttonHome.Size = new System.Drawing.Size(60, 60);
             this.buttonHome.TabIndex = 1;
+            this.buttonHome.Tag = "3";
             this.toolTipButton.SetToolTip(this.buttonHome, "主页");
             this.buttonHome.UseVisualStyleBackColor = true;
             this.buttonHome.Click += new System.EventHandler(this.buttonKey_Click);

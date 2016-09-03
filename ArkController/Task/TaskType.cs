@@ -20,6 +20,10 @@ namespace ArkController.Task
         /// <summary>
         /// 设备列表
         /// </summary>
-        DeviceList
+        DeviceList,
+        /// <summary>
+        /// 包名列表
+        /// </summary>
+        PackageList
     }
 }

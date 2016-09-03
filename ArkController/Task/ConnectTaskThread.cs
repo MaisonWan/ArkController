@@ -65,6 +65,9 @@ namespace ArkController.Task
                 case TaskType.DeviceList:
                     handleDeviceList(task);
                     break;
+                case TaskType.PackageList:
+                    handlePackageList(task);
+                    break;
             }
         }
 
@@ -115,6 +118,20 @@ namespace ArkController.Task
                 task.ResultHandler(devices);
             }
             writeLog(string.Format("设备列表：{0}", string.Join(",", devices, 0, devices.Length)));
+        }
+
+        /// <summary>
+        /// 包名列表
+        /// </summary>
+        /// <param name="task"></param>
+        private void handlePackageList(TaskInfo task)
+        {
+            string[] packages = connect.GetPackageList(task.Data.ToString());
+            if (task.ResultHandler != null)
+            {
+                task.ResultHandler(packages);
+            }
+            writeLog(string.Format("获取安装包名{0}个", packages.Length));
         }
     }
 }

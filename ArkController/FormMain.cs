@@ -111,49 +111,13 @@ namespace ArkController
         private void buttonKey_Click(object sender, EventArgs e)
         {
             int data = -1;
-            if (sender == this.buttonUp)
+            try
             {
-                data = 19;
+                data = Convert.ToInt32(((Button)sender).Tag);
             }
-            else if (sender == this.buttonDown)
+            catch (Exception ex)
             {
-                data = 20;
-            }
-            else if (sender == this.buttonLeft)
-            {
-                data = 21;
-            }
-            else if (sender == this.buttonRight)
-            {
-                data = 22;
-            }
-            else if (sender == this.buttonCenter)
-            {
-                data = 23;
-            }
-            else if (sender == this.buttonVolumeUp)
-            {
-                data = 24;
-            }
-            else if (sender == this.buttonVolumeDown)
-            {
-                data = 25;
-            }
-            else if (sender == this.buttonPower)
-            {
-                data = 26;
-            }
-            else if (sender == this.buttonBack)
-            {
-                data = 4;
-            }
-            else if (sender == this.buttonHome)
-            {
-                data = 3;
-            }
-            else if (sender == this.buttonMenu)
-            {
-                data = 82;
+
             }
             if (data > -1)
             {
@@ -329,7 +293,7 @@ namespace ArkController
         private void buttonPackageList_Click(object sender, EventArgs e)
         {
             int index = this.comboBoxPackageType.SelectedIndex;
-            string args = null;
+            string args = "";
             if (index == 1)
             {
                 args = "-s";
@@ -338,7 +302,20 @@ namespace ArkController
             {
                 args = "-3";
             }
-            manager.Package.UpdatePackageList(this.listViewPackage, args, this.textBoxFilter.Text, this.checkBoxFilter.Checked);
+            TaskInfo task = new TaskInfo(TaskType.PackageList);
+            task.Data = args;
+            task.ResultHandler = new TaskInfo.EventResultHandler(updatePackageListResult);
+            taskThread.SendTask(task);
+        }
+
+        /// <summary>
+        /// 更新安装包列表的回调
+        /// </summary>
+        /// <param name="result"></param>
+        private void updatePackageListResult(object result)
+        {
+            string[] packages = (string[])result;
+            manager.Package.UpdatePackageList(this.listViewPackage, packages, this.textBoxFilter.Text, this.checkBoxFilter.Checked);
         }
 
         private void textBoxFilter_KeyDown(object sender, KeyEventArgs e)

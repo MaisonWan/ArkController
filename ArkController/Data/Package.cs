@@ -23,9 +23,8 @@ namespace ArkController.Data
         /// <param name="listView"></param>
         /// <param name="filterName"></param>
         /// <param name="needFilter"></param>
-        public void UpdatePackageList(ListView listView, string args, string filterName, bool needFilter)
+        public void UpdatePackageList(ListView listView, string[] packages, string filterName, bool needFilter)
         {
-            string[] packages = connect.GetPackageList(args);
             listView.BeginUpdate();
             listView.Items.Clear();
             bool need = needFilter & filterName.Length > 0;

@@ -200,9 +200,6 @@
   <metadata name="toolTipButton.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>896, 17</value>
   </metadata>
-  <metadata name="toolTipButton.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>896, 17</value>
-  </metadata>
   <metadata name="imageListTabs.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>640, 17</value>
   </metadata>
@@ -280,6 +277,9 @@
         Bv8B+wH4ARwCAAE/Av8BHwEACw==
 </value>
   </data>
+  <metadata name="toolTipButton.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>896, 17</value>
+  </metadata>
   <metadata name="toolTipButton.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>896, 17</value>
   </metadata>
