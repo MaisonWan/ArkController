@@ -495,7 +495,18 @@ namespace ArkController
         #region 当前进程Tab
         private void buttonProcessList_Click(object sender, EventArgs e)
         {
-            List<ProcessData.Data> processList = manager.Process.GetCurrentProcessList();
+            TaskInfo task = new TaskInfo(TaskType.ProcessList);
+            task.ResultHandler = new TaskInfo.EventResultHandler(updateProcessListResult);
+            taskThread.SendTask(task);
+        }
+
+        /// <summary>
+        /// 更新进程列表的回调
+        /// </summary>
+        /// <param name="result"></param>
+        private void updateProcessListResult(object result)
+        {
+            List<ProcessData.Data> processList = (List<ProcessData.Data>)result;
             this.listViewProcessList.BeginUpdate();
             this.listViewProcessList.Items.Clear();
             bool needFilter = this.checkBoxProcess.Checked && !string.IsNullOrEmpty(this.textBoxProcessFilter.Text);
@@ -506,7 +517,7 @@ namespace ArkController
                     continue;
                 }
                 int index = this.comboBoxProcess.SelectedIndex;
-                if ((index == 1 && !data.User.StartsWith("u0_")) 
+                if ((index == 1 && !data.User.StartsWith("u0_"))
                     || (index == 2 && data.User.StartsWith("u0_")))
                 {
                     continue;

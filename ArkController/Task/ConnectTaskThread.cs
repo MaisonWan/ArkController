@@ -68,6 +68,9 @@ namespace ArkController.Task
                 case TaskType.PackageList:
                     handlePackageList(task);
                     break;
+                case TaskType.ProcessList:
+                    handleProcessList(task);
+                    break;
             }
         }
 
@@ -132,6 +135,20 @@ namespace ArkController.Task
                 task.ResultHandler(packages);
             }
             writeLog(string.Format("获取安装包名{0}个", packages.Length));
+        }
+
+        /// <summary>
+        /// 进程列表
+        /// </summary>
+        /// <param name="task"></param>
+        private void handleProcessList(TaskInfo task)
+        {
+            List<ProcessData.Data> processList = manager.Process.GetCurrentProcessList();
+            if (task.ResultHandler != null)
+            {
+                task.ResultHandler(processList);
+            }
+            writeLog(string.Format("获取进程列表{0}个", processList.Count));
         }
     }
 }

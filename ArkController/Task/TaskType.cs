@@ -24,6 +24,10 @@ namespace ArkController.Task
         /// <summary>
         /// 包名列表
         /// </summary>
-        PackageList
+        PackageList,
+        /// <summary>
+        /// 进程列表
+        /// </summary>
+        ProcessList
     }
 }
