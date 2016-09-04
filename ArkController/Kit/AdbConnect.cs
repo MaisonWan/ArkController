@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Text;
 using ArkController.Data;
@@ -74,18 +75,32 @@ namespace ArkController.Kit
         /// </summary>
         /// <param name="localPath"></param>
         /// <returns></returns>
-        public bool GetScreenShot(string localPath)
+        public Image GetScreenShot(string localPath)
         {
-            string cmdshot = "shell /system/bin/screencap -p /sdcard/screenshot.png";
-            string pullFile = "pull /sdcard/screenshot.png \"" + localPath + "\"";
-            File.Delete(localPath);
-            ExecuteAdb(cmdshot);
-            ExecuteAdb(pullFile);
-            if (File.Exists(localPath))
+            string cmdshot = "shell screencap -p";// /sdcard/screenshot.png";
+            //string pullFile = "pull /sdcard/screenshot.png \"" + localPath + "\"";
+            //File.Delete(localPath);
+            //string r = ExecuteAdb(cmdshot);
+            StreamReader reader = ExecuteAdbStream(cmdshot, true);
+            List<byte> list = new List<byte>();
+            int one;
+            while ((one = reader.BaseStream.ReadByte()) > -1)
             {
-                return true;
+                if (one != '\r')
+                {
+                    list.Add((byte)one);
+                }
             }
-            return false;
+            byte[] bytes = list.ToArray();
+            MemoryStream ms = new MemoryStream(bytes, 0, bytes.Length);
+            Image image = Image.FromStream(ms);
+            //ExecuteAdb(pullFile);
+            //if (File.Exists(localPath))
+            //{
+            //    return true;
+            //}
+            //return false;
+            return image;
         }
 
         /// <summary>
@@ -173,6 +188,15 @@ namespace ArkController.Kit
                 cmd = "-s " + serial + " " + cmd;
             }
             return command.ExecuteAdb(cmd);
+        }
+
+        public StreamReader ExecuteAdbStream(string cmd, bool sure)
+        {
+            if (sure && serial != null)
+            {
+                cmd = "-s " + serial + " " + cmd;
+            }
+            return command.ExecuteAdbStream(cmd);
         }
 
         /// <summary>

@@ -78,6 +78,7 @@ namespace ArkController.Pages
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
             this.screenShotPath = GetScreemShotPath();
+            File.Delete(this.screenShotPath);
             TaskInfo t = TaskInfo.Create(TaskType.ScreenShot, this.screenShotPath);
             t.ResultHandler = new TaskInfo.EventResultHandler(getScreenShotResult);
             taskThread.SendTask(t);
@@ -89,10 +90,10 @@ namespace ArkController.Pages
         /// <param name="result"></param>
         private void getScreenShotResult(object[] result)
         {
-            if ((bool)result[0])
-            {
-                this.pictureBox1.ImageLocation = this.screenShotPath;
-            }
+            //if ((bool)result[0])
+            //{
+                this.pictureBox1.Image = (Image)result[0];
+            //}
         }
 
         /// <summary>

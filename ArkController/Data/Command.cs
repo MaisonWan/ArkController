@@ -26,18 +26,23 @@ namespace ArkController.Data
         /// <returns></returns>
         public string ExecuteAdb(string cmd)
         {
-            p.StartInfo.CreateNoWindow = true;
-            p.StartInfo.FileName = "./adb/adb.exe";
-            p.StartInfo.Arguments = cmd;
-            p.StartInfo.UseShellExecute = false;
-            p.StartInfo.RedirectStandardError = true;
-            p.StartInfo.RedirectStandardInput = true;
-            p.StartInfo.RedirectStandardOutput = true;
-            p.StartInfo.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = "8603";
+            updateProcessInfo(cmd);
             p.Start();
             string outStr = p.StandardOutput.ReadToEnd();
             p.Close();
             return outStr;
+        }
+
+        /// <summary>
+        /// 返回流
+        /// </summary>
+        /// <param name="cmd"></param>
+        /// <returns></returns>
+        public StreamReader ExecuteAdbStream(string cmd)
+        {
+            updateProcessInfo(cmd);
+            p.Start();
+            return p.StandardOutput;
         }
 
         /// <summary>
@@ -52,14 +57,7 @@ namespace ArkController.Data
                 return;
             }
             loopLogcat = true;
-            p.StartInfo.CreateNoWindow = true;
-            p.StartInfo.FileName = "./adb/adb.exe";
-            p.StartInfo.Arguments = cmd;
-            p.StartInfo.UseShellExecute = false;
-            p.StartInfo.RedirectStandardError = true;
-            p.StartInfo.RedirectStandardInput = true;
-            p.StartInfo.RedirectStandardOutput = true;
-            p.StartInfo.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = "8603";
+            updateProcessInfo(cmd);
             p.Start();
             StreamReader reader = p.StandardOutput;
             string line = reader.ReadLine();//每次读取一行
@@ -71,6 +69,18 @@ namespace ArkController.Data
             p.WaitForExit();//等待程序执行完退出进程
             p.Close();//关闭进程
             reader.Close();//关闭流
+        }
+
+        private void updateProcessInfo(string cmd)
+        {
+            p.StartInfo.CreateNoWindow = true;
+            p.StartInfo.FileName = "./adb/adb.exe";
+            p.StartInfo.Arguments = cmd;
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardError = true;
+            p.StartInfo.RedirectStandardInput = true;
+            p.StartInfo.RedirectStandardOutput = true;
+            //p.StartInfo.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = "8603";
         }
 
         /// <summary>

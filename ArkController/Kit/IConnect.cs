@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 
 namespace ArkController.Kit
@@ -119,7 +120,7 @@ namespace ArkController.Kit
         /// 屏幕截图
         /// </summary>
         /// <returns></returns>
-        bool GetScreenShot(string localPath);
+        Image GetScreenShot(string localPath);
 
         /// <summary>
         /// 安装本地apk

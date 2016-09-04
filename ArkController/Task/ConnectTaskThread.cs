@@ -284,12 +284,12 @@ namespace ArkController.Task
         private void handleScreenShot(TaskInfo task)
         {
             string path = task.Data.ToString();
-            bool result = connect.GetScreenShot(path);
+            Image result = connect.GetScreenShot(path);
             if (task.ResultHandler != null)
             {
                 task.ResultHandler.Invoke(result);
             }
-            writeLog(string.Format("获取屏幕截图{0}", result ? "成功" : "失败"));
+            writeLog(string.Format("获取屏幕截图{0}", result != null? "成功" : "失败"));
         }
 
         /// <summary>
