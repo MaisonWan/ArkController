@@ -104,7 +104,7 @@ namespace ArkController
         /// <param name="data"></param>
         private void updateBatteryInfoReuslt(object[] data)
         {
-            if (data[0].GetType() == typeof(Image))
+            if (data[0].GetType() == typeof(Bitmap))
             {
                 this.pictureBoxBattery.Image = (Image)data[0];
             }
