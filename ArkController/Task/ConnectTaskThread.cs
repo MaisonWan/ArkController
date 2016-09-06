@@ -253,7 +253,14 @@ namespace ArkController.Task
         /// <param name="task"></param>
         private void handleInstall(TaskInfo task)
         {
-
+            string path = (string)task.Data;
+            writeLog(string.Format("开始安装{0}", path));
+            bool result = connect.Install(path);
+            if (task.ResultHandler != null)
+            {
+                task.ResultHandler.Invoke(new string[] { result.ToString(), path });
+            }
+            writeLog(string.Format("安装{0}{1}", path, result ? "成功" : "失败"));
         }
 
         /// <summary>

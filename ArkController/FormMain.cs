@@ -207,7 +207,7 @@ namespace ArkController
         private void installResult(object result)
         {
             string[] r = (string[])result;
-            if (r[0] == "true")
+            if (r[0] == "True")
             {
                 MessageBox.Show(r[1] + "安装成功", "安装", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (tabControlHomePage.SelectedTab == this.tabPagePackage)
