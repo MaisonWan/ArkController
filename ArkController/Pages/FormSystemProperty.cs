@@ -82,6 +82,7 @@ namespace ArkController.Pages
                     if (!needFilter || key.Contains(this.textBoxFilter.Text))
                     {
                         ListViewItem item = new ListViewItem(key);
+                        value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(value));
                         item.SubItems.Add(value);
                         this.listViewProperties.Items.Add(item);
                     }
@@ -118,6 +119,20 @@ namespace ArkController.Pages
             if (e.KeyCode == Keys.Enter)
             {
                 buttonReadSystemProp_Click(sender, e);
+            }
+        }
+
+        /// <summary>
+        /// 复制
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripMenuItemCopy_Click(object sender, EventArgs e)
+        {
+            if (this.listViewProperties.SelectedItems.Count > 0)
+            {
+                string key = this.listViewProperties.SelectedItems[0].SubItems[0].Text;
+                Clipboard.SetText(key);
             }
         }
 
