@@ -378,27 +378,7 @@ namespace ArkController
 
         private void listViewPackage_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            ListView listView = sender as ListView;
-            // 检查点击的列是不是现在的排序列.
-            if (e.Column == (listView.ListViewItemSorter as ListViewColumnSorter).SortColumn)
-            {
-                // 重新设置此列的排序方法.
-                if ((listView.ListViewItemSorter as ListViewColumnSorter).Order == System.Windows.Forms.SortOrder.Ascending)
-                {
-                    (listView.ListViewItemSorter as ListViewColumnSorter).Order = System.Windows.Forms.SortOrder.Descending;
-                }
-                else
-                {
-                    (listView.ListViewItemSorter as ListViewColumnSorter).Order = System.Windows.Forms.SortOrder.Ascending;
-                }
-            }
-            else
-            {
-                // 设置排序列，默认为正向排序
-                (listView.ListViewItemSorter as ListViewColumnSorter).SortColumn = e.Column;
-                (listView.ListViewItemSorter as ListViewColumnSorter).Order = System.Windows.Forms.SortOrder.Ascending;
-            }
-            listView.Sort();
+            ListViewKit.OnColumnClickSort(sender, e);
         }
         #endregion
 

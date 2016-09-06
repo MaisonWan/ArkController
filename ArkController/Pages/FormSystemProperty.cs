@@ -1,4 +1,5 @@
-﻿using ArkController.Task;
+﻿using ArkController.Component;
+using ArkController.Task;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,11 +13,16 @@ namespace ArkController.Pages
     public partial class FormSystemProperty : Form
     {
         private ConnectTaskThread taskThread = null;
+        /// <summary>
+        /// 存储列名的list
+        /// </summary>
+        private List<string> keyList = new List<string>();
 
         public FormSystemProperty()
         {
             InitializeComponent();
             taskThread = ConnectTaskThread.GetInstance();
+            this.listViewProperties.ListViewItemSorter = new ListViewColumnSorter();
         }
 
         private void FormSystemProperty_Load(object sender, EventArgs e)
@@ -48,24 +54,47 @@ namespace ArkController.Pages
             string[] lines = content.Split("\n".ToCharArray());
             this.listViewProperties.BeginUpdate();
             this.listViewProperties.Items.Clear();
+            this.keyList.Clear();
             foreach (string line in lines)
             {
                 string[] keyValue = line.Trim().Split(": ".ToCharArray());
                 if (keyValue.Length == 3)
                 {
-                    ListViewItem item = new ListViewItem(keyValue[0]);
-                    item.SubItems.Add(keyValue[2]);
+                    string key = keyValue[0].Replace("[", "").Replace("]", "");
+                    string value = keyValue[2].Replace("[", "").Replace("]", "");
+                    ListViewItem item = new ListViewItem(key);
+                    item.SubItems.Add(value);
                     this.listViewProperties.Items.Add(item);
+                    this.keyList.Add(key);
                 }
             }
             this.listViewProperties.EndUpdate();
+            this.updateAutoCompleteSource();
+        }
+
+        /// <summary>
+        /// 完成自动完成列表
+        /// </summary>
+        private void updateAutoCompleteSource()
+        {
+            this.textBoxFilter.AutoCompleteCustomSource.Clear();
+            foreach (string key in keyList)
+            {
+                this.textBoxFilter.AutoCompleteCustomSource.Add(key);
+            }
         }
 
         private void listViewProperties_Resize(object sender, EventArgs e)
         {
-            int width = this.listViewProperties.Width;
+            int width = this.listViewProperties.ClientSize.Width;
             this.listViewProperties.Columns[0].Width = width / 2;
             this.listViewProperties.Columns[1].Width = width / 2;
         }
+
+        private void listViewProperties_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            ListViewKit.OnColumnClickSort(sender, e);
+        }
+
     }
 }

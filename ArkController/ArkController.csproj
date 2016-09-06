@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Component\ListViewKit.cs" />
     <Compile Include="Data\DeviceManager.cs" />
     <Compile Include="Data\ProcessData.cs" />
     <Compile Include="Kit\FormKit.cs" />
@@ -186,6 +187,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\system.png" />
     <None Include="Resources\performance.png" />
     <None Include="Resources\save.png" />
     <None Include="Resources\empty_trash.png" />

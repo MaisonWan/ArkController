@@ -1129,12 +1129,13 @@
             // 
             // buttonSystemProp
             // 
-            this.buttonSystemProp.BackgroundImage = global::ArkController.Properties.Resources.performance;
+            this.buttonSystemProp.BackgroundImage = global::ArkController.Properties.Resources.system;
             this.buttonSystemProp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonSystemProp.Location = new System.Drawing.Point(263, 96);
             this.buttonSystemProp.Name = "buttonSystemProp";
             this.buttonSystemProp.Size = new System.Drawing.Size(60, 60);
             this.buttonSystemProp.TabIndex = 17;
+            this.toolTipButton.SetToolTip(this.buttonSystemProp, "打开系统属性");
             this.buttonSystemProp.UseVisualStyleBackColor = true;
             this.buttonSystemProp.Click += new System.EventHandler(this.buttonSystemProp_Click);
             // 

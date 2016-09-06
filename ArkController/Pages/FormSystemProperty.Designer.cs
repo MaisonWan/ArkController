@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSystemProperty));
             this.buttonReadSystemProp = new System.Windows.Forms.Button();
             this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.checkBoxFilter = new System.Windows.Forms.CheckBox();
@@ -48,6 +49,8 @@
             // 
             // textBoxFilter
             // 
+            this.textBoxFilter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxFilter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBoxFilter.Location = new System.Drawing.Point(121, 15);
             this.textBoxFilter.Name = "textBoxFilter";
             this.textBoxFilter.Size = new System.Drawing.Size(177, 21);
@@ -81,6 +84,7 @@
             this.listViewProperties.TabIndex = 3;
             this.listViewProperties.UseCompatibleStateImageBehavior = false;
             this.listViewProperties.View = System.Windows.Forms.View.Details;
+            this.listViewProperties.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewProperties_ColumnClick);
             this.listViewProperties.Resize += new System.EventHandler(this.listViewProperties_Resize);
             // 
             // columnHeader1
@@ -100,9 +104,10 @@
             this.Controls.Add(this.checkBoxFilter);
             this.Controls.Add(this.textBoxFilter);
             this.Controls.Add(this.buttonReadSystemProp);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormSystemProperty";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormSystemProperty";
+            this.Text = "系统属性";
             this.Load += new System.EventHandler(this.FormSystemProperty_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
