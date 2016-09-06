@@ -18,9 +18,18 @@ namespace ArkController.Pages
         /// </summary>
         private List<string> keyList = new List<string>();
 
+        /// <summary>
+        /// 更新自动完成
+        /// </summary>
+        private delegate void UpdateAutoCompleteSource();
+
+        private UpdateAutoCompleteSource updateSource = null;
+
         public FormSystemProperty()
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
+            this.updateSource = new UpdateAutoCompleteSource(updateAutoCompleteSource);
             taskThread = ConnectTaskThread.GetInstance();
             this.listViewProperties.ListViewItemSorter = new ListViewColumnSorter();
         }
@@ -29,6 +38,9 @@ namespace ArkController.Pages
         {
             listViewProperties_Resize(sender, e);
             buttonReadSystemProp_Click(sender, e);
+            keyList.Add("aaa");
+            keyList.Add("bbb");
+            updateAutoCompleteSource();
         }
 
         /// <summary>
@@ -55,6 +67,9 @@ namespace ArkController.Pages
             this.listViewProperties.BeginUpdate();
             this.listViewProperties.Items.Clear();
             this.keyList.Clear();
+            // 是否需要过滤
+            bool needFilter = this.checkBoxFilter.Checked && !string.IsNullOrEmpty(this.textBoxFilter.Text);
+
             foreach (string line in lines)
             {
                 string[] keyValue = line.Trim().Split(": ".ToCharArray());
@@ -62,14 +77,19 @@ namespace ArkController.Pages
                 {
                     string key = keyValue[0].Replace("[", "").Replace("]", "");
                     string value = keyValue[2].Replace("[", "").Replace("]", "");
-                    ListViewItem item = new ListViewItem(key);
-                    item.SubItems.Add(value);
-                    this.listViewProperties.Items.Add(item);
                     this.keyList.Add(key);
+                    // 需要过滤，并且包含这个关键词
+                    if (!needFilter || key.Contains(this.textBoxFilter.Text))
+                    {
+                        ListViewItem item = new ListViewItem(key);
+                        item.SubItems.Add(value);
+                        this.listViewProperties.Items.Add(item);
+                    }
                 }
             }
             this.listViewProperties.EndUpdate();
-            this.updateAutoCompleteSource();
+            // 更新自动完成列表
+            this.textBoxFilter.Invoke(updateSource);
         }
 
         /// <summary>
@@ -78,10 +98,7 @@ namespace ArkController.Pages
         private void updateAutoCompleteSource()
         {
             this.textBoxFilter.AutoCompleteCustomSource.Clear();
-            foreach (string key in keyList)
-            {
-                this.textBoxFilter.AutoCompleteCustomSource.Add(key);
-            }
+            this.textBoxFilter.AutoCompleteCustomSource.AddRange(keyList.ToArray());
         }
 
         private void listViewProperties_Resize(object sender, EventArgs e)
@@ -94,6 +111,14 @@ namespace ArkController.Pages
         private void listViewProperties_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             ListViewKit.OnColumnClickSort(sender, e);
+        }
+
+        private void textBoxFilter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonReadSystemProp_Click(sender, e);
+            }
         }
 
     }

@@ -49,12 +49,13 @@
             // 
             // textBoxFilter
             // 
-            this.textBoxFilter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxFilter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.textBoxFilter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBoxFilter.Location = new System.Drawing.Point(121, 15);
             this.textBoxFilter.Name = "textBoxFilter";
             this.textBoxFilter.Size = new System.Drawing.Size(177, 21);
             this.textBoxFilter.TabIndex = 1;
+            this.textBoxFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxFilter_KeyDown);
             // 
             // checkBoxFilter
             // 
@@ -67,6 +68,7 @@
             this.checkBoxFilter.TabIndex = 2;
             this.checkBoxFilter.Text = "过滤";
             this.checkBoxFilter.UseVisualStyleBackColor = true;
+            this.checkBoxFilter.CheckedChanged += new System.EventHandler(this.buttonReadSystemProp_Click);
             // 
             // listViewProperties
             // 

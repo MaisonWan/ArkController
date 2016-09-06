@@ -187,6 +187,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\system_prop.png" />
     <None Include="Resources\system.png" />
     <None Include="Resources\performance.png" />
     <None Include="Resources\save.png" />
