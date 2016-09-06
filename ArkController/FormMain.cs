@@ -26,6 +26,7 @@ namespace ArkController
         private FormScreenSize screenSize = null;
         private FormPackageInfo packageInfo = null;
         private FormMemInfo meminfo = null;
+        private FormSystemProperty systemProperty = null;
 
         private string batteryFormatInfo = null;
 
@@ -321,6 +322,11 @@ namespace ArkController
         private void buttonMemInfo_Click(object sender, EventArgs e)
         {
             FormKit.Show(meminfo, typeof(FormMemInfo));
+        }
+
+        private void buttonSystemProp_Click(object sender, EventArgs e)
+        {
+            FormKit.Show(systemProperty, typeof(FormSystemProperty));
         }
         #endregion
 
