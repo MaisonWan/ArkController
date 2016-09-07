@@ -269,7 +269,7 @@
             this.PToolStripMenuItemCopy,
             this.toolStripMenuItemUninstall});
             this.contextMenuStripListview.Name = "contextMenuStripListview";
-            this.contextMenuStripListview.Size = new System.Drawing.Size(190, 136);
+            this.contextMenuStripListview.Size = new System.Drawing.Size(190, 158);
             this.contextMenuStripListview.Text = "删除";
             // 
             // ToolStripMenuItemDetail
@@ -283,14 +283,14 @@
             // 
             this.toolStripMenuItemClearData.Name = "toolStripMenuItemClearData";
             this.toolStripMenuItemClearData.Size = new System.Drawing.Size(189, 22);
-            this.toolStripMenuItemClearData.Text = "清空应用数据(&A)";
+            this.toolStripMenuItemClearData.Text = "清空设备应用数据(&A)";
             this.toolStripMenuItemClearData.Click += new System.EventHandler(this.toolStripMenuItemClearData_Click);
             // 
             // PToolStripMenuItemPackageInfo
             // 
             this.PToolStripMenuItemPackageInfo.Name = "PToolStripMenuItemPackageInfo";
             this.PToolStripMenuItemPackageInfo.Size = new System.Drawing.Size(189, 22);
-            this.PToolStripMenuItemPackageInfo.Text = "本地显示包信息(&P)";
+            this.PToolStripMenuItemPackageInfo.Text = "本地显示应用信息(&P)";
             this.PToolStripMenuItemPackageInfo.Click += new System.EventHandler(this.PToolStripMenuItemPackageInfo_Click);
             // 
             // toolStripMenuItemLogcat
