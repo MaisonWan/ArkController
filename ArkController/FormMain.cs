@@ -647,5 +647,25 @@ namespace ArkController
             }
         }
 
+        private void tabControlHomePage_Selected(object sender, TabControlEventArgs e)
+        {
+            if (e.TabPage == this.tabPagePackage)
+            {
+                // 安装包列表，需要刷新
+                if (this.listViewPackage.Items.Count == 0)
+                {
+                    buttonPackageList_Click(sender, null);
+                }
+            }
+            else if (e.TabPage == this.tabPageProcess)
+            {
+                // 系统进程列表刷新进程
+                if (this.listViewProcessList.Items.Count == 0)
+                {
+                    buttonProcessList_Click(sender, null);
+                }
+            }
+        }
+
     }
 }
