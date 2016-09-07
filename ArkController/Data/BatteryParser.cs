@@ -41,7 +41,10 @@ namespace ArkController.Data
                 {
                     string key = items[0].Trim();
                     string value = items[1].Trim();
-                    map[key] = value;
+                    if (!map.ContainsKey(key))
+                    {
+                        map[key] = value;
+                    }
                 }
             }
         }
