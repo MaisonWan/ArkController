@@ -77,30 +77,38 @@ namespace ArkController.Kit
         /// <returns></returns>
         public Image GetScreenShot(string localPath)
         {
-            string cmdshot = "shell screencap -p";// /sdcard/screenshot.png";
-            //string pullFile = "pull /sdcard/screenshot.png \"" + localPath + "\"";
-            //File.Delete(localPath);
-            //string r = ExecuteAdb(cmdshot);
-            StreamReader reader = ExecuteAdbStream(cmdshot, true);
-            List<byte> list = new List<byte>();
-            int one;
-            while ((one = reader.BaseStream.ReadByte()) > -1)
-            {
-                if (one != '\r')
-                {
-                    list.Add((byte)one);
-                }
-            }
-            byte[] bytes = list.ToArray();
-            MemoryStream ms = new MemoryStream(bytes, 0, bytes.Length);
-            Image image = Image.FromStream(ms);
-            //ExecuteAdb(pullFile);
-            //if (File.Exists(localPath))
+            string cmdshot = "shell screencap -p /sdcard/screenshot.png";
+            string pullFile = "pull /sdcard/screenshot.png \"" + localPath + "\"";
+            File.Delete(localPath);
+            string r = ExecuteAdb(cmdshot);
+            ExecuteAdb(pullFile);
+            //StreamReader reader = ExecuteAdbStream(cmdshot, true);
+            //List<byte> list = new List<byte>();
+            //int one;
+            //while ((one = reader.BaseStream.ReadByte()) > -1)
             //{
-            //    return true;
+            //    if (one != 0x0D)
+            //    {
+            //        list.Add((byte)one);
+            //    }
             //}
+
+            //byte[] bytes = list.ToArray();
+            //MemoryStream ms = new MemoryStream(bytes, 0, bytes.Length);
+            //ms.Position = 0;
+            //Image image = Bitmap.FromStream(ms);
+            //ms.Close();
+            //ExecuteAdb(pullFile);
+            if (File.Exists(localPath))
+            {
+                FileStream fs = new FileStream(localPath, FileMode.Open);
+                Image image = Image.FromStream(fs);
+                fs.Close();
+                return image;
+                //return true;
+            }
             //return false;
-            return image;
+            return null;
         }
 
         /// <summary>

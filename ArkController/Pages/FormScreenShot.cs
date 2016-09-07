@@ -90,10 +90,10 @@ namespace ArkController.Pages
         /// <param name="result"></param>
         private void getScreenShotResult(object[] result)
         {
-            //if ((bool)result[0])
-            //{
+            if (result != null)
+            {
                 this.pictureBox1.Image = (Image)result[0];
-            //}
+            }
         }
 
         /// <summary>
