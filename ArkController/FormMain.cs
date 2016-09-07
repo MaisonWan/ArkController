@@ -511,8 +511,8 @@ namespace ArkController
                 task.Data = this.toolStripComboBoxDeviceList.Items[index].ToString();
                 task.ResultHandler = new TaskInfo.EventResultHandler(selectDeviceResult);
                 taskThread.SendTask(task);
+                updateBatteryInfo();
             }
-            updateBatteryInfo();
         }
 
         private void selectDeviceResult(object result)
