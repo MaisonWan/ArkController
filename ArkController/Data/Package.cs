@@ -97,5 +97,25 @@ namespace ArkController.Data
         {
             return "shell pm clear " + packageName;
         }
+
+        /// <summary>
+        /// 隐藏应用
+        /// </summary>
+        /// <param name="packageName"></param>
+        /// <returns></returns>
+        public static string GetHideApplicationCommand(string packageName)
+        {
+            return "shell pm hide " + packageName;
+        }
+
+        /// <summary>
+        /// 恢复应用
+        /// </summary>
+        /// <param name="packageName"></param>
+        /// <returns></returns>
+        public static string GetUnhideApplicationCommand(string packageName)
+        {
+            return "shell pm unhide " + packageName;
+        }
     }
 }

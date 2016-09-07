@@ -445,6 +445,59 @@ namespace ArkController
             }
         }
 
+        /// <summary>
+        /// 隐藏应用，不能看到launcher中图标
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripMenuItemHideApp_Click(object sender, EventArgs e)
+        {
+            if (this.listViewPackage.SelectedItems.Count > 0)
+            {
+                string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
+                if (MessageBox.Show("隐藏之后不能使用该应用，确认隐藏[" + packageName + "]？", 
+                    "操作提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    string cmd = Package.GetHideApplicationCommand(packageName);
+                    TaskInfo t = TaskInfo.Create(TaskType.ExecuteCommand, cmd);
+                    t.ResultHandler = new TaskInfo.EventResultHandler(hideOrUnhideAppResult);
+                    taskThread.SendTask(t);
+                }
+            }
+        }
+
+        private void toolStripMenuItemUnhideApp_Click(object sender, EventArgs e)
+        {
+            if (this.listViewPackage.SelectedItems.Count > 0)
+            {
+                string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
+                string cmd = Package.GetUnhideApplicationCommand(packageName);
+                TaskInfo t = TaskInfo.Create(TaskType.ExecuteCommand, cmd);
+                t.ResultHandler = new TaskInfo.EventResultHandler(hideOrUnhideAppResult);
+                taskThread.SendTask(t);
+            }
+        }
+
+        /// <summary>
+        /// 显示或者隐藏应用的结果
+        /// </summary>
+        /// <param name="result"></param>
+        private void hideOrUnhideAppResult(object[] result)
+        {
+            string content = ((string)result[0]).Trim();
+            Match match = Regex.Match(content, @"Package (.*) new hidden state: (true|false)");
+            if (match.Groups.Count > 2)
+            {
+                string state = "恢复显示";
+                if (match.Groups[2].Value == "true")
+                {
+                    state = "隐藏显示";
+                }
+                MessageBox.Show("应用[" + match.Groups[1].Value + "]状态变化:" + state,
+                    "应用状态变化", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         private void toolStripMenuItemLogcat_Click(object sender, EventArgs e)
         {
             if (this.listViewPackage.SelectedItems.Count > 0)
@@ -706,5 +759,6 @@ namespace ArkController
                 }
             }
         }
+
     }
 }

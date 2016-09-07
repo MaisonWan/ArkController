@@ -133,6 +133,8 @@
             this.toolStripButtonAbout = new System.Windows.Forms.ToolStripButton();
             this.buttonLogSave = new System.Windows.Forms.Button();
             this.buttonLogClear = new System.Windows.Forms.Button();
+            this.toolStripMenuItemHideApp = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemUnhideApp = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.toolStripKibot.SuspendLayout();
@@ -244,10 +246,12 @@
             this.toolStripMenuItemClearData,
             this.PToolStripMenuItemPackageInfo,
             this.toolStripMenuItemLogcat,
+            this.toolStripMenuItemHideApp,
+            this.toolStripMenuItemUnhideApp,
             this.PToolStripMenuItemCopy,
             this.toolStripMenuItemUninstall});
             this.contextMenuStripListview.Name = "contextMenuStripListview";
-            this.contextMenuStripListview.Size = new System.Drawing.Size(190, 136);
+            this.contextMenuStripListview.Size = new System.Drawing.Size(190, 202);
             this.contextMenuStripListview.Text = "删除";
             // 
             // ToolStripMenuItemDetail
@@ -1232,6 +1236,20 @@
             this.buttonLogClear.UseVisualStyleBackColor = true;
             this.buttonLogClear.Click += new System.EventHandler(this.buttonLogClear_Click);
             // 
+            // toolStripMenuItemHideApp
+            // 
+            this.toolStripMenuItemHideApp.Name = "toolStripMenuItemHideApp";
+            this.toolStripMenuItemHideApp.Size = new System.Drawing.Size(189, 22);
+            this.toolStripMenuItemHideApp.Text = "隐藏设备应用(&H)";
+            this.toolStripMenuItemHideApp.Click += new System.EventHandler(this.toolStripMenuItemHideApp_Click);
+            // 
+            // toolStripMenuItemUnhideApp
+            // 
+            this.toolStripMenuItemUnhideApp.Name = "toolStripMenuItemUnhideApp";
+            this.toolStripMenuItemUnhideApp.Size = new System.Drawing.Size(189, 22);
+            this.toolStripMenuItemUnhideApp.Text = "恢复设备应用(&U)";
+            this.toolStripMenuItemUnhideApp.Click += new System.EventHandler(this.toolStripMenuItemUnhideApp_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1387,6 +1405,8 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemHideApp;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemUnhideApp;
     }
 }
 
