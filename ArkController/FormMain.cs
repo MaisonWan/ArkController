@@ -29,6 +29,11 @@ namespace ArkController
         private FormSystemProperty systemProperty = null;
 
         private string batteryFormatInfo = null;
+        /// <summary>
+        /// 添加自动完成数据到textbox
+        /// </summary>
+        /// <param name="items"></param>
+        private delegate void UpdateTextboxAutoComplete(string[] items);
 
         public FormMain()
         {
@@ -356,7 +361,19 @@ namespace ArkController
         private void updatePackageListResult(object result)
         {
             string[] packages = (string[])result;
-            Package.UpdatePackageList(this.listViewPackage, packages, this.textBoxFilter.Text, this.checkBoxFilter.Checked);
+            string[] items = Package.UpdatePackageList(this.listViewPackage, packages, this.textBoxFilter.Text, this.checkBoxFilter.Checked);
+            UpdateTextboxAutoComplete fun = new UpdateTextboxAutoComplete(updatePackageTextbox);
+            this.Invoke(fun, new object[] { items });
+        }
+
+        /// <summary>
+        /// 更新程序列表中过滤关键词的自动补全
+        /// </summary>
+        /// <param name="items"></param>
+        private void updatePackageTextbox(string[] items)
+        {
+            this.textBoxFilter.AutoCompleteCustomSource.Clear();
+            this.textBoxFilter.AutoCompleteCustomSource.AddRange(items);
         }
 
         private void textBoxFilter_KeyDown(object sender, KeyEventArgs e)
@@ -555,8 +572,11 @@ namespace ArkController
             this.listViewProcessList.BeginUpdate();
             this.listViewProcessList.Items.Clear();
             bool needFilter = this.checkBoxProcess.Checked && !string.IsNullOrEmpty(this.textBoxProcessFilter.Text);
+            string[] items = new string[processList.Count];
+            int i = 0;
             foreach (ProcessData.Data data in processList)
             {
+                items[i++] = data.Name;
                 if (needFilter && !data.Name.Contains(this.textBoxProcessFilter.Text))
                 {
                     continue;
@@ -576,6 +596,26 @@ namespace ArkController
                 this.listViewProcessList.Items.Add(item);
             }
             this.listViewProcessList.EndUpdate();
+            UpdateTextboxAutoComplete update = new UpdateTextboxAutoComplete(updateProcessTextboxFilter);
+            this.Invoke(update, new object[] { items });
+        }
+
+        /// <summary>
+        /// 更新程序列表中过滤关键词的自动补全
+        /// </summary>
+        /// <param name="items"></param>
+        private void updateProcessTextboxFilter(string[] items)
+        {
+            this.textBoxProcessFilter.AutoCompleteCustomSource.Clear();
+            this.textBoxProcessFilter.AutoCompleteCustomSource.AddRange(items);
+        }
+
+        private void textBoxProcessFilter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonProcessList_Click(sender, null);
+            }
         }
 
         private void listViewProcessList_Resize(object sender, EventArgs e)
@@ -666,6 +706,5 @@ namespace ArkController
                 }
             }
         }
-
     }
 }

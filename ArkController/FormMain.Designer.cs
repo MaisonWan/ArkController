@@ -269,7 +269,7 @@
             this.PToolStripMenuItemCopy,
             this.toolStripMenuItemUninstall});
             this.contextMenuStripListview.Name = "contextMenuStripListview";
-            this.contextMenuStripListview.Size = new System.Drawing.Size(190, 158);
+            this.contextMenuStripListview.Size = new System.Drawing.Size(190, 136);
             this.contextMenuStripListview.Text = "删除";
             // 
             // ToolStripMenuItemDetail
@@ -326,6 +326,8 @@
             // 
             // textBoxFilter
             // 
+            this.textBoxFilter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBoxFilter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBoxFilter.Location = new System.Drawing.Point(99, 17);
             this.textBoxFilter.MaxLength = 255;
             this.textBoxFilter.Name = "textBoxFilter";
@@ -813,11 +815,14 @@
             // 
             // textBoxProcessFilter
             // 
+            this.textBoxProcessFilter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBoxProcessFilter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBoxProcessFilter.Location = new System.Drawing.Point(99, 17);
             this.textBoxProcessFilter.MaxLength = 255;
             this.textBoxProcessFilter.Name = "textBoxProcessFilter";
             this.textBoxProcessFilter.Size = new System.Drawing.Size(182, 21);
             this.textBoxProcessFilter.TabIndex = 20;
+            this.textBoxProcessFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxProcessFilter_KeyDown);
             // 
             // buttonProcessList
             // 

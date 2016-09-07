@@ -197,6 +197,9 @@
         oWsUASnpLBEoESgRKBEoESgRKBFoRAT+B7dbDDqZamKUAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="contextMenuStripProcess.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
   <metadata name="imageListTabs.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>640, 17</value>
   </metadata>
@@ -276,9 +279,6 @@
   </data>
   <metadata name="toolTipButton.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>896, 17</value>
-  </metadata>
-  <metadata name="contextMenuStripProcess.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
   </metadata>
   <data name="buttonScreenShot.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

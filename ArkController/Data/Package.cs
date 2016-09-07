@@ -23,12 +23,13 @@ namespace ArkController.Data
         /// <param name="listView"></param>
         /// <param name="filterName"></param>
         /// <param name="needFilter"></param>
-        public static void UpdatePackageList(ListView listView, string[] packages, string filterName, bool needFilter)
+        public static string[] UpdatePackageList(ListView listView, string[] packages, string filterName, bool needFilter)
         {
             listView.BeginUpdate();
             listView.Items.Clear();
             bool need = needFilter & filterName.Length > 0;
-            //string filterName = this.textBoxFilter.Text;
+            string[] packageNames = new string[packages.Length];
+            int index = 0;
             foreach (string p in packages)
             {
                 if (string.IsNullOrEmpty(p))
@@ -41,7 +42,8 @@ namespace ArkController.Data
                 if (!need || items[0].Contains(filterName))
                 {
                     // 去掉installer
-                    ListViewItem item = new ListViewItem(items[1].Replace("  installer", ""));
+                    string name = items[1].Replace("  installer", "");
+                    ListViewItem item = new ListViewItem(name);
                     item.SubItems.Add(items[0]);
                     if (items[0].StartsWith("/system"))
                     {
@@ -53,9 +55,11 @@ namespace ArkController.Data
                     }
                     item.SubItems.Add(items[2] == "null" ? "无" : items[2]);
                     listView.Items.Add(item);
+                    packageNames[index++] = name;
                 }
             }
             listView.EndUpdate();
+            return packageNames;
         }
 
         /// <summary>
