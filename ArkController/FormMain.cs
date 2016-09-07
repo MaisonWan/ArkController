@@ -467,7 +467,7 @@ namespace ArkController
 
         private void buttonDeveloper_Click(object sender, EventArgs e)
         {
-            TaskInfo task = TaskInfo.Create(TaskType.StartAM, Package.GetOpenDeviceInfoSetting());
+            TaskInfo task = TaskInfo.Create(TaskType.StartAM, Package.GetDeveloperSetting());
             taskThread.SendTask(task);
         }
 

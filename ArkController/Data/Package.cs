@@ -79,7 +79,7 @@ namespace ArkController.Data
         /// <summary>
         /// 打开开发者选项
         /// </summary>
-        public static string OpenDevementSetting()
+        public static string GetDeveloperSetting()
         {
             const string action = "android.settings.APPLICATION_DEVELOPMENT_SETTINGS";
             return string.Format("-a {0}", action);
