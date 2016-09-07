@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using ArkController.Kit;
 using ArkController.Task;
+using System.Drawing.Imaging;
 
 namespace ArkController.Pages
 {
@@ -58,7 +59,7 @@ namespace ArkController.Pages
             //string localFilePath, fileNameExt, newFileName, FilePath; 
             SaveFileDialog sfd = this.saveFileDialogImage;
             //设置文件类型 
-            sfd.Filter = "图片文件（*.png）|*.png|图片文件（*.jpg）|*.jpg";
+            sfd.Filter = "PNG（*.png）|*.png|JPEG（*.jpg）|*.jpg|BMP（*.bmp）|*.bmp|Gif（*.gif）|*.gif|TIFF（*.tiff）|*.tiff|EXIF（*.exif）|*.exif";
             //设置默认文件类型显示顺序 
             sfd.FilterIndex = 1;
             sfd.FileName = "screenshot" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".png";
@@ -69,8 +70,33 @@ namespace ArkController.Pages
             {
                 string localFilePath = sfd.FileName.ToString(); //获得文件路径 
                 string fileNameExt = localFilePath.Substring(localFilePath.LastIndexOf("\\") + 1); //获取文件名，不带路径
-
-                this.pictureBox1.Image.Save(localFilePath);
+                int selectIndex = sfd.FilterIndex;
+                ImageFormat format;
+                switch (selectIndex)
+                {
+                    case 1:
+                        format = ImageFormat.Png;
+                        break;
+                    case 2:
+                        format = ImageFormat.Jpeg;
+                        break;
+                    case 3:
+                        format = ImageFormat.Bmp;
+                        break;
+                    case 4:
+                        format = ImageFormat.Gif;
+                        break;
+                    case 5:
+                        format = ImageFormat.Tiff;
+                        break;
+                    case 6:
+                        format = ImageFormat.Exif;
+                        break;
+                    default:
+                        format = ImageFormat.Png;
+                        break;
+                }
+                this.pictureBox1.Image.Save(localFilePath, format);
             }
         }
         #endregion
