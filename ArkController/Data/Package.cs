@@ -128,5 +128,15 @@ namespace ArkController.Data
         {
             return string.Format("pull {0} \"{1}\"", appLocation, localLocation);
         }
+
+        /// <summary>
+        /// 结束该应用所有进程
+        /// </summary>
+        /// <param name="packageName">包名</param>
+        /// <returns></returns>
+        public static string GetKillAllProcessCommand(string packageName)
+        {
+            return "shell am force-stop " + packageName;
+        }
     }
 }

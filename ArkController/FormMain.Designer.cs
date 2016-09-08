@@ -134,8 +134,8 @@
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipBattery = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
-            this.saveFileDialogLog = new System.Windows.Forms.SaveFileDialog();
             this.toolStripMenuItemPullApk = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemKillAllProcess = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.toolStripKibot.SuspendLayout();
@@ -268,6 +268,7 @@
             this.ToolStripMenuItemDetail,
             this.toolStripMenuItemClearData,
             this.PToolStripMenuItemPackageInfo,
+            this.toolStripMenuItemKillAllProcess,
             this.toolStripMenuItemLogcat,
             this.toolStripMenuItemHideApp,
             this.toolStripMenuItemUnhideApp,
@@ -1260,6 +1261,13 @@
             this.toolStripMenuItemPullApk.Text = "导出安装程序(&O)";
             this.toolStripMenuItemPullApk.Click += new System.EventHandler(this.toolStripMenuItemPullApk_Click);
             // 
+            // toolStripMenuItemKillAllProcess
+            // 
+            this.toolStripMenuItemKillAllProcess.Name = "toolStripMenuItemKillAllProcess";
+            this.toolStripMenuItemKillAllProcess.Size = new System.Drawing.Size(189, 22);
+            this.toolStripMenuItemKillAllProcess.Text = "结束应用所有进程(&S)";
+            this.toolStripMenuItemKillAllProcess.Click += new System.EventHandler(this.toolStripMenuItemKillAllProcess_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1402,7 +1410,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.Button buttonLogClear;
         private System.Windows.Forms.Button buttonLogSave;
-        private System.Windows.Forms.SaveFileDialog saveFileDialogLog;
         private System.Windows.Forms.ComboBox comboBoxProcess;
         private System.Windows.Forms.CheckBox checkBoxProcess;
         private System.Windows.Forms.TextBox textBoxProcessFilter;
@@ -1418,6 +1425,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemHideApp;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemUnhideApp;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPullApk;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemKillAllProcess;
     }
 }
 

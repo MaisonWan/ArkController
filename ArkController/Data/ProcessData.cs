@@ -54,7 +54,7 @@ namespace ArkController.Data
         /// <returns></returns>
         public static string GetKillProcess(string pid)
         {
-            return "shell kill " + pid;
+            return "shell kill -9 " + pid;
         }
 
         /// <summary>

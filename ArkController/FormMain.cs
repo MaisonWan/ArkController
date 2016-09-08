@@ -401,7 +401,7 @@ namespace ArkController
 
         private void ToolStripMenuItemDetail_Click(object sender, EventArgs e)
         {
-            if (this.listViewPackage.SelectedItems.Count > 0)
+            if (ListViewKit.hasSelectedItem(listViewPackage))
             {
                 string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
                 string cmd = Package.GetOpenApplicationDetail(packageName);
@@ -411,7 +411,7 @@ namespace ArkController
 
         private void toolStripMenuItemClearData_Click(object sender, EventArgs e)
         {
-            if (this.listViewPackage.SelectedItems.Count > 0)
+            if (ListViewKit.hasSelectedItem(listViewPackage))
             {
                 string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
                 string msg = "确认清空设备上应用" + packageName + "的数据？";
@@ -425,7 +425,7 @@ namespace ArkController
 
         private void PToolStripMenuItemPackageInfo_Click(object sender, EventArgs e)
         {
-            if (this.listViewPackage.SelectedItems.Count > 0)
+            if (ListViewKit.hasSelectedItem(listViewPackage))
             {
                 string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
                 if (packageInfo == null || packageInfo.IsDisposed)
@@ -519,6 +519,25 @@ namespace ArkController
             }
         }
 
+        /// <summary>
+        /// 结束应用所有进程
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripMenuItemKillAllProcess_Click(object sender, EventArgs e)
+        {
+            if (ListViewKit.hasSelectedItem(listViewPackage))
+            {
+                string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
+                string msg = string.Format("会停止应用{0}下所有进程，是否继续？", packageName);
+                if (MessageBox.Show(msg, "卸载提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    string cmd = Package.GetKillAllProcessCommand(packageName);
+                    taskThread.SendTask(TaskInfo.Create(TaskType.ExecuteCommand, cmd));
+                }
+            }
+        }
+
         private void toolStripMenuItemLogcat_Click(object sender, EventArgs e)
         {
             if (this.listViewPackage.SelectedItems.Count > 0)
@@ -549,7 +568,7 @@ namespace ArkController
 
         private void PToolStripMenuItemCopy_Click(object sender, EventArgs e)
         {
-            if (this.listViewPackage.SelectedItems.Count > 0)
+            if (ListViewKit.hasSelectedItem(listViewPackage))
             {
                 string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
                 Clipboard.SetText(packageName);
@@ -694,7 +713,7 @@ namespace ArkController
 
         private void listViewProcessList_Resize(object sender, EventArgs e)
         {
-            int width = this.listViewProcessList.Width;
+            int width = this.listViewProcessList.ClientSize.Width;
             this.listViewProcessList.Columns[0].Width = (int)(width * 0.1f);
             this.listViewProcessList.Columns[1].Width = (int)(width * 0.1f);
             this.listViewProcessList.Columns[2].Width = (int)(width * 0.1f);
