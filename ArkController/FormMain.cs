@@ -56,7 +56,7 @@ namespace ArkController
             this.listViewProcessList.ListViewItemSorter = sorter;
             // 默认选择所有
             this.toolStripComboBoxDeviceList.SelectedIndex = 0;
-            this.comboBoxPackageType.SelectedIndex = 0;
+            this.comboBoxPackageType.SelectedIndex = 2;
             this.comboBoxProcess.SelectedIndex = 1;
             taskThread.Start();
             startAdb();
@@ -468,7 +468,7 @@ namespace ArkController
 
         private void toolStripMenuItemUnhideApp_Click(object sender, EventArgs e)
         {
-            if (this.listViewPackage.SelectedItems.Count > 0)
+            if (ListViewKit.hasSelectedItem(listViewPackage))
             {
                 string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
                 string cmd = Package.GetUnhideApplicationCommand(packageName);
@@ -495,6 +495,27 @@ namespace ArkController
                 }
                 MessageBox.Show("应用[" + match.Groups[1].Value + "]状态变化:" + state,
                     "应用状态变化", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        /// <summary>
+        /// 导出安装程序
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripMenuItemPullApk_Click(object sender, EventArgs e)
+        {
+            if (ListViewKit.hasSelectedItem(listViewPackage))
+            {
+                string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
+                string installAppLocation = this.listViewPackage.SelectedItems[0].SubItems[1].Text.Trim(); // 安装apk的路径
+                string localFilePath = DialogKit.ShowSavePullApkDialog(packageName + ".apk"); // 保存文件对话框
+                if (!string.IsNullOrEmpty(localFilePath))
+                {
+                    TaskInfo t = new TaskInfo(TaskType.PullFile);
+                    t.DataArray = new object[] { installAppLocation, localFilePath };
+                    taskThread.SendTask(t);
+                }
             }
         }
 
@@ -693,18 +714,10 @@ namespace ArkController
             string content = this.textBoxLog.Text;
             if (!string.IsNullOrEmpty(content))
             {
-                SaveFileDialog sfd = this.saveFileDialogLog;
-                //设置文件类型
-                sfd.Filter = "日志文件（*.log）|*.log|文本文件（*.txt）|*.txt";
-                //设置默认文件类型显示顺序 
-                sfd.FilterIndex = 1;
-                sfd.FileName = "log_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log";
-                //保存对话框是否记忆上次打开的目录 
-                sfd.RestoreDirectory = true;
-                //点了保存按钮进入 
-                if (sfd.ShowDialog() == DialogResult.OK)
+                string defaultName = "log_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log";
+                string localFilePath = DialogKit.ShowSaveLogDialog(defaultName);
+                if (!string.IsNullOrEmpty(localFilePath))
                 {
-                    string localFilePath = sfd.FileName.ToString(); //获得文件路径 
                     FileStream fs = new FileStream(localFilePath, FileMode.Create);
                     StreamWriter sw = new StreamWriter(fs, Encoding.Default);
                     sw.Write(content);

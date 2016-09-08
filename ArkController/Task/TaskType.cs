@@ -60,6 +60,14 @@ namespace ArkController.Task
         /// <summary>
         /// 屏幕尺寸和像素密度
         /// </summary>
-        ScreenSizeDensity
+        ScreenSizeDensity,
+        /// <summary>
+        /// 从设备从导出文件
+        /// </summary>
+        PullFile,
+        /// <summary>
+        /// 从本地推送到设备端
+        /// </summary>
+        PushFile
     }
 }

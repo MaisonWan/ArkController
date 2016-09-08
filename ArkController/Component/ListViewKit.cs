@@ -39,5 +39,16 @@ namespace ArkController.Component
             }
             listView.Sort();
         }
+
+        /// <summary>
+        /// 是否有选择的项目
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <returns></returns>
+        public static bool hasSelectedItem(object sender)
+        {
+            ListView listview = (ListView)sender;
+            return listview.SelectedItems.Count > 0;
+        }
     }
 }

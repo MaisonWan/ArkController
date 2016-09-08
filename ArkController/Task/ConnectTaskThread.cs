@@ -96,6 +96,9 @@ namespace ArkController.Task
                 case TaskType.ScreenSizeDensity:
                     handleScreenSizeDensity(task);
                     break;
+                case TaskType.PullFile:
+                    handlePullFile(task);
+                    break;
             }
         }
 
@@ -349,5 +352,27 @@ namespace ArkController.Task
                 task.ResultHandler.Invoke(result);
             }
         }
+
+        /// <summary>
+        /// 从设备端导出文件
+        /// </summary>
+        /// <param name="task"></param>
+        private void handlePullFile(TaskInfo task)
+        {
+            if (task.DataArray == null || task.DataArray.Length < 2)
+            {
+                return;
+            }
+            string appPath = (string)task.DataArray[0];
+            string localPath = (string)task.DataArray[1];
+            string cmd = Package.GetPullAppInstallApkCommand(appPath, localPath);
+            string log = connect.ExecuteAdb(cmd);
+            writeLog(string.Format("Pull路径{0}到{1}完成", appPath, localPath));
+            if (task.ResultHandler != null)
+            {
+                task.ResultHandler.Invoke(log);
+            }
+        }
+
     }
 }

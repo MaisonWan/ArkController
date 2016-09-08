@@ -117,5 +117,16 @@ namespace ArkController.Data
         {
             return "shell pm unhide " + packageName;
         }
+
+        /// <summary>
+        /// 导出安装程序到本地
+        /// </summary>
+        /// <param name="appLocation">设备上apk位置</param>
+        /// <param name="localLocation">导出到本地的位置</param>
+        /// <returns>命令</returns>
+        public static string GetPullAppInstallApkCommand(string appLocation, string localLocation)
+        {
+            return string.Format("pull {0} \"{1}\"", appLocation, localLocation);
+        }
     }
 }
