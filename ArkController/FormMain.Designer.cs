@@ -46,9 +46,11 @@
             this.ToolStripMenuItemDetail = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemClearData = new System.Windows.Forms.ToolStripMenuItem();
             this.PToolStripMenuItemPackageInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemKillAllProcess = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemLogcat = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemHideApp = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemUnhideApp = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemPullApk = new System.Windows.Forms.ToolStripMenuItem();
             this.PToolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemUninstall = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonPackageList = new System.Windows.Forms.Button();
@@ -134,8 +136,7 @@
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipBattery = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripMenuItemPullApk = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemKillAllProcess = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.toolStripKibot.SuspendLayout();
@@ -300,6 +301,13 @@
             this.PToolStripMenuItemPackageInfo.Text = "本地显示应用信息(&P)";
             this.PToolStripMenuItemPackageInfo.Click += new System.EventHandler(this.PToolStripMenuItemPackageInfo_Click);
             // 
+            // toolStripMenuItemKillAllProcess
+            // 
+            this.toolStripMenuItemKillAllProcess.Name = "toolStripMenuItemKillAllProcess";
+            this.toolStripMenuItemKillAllProcess.Size = new System.Drawing.Size(189, 22);
+            this.toolStripMenuItemKillAllProcess.Text = "结束应用所有进程(&S)";
+            this.toolStripMenuItemKillAllProcess.Click += new System.EventHandler(this.toolStripMenuItemKillAllProcess_Click);
+            // 
             // toolStripMenuItemLogcat
             // 
             this.toolStripMenuItemLogcat.Name = "toolStripMenuItemLogcat";
@@ -321,6 +329,13 @@
             this.toolStripMenuItemUnhideApp.Text = "恢复设备应用(&U)";
             this.toolStripMenuItemUnhideApp.Visible = false;
             this.toolStripMenuItemUnhideApp.Click += new System.EventHandler(this.toolStripMenuItemUnhideApp_Click);
+            // 
+            // toolStripMenuItemPullApk
+            // 
+            this.toolStripMenuItemPullApk.Name = "toolStripMenuItemPullApk";
+            this.toolStripMenuItemPullApk.Size = new System.Drawing.Size(189, 22);
+            this.toolStripMenuItemPullApk.Text = "导出安装程序(&O)";
+            this.toolStripMenuItemPullApk.Click += new System.EventHandler(this.toolStripMenuItemPullApk_Click);
             // 
             // PToolStripMenuItemCopy
             // 
@@ -906,9 +921,10 @@
             // 
             this.contextMenuStripProcess.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemMeminfo,
-            this.toolStripMenuItemKillProcess});
+            this.toolStripMenuItemKillProcess,
+            this.toolStripMenuItemCopy});
             this.contextMenuStripProcess.Name = "contextMenuStripProcess";
-            this.contextMenuStripProcess.Size = new System.Drawing.Size(161, 48);
+            this.contextMenuStripProcess.Size = new System.Drawing.Size(161, 92);
             // 
             // toolStripMenuItemMeminfo
             // 
@@ -1254,19 +1270,12 @@
             this.toolTipBattery.IsBalloon = true;
             this.toolTipBattery.ReshowDelay = 100;
             // 
-            // toolStripMenuItemPullApk
+            // toolStripMenuItemCopy
             // 
-            this.toolStripMenuItemPullApk.Name = "toolStripMenuItemPullApk";
-            this.toolStripMenuItemPullApk.Size = new System.Drawing.Size(189, 22);
-            this.toolStripMenuItemPullApk.Text = "导出安装程序(&O)";
-            this.toolStripMenuItemPullApk.Click += new System.EventHandler(this.toolStripMenuItemPullApk_Click);
-            // 
-            // toolStripMenuItemKillAllProcess
-            // 
-            this.toolStripMenuItemKillAllProcess.Name = "toolStripMenuItemKillAllProcess";
-            this.toolStripMenuItemKillAllProcess.Size = new System.Drawing.Size(189, 22);
-            this.toolStripMenuItemKillAllProcess.Text = "结束应用所有进程(&S)";
-            this.toolStripMenuItemKillAllProcess.Click += new System.EventHandler(this.toolStripMenuItemKillAllProcess_Click);
+            this.toolStripMenuItemCopy.Name = "toolStripMenuItemCopy";
+            this.toolStripMenuItemCopy.Size = new System.Drawing.Size(160, 22);
+            this.toolStripMenuItemCopy.Text = "复制(&C)";
+            this.toolStripMenuItemCopy.Click += new System.EventHandler(this.toolStripProcessMenuItem_Click);
             // 
             // FormMain
             // 
@@ -1426,6 +1435,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemUnhideApp;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPullApk;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemKillAllProcess;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCopy;
     }
 }
 

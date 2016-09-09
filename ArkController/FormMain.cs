@@ -770,6 +770,12 @@ namespace ArkController
                 meminfo.SetAutoStart(pName);
                 meminfo.Show();
             }
+            else if (sender == this.toolStripMenuItemCopy)
+            {
+                // 复制
+                string pName = this.listViewProcessList.SelectedItems[0].SubItems[5].Text.Trim();
+                Clipboard.SetText(pName);
+            }
         }
 
         private void tabControlHomePage_Selected(object sender, TabControlEventArgs e)
