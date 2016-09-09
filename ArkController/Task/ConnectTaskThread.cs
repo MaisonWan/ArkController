@@ -90,6 +90,9 @@ namespace ArkController.Task
                 case TaskType.InputText:
                     handleInputText(task);
                     break;
+                case TaskType.ScreenRecord:
+                    handleScreenRecord(task);
+                    break;
                 case TaskType.ScreenShot:
                     handleScreenShot(task);
                     break;
@@ -300,6 +303,30 @@ namespace ArkController.Task
                 task.ResultHandler.Invoke(result);
             }
             writeLog(string.Format("获取屏幕截图{0}", result != null? "成功" : "失败"));
+        }
+
+        /// <summary>
+        /// 录制屏幕
+        /// </summary>
+        /// <param name="task"></param>
+        private void handleScreenRecord(TaskInfo task)
+        {
+            string tempFilename = "/sdcard/" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".mp4";
+            string cmd_record = string.Format("shell screenrecord --size {0} --time-limit {1} --verbose {2}",
+                task.DataArray[0], task.DataArray[1], tempFilename);
+            string cmd_pull = string.Format("pull {0} {1}", tempFilename, task.Data);
+            string cmd_delete = string.Format("shell rm ", tempFilename);
+            writeLog(string.Format("开始录制屏幕,分辨率{0},时长{1}秒...", task.DataArray[0], task.DataArray[1]));
+            string record_log = connect.ExecuteAdb(cmd_record);
+            writeLog(record_log);
+            writeLog("录制完成，开始导出文件");
+            string pull_log = connect.ExecuteAdb(cmd_pull);
+            writeLog("导出完成：" + pull_log.Trim());
+            connect.ExecuteAdb(cmd_delete);
+            if (task.ResultHandler != null)
+            {
+                task.ResultHandler.Invoke(record_log, pull_log);
+            }
         }
 
         /// <summary>

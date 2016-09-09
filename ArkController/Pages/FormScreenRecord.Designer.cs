@@ -32,17 +32,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormScreenRecord));
             this.tabControlScreenRecord = new System.Windows.Forms.TabControl();
             this.tabPageScreenRecord = new System.Windows.Forms.TabPage();
+            this.comboBoxTime = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBoxSize = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonStopRecord = new System.Windows.Forms.Button();
             this.buttonStartRecord = new System.Windows.Forms.Button();
             this.tabPageRecordList = new System.Windows.Forms.TabPage();
+            this.listViewRecordList = new System.Windows.Forms.ListView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
-            this.comboBoxSize = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBoxTime = new System.Windows.Forms.ComboBox();
-            this.listViewRecordList = new System.Windows.Forms.ListView();
             this.tabControlScreenRecord.SuspendLayout();
             this.tabPageScreenRecord.SuspendLayout();
             this.tabPageRecordList.SuspendLayout();
@@ -80,6 +80,45 @@
             this.tabPageScreenRecord.Text = "录屏";
             this.tabPageScreenRecord.ToolTipText = "录制屏幕";
             this.tabPageScreenRecord.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxTime
+            // 
+            this.comboBoxTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTime.FormattingEnabled = true;
+            this.comboBoxTime.Items.AddRange(new object[] {
+            "10秒",
+            "20秒",
+            "30秒",
+            "60秒",
+            "90秒",
+            "120秒",
+            "150秒",
+            "180秒"});
+            this.comboBoxTime.Location = new System.Drawing.Point(77, 131);
+            this.comboBoxTime.Name = "comboBoxTime";
+            this.comboBoxTime.Size = new System.Drawing.Size(103, 20);
+            this.comboBoxTime.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 134);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 12);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "录制时长：";
+            // 
+            // comboBoxSize
+            // 
+            this.comboBoxSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSize.FormattingEnabled = true;
+            this.comboBoxSize.Items.AddRange(new object[] {
+            "1920x1080",
+            "1280x800"});
+            this.comboBoxSize.Location = new System.Drawing.Point(78, 97);
+            this.comboBoxSize.Name = "comboBoxSize";
+            this.comboBoxSize.Size = new System.Drawing.Size(102, 20);
+            this.comboBoxSize.TabIndex = 2;
             // 
             // label1
             // 
@@ -127,6 +166,15 @@
             this.tabPageRecordList.ToolTipText = "本地已经录制";
             this.tabPageRecordList.UseVisualStyleBackColor = true;
             // 
+            // listViewRecordList
+            // 
+            this.listViewRecordList.Location = new System.Drawing.Point(7, 7);
+            this.listViewRecordList.Name = "listViewRecordList";
+            this.listViewRecordList.Size = new System.Drawing.Size(173, 466);
+            this.listViewRecordList.TabIndex = 0;
+            this.listViewRecordList.UseCompatibleStateImageBehavior = false;
+            this.listViewRecordList.View = System.Windows.Forms.View.Details;
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -158,54 +206,7 @@
             this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
             this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(592, 504);
             this.axWindowsMediaPlayer1.TabIndex = 0;
-            // 
-            // comboBoxSize
-            // 
-            this.comboBoxSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSize.FormattingEnabled = true;
-            this.comboBoxSize.Items.AddRange(new object[] {
-            "1920x1080",
-            "1280x800"});
-            this.comboBoxSize.Location = new System.Drawing.Point(78, 97);
-            this.comboBoxSize.Name = "comboBoxSize";
-            this.comboBoxSize.Size = new System.Drawing.Size(102, 20);
-            this.comboBoxSize.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 134);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 12);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "录制时长：";
-            // 
-            // comboBoxTime
-            // 
-            this.comboBoxTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTime.FormattingEnabled = true;
-            this.comboBoxTime.Items.AddRange(new object[] {
-            "10秒",
-            "20秒",
-            "30秒",
-            "60秒",
-            "90秒",
-            "120秒",
-            "150秒",
-            "180秒"});
-            this.comboBoxTime.Location = new System.Drawing.Point(77, 131);
-            this.comboBoxTime.Name = "comboBoxTime";
-            this.comboBoxTime.Size = new System.Drawing.Size(103, 20);
-            this.comboBoxTime.TabIndex = 4;
-            // 
-            // listViewRecordList
-            // 
-            this.listViewRecordList.Location = new System.Drawing.Point(7, 7);
-            this.listViewRecordList.Name = "listViewRecordList";
-            this.listViewRecordList.Size = new System.Drawing.Size(173, 466);
-            this.listViewRecordList.TabIndex = 0;
-            this.listViewRecordList.UseCompatibleStateImageBehavior = false;
-            this.listViewRecordList.View = System.Windows.Forms.View.Details;
+            this.axWindowsMediaPlayer1.DoubleClickEvent += new AxWMPLib._WMPOCXEvents_DoubleClickEventHandler(this.axWindowsMediaPlayer1_DoubleClickEvent);
             // 
             // FormScreenRecord
             // 
@@ -215,6 +216,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormScreenRecord";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "设备屏幕录制";
             this.Load += new System.EventHandler(this.FormScreenRecord_Load);
             this.tabControlScreenRecord.ResumeLayout(false);

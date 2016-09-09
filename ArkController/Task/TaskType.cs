@@ -58,6 +58,10 @@ namespace ArkController.Task
         /// </summary>
         ScreenShot,
         /// <summary>
+        /// 录制屏幕
+        /// </summary>
+        ScreenRecord,
+        /// <summary>
         /// 屏幕尺寸和像素密度
         /// </summary>
         ScreenSizeDensity,
