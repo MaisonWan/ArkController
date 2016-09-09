@@ -75,6 +75,12 @@
     <Compile Include="Pages\FormFileExplorer.Designer.cs">
       <DependentUpon>FormFileExplorer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\FormScreenRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\FormScreenRecord.Designer.cs">
+      <DependentUpon>FormScreenRecord.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\FormSystemProperty.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +166,9 @@
     <EmbeddedResource Include="Pages\FormPackageInfo.resx">
       <DependentUpon>FormPackageInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\FormScreenRecord.resx">
+      <DependentUpon>FormScreenRecord.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\FormScreenShot.resx">
       <DependentUpon>FormScreenShot.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,6 +215,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\stop.png" />
+    <None Include="Resources\play.png" />
+    <None Include="Resources\record.png" />
+    <None Include="Resources\screen_record.png" />
+    <None Include="Resources\1199876.png" />
     <None Include="Resources\Z.png" />
     <None Include="Resources\Y.png" />
     <None Include="Resources\X.png" />
@@ -285,7 +299,25 @@
     <None Include="Resources\volume_down.png" />
     <None Include="Resources\about.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

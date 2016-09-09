@@ -22,6 +22,7 @@ namespace ArkController
         private ConnectTaskThread taskThread = null;
 
         private FormScreenShot screenShot = null;
+        private FormScreenRecord screenRecord = null;
         private FormLogcat logcat = null;
         private FormScreenSize screenSize = null;
         private FormPackageInfo packageInfo = null;
@@ -262,6 +263,11 @@ namespace ArkController
         private void buttonScreen_Click(object sender, EventArgs e)
         {
             FormKit.Show(screenShot, typeof(FormScreenShot));
+        }
+
+        private void buttonScreenRecord_Click(object sender, EventArgs e)
+        {
+            FormKit.Show(screenRecord, typeof(FormScreenRecord));
         }
 
         /// <summary>
