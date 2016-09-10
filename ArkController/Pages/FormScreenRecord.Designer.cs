@@ -43,6 +43,9 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStripRecordList = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemPlay = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlScreenRecord.SuspendLayout();
             this.tabPageScreenRecord.SuspendLayout();
             this.tabPageRecordList.SuspendLayout();
@@ -50,6 +53,7 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
+            this.contextMenuStripRecordList.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlScreenRecord
@@ -168,12 +172,22 @@
             // 
             // listViewRecordList
             // 
+            this.listViewRecordList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewRecordList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.listViewRecordList.ContextMenuStrip = this.contextMenuStripRecordList;
+            this.listViewRecordList.FullRowSelect = true;
+            this.listViewRecordList.GridLines = true;
             this.listViewRecordList.Location = new System.Drawing.Point(7, 7);
+            this.listViewRecordList.MultiSelect = false;
             this.listViewRecordList.Name = "listViewRecordList";
             this.listViewRecordList.Size = new System.Drawing.Size(173, 466);
             this.listViewRecordList.TabIndex = 0;
             this.listViewRecordList.UseCompatibleStateImageBehavior = false;
             this.listViewRecordList.View = System.Windows.Forms.View.Details;
+            this.listViewRecordList.DoubleClick += new System.EventHandler(this.listViewRecordList_DoubleClick);
+            this.listViewRecordList.Resize += new System.EventHandler(this.listViewRecordList_Resize);
             // 
             // splitContainer1
             // 
@@ -208,6 +222,25 @@
             this.axWindowsMediaPlayer1.TabIndex = 0;
             this.axWindowsMediaPlayer1.DoubleClickEvent += new AxWMPLib._WMPOCXEvents_DoubleClickEventHandler(this.axWindowsMediaPlayer1_DoubleClickEvent);
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "录制文件";
+            this.columnHeader1.Width = 170;
+            // 
+            // contextMenuStripRecordList
+            // 
+            this.contextMenuStripRecordList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemPlay});
+            this.contextMenuStripRecordList.Name = "contextMenuStripRecordList";
+            this.contextMenuStripRecordList.Size = new System.Drawing.Size(116, 26);
+            // 
+            // toolStripMenuItemPlay
+            // 
+            this.toolStripMenuItemPlay.Name = "toolStripMenuItemPlay";
+            this.toolStripMenuItemPlay.Size = new System.Drawing.Size(115, 22);
+            this.toolStripMenuItemPlay.Text = "播放(&P)";
+            this.toolStripMenuItemPlay.Click += new System.EventHandler(this.toolStripMenuItemPlay_Click);
+            // 
             // FormScreenRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -227,6 +260,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
+            this.contextMenuStripRecordList.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -246,5 +280,8 @@
         private System.Windows.Forms.ComboBox comboBoxTime;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListView listViewRecordList;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripRecordList;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPlay;
     }
 }

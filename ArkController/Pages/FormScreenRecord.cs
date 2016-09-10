@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using ArkController.Component;
 using ArkController.Task;
 
 namespace ArkController.Pages
@@ -29,6 +30,8 @@ namespace ArkController.Pages
         {
             this.comboBoxSize.SelectedIndex = 0;
             this.comboBoxTime.SelectedIndex = 0;
+            this.axWindowsMediaPlayer1.currentPlaylist = axWindowsMediaPlayer1.newPlaylist("record", ""); 
+            updateRecordList();
         }
         /// <summary>
         /// 开始录制
@@ -40,7 +43,7 @@ namespace ArkController.Pages
             this.buttonStartRecord.Enabled = false;
             this.buttonStopRecord.Enabled = true;
             TaskInfo t = new TaskInfo(TaskType.ScreenRecord);
-            currentRecordPath = GetScreemRecordPath();
+            currentRecordPath = GetScreemRecordPath() + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".mp4";
             t.Data = currentRecordPath; //存储路径
             t.DataArray = new object[] { this.comboBoxSize.SelectedItem.ToString(), getTimeLimit() };
             t.ResultHandler = new TaskInfo.EventResultHandler(recordResult);
@@ -55,8 +58,7 @@ namespace ArkController.Pages
         {
             this.buttonStartRecord.Enabled = true;
             this.buttonStopRecord.Enabled = false;
-            this.axWindowsMediaPlayer1.URL = currentRecordPath;
-            this.axWindowsMediaPlayer1.Ctlcontrols.play();
+            updateRecordList();
         }
 
         /// <summary>
@@ -80,8 +82,7 @@ namespace ArkController.Pages
             {
                 Directory.CreateDirectory(appDataPath);
             }
-            string localPath = appDataPath + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".mp4";
-            return localPath;
+            return appDataPath;
         }
 
         /// <summary>
@@ -98,6 +99,56 @@ namespace ArkController.Pages
         private void axWindowsMediaPlayer1_DoubleClickEvent(object sender, AxWMPLib._WMPOCXEvents_DoubleClickEvent e)
         {
             this.axWindowsMediaPlayer1.fullScreen = !this.axWindowsMediaPlayer1.fullScreen;
+        }
+
+        /// <summary>
+        /// 更新录制的列表
+        /// </summary>
+        private void updateRecordList()
+        {
+            string path = GetScreemRecordPath();
+            if (Directory.Exists(path))
+            {
+                string[] files = Directory.GetFiles(path, "*.mp4");
+                this.listViewRecordList.Items.Clear();
+                this.listViewRecordList.BeginUpdate();
+                this.axWindowsMediaPlayer1.currentPlaylist.clear();
+                foreach (string file in files)
+                {
+                    string name = Path.GetFileName(file);
+                    this.listViewRecordList.Items.Add(name);
+                    this.axWindowsMediaPlayer1.currentPlaylist.appendItem(axWindowsMediaPlayer1.newMedia(file));
+                }
+                this.listViewRecordList.EndUpdate();
+            }
+        }
+
+        private void listViewRecordList_Resize(object sender, EventArgs e)
+        {
+            this.listViewRecordList.Columns[0].Width = this.listViewRecordList.ClientSize.Width;
+        }
+
+        /// <summary>
+        /// 播放
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripMenuItemPlay_Click(object sender, EventArgs e)
+        {
+            if (ListViewKit.hasSelectedItem(this.listViewRecordList))
+            {
+                string filename = this.listViewRecordList.SelectedItems[0].Text.Trim();
+                this.axWindowsMediaPlayer1.Ctlcontrols.stop();
+                //this.axWindowsMediaPlayer1.URL = GetScreemRecordPath() + filename;
+                int index = this.listViewRecordList.SelectedItems[0].Index;
+                WMPLib.IWMPMedia media = this.axWindowsMediaPlayer1.currentPlaylist.Item[index];
+                this.axWindowsMediaPlayer1.Ctlcontrols.playItem(media);
+            }
+        }
+
+        private void listViewRecordList_DoubleClick(object sender, EventArgs e)
+        {
+            toolStripMenuItemPlay_Click(sender, e);
         }
     }
 }

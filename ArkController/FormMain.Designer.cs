@@ -61,6 +61,7 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripComboBoxDeviceList = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonRestartAdb = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonAbout = new System.Windows.Forms.ToolStripButton();
             this.tabControlHomePage = new System.Windows.Forms.TabControl();
@@ -138,7 +139,6 @@
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipBattery = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripButtonRestartAdb = new System.Windows.Forms.ToolStripButton();
             this.groupBox2.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.toolStripKibot.SuspendLayout();
@@ -240,6 +240,7 @@
             this.listViewPackage.FullRowSelect = true;
             this.listViewPackage.GridLines = true;
             this.listViewPackage.Location = new System.Drawing.Point(7, 44);
+            this.listViewPackage.MultiSelect = false;
             this.listViewPackage.Name = "listViewPackage";
             this.listViewPackage.Size = new System.Drawing.Size(1086, 464);
             this.listViewPackage.TabIndex = 2;
@@ -437,6 +438,16 @@
             this.toolStripButtonRefresh.Text = "toolStripButton1";
             this.toolStripButtonRefresh.ToolTipText = "刷新设备列表";
             this.toolStripButtonRefresh.Click += new System.EventHandler(this.menu_Click);
+            // 
+            // toolStripButtonRestartAdb
+            // 
+            this.toolStripButtonRestartAdb.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonRestartAdb.Image = global::ArkController.Properties.Resources.usb;
+            this.toolStripButtonRestartAdb.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonRestartAdb.Name = "toolStripButtonRestartAdb";
+            this.toolStripButtonRestartAdb.Size = new System.Drawing.Size(23, 20);
+            this.toolStripButtonRestartAdb.Text = "重启adb";
+            this.toolStripButtonRestartAdb.Click += new System.EventHandler(this.buttonRestartAdb_Click);
             // 
             // toolStripSeparator1
             // 
@@ -887,6 +898,7 @@
             this.listViewProcessList.FullRowSelect = true;
             this.listViewProcessList.GridLines = true;
             this.listViewProcessList.Location = new System.Drawing.Point(7, 44);
+            this.listViewProcessList.MultiSelect = false;
             this.listViewProcessList.Name = "listViewProcessList";
             this.listViewProcessList.Size = new System.Drawing.Size(1093, 464);
             this.listViewProcessList.TabIndex = 3;
@@ -1293,16 +1305,6 @@
             this.toolTipBattery.InitialDelay = 500;
             this.toolTipBattery.IsBalloon = true;
             this.toolTipBattery.ReshowDelay = 100;
-            // 
-            // toolStripButtonRestartAdb
-            // 
-            this.toolStripButtonRestartAdb.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonRestartAdb.Image = global::ArkController.Properties.Resources.usb;
-            this.toolStripButtonRestartAdb.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonRestartAdb.Name = "toolStripButtonRestartAdb";
-            this.toolStripButtonRestartAdb.Size = new System.Drawing.Size(23, 20);
-            this.toolStripButtonRestartAdb.Text = "重启adb";
-            this.toolStripButtonRestartAdb.Click += new System.EventHandler(this.buttonRestartAdb_Click);
             // 
             // FormMain
             // 
