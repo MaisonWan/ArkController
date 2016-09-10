@@ -110,8 +110,8 @@ namespace ArkController.Pages
             if (Directory.Exists(path))
             {
                 string[] files = Directory.GetFiles(path, "*.mp4");
-                this.listViewRecordList.Items.Clear();
                 this.listViewRecordList.BeginUpdate();
+                this.listViewRecordList.Items.Clear();
                 this.axWindowsMediaPlayer1.currentPlaylist.clear();
                 foreach (string file in files)
                 {
@@ -137,18 +137,75 @@ namespace ArkController.Pages
         {
             if (ListViewKit.hasSelectedItem(this.listViewRecordList))
             {
-                string filename = this.listViewRecordList.SelectedItems[0].Text.Trim();
                 this.axWindowsMediaPlayer1.Ctlcontrols.stop();
-                //this.axWindowsMediaPlayer1.URL = GetScreemRecordPath() + filename;
                 int index = this.listViewRecordList.SelectedItems[0].Index;
                 WMPLib.IWMPMedia media = this.axWindowsMediaPlayer1.currentPlaylist.Item[index];
                 this.axWindowsMediaPlayer1.Ctlcontrols.playItem(media);
             }
         }
 
+        /// <summary>
+        /// 双击一条项目
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listViewRecordList_DoubleClick(object sender, EventArgs e)
         {
             toolStripMenuItemPlay_Click(sender, e);
+        }
+
+        /// <summary>
+        /// 导出
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripMenuItemOutput_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 删除项目
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripMenuItemDelete_Click(object sender, EventArgs e)
+        {
+            if (ListViewKit.hasSelectedItem(this.listViewRecordList))
+            {
+                string fileName = this.listViewRecordList.SelectedItems[0].Text.Trim();
+                string filePath = GetScreemRecordPath() + fileName;
+                string msg = string.Format("是否永久删除文件{0}，是否继续？", fileName);
+                if (MessageBox.Show(msg, "删除提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    int index = this.listViewRecordList.SelectedItems[0].Index;
+                    //WMPLib.IWMPMedia media = this.axWindowsMediaPlayer1.currentPlaylist.Item[index];
+                    // 如果播放的正是当前文件，停止删除
+                    if (index == currentPlayIndex())
+                    {
+                        this.axWindowsMediaPlayer1.Ctlcontrols.stop();
+                    }
+                    File.Delete(filePath);
+                    updateRecordList();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 返回播放的id，-1未没找到
+        /// </summary>
+        /// <returns></returns>
+        private int currentPlayIndex()
+        {
+            WMPLib.IWMPMedia media = this.axWindowsMediaPlayer1.currentMedia;
+            for (int i = 0; i < this.axWindowsMediaPlayer1.currentPlaylist.count; i++)
+            {
+                if (media.name == this.axWindowsMediaPlayer1.currentPlaylist.Item[i].name)
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
     }
 }

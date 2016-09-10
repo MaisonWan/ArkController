@@ -40,20 +40,22 @@
             this.buttonStartRecord = new System.Windows.Forms.Button();
             this.tabPageRecordList = new System.Windows.Forms.TabPage();
             this.listViewRecordList = new System.Windows.Forms.ListView();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
-            this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStripRecordList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemPlay = new System.Windows.Forms.ToolStripMenuItem();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
+            this.toolStripMenuItemOutput = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlScreenRecord.SuspendLayout();
             this.tabPageScreenRecord.SuspendLayout();
             this.tabPageRecordList.SuspendLayout();
+            this.contextMenuStripRecordList.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
-            this.contextMenuStripRecordList.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlScreenRecord
@@ -189,6 +191,27 @@
             this.listViewRecordList.DoubleClick += new System.EventHandler(this.listViewRecordList_DoubleClick);
             this.listViewRecordList.Resize += new System.EventHandler(this.listViewRecordList_Resize);
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "录制文件";
+            this.columnHeader1.Width = 170;
+            // 
+            // contextMenuStripRecordList
+            // 
+            this.contextMenuStripRecordList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemPlay,
+            this.toolStripMenuItemOutput,
+            this.toolStripMenuItemDelete});
+            this.contextMenuStripRecordList.Name = "contextMenuStripRecordList";
+            this.contextMenuStripRecordList.Size = new System.Drawing.Size(153, 92);
+            // 
+            // toolStripMenuItemPlay
+            // 
+            this.toolStripMenuItemPlay.Name = "toolStripMenuItemPlay";
+            this.toolStripMenuItemPlay.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemPlay.Text = "播放(&P)";
+            this.toolStripMenuItemPlay.Click += new System.EventHandler(this.toolStripMenuItemPlay_Click);
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -222,24 +245,19 @@
             this.axWindowsMediaPlayer1.TabIndex = 0;
             this.axWindowsMediaPlayer1.DoubleClickEvent += new AxWMPLib._WMPOCXEvents_DoubleClickEventHandler(this.axWindowsMediaPlayer1_DoubleClickEvent);
             // 
-            // columnHeader1
+            // toolStripMenuItemOutput
             // 
-            this.columnHeader1.Text = "录制文件";
-            this.columnHeader1.Width = 170;
+            this.toolStripMenuItemOutput.Name = "toolStripMenuItemOutput";
+            this.toolStripMenuItemOutput.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemOutput.Text = "导出(&O)";
+            this.toolStripMenuItemOutput.Click += new System.EventHandler(this.toolStripMenuItemOutput_Click);
             // 
-            // contextMenuStripRecordList
+            // toolStripMenuItemDelete
             // 
-            this.contextMenuStripRecordList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemPlay});
-            this.contextMenuStripRecordList.Name = "contextMenuStripRecordList";
-            this.contextMenuStripRecordList.Size = new System.Drawing.Size(116, 26);
-            // 
-            // toolStripMenuItemPlay
-            // 
-            this.toolStripMenuItemPlay.Name = "toolStripMenuItemPlay";
-            this.toolStripMenuItemPlay.Size = new System.Drawing.Size(115, 22);
-            this.toolStripMenuItemPlay.Text = "播放(&P)";
-            this.toolStripMenuItemPlay.Click += new System.EventHandler(this.toolStripMenuItemPlay_Click);
+            this.toolStripMenuItemDelete.Name = "toolStripMenuItemDelete";
+            this.toolStripMenuItemDelete.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemDelete.Text = "删除(&D)";
+            this.toolStripMenuItemDelete.Click += new System.EventHandler(this.toolStripMenuItemDelete_Click);
             // 
             // FormScreenRecord
             // 
@@ -256,11 +274,11 @@
             this.tabPageScreenRecord.ResumeLayout(false);
             this.tabPageScreenRecord.PerformLayout();
             this.tabPageRecordList.ResumeLayout(false);
+            this.contextMenuStripRecordList.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
-            this.contextMenuStripRecordList.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -283,5 +301,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripRecordList;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPlay;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOutput;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDelete;
     }
 }
