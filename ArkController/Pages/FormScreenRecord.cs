@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Text;
@@ -161,7 +162,16 @@ namespace ArkController.Pages
         /// <param name="e"></param>
         private void toolStripMenuItemOutput_Click(object sender, EventArgs e)
         {
-
+            if (ListViewKit.hasSelectedItem(this.listViewRecordList))
+            {
+                string fileName = this.listViewRecordList.SelectedItems[0].Text.Trim();
+                string saveFilePath = DialogKit.ShowSaveMediaDialog(fileName);
+                if (saveFilePath != null)
+                {
+                    string sourceFilePath = GetScreemRecordPath() + fileName;
+                    File.Copy(sourceFilePath, saveFilePath);
+                }
+            }
         }
 
         /// <summary>
@@ -206,6 +216,17 @@ namespace ArkController.Pages
                 }
             }
             return -1;
+        }
+
+        /// <summary>
+        /// 打开视频资源文件夹
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripMenuItemOpenFolder_Click(object sender, EventArgs e)
+        {
+            string path = GetScreemRecordPath();
+            Process.Start("explorer.exe", path);
         }
     }
 }

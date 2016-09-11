@@ -16,20 +16,8 @@ namespace ArkController.Component
         /// <returns>保存的路径，如果null证明没有保存</returns>
         public static string ShowSavePullApkDialog(string defaultName)
         {
-            SaveFileDialog sfd = new SaveFileDialog();
-            //设置文件类型
-            sfd.Filter = "安装文件（*.apk）|*.apk|所有文件（*.*）|*.*";
-            //设置默认文件类型显示顺序 
-            sfd.FilterIndex = 1;
-            sfd.FileName = defaultName;
-            //保存对话框是否记忆上次打开的目录 
-            sfd.RestoreDirectory = true;
-            //点了保存按钮进入 
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                return sfd.FileName.ToString();
-            }
-            return null;
+            string filter = "安装文件（*.apk）|*.apk|所有文件（*.*）|*.*";
+            return ShowSaveFileDialog(defaultName, filter);
         }
 
         /// <summary>
@@ -39,9 +27,32 @@ namespace ArkController.Component
         /// <returns></returns>
         public static string ShowSaveLogDialog(string defaultName)
         {
+            string filter = "日志文件（*.log）|*.log|文本文件（*.txt）|*.txt";
+            return ShowSaveFileDialog(defaultName, filter);
+        }
+
+        /// <summary>
+        /// 保存媒体文件
+        /// </summary>
+        /// <param name="defaultName"></param>
+        /// <returns></returns>
+        public static string ShowSaveMediaDialog(string defaultName)
+        {
+            string filter = "MP4（*.mp4）|*.mp4|所有文件（*.*）|*.*";
+            return ShowSaveFileDialog(defaultName, filter);
+        }
+
+        /// <summary>
+        /// 保存文件对话框
+        /// </summary>
+        /// <param name="defaultName">默认文件名字</param>
+        /// <param name="filterName">保存文件类型</param>
+        /// <returns></returns>
+        public static string ShowSaveFileDialog(string defaultName, string filterName)
+        {
             SaveFileDialog sfd = new SaveFileDialog();
             //设置文件类型
-            sfd.Filter = "日志文件（*.log）|*.log|文本文件（*.txt）|*.txt";
+            sfd.Filter = filterName;
             //设置默认文件类型显示顺序 
             sfd.FilterIndex = 1;
             sfd.FileName = defaultName;
