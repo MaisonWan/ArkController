@@ -312,8 +312,16 @@ namespace ArkController.Task
         private void handleScreenRecord(TaskInfo task)
         {
             string tempFilename = "/sdcard/" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".mp4";
-            string cmd_record = string.Format("shell screenrecord --size {0} --time-limit {1} --verbose {2}",
-                task.DataArray[0], task.DataArray[1], tempFilename);
+            string cmd_record = "shell screenrecord";
+            if (!string.IsNullOrEmpty(task.DataArray[0].ToString()))
+            {
+                cmd_record = cmd_record + " --size " + task.DataArray[0];
+            }
+            if (!string.IsNullOrEmpty(task.DataArray[1].ToString()))
+            {
+                cmd_record = cmd_record + " --time-limit " + task.DataArray[1];
+            }
+            cmd_record = cmd_record + " --verbose " + tempFilename;
             string cmd_pull = string.Format("pull {0} {1}", tempFilename, task.Data);
             string cmd_delete = string.Format("shell rm ", tempFilename);
             writeLog(string.Format("开始录制屏幕,分辨率{0},时长{1}秒...", task.DataArray[0], task.DataArray[1]));
@@ -321,7 +329,7 @@ namespace ArkController.Task
             writeLog(record_log);
             writeLog("录制完成，开始导出文件");
             string pull_log = connect.ExecuteAdb(cmd_pull);
-            writeLog("导出完成：" + pull_log.Trim());
+            writeLog("导出完成：" + tempFilename);
             connect.ExecuteAdb(cmd_delete);
             if (task.ResultHandler != null)
             {

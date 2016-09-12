@@ -45,10 +45,10 @@
             this.toolStripMenuItemPlay = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemOutput = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemOpenFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripMenuItemOpenFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlScreenRecord.SuspendLayout();
             this.tabPageScreenRecord.SuspendLayout();
             this.tabPageRecordList.SuspendLayout();
@@ -120,6 +120,7 @@
             this.comboBoxSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSize.FormattingEnabled = true;
             this.comboBoxSize.Items.AddRange(new object[] {
+            "系统默认",
             "1920x1080",
             "1280x800"});
             this.comboBoxSize.Location = new System.Drawing.Point(78, 97);
@@ -205,7 +206,7 @@
             this.toolStripMenuItemDelete,
             this.toolStripMenuItemOpenFolder});
             this.contextMenuStripRecordList.Name = "contextMenuStripRecordList";
-            this.contextMenuStripRecordList.Size = new System.Drawing.Size(161, 114);
+            this.contextMenuStripRecordList.Size = new System.Drawing.Size(161, 92);
             // 
             // toolStripMenuItemPlay
             // 
@@ -227,6 +228,13 @@
             this.toolStripMenuItemDelete.Size = new System.Drawing.Size(160, 22);
             this.toolStripMenuItemDelete.Text = "删除(&D)";
             this.toolStripMenuItemDelete.Click += new System.EventHandler(this.toolStripMenuItemDelete_Click);
+            // 
+            // toolStripMenuItemOpenFolder
+            // 
+            this.toolStripMenuItemOpenFolder.Name = "toolStripMenuItemOpenFolder";
+            this.toolStripMenuItemOpenFolder.Size = new System.Drawing.Size(160, 22);
+            this.toolStripMenuItemOpenFolder.Text = "打开视频文件夹";
+            this.toolStripMenuItemOpenFolder.Click += new System.EventHandler(this.toolStripMenuItemOpenFolder_Click);
             // 
             // splitContainer1
             // 
@@ -260,13 +268,6 @@
             this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(592, 504);
             this.axWindowsMediaPlayer1.TabIndex = 0;
             this.axWindowsMediaPlayer1.DoubleClickEvent += new AxWMPLib._WMPOCXEvents_DoubleClickEventHandler(this.axWindowsMediaPlayer1_DoubleClickEvent);
-            // 
-            // toolStripMenuItemOpenFolder
-            // 
-            this.toolStripMenuItemOpenFolder.Name = "toolStripMenuItemOpenFolder";
-            this.toolStripMenuItemOpenFolder.Size = new System.Drawing.Size(160, 22);
-            this.toolStripMenuItemOpenFolder.Text = "打开视频文件夹";
-            this.toolStripMenuItemOpenFolder.Click += new System.EventHandler(this.toolStripMenuItemOpenFolder_Click);
             // 
             // FormScreenRecord
             // 

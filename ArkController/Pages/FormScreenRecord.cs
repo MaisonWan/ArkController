@@ -46,7 +46,12 @@ namespace ArkController.Pages
             TaskInfo t = new TaskInfo(TaskType.ScreenRecord);
             currentRecordPath = GetScreemRecordPath() + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".mp4";
             t.Data = currentRecordPath; //存储路径
-            t.DataArray = new object[] { this.comboBoxSize.SelectedItem.ToString(), getTimeLimit() };
+            string size = "";
+            if (this.comboBoxSize.SelectedIndex > 0)
+            {
+                size = this.comboBoxSize.SelectedItem.ToString();
+            }
+            t.DataArray = new object[] { size, getTimeLimit() };
             t.ResultHandler = new TaskInfo.EventResultHandler(recordResult);
             taskThread.SendTask(t);
         }
@@ -60,6 +65,7 @@ namespace ArkController.Pages
             this.buttonStartRecord.Enabled = true;
             this.buttonStopRecord.Enabled = false;
             updateRecordList();
+            playRecord(this.listViewRecordList.Items.Count - 1);
         }
 
         /// <summary>
@@ -124,6 +130,20 @@ namespace ArkController.Pages
             }
         }
 
+        /// <summary>
+        /// 播放记录，给定index
+        /// </summary>
+        /// <param name="index"></param>
+        private void playRecord(int index)
+        {
+            if (index < 0 || index >= this.listViewRecordList.Items.Count)
+            {
+                return;
+            }
+            WMPLib.IWMPMedia media = this.axWindowsMediaPlayer1.currentPlaylist.Item[index];
+            this.axWindowsMediaPlayer1.Ctlcontrols.playItem(media);
+        }
+
         private void listViewRecordList_Resize(object sender, EventArgs e)
         {
             this.listViewRecordList.Columns[0].Width = this.listViewRecordList.ClientSize.Width;
@@ -140,8 +160,7 @@ namespace ArkController.Pages
             {
                 this.axWindowsMediaPlayer1.Ctlcontrols.stop();
                 int index = this.listViewRecordList.SelectedItems[0].Index;
-                WMPLib.IWMPMedia media = this.axWindowsMediaPlayer1.currentPlaylist.Item[index];
-                this.axWindowsMediaPlayer1.Ctlcontrols.playItem(media);
+                playRecord(index);
             }
         }
 
