@@ -92,7 +92,14 @@ namespace ArkController
         {
             this.toolStripComboBoxDeviceList.Items.Clear();
             this.toolStripComboBoxDeviceList.Items.AddRange((string[])result);
-            this.toolStripComboBoxDeviceList.SelectedIndex = 0;
+            if (this.toolStripComboBoxDeviceList.Items.Count > 1)
+            {
+                this.toolStripComboBoxDeviceList.SelectedIndex = 1;
+            }
+            else
+            {
+                this.toolStripComboBoxDeviceList.SelectedIndex = 0;
+            }
         }
 
         /// <summary>
