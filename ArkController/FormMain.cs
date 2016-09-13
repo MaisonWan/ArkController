@@ -347,6 +347,16 @@ namespace ArkController
         {
             FormKit.Show(systemProperty, typeof(FormSystemProperty));
         }
+
+        private void buttonPackageInfo_Click(object sender, EventArgs e)
+        {
+            FormKit.Show(packageInfo, typeof(FormPackageInfo));
+        }
+
+        private void buttonPackageDump_Click(object sender, EventArgs e)
+        {
+            FormKit.Show(packageDump, typeof(FormPackageDump));
+        }
         #endregion
 
         #region 包列表

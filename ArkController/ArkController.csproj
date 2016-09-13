@@ -224,6 +224,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\app_attention.png" />
+    <None Include="Resources\system_status.png" />
     <None Include="Resources\stop.png" />
     <None Include="Resources\play.png" />
     <None Include="Resources\record.png" />

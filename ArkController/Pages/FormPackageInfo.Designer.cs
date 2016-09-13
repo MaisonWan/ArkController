@@ -42,18 +42,18 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "包名：";
+            this.label1.Text = "应用包名：";
             // 
             // textBoxPackage
             // 
             this.textBoxPackage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPackage.Location = new System.Drawing.Point(60, 10);
+            this.textBoxPackage.Location = new System.Drawing.Point(75, 10);
             this.textBoxPackage.MaxLength = 1024;
             this.textBoxPackage.Name = "textBoxPackage";
-            this.textBoxPackage.Size = new System.Drawing.Size(811, 21);
+            this.textBoxPackage.Size = new System.Drawing.Size(769, 21);
             this.textBoxPackage.TabIndex = 1;
             // 
             // textBoxPackageInfo
@@ -75,11 +75,11 @@
             // buttonGetPackageInfo
             // 
             this.buttonGetPackageInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonGetPackageInfo.Location = new System.Drawing.Point(877, 8);
+            this.buttonGetPackageInfo.Location = new System.Drawing.Point(850, 8);
             this.buttonGetPackageInfo.Name = "buttonGetPackageInfo";
-            this.buttonGetPackageInfo.Size = new System.Drawing.Size(75, 23);
+            this.buttonGetPackageInfo.Size = new System.Drawing.Size(102, 23);
             this.buttonGetPackageInfo.TabIndex = 3;
-            this.buttonGetPackageInfo.Text = "显示包信息";
+            this.buttonGetPackageInfo.Text = "显示应用信息";
             this.buttonGetPackageInfo.UseVisualStyleBackColor = true;
             this.buttonGetPackageInfo.Click += new System.EventHandler(this.buttonGetPackageInfo_Click);
             // 
@@ -107,7 +107,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPackageInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "包信息";
+            this.Text = "应用信息";
             this.Load += new System.EventHandler(this.FormPackageInfo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

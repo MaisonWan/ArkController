@@ -38,7 +38,10 @@ namespace ArkController.Pages
 
         private void FormPackageInfo_Load(object sender, EventArgs e)
         {
-            UpdatePackageInfo(this.textBoxPackage.Text);
+            if (!string.IsNullOrEmpty(this.textBoxPackage.Text))
+            {
+                UpdatePackageInfo(this.textBoxPackage.Text);
+            }
         }
 
         private void buttonGetPackageInfo_Click(object sender, EventArgs e)
@@ -52,7 +55,10 @@ namespace ArkController.Pages
         /// <param name="package"></param>
         public void UpdatePackageInfo(string package)
         {
-            this.Text = package;
+            if (!string.IsNullOrEmpty(package))
+            {
+                this.Text = package;
+            }
             string cmd = "shell dumpsys package " + package;
             TaskInfo tSize = TaskInfo.Create(TaskType.ExecuteCommand, cmd);
             tSize.ResultHandler = new TaskInfo.EventResultHandler(updatePackageInfoResult);
@@ -61,7 +67,7 @@ namespace ArkController.Pages
 
         private void updatePackageInfoResult(object[] result)
         {
-            this.textBoxPackageInfo.Text = (string)result[0];
+            this.textBoxPackageInfo.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes((string)result[0]));
         }
 
         private void textBoxPackageInfo_KeyDown(object sender, KeyEventArgs e)

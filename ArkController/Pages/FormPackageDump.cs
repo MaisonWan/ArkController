@@ -39,7 +39,10 @@ namespace ArkController.Pages
 
         private void FormPackageDump_Load(object sender, EventArgs e)
         {
-            UpdatePackageDump(this.textBoxPackageName.Text);
+            if (!string.IsNullOrEmpty(this.textBoxPackageName.Text))
+            {
+                UpdatePackageDump(this.textBoxPackageName.Text);
+            }
         }
 
         private void buttonGetPackageDump_Click(object sender, EventArgs e)
@@ -53,7 +56,10 @@ namespace ArkController.Pages
         /// <param name="package"></param>
         public void UpdatePackageDump(string package)
         {
-            this.Text = package;
+            if (!string.IsNullOrEmpty(package))
+            {
+                this.Text = package;
+            }
             string cmd = "shell pm dump " + package;
             TaskInfo tSize = TaskInfo.Create(TaskType.ExecuteCommand, cmd);
             tSize.ResultHandler = new TaskInfo.EventResultHandler(updatePackageDumpResult);
@@ -67,6 +73,7 @@ namespace ArkController.Pages
         private void updatePackageDumpResult(object[] result)
         {
             this.packageDumpInfo = (string)result[0];
+            this.packageDumpInfo = Encoding.UTF8.GetString(Encoding.Default.GetBytes(this.packageDumpInfo));
             this.showDumpDetail(this.packageDumpInfo);
         }
 
@@ -79,12 +86,19 @@ namespace ArkController.Pages
             int usagestatsIndex = dump.IndexOf("DUMP OF SERVICE usagestats");
             int batterystatsIndex = dump.IndexOf("DUMP OF SERVICE batterystats");
 
-            this.textBoxPackage.Text = dump.Substring(packageIndex, activityIndex - packageIndex);
-            this.textBoxActivity.Text = dump.Substring(activityIndex, meminfoIndex - activityIndex);
-            this.textBoxMeminfo.Text = dump.Substring(meminfoIndex, procstatsIndex - meminfoIndex);
-            this.textBoxProcstats.Text = dump.Substring(procstatsIndex, usagestatsIndex - procstatsIndex);
-            this.textBoxUsagestats.Text = dump.Substring(usagestatsIndex, batterystatsIndex - usagestatsIndex);
-            this.textBoxBatterystats.Text = dump.Substring(batterystatsIndex);
+            if (packageIndex >= 0)
+            {
+                this.textBoxPackage.Text = dump.Substring(packageIndex, activityIndex - packageIndex);
+                this.textBoxActivity.Text = dump.Substring(activityIndex, meminfoIndex - activityIndex);
+                this.textBoxMeminfo.Text = dump.Substring(meminfoIndex, procstatsIndex - meminfoIndex);
+                this.textBoxProcstats.Text = dump.Substring(procstatsIndex, usagestatsIndex - procstatsIndex);
+                this.textBoxUsagestats.Text = dump.Substring(usagestatsIndex, batterystatsIndex - usagestatsIndex);
+                this.textBoxBatterystats.Text = dump.Substring(batterystatsIndex);
+            }
+            else
+            {
+                this.textBoxPackage.Text = dump;
+            }
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
