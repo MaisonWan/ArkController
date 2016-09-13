@@ -26,6 +26,7 @@ namespace ArkController
         private FormLogcat logcat = null;
         private FormScreenSize screenSize = null;
         private FormPackageInfo packageInfo = null;
+        private FormPackageDump packageDump = null;
         private FormMemInfo meminfo = null;
         private FormSystemProperty systemProperty = null;
 
@@ -454,6 +455,28 @@ namespace ArkController
                 else
                 {
                     packageInfo.Show();
+                }
+            }
+        }
+
+        private void toolStripMenuItemPackageDump_Click(object sender, EventArgs e)
+        {
+            if (ListViewKit.hasSelectedItem(listViewPackage))
+            {
+                string packageName = this.listViewPackage.SelectedItems[0].Text.Trim();
+                if (packageDump == null || packageDump.IsDisposed)
+                {
+                    packageDump = new FormPackageDump();
+                }
+                packageDump.PakcageName = packageName;
+                if (packageDump.Visible)
+                {
+                    packageDump.UpdatePackageDump(packageName);
+                    packageDump.Activate();
+                }
+                else
+                {
+                    packageDump.Show();
                 }
             }
         }

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using ArkController.Kit;
 using System.IO;
 using ArkController.Task;
+using ArkController.Component;
 
 namespace ArkController.Pages
 {
@@ -74,26 +75,19 @@ namespace ArkController.Pages
         private void buttonSave_Click(object sender, EventArgs e)
         {
             string content = this.textBoxPackageInfo.Text;
-            if (!string.IsNullOrEmpty(content))
+            if (string.IsNullOrEmpty(content))
             {
-                SaveFileDialog sfd = this.saveFileDialogLog;
-                //设置文件类型 
-                sfd.Filter = "日志文件（*.log）|*.log|文本文件（*.txt）|*.txt";
-                //设置默认文件类型显示顺序 
-                sfd.FilterIndex = 1;
-                sfd.FileName = "package_" + this.textBoxPackage.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log";
-                //保存对话框是否记忆上次打开的目录 
-                sfd.RestoreDirectory = true;
-                //点了保存按钮进入 
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    string localFilePath = sfd.FileName.ToString(); //获得文件路径 
-                    FileStream fs = new FileStream(localFilePath, FileMode.Create);
-                    StreamWriter sw = new StreamWriter(fs, Encoding.Default);
-                    sw.Write(content);
-                    sw.Close();
-                    fs.Close();
-                }
+                return;
+            }
+            string defaultName = "package_" + this.textBoxPackage.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log";
+            string localFilePath = DialogKit.ShowSaveLogDialog(defaultName);
+            if (!string.IsNullOrEmpty(localFilePath))
+            {
+                FileStream fs = new FileStream(localFilePath, FileMode.Create);
+                StreamWriter sw = new StreamWriter(fs, Encoding.Default);
+                sw.Write(content);
+                sw.Close();
+                fs.Close();
             }
         }
     }

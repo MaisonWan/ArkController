@@ -75,6 +75,12 @@
     <Compile Include="Pages\FormFileExplorer.Designer.cs">
       <DependentUpon>FormFileExplorer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\FormPackageDump.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\FormPackageDump.Designer.cs">
+      <DependentUpon>FormPackageDump.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\FormScreenRecord.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\FormMemInfo.resx">
       <DependentUpon>FormMemInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\FormPackageDump.resx">
+      <DependentUpon>FormPackageDump.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\FormPackageInfo.resx">
       <DependentUpon>FormPackageInfo.cs</DependentUpon>

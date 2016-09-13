@@ -139,6 +139,7 @@
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipBattery = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
+            this.toolStripMenuItemPackageDump = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.toolStripKibot.SuspendLayout();
@@ -272,6 +273,7 @@
             this.ToolStripMenuItemDetail,
             this.toolStripMenuItemClearData,
             this.PToolStripMenuItemPackageInfo,
+            this.toolStripMenuItemPackageDump,
             this.toolStripMenuItemKillAllProcess,
             this.toolStripMenuItemLogcat,
             this.toolStripMenuItemHideApp,
@@ -280,7 +282,7 @@
             this.PToolStripMenuItemCopy,
             this.toolStripMenuItemUninstall});
             this.contextMenuStripListview.Name = "contextMenuStripListview";
-            this.contextMenuStripListview.Size = new System.Drawing.Size(190, 224);
+            this.contextMenuStripListview.Size = new System.Drawing.Size(190, 268);
             this.contextMenuStripListview.Text = "删除";
             // 
             // ToolStripMenuItemDetail
@@ -1306,6 +1308,13 @@
             this.toolTipBattery.IsBalloon = true;
             this.toolTipBattery.ReshowDelay = 100;
             // 
+            // toolStripMenuItemPackageDump
+            // 
+            this.toolStripMenuItemPackageDump.Name = "toolStripMenuItemPackageDump";
+            this.toolStripMenuItemPackageDump.Size = new System.Drawing.Size(189, 22);
+            this.toolStripMenuItemPackageDump.Text = "显示应用系统状态(&B)";
+            this.toolStripMenuItemPackageDump.Click += new System.EventHandler(this.toolStripMenuItemPackageDump_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1467,6 +1476,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCopy;
         private System.Windows.Forms.Button buttonScreenRecord;
         private System.Windows.Forms.ToolStripButton toolStripButtonRestartAdb;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPackageDump;
     }
 }
 
