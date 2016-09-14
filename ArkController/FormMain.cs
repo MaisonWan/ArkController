@@ -798,17 +798,17 @@ namespace ArkController
             {
                 return;
             }
+            string pid = this.listViewProcessList.SelectedItems[0].SubItems[1].Text.Trim();
+            string pName = this.listViewProcessList.SelectedItems[0].SubItems[5].Text.Trim();
             if (sender == this.toolStripMenuItemKillProcess)
             {
                 // 结束进程
-                string pid = this.listViewProcessList.SelectedItems[0].SubItems[1].Text.Trim();
                 string cmd = ProcessData.GetKillProcess(pid);
                 taskThread.SendTask(TaskInfo.Create(TaskType.ExecuteCommand, cmd));
             }
             else if (sender == this.toolStripMenuItemMeminfo)
             {
                 // 展现内存界面
-                string pName = this.listViewProcessList.SelectedItems[0].SubItems[5].Text.Trim();
                 if (meminfo == null || meminfo.IsDisposed)
                 {
                     meminfo = new FormMemInfo();
@@ -819,8 +819,29 @@ namespace ArkController
             else if (sender == this.toolStripMenuItemCopy)
             {
                 // 复制
-                string pName = this.listViewProcessList.SelectedItems[0].SubItems[5].Text.Trim();
                 Clipboard.SetText(pName);
+            }
+            else if (sender == this.toolStripMenuItemOutputHprof)
+            {
+                // 导出内存镜像
+                string dumpPath = ProcessData.GetDumpHeapPath();
+                TaskInfo t = TaskInfo.Create(TaskType.DumpHeap, new object[] { pName, dumpPath });
+                t.ResultHandler = new TaskInfo.EventResultHandler(dumpHeapResult);
+                taskThread.SendTask(t);
+            }
+        }
+
+        private void dumpHeapResult(object[] result)
+        {
+            string path = result[0].ToString();
+            FileInfo file = new FileInfo(path);
+            if (File.Exists(path) && file.Length > 0)
+            {
+                string savePath = DialogKit.ShowSaveHprofDialog(Path.GetFileName(path));
+                if (!string.IsNullOrEmpty(savePath))
+                {
+                    File.Copy(path, savePath);
+                }
             }
         }
 

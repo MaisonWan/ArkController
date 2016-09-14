@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using ArkController.Kit;
@@ -54,7 +55,22 @@ namespace ArkController.Data
         /// <returns></returns>
         public static string GetKillProcess(string pid)
         {
-            return "shell kill -9 " + pid;
+            return "shell am kill " + pid;
+        }
+
+        /// <summary>
+        /// 得到存放镜像文件路径
+        /// </summary>
+        /// <returns></returns>
+        public static string GetDumpHeapPath()
+        {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string appDataPath = path + @"\ArkController\DumpHeap";
+            if (!Directory.Exists(appDataPath))
+            {
+                Directory.CreateDirectory(appDataPath);
+            }
+            return appDataPath;
         }
 
         /// <summary>

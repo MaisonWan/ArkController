@@ -43,6 +43,17 @@ namespace ArkController.Component
         }
 
         /// <summary>
+        /// 保存内存镜像文件
+        /// </summary>
+        /// <param name="defaultName">默认文件名</param>
+        /// <returns></returns>
+        public static string ShowSaveHprofDialog(string defaultName)
+        {
+            string filter = "hprof（*.hprof）|*.hprof|所有文件（*.*）|*.*";
+            return ShowSaveFileDialog(defaultName, filter);
+        }
+
+        /// <summary>
         /// 保存文件对话框
         /// </summary>
         /// <param name="defaultName">默认文件名字</param>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using ArkController.Data;
 using ArkController.Kit;
@@ -71,6 +72,9 @@ namespace ArkController.Task
                     break;
                 case TaskType.ProcessList:
                     handleProcessList(task);
+                    break;
+                case TaskType.DumpHeap:
+                    handleDumpHeap(task);
                     break;
                 case TaskType.CurrentDeviceInfo:
                     handleCurrentDeviceInfo(task);
@@ -192,6 +196,33 @@ namespace ArkController.Task
                 task.ResultHandler.Invoke(processList);
             }
             writeLog(string.Format("获取进程列表{0}个", processList.Count));
+        }
+
+        /// <summary>
+        /// 获取内存镜像
+        /// </summary>
+        /// <param name="task"></param>
+        private void handleDumpHeap(TaskInfo task)
+        {
+            if (task.DataArray.Length < 2)
+            {
+                return;
+            }
+            string processName = task.DataArray[0].ToString();
+            string path = task.DataArray[1].ToString();
+            string heap_cmd = string.Format("shell am dumpheap {0} /data/local/tmp/{1}.hprof", processName, processName);
+            string pull_cmd = string.Format("pull /data/local/tmp/{0}.hprof {1}", processName, Path.Combine(path, processName));
+            string remove_cmd = string.Format("shell rm /data/local/tmp/{0}.hprof", processName);
+
+            string heap_log = connect.ExecuteAdb(heap_cmd);
+            writeLog("获取内存镜像：" + heap_log);
+            string pull_log = connect.ExecuteAdb(pull_cmd);
+            writeLog("获取文件:" + pull_log);
+            connect.ExecuteAdb(remove_cmd);
+            if (task.ResultHandler != null)
+            {
+                task.ResultHandler.Invoke(Path.Combine(path, processName));
+            }
         }
 
         /// <summary>

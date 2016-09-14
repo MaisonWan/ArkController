@@ -30,6 +30,10 @@ namespace ArkController.Task
         /// </summary>
         ProcessList,
         /// <summary>
+        /// 内存镜像
+        /// </summary>
+        DumpHeap,
+        /// <summary>
         /// 当前设备信息
         /// </summary>
         CurrentDeviceInfo,
