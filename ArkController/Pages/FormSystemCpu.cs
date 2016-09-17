@@ -27,6 +27,7 @@ namespace ArkController.Pages
         /// 临时存储进程信息
         /// </summary>
         private List<string> processList = new List<string>();
+        private int seconds = 0;
 
         public FormSystemCpu()
         {
@@ -71,6 +72,7 @@ namespace ArkController.Pages
         /// </summary>
         private void startTask()
         {
+            this.timerTask.Start();
             setControlEnable(true);
             processCount = Convert.ToInt32(this.comboBoxNum.SelectedItem.ToString());
             if (thread == null || thread.ThreadState != ThreadState.Running)
@@ -85,6 +87,7 @@ namespace ArkController.Pages
         /// </summary>
         private void stopTask()
         {
+            this.timerTask.Stop();
             if (thread != null)
             {
                 thread.Abort();
@@ -250,6 +253,12 @@ namespace ArkController.Pages
             {
                 this.listViewProcess.Columns[i].Width = (int)(width * factor[i]);
             }
+        }
+
+        private void timerTask_Tick(object sender, EventArgs e)
+        {
+            seconds++;
+            this.labelTimer.Text = string.Format("{0:D2}:{1:D2}:{2:D2}", seconds / 3600, (seconds % 3600) / 60, seconds % 60);
         }
     }
 }

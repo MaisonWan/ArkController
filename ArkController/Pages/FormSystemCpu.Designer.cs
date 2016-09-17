@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSystemCpu));
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxNum = new System.Windows.Forms.ComboBox();
@@ -39,9 +40,14 @@
             this.buttonStop = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
             this.listViewProcess = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.labelUserPercent = new System.Windows.Forms.Label();
             this.labelUserSum = new System.Windows.Forms.Label();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.labelTimer = new System.Windows.Forms.Label();
+            this.timerTask = new System.Windows.Forms.Timer(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -159,11 +165,15 @@
             this.listViewProcess.GridLines = true;
             this.listViewProcess.Location = new System.Drawing.Point(13, 80);
             this.listViewProcess.Name = "listViewProcess";
-            this.listViewProcess.Size = new System.Drawing.Size(957, 587);
+            this.listViewProcess.Size = new System.Drawing.Size(957, 526);
             this.listViewProcess.TabIndex = 9;
             this.listViewProcess.UseCompatibleStateImageBehavior = false;
             this.listViewProcess.View = System.Windows.Forms.View.Details;
             this.listViewProcess.Resize += new System.EventHandler(this.listViewProcess_Resize);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Width = 125;
             // 
             // labelUserPercent
             // 
@@ -183,15 +193,54 @@
             this.labelUserSum.Size = new System.Drawing.Size(0, 14);
             this.labelUserSum.TabIndex = 11;
             // 
-            // columnHeader1
+            // labelTimer
             // 
-            this.columnHeader1.Width = 125;
+            this.labelTimer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelTimer.AutoSize = true;
+            this.labelTimer.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelTimer.Location = new System.Drawing.Point(898, 13);
+            this.labelTimer.Name = "labelTimer";
+            this.labelTimer.Size = new System.Drawing.Size(72, 16);
+            this.labelTimer.TabIndex = 13;
+            this.labelTimer.Text = "00:00:00";
+            // 
+            // timerTask
+            // 
+            this.timerTask.Interval = 1000;
+            this.timerTask.Tick += new System.EventHandler(this.timerTask_Tick);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Location = new System.Drawing.Point(13, 612);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(957, 164);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "图表";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::ArkController.Properties.Resources.timer;
+            this.pictureBox1.Location = new System.Drawing.Point(859, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(33, 21);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
             // 
             // FormSystemCpu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(982, 678);
+            this.ClientSize = new System.Drawing.Size(982, 788);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.labelTimer);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labelUserSum);
             this.Controls.Add(this.labelUserPercent);
             this.Controls.Add(this.listViewProcess);
@@ -210,6 +259,7 @@
             this.Text = "系统进程CPU内存占用";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormSystemCpu_FormClosing);
             this.Load += new System.EventHandler(this.FormSystemCpu_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,5 +280,9 @@
         private System.Windows.Forms.Label labelUserPercent;
         private System.Windows.Forms.Label labelUserSum;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label labelTimer;
+        private System.Windows.Forms.Timer timerTask;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
