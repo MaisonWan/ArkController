@@ -168,17 +168,19 @@
             // labelUserPercent
             // 
             this.labelUserPercent.AutoSize = true;
+            this.labelUserPercent.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelUserPercent.Location = new System.Drawing.Point(13, 62);
             this.labelUserPercent.Name = "labelUserPercent";
-            this.labelUserPercent.Size = new System.Drawing.Size(0, 12);
+            this.labelUserPercent.Size = new System.Drawing.Size(0, 14);
             this.labelUserPercent.TabIndex = 10;
             // 
             // labelUserSum
             // 
             this.labelUserSum.AutoSize = true;
+            this.labelUserSum.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelUserSum.Location = new System.Drawing.Point(466, 62);
             this.labelUserSum.Name = "labelUserSum";
-            this.labelUserSum.Size = new System.Drawing.Size(0, 12);
+            this.labelUserSum.Size = new System.Drawing.Size(0, 14);
             this.labelUserSum.TabIndex = 11;
             // 
             // columnHeader1

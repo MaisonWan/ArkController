@@ -217,7 +217,7 @@ namespace ArkController.Pages
             {
                 itemWidth = (int)(width * 0.08f + 0.5);
             }
-            this.listViewProcess.Columns.Clear();
+            this.listViewProcess.Clear();
             this.listViewProcess.Columns.Add("PID", itemWidth);
             this.listViewProcess.Columns.Add("PR", itemWidth);
             this.listViewProcess.Columns.Add("CPU%", itemWidth);
@@ -234,34 +234,21 @@ namespace ArkController.Pages
             }
             else
             {
-                this.listViewProcess.Columns.Add("Name", (int)(width * 0.28f + 0.5));
+                this.listViewProcess.Columns.Add("Process", (int)(width * 0.28f + 0.5));
             }
         }
 
         private void listViewProcess_Resize(object sender, EventArgs e)
         {
-            int itemWidth = 0;
+            float[] factor = new float[] { 0.08f, 0.08f, 0.08f, 0.08f, 0.08f, 0.08f, 0.08f, 0.08f, 0.08f, 0.28f };
             int width = this.listViewProcess.ClientSize.Width;
             if (this.checkBoxThreadInfo.Checked)
             {
-                itemWidth = (int)(width * 0.07f + 0.5);
+                factor = new float[] { 0.07f, 0.07f, 0.07f, 0.07f, 0.07f, 0.07f, 0.07f, 0.07f, 0.07f, 0.15f, 0.22f };
             }
-            else
+            for (int i = 0; i < factor.Length; i++)
             {
-                itemWidth = (int)(width * 0.08f + 0.5);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                this.listViewProcess.Columns[i].Width = itemWidth;
-            }
-            if (this.checkBoxThreadInfo.Checked)
-            {
-                this.listViewProcess.Columns[9].Width = (int)(width * 0.15f + 0.5);
-                this.listViewProcess.Columns[10].Width = (int)(width * 0.22f + 0.5);
-            }
-            else
-            {
-                this.listViewProcess.Columns[9].Width = (int)(width * 0.28f + 0.5);
+                this.listViewProcess.Columns[i].Width = (int)(width * factor[i]);
             }
         }
     }
