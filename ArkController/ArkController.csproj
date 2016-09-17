@@ -87,6 +87,12 @@
     <Compile Include="Pages\FormScreenRecord.Designer.cs">
       <DependentUpon>FormScreenRecord.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\FormSystemCpu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\FormSystemCpu.Designer.cs">
+      <DependentUpon>FormSystemCpu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\FormSystemProperty.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,9 @@
     <EmbeddedResource Include="Pages\FormScreenSize.resx">
       <DependentUpon>FormScreenSize.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\FormSystemCpu.resx">
+      <DependentUpon>FormSystemCpu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\FormSystemProperty.resx">
       <DependentUpon>FormSystemProperty.cs</DependentUpon>
     </EmbeddedResource>
@@ -224,6 +233,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\speedometer.png" />
     <None Include="Resources\app_attention.png" />
     <None Include="Resources\system_status.png" />
     <None Include="Resources\stop.png" />

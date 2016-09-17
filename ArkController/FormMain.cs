@@ -29,6 +29,7 @@ namespace ArkController
         private FormPackageDump packageDump = null;
         private FormMemInfo meminfo = null;
         private FormSystemProperty systemProperty = null;
+        private FormSystemCpu systemCpu = null;
 
         private string batteryFormatInfo = null;
         /// <summary>
@@ -356,6 +357,11 @@ namespace ArkController
         private void buttonPackageDump_Click(object sender, EventArgs e)
         {
             FormKit.Show(packageDump, typeof(FormPackageDump));
+        }
+
+        private void buttonCpu_Click(object sender, EventArgs e)
+        {
+            FormKit.Show(systemCpu, typeof(FormSystemCpu));
         }
         #endregion
 
