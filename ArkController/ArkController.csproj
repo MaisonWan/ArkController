@@ -82,6 +82,12 @@
     <Compile Include="Data\DeviceManager.cs" />
     <Compile Include="Data\ProcessData.cs" />
     <Compile Include="Kit\FormKit.cs" />
+    <Compile Include="Pages\FormCommand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\FormCommand.Designer.cs">
+      <DependentUpon>FormCommand.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\FormFileExplorer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +182,9 @@
     <EmbeddedResource Include="Pages\AboutBoxKibot.resx">
       <DependentUpon>AboutBoxKibot.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\FormCommand.resx">
+      <DependentUpon>FormCommand.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\FormFileExplorer.resx">
       <DependentUpon>FormFileExplorer.cs</DependentUpon>
     </EmbeddedResource>
@@ -247,6 +256,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\log.png" />
     <None Include="Resources\timer.png" />
     <None Include="Resources\speedometer.png" />
     <None Include="Resources\app_attention.png" />

@@ -24,6 +24,7 @@ namespace ArkController
         private FormScreenShot screenShot = null;
         private FormScreenRecord screenRecord = null;
         private FormLogcat logcat = null;
+        private FormCommand command = null;
         private FormScreenSize screenSize = null;
         private FormPackageInfo packageInfo = null;
         private FormPackageDump packageDump = null;
@@ -267,6 +268,11 @@ namespace ArkController
                 logcat = new FormLogcat();
             }
             logcat.ShowDialog();
+        }
+
+        private void buttonCommand_Click(object sender, EventArgs e)
+        {
+            FormKit.Show(command, typeof(FormCommand));
         }
 
         private void buttonScreen_Click(object sender, EventArgs e)
