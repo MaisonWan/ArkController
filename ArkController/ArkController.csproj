@@ -117,6 +117,7 @@
     <Compile Include="Pages\FormSystemProperty.Designer.cs">
       <DependentUpon>FormSystemProperty.cs</DependentUpon>
     </Compile>
+    <Compile Include="Task\CommandTaskThread.cs" />
     <Compile Include="Task\ConnectTaskThread.cs" />
     <Compile Include="Task\TaskInfo.cs" />
     <Compile Include="Task\BaseTaskThread.cs" />
