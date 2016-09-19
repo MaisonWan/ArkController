@@ -131,7 +131,6 @@
             this.buttonScreenShot = new System.Windows.Forms.Button();
             this.buttonInstall = new System.Windows.Forms.Button();
             this.buttonRestartAdb = new System.Windows.Forms.Button();
-            this.buttonScreenSize = new System.Windows.Forms.Button();
             this.buttonLogcat = new System.Windows.Forms.Button();
             this.buttonScreenRecord = new System.Windows.Forms.Button();
             this.buttonPackageInfo = new System.Windows.Forms.Button();
@@ -139,12 +138,14 @@
             this.buttonSystemProp = new System.Windows.Forms.Button();
             this.buttonMemInfo = new System.Windows.Forms.Button();
             this.buttonCpu = new System.Windows.Forms.Button();
+            this.buttonScreenSize = new System.Windows.Forms.Button();
+            this.buttonCommand = new System.Windows.Forms.Button();
+            this.buttonFileManager = new System.Windows.Forms.Button();
             this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRestartAdb = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonAbout = new System.Windows.Forms.ToolStripButton();
             this.buttonLogSave = new System.Windows.Forms.Button();
             this.buttonLogClear = new System.Windows.Forms.Button();
-            this.buttonCommand = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.toolStripKibot.SuspendLayout();
@@ -822,6 +823,7 @@
             this.tableLayoutPanel1.Controls.Add(this.buttonCpu, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.buttonScreenSize, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.buttonCommand, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.buttonFileManager, 4, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(54, 44);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -1219,18 +1221,6 @@
             this.buttonRestartAdb.UseVisualStyleBackColor = true;
             this.buttonRestartAdb.Click += new System.EventHandler(this.buttonRestartAdb_Click);
             // 
-            // buttonScreenSize
-            // 
-            this.buttonScreenSize.BackgroundImage = global::ArkController.Properties.Resources.screen_scale;
-            this.buttonScreenSize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonScreenSize.Location = new System.Drawing.Point(366, 87);
-            this.buttonScreenSize.Name = "buttonScreenSize";
-            this.buttonScreenSize.Size = new System.Drawing.Size(60, 60);
-            this.buttonScreenSize.TabIndex = 17;
-            this.toolTipButton.SetToolTip(this.buttonScreenSize, "打开屏幕尺寸像素密度");
-            this.buttonScreenSize.UseVisualStyleBackColor = true;
-            this.buttonScreenSize.Click += new System.EventHandler(this.buttonScreenSize_Click);
-            // 
             // buttonLogcat
             // 
             this.buttonLogcat.BackgroundImage = global::ArkController.Properties.Resources.log;
@@ -1316,6 +1306,41 @@
             this.buttonCpu.UseVisualStyleBackColor = false;
             this.buttonCpu.Click += new System.EventHandler(this.buttonCpu_Click);
             // 
+            // buttonScreenSize
+            // 
+            this.buttonScreenSize.BackgroundImage = global::ArkController.Properties.Resources.screen_scale;
+            this.buttonScreenSize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonScreenSize.Location = new System.Drawing.Point(366, 87);
+            this.buttonScreenSize.Name = "buttonScreenSize";
+            this.buttonScreenSize.Size = new System.Drawing.Size(60, 60);
+            this.buttonScreenSize.TabIndex = 17;
+            this.toolTipButton.SetToolTip(this.buttonScreenSize, "打开屏幕尺寸像素密度");
+            this.buttonScreenSize.UseVisualStyleBackColor = true;
+            this.buttonScreenSize.Click += new System.EventHandler(this.buttonScreenSize_Click);
+            // 
+            // buttonCommand
+            // 
+            this.buttonCommand.BackgroundImage = global::ArkController.Properties.Resources.cmd;
+            this.buttonCommand.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonCommand.Location = new System.Drawing.Point(366, 3);
+            this.buttonCommand.Name = "buttonCommand";
+            this.buttonCommand.Size = new System.Drawing.Size(60, 60);
+            this.buttonCommand.TabIndex = 17;
+            this.toolTipButton.SetToolTip(this.buttonCommand, "打开命令行");
+            this.buttonCommand.UseVisualStyleBackColor = true;
+            this.buttonCommand.Click += new System.EventHandler(this.buttonCommand_Click);
+            // 
+            // buttonFileManager
+            // 
+            this.buttonFileManager.BackgroundImage = global::ArkController.Properties.Resources.file_box;
+            this.buttonFileManager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonFileManager.Location = new System.Drawing.Point(487, 87);
+            this.buttonFileManager.Name = "buttonFileManager";
+            this.buttonFileManager.Size = new System.Drawing.Size(60, 60);
+            this.buttonFileManager.TabIndex = 17;
+            this.buttonFileManager.UseVisualStyleBackColor = true;
+            this.buttonFileManager.Click += new System.EventHandler(this.buttonFileManager_Click);
+            // 
             // toolStripButtonRefresh
             // 
             this.toolStripButtonRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -1368,18 +1393,6 @@
             this.buttonLogClear.TabIndex = 1;
             this.buttonLogClear.UseVisualStyleBackColor = true;
             this.buttonLogClear.Click += new System.EventHandler(this.buttonLogClear_Click);
-            // 
-            // buttonCommand
-            // 
-            this.buttonCommand.BackgroundImage = global::ArkController.Properties.Resources.cmd;
-            this.buttonCommand.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonCommand.Location = new System.Drawing.Point(366, 3);
-            this.buttonCommand.Name = "buttonCommand";
-            this.buttonCommand.Size = new System.Drawing.Size(60, 60);
-            this.buttonCommand.TabIndex = 17;
-            this.toolTipButton.SetToolTip(this.buttonCommand, "打开命令行");
-            this.buttonCommand.UseVisualStyleBackColor = true;
-            this.buttonCommand.Click += new System.EventHandler(this.buttonCommand_Click);
             // 
             // FormMain
             // 
@@ -1548,6 +1561,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOutputHprof;
         private System.Windows.Forms.Button buttonCpu;
         private System.Windows.Forms.Button buttonCommand;
+        private System.Windows.Forms.Button buttonFileManager;
     }
 }
 

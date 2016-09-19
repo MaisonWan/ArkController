@@ -256,6 +256,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\file_box.png" />
     <None Include="Resources\log.png" />
     <None Include="Resources\timer.png" />
     <None Include="Resources\speedometer.png" />
