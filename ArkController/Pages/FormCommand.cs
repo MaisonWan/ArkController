@@ -66,7 +66,7 @@ namespace ArkController.Pages
         private void buttonExecute_Click(object sender, EventArgs e)
         {
             string command = this.textBoxCommand.Text;
-            this.textBoxContent.AppendText(command);
+            this.cmd.ExecuteAdb(command, this);
             this.commandList.Add(command);
             this.pointer = this.commandList.Count;
             this.textBoxCommand.Clear();
@@ -74,7 +74,7 @@ namespace ArkController.Pages
 
         void Command.Callback.onReceive(string line)
         {
-            
+            this.textBoxContent.AppendText(line + "\n");
         }
     }
 }
