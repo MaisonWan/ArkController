@@ -193,6 +193,16 @@ namespace ArkController.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap apps {
+            get {
+                object obj = ResourceManager.GetObject("apps", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap B {
             get {
                 object obj = ResourceManager.GetObject("B", resourceCulture);
@@ -286,16 +296,6 @@ namespace ArkController.Properties {
         internal static System.Drawing.Bitmap C {
             get {
                 object obj = ResourceManager.GetObject("C", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap camera {
-            get {
-                object obj = ResourceManager.GetObject("camera", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

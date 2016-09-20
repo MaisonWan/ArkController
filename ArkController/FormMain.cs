@@ -27,6 +27,7 @@ namespace ArkController
         private FormCommand command = null;
         private FormScreenSize screenSize = null;
         private FormFileExplorer fileExplorer = null;
+        private FormApps appsManager = null;
         private FormPackageInfo packageInfo = null;
         private FormPackageDump packageDump = null;
         private FormMemInfo meminfo = null;
@@ -339,6 +340,11 @@ namespace ArkController
                     install(s[i].Trim());
                 }
             }
+        }
+
+        private void buttonAppManager_Click(object sender, EventArgs e)
+        {
+            FormKit.Show(appsManager, typeof(FormApps));
         }
 
         private void buttonFileManager_Click(object sender, EventArgs e)

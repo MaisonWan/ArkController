@@ -141,6 +141,7 @@
             this.buttonScreenSize = new System.Windows.Forms.Button();
             this.buttonCommand = new System.Windows.Forms.Button();
             this.buttonFileManager = new System.Windows.Forms.Button();
+            this.buttonAppManager = new System.Windows.Forms.Button();
             this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRestartAdb = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonAbout = new System.Windows.Forms.ToolStripButton();
@@ -782,7 +783,7 @@
             this.tableLayoutPanel2.Controls.Add(this.buttonSystemSetting, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.buttonDeviceInfo, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.buttonDeveloper, 3, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(54, 41);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(57, 41);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -824,7 +825,8 @@
             this.tableLayoutPanel1.Controls.Add(this.buttonScreenSize, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.buttonCommand, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.buttonFileManager, 4, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(54, 44);
+            this.tableLayoutPanel1.Controls.Add(this.buttonAppManager, 5, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(57, 46);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -1326,6 +1328,7 @@
             this.buttonCommand.Name = "buttonCommand";
             this.buttonCommand.Size = new System.Drawing.Size(60, 60);
             this.buttonCommand.TabIndex = 17;
+            this.buttonCommand.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTipButton.SetToolTip(this.buttonCommand, "打开命令行");
             this.buttonCommand.UseVisualStyleBackColor = true;
             this.buttonCommand.Click += new System.EventHandler(this.buttonCommand_Click);
@@ -1340,6 +1343,18 @@
             this.buttonFileManager.TabIndex = 17;
             this.buttonFileManager.UseVisualStyleBackColor = true;
             this.buttonFileManager.Click += new System.EventHandler(this.buttonFileManager_Click);
+            // 
+            // buttonAppManager
+            // 
+            this.buttonAppManager.BackgroundImage = global::ArkController.Properties.Resources.apps;
+            this.buttonAppManager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonAppManager.Location = new System.Drawing.Point(608, 87);
+            this.buttonAppManager.Name = "buttonAppManager";
+            this.buttonAppManager.Size = new System.Drawing.Size(60, 60);
+            this.buttonAppManager.TabIndex = 17;
+            this.toolTipButton.SetToolTip(this.buttonAppManager, "应用管理");
+            this.buttonAppManager.UseVisualStyleBackColor = true;
+            this.buttonAppManager.Click += new System.EventHandler(this.buttonAppManager_Click);
             // 
             // toolStripButtonRefresh
             // 
@@ -1562,6 +1577,7 @@
         private System.Windows.Forms.Button buttonCpu;
         private System.Windows.Forms.Button buttonCommand;
         private System.Windows.Forms.Button buttonFileManager;
+        private System.Windows.Forms.Button buttonAppManager;
     }
 }
 
