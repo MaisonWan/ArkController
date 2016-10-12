@@ -33,6 +33,7 @@ namespace ArkController
         private FormMemInfo meminfo = null;
         private FormSystemProperty systemProperty = null;
         private FormSystemCpu systemCpu = null;
+        private FormDumpsys dumpsys = null;
 
         private string batteryFormatInfo = null;
         /// <summary>
@@ -340,6 +341,11 @@ namespace ArkController
                     install(s[i].Trim());
                 }
             }
+        }
+
+        private void buttonDumpsys_Click(object sender, EventArgs e)
+        {
+            FormKit.Show(dumpsys, typeof(FormDumpsys));
         }
 
         private void buttonAppManager_Click(object sender, EventArgs e)

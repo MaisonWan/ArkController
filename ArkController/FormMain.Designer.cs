@@ -147,6 +147,7 @@
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipBattery = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonDumpsys = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.toolStripKibot.SuspendLayout();
@@ -1116,6 +1117,7 @@
             this.tableLayoutPanel1.Controls.Add(this.buttonCommand, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.buttonFileManager, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.buttonAppManager, 5, 1);
+            this.tableLayoutPanel1.Controls.Add(this.buttonDumpsys, 6, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(57, 46);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -1410,6 +1412,18 @@
             this.toolTipBattery.IsBalloon = true;
             this.toolTipBattery.ReshowDelay = 100;
             // 
+            // buttonDumpsys
+            // 
+            this.buttonDumpsys.BackgroundImage = global::ArkController.Properties.Resources.apps;
+            this.buttonDumpsys.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonDumpsys.Location = new System.Drawing.Point(729, 87);
+            this.buttonDumpsys.Name = "buttonDumpsys";
+            this.buttonDumpsys.Size = new System.Drawing.Size(60, 60);
+            this.buttonDumpsys.TabIndex = 17;
+            this.toolTipButton.SetToolTip(this.buttonDumpsys, "Dumpsys");
+            this.buttonDumpsys.UseVisualStyleBackColor = true;
+            this.buttonDumpsys.Click += new System.EventHandler(this.buttonDumpsys_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1579,6 +1593,7 @@
         private System.Windows.Forms.Button buttonCommand;
         private System.Windows.Forms.Button buttonFileManager;
         private System.Windows.Forms.Button buttonAppManager;
+        private System.Windows.Forms.Button buttonDumpsys;
     }
 }
 
