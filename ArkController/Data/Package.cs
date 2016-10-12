@@ -39,13 +39,14 @@ namespace ArkController.Data
                 string pkg = p.Replace("package:", "").Trim();
                 string[] items = pkg.Split("=".ToCharArray());
                 // 不需要过滤，或者其中包含这个关键词
-                if (!need || items[0].Contains(filterName))
+                if (!need || items[0].Contains(filterName) || items[1].Contains(filterName))
                 {
                     // 去掉installer
                     string name = items[1].Replace("  installer", "");
                     ListViewItem item = new ListViewItem(name);
                     item.SubItems.Add(items[0]);
-                    if (items[0].StartsWith("/system"))
+                    if (items[0].StartsWith("/system/app") || items[0].StartsWith("/system/priv-app") ||
+                        items[0].StartsWith("/system/plugin") || items[0].StartsWith("/system/framework"))
                     {
                         item.SubItems.Add("系统应用");
                     }
