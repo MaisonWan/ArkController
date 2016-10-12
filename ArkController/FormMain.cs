@@ -653,7 +653,7 @@ namespace ArkController
 
         private void toolStripButtonAbout_Click(object sender, EventArgs e)
         {
-            AboutBoxKibot aboutBox = new AboutBoxKibot();
+            AboutBoxArk aboutBox = new AboutBoxArk();
             aboutBox.ShowDialog();
         }
 

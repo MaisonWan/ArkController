@@ -99,6 +99,12 @@
     <Compile Include="Pages\FormCommand.Designer.cs">
       <DependentUpon>FormCommand.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\FormDumpsys.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\FormDumpsys.Designer.cs">
+      <DependentUpon>FormDumpsys.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\FormFileExplorer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,11 +139,11 @@
     <Compile Include="Task\ConnectTaskThread.cs" />
     <Compile Include="Task\TaskInfo.cs" />
     <Compile Include="Task\BaseTaskThread.cs" />
-    <Compile Include="Pages\AboutBoxKibot.cs">
+    <Compile Include="Pages\AboutBoxArk.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pages\AboutBoxKibot.Designer.cs">
-      <DependentUpon>AboutBoxKibot.cs</DependentUpon>
+    <Compile Include="Pages\AboutBoxArk.Designer.cs">
+      <DependentUpon>AboutBoxArk.cs</DependentUpon>
     </Compile>
     <Compile Include="Kit\AdbConnect.cs" />
     <Compile Include="Data\Command.cs" />
@@ -194,14 +200,17 @@
     <EmbeddedResource Include="Component\KeyboardControl.resx">
       <DependentUpon>KeyboardControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\AboutBoxKibot.resx">
-      <DependentUpon>AboutBoxKibot.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\AboutBoxArk.resx">
+      <DependentUpon>AboutBoxArk.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\FormApps.resx">
       <DependentUpon>FormApps.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\FormCommand.resx">
       <DependentUpon>FormCommand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\FormDumpsys.resx">
+      <DependentUpon>FormDumpsys.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\FormFileExplorer.resx">
       <DependentUpon>FormFileExplorer.cs</DependentUpon>

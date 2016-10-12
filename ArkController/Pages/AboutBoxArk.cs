@@ -7,9 +7,9 @@ using System.Windows.Forms;
 
 namespace ArkController.Pages
 {
-    partial class AboutBoxKibot : Form
+    partial class AboutBoxArk : Form
     {
-        public AboutBoxKibot()
+        public AboutBoxArk()
         {
             InitializeComponent();
             this.Text = String.Format("关于 {0}", AssemblyTitle);
