@@ -33,6 +33,8 @@
             this.listViewItems = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.textBoxContent = new System.Windows.Forms.TextBox();
+            this.buttonLogSave = new System.Windows.Forms.Button();
+            this.buttonLogClear = new System.Windows.Forms.Button();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -52,7 +54,9 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.buttonLogSave);
             this.splitContainer1.Panel2.Controls.Add(this.textBoxContent);
+            this.splitContainer1.Panel2.Controls.Add(this.buttonLogClear);
             this.splitContainer1.Panel2MinSize = 100;
             this.splitContainer1.Size = new System.Drawing.Size(1004, 698);
             this.splitContainer1.SplitterDistance = 285;
@@ -89,13 +93,37 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxContent.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxContent.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxContent.Location = new System.Drawing.Point(4, 27);
+            this.textBoxContent.Location = new System.Drawing.Point(4, 36);
             this.textBoxContent.Multiline = true;
             this.textBoxContent.Name = "textBoxContent";
             this.textBoxContent.ReadOnly = true;
             this.textBoxContent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxContent.Size = new System.Drawing.Size(709, 668);
+            this.textBoxContent.Size = new System.Drawing.Size(709, 659);
             this.textBoxContent.TabIndex = 0;
+            // 
+            // buttonLogSave
+            // 
+            this.buttonLogSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonLogSave.BackgroundImage = global::ArkController.Properties.Resources.save;
+            this.buttonLogSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonLogSave.Location = new System.Drawing.Point(680, 3);
+            this.buttonLogSave.Name = "buttonLogSave";
+            this.buttonLogSave.Size = new System.Drawing.Size(30, 30);
+            this.buttonLogSave.TabIndex = 2;
+            this.buttonLogSave.UseVisualStyleBackColor = true;
+            this.buttonLogSave.Click += new System.EventHandler(this.buttonLogSave_Click);
+            // 
+            // buttonLogClear
+            // 
+            this.buttonLogClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonLogClear.BackgroundImage = global::ArkController.Properties.Resources.empty_trash;
+            this.buttonLogClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonLogClear.Location = new System.Drawing.Point(644, 3);
+            this.buttonLogClear.Name = "buttonLogClear";
+            this.buttonLogClear.Size = new System.Drawing.Size(30, 30);
+            this.buttonLogClear.TabIndex = 3;
+            this.buttonLogClear.UseVisualStyleBackColor = true;
+            this.buttonLogClear.Click += new System.EventHandler(this.buttonLogClear_Click);
             // 
             // FormDumpsys
             // 
@@ -122,5 +150,7 @@
         private System.Windows.Forms.ListView listViewItems;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.TextBox textBoxContent;
+        private System.Windows.Forms.Button buttonLogSave;
+        private System.Windows.Forms.Button buttonLogClear;
     }
 }

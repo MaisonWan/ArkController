@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -89,6 +90,29 @@ namespace ArkController.Pages
             {
                 this.textBoxContent.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(result[0].ToString()));
             }
+        }
+
+        private void buttonLogSave_Click(object sender, EventArgs e)
+        {
+            string content = this.textBoxContent.Text;
+            if (!string.IsNullOrEmpty(content))
+            {
+                string defaultName = "dumpsys_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log";
+                string localFilePath = DialogKit.ShowSaveLogDialog(defaultName);
+                if (!string.IsNullOrEmpty(localFilePath))
+                {
+                    FileStream fs = new FileStream(localFilePath, FileMode.Create);
+                    StreamWriter sw = new StreamWriter(fs, Encoding.Default);
+                    sw.Write(content);
+                    sw.Close();
+                    fs.Close();
+                }
+            }
+        }
+
+        private void buttonLogClear_Click(object sender, EventArgs e)
+        {
+            this.textBoxContent.Clear();
         }
     }
 }

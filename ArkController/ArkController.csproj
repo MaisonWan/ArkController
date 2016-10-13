@@ -85,6 +85,8 @@
     </Compile>
     <Compile Include="Component\ListViewKit.cs" />
     <Compile Include="Data\DeviceManager.cs" />
+    <Compile Include="Data\ExplorerManager.cs" />
+    <Compile Include="Data\ExplorerFileInfo.cs" />
     <Compile Include="Data\ProcessData.cs" />
     <Compile Include="Kit\FormKit.cs" />
     <Compile Include="Pages\FormApps.cs">
@@ -257,7 +259,6 @@
     </Compile>
     <None Include="adb" />
     <None Include="app.config" />
-    <None Include="Properties\DataSources\ArkController.Data.Package.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -284,6 +285,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\stack.png" />
     <None Include="Resources\apps.png" />
     <None Include="Resources\file_box.png" />
     <None Include="Resources\log.png" />
