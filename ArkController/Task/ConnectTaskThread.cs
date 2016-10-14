@@ -85,6 +85,9 @@ namespace ArkController.Task
                 case TaskType.StartAM:
                     handleStartAm(task);
                     break;
+                case TaskType.StartAction:
+                    handleStartAction(task);
+                    break;
                 case TaskType.Install:
                     handleInstall(task);
                     break;
@@ -281,6 +284,20 @@ namespace ArkController.Task
                 string[] actions = (string[])task.DataArray;
                 connect.StartAm(actions[0], actions[1]);
                 writeLog(string.Format("启动{0}/{1}", actions[0], actions[1]));
+            }
+        }
+
+        /// <summary>
+        /// 启动action
+        /// </summary>
+        /// <param name="task"></param>
+        private void handleStartAction(TaskInfo task)
+        {
+            if (task.Data != null)
+            {
+                string action = (string)task.Data;
+                connect.StartAmAction(action);
+                writeLog(string.Format("启动{0}", action));
             }
         }
 

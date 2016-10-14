@@ -46,6 +46,10 @@ namespace ArkController.Task
         /// </summary>
         StartAM,
         /// <summary>
+        /// 启动Action
+        /// </summary>
+        StartAction,
+        /// <summary>
         /// 卸载程序
         /// </summary>
         Unintall,

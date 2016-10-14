@@ -258,6 +258,12 @@ namespace ArkController
             taskThread.SendTask(TaskInfo.Create(TaskType.StartAM, actions));
         }
 
+        private void buttonWifi_Click(object sender, EventArgs e)
+        {
+            string action = Package.GetOpenWifiSetting();
+            taskThread.SendTask(TaskInfo.Create(TaskType.StartAM, action));
+        }
+
         private void buttonDeviceInfo_Click(object sender, EventArgs e)
         {
             string action = Package.GetOpenDeviceInfoSetting();

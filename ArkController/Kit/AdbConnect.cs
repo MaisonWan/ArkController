@@ -169,6 +169,19 @@ namespace ArkController.Kit
         }
 
         /// <summary>
+        /// 启动action
+        /// </summary>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public bool StartAmAction(string action)
+        {
+            string cmd = String.Format("shell am start -a {0}", action);
+            string result = ExecuteAdb(cmd);
+            log.Write(result);
+            return true;
+        }
+
+        /// <summary>
         /// 得到程序列表
         /// </summary>
         /// <returns></returns>

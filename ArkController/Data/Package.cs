@@ -82,6 +82,16 @@ namespace ArkController.Data
         }
 
         /// <summary>
+        /// 打开wifi设置界面
+        /// </summary>
+        /// <returns></returns>
+        public static string GetOpenWifiSetting()
+        {
+            const string action = "android.net.wifi.PICK_WIFI_NETWORK";
+            return string.Format("-a {0}", action);
+        }
+
+        /// <summary>
         /// 打开开发者选项
         /// </summary>
         public static string GetDeveloperSetting()
