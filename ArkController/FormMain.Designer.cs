@@ -124,11 +124,13 @@
             this.buttonMenu = new System.Windows.Forms.Button();
             this.buttonHome = new System.Windows.Forms.Button();
             this.buttonTabInstall = new System.Windows.Forms.Button();
+            this.buttonCpuAndMem = new System.Windows.Forms.Button();
             this.buttonDeviceDetect = new System.Windows.Forms.Button();
             this.buttonSystemSetting = new System.Windows.Forms.Button();
             this.buttonDeviceInfo = new System.Windows.Forms.Button();
             this.buttonDeveloper = new System.Windows.Forms.Button();
             this.buttonWifi = new System.Windows.Forms.Button();
+            this.buttonDeviceSetting = new System.Windows.Forms.Button();
             this.buttonScreenShot = new System.Windows.Forms.Button();
             this.buttonInstall = new System.Windows.Forms.Button();
             this.buttonRestartAdb = new System.Windows.Forms.Button();
@@ -149,7 +151,6 @@
             this.toolStripButtonAbout = new System.Windows.Forms.ToolStripButton();
             this.buttonLogSave = new System.Windows.Forms.Button();
             this.buttonLogClear = new System.Windows.Forms.Button();
-            this.buttonDeviceSetting = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.toolStripKibot.SuspendLayout();
@@ -601,6 +602,7 @@
             // 
             // tabPageProcess
             // 
+            this.tabPageProcess.Controls.Add(this.buttonCpuAndMem);
             this.tabPageProcess.Controls.Add(this.comboBoxProcess);
             this.tabPageProcess.Controls.Add(this.checkBoxProcess);
             this.tabPageProcess.Controls.Add(this.textBoxProcessFilter);
@@ -1142,6 +1144,18 @@
             this.buttonTabInstall.UseVisualStyleBackColor = true;
             this.buttonTabInstall.Click += new System.EventHandler(this.buttonInstall_Click);
             // 
+            // buttonCpuAndMem
+            // 
+            this.buttonCpuAndMem.BackgroundImage = global::ArkController.Properties.Resources.statistics;
+            this.buttonCpuAndMem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonCpuAndMem.Location = new System.Drawing.Point(1056, 3);
+            this.buttonCpuAndMem.Name = "buttonCpuAndMem";
+            this.buttonCpuAndMem.Size = new System.Drawing.Size(40, 40);
+            this.buttonCpuAndMem.TabIndex = 22;
+            this.toolTipButton.SetToolTip(this.buttonCpuAndMem, "打开CPU和内存占用统计");
+            this.buttonCpuAndMem.UseVisualStyleBackColor = true;
+            this.buttonCpuAndMem.Click += new System.EventHandler(this.buttonCpuAndMem_Click);
+            // 
             // buttonDeviceDetect
             // 
             this.buttonDeviceDetect.BackgroundImage = global::ArkController.Properties.Resources.device_hardware;
@@ -1200,6 +1214,18 @@
             this.buttonWifi.TabIndex = 16;
             this.buttonWifi.UseVisualStyleBackColor = true;
             this.buttonWifi.Click += new System.EventHandler(this.buttonWifi_Click);
+            // 
+            // buttonDeviceSetting
+            // 
+            this.buttonDeviceSetting.BackgroundImage = global::ArkController.Properties.Resources.setting_2;
+            this.buttonDeviceSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonDeviceSetting.Location = new System.Drawing.Point(3, 87);
+            this.buttonDeviceSetting.Name = "buttonDeviceSetting";
+            this.buttonDeviceSetting.Size = new System.Drawing.Size(60, 60);
+            this.buttonDeviceSetting.TabIndex = 16;
+            this.toolTipButton.SetToolTip(this.buttonDeviceSetting, "启动系统内置界面");
+            this.buttonDeviceSetting.UseVisualStyleBackColor = true;
+            this.buttonDeviceSetting.Click += new System.EventHandler(this.buttonDeviceSetting_Click);
             // 
             // buttonScreenShot
             // 
@@ -1439,17 +1465,6 @@
             this.buttonLogClear.UseVisualStyleBackColor = true;
             this.buttonLogClear.Click += new System.EventHandler(this.buttonLogClear_Click);
             // 
-            // buttonDeviceSetting
-            // 
-            this.buttonDeviceSetting.BackgroundImage = global::ArkController.Properties.Resources.setting_2;
-            this.buttonDeviceSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonDeviceSetting.Location = new System.Drawing.Point(3, 87);
-            this.buttonDeviceSetting.Name = "buttonDeviceSetting";
-            this.buttonDeviceSetting.Size = new System.Drawing.Size(60, 60);
-            this.buttonDeviceSetting.TabIndex = 16;
-            this.buttonDeviceSetting.UseVisualStyleBackColor = true;
-            this.buttonDeviceSetting.Click += new System.EventHandler(this.buttonDeviceSetting_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1622,6 +1637,7 @@
         private System.Windows.Forms.Button buttonDumpsys;
         private System.Windows.Forms.Button buttonWifi;
         private System.Windows.Forms.Button buttonDeviceSetting;
+        private System.Windows.Forms.Button buttonCpuAndMem;
     }
 }
 

@@ -809,6 +809,12 @@ namespace ArkController
             this.listViewProcessList.Columns[4].Width = (int)(width * 0.1f);
             this.listViewProcessList.Columns[5].Width = (int)(width * 0.50f);
         }
+
+        private void buttonCpuAndMem_Click(object sender, EventArgs e)
+        {
+            systemCpu = (FormSystemCpu)FormKit.Show(systemCpu, typeof(FormSystemCpu));
+            systemCpu.StartTask();
+        }
         #endregion
 
         private void buttonLogClear_Click(object sender, EventArgs e)

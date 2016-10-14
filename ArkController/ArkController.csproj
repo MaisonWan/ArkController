@@ -294,6 +294,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\statistics.png" />
     <None Include="Resources\wifi.png" />
     <None Include="Resources\stack.png" />
     <None Include="Resources\apps.png" />

@@ -13,59 +13,60 @@ namespace ArkController.Kit
         /// <summary>
         /// 显示一个窗口，然后窗口已经创建，则激活，没有则创建一个
         /// </summary>
-        /// <param name="from"></param>
+        /// <param name="form"></param>
         /// <param name="type"></param>
-        public static void Show(Form from, Type type)
+        public static void Show(ref Form form, Type type)
         {
-            if (from == null || from.IsDisposed)
+            if (form == null || form.IsDisposed)
             {
-                from = Create<Form>(type);
+                form = Create<Form>(type);
             }
-            if (from.Visible)
+            if (form.Visible)
             {
-                from.Activate();
+                form.Activate();
             }
             else
             {
-                from.Show();
+                form.Show();
             }
         }
 
         /// <summary>
         /// 显示一个窗口，然后窗口已经创建，则激活，没有则创建一个
         /// </summary>
-        /// <param name="from"></param>
+        /// <param name="form"></param>
         /// <param name="type"></param>
         /// <param name="args"></param>
-        public static void Show(Form from, Type type, params object[] args)
+        public static Form Show(Form form, Type type, params object[] args)
         {
-            if (from == null || from.IsDisposed)
+            if (form == null || form.IsDisposed)
             {
-                from = Create<Form>(type, args);
+                form = Create<Form>(type, args);
             }
-            if (from.Visible)
+            if (form.Visible)
             {
-                from.Activate();
+                form.Activate();
             }
             else
             {
-                from.Show();
+                form.Show();
             }
+            return form;
         }
 
         /// <summary>
         /// 显示个对话框
         /// </summary>
-        /// <param name="from"></param>
+        /// <param name="form"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static DialogResult ShowDialog(Form from, Type type)
+        public static DialogResult ShowDialog(Form form, Type type)
         {
-            if (from == null || from.IsDisposed)
+            if (form == null || form.IsDisposed)
             {
-                from = Create<Form>(type);
+                form = Create<Form>(type);
             }
-            return from.ShowDialog();
+            return form.ShowDialog();
         }
 
         public static T Create<T>(Type type)

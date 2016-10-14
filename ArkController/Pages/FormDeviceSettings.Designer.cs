@@ -116,7 +116,7 @@
             this.MinimizeBox = false;
             this.Name = "FormDeviceSettings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "启动设置界面";
+            this.Text = "启动系统内置界面";
             this.Load += new System.EventHandler(this.FormDeviceSettings_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

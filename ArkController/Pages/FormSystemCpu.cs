@@ -45,7 +45,7 @@ namespace ArkController.Pages
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            startTask();
+            StartTask();
         }
 
         private void buttonStop_Click(object sender, EventArgs e)
@@ -70,7 +70,7 @@ namespace ArkController.Pages
         /// <summary>
         /// 开始任务
         /// </summary>
-        private void startTask()
+        public void StartTask()
         {
             this.timerTask.Start();
             setControlEnable(true);
