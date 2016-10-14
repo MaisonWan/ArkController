@@ -88,6 +88,7 @@
     <Compile Include="Data\ExplorerManager.cs" />
     <Compile Include="Data\ExplorerFileInfo.cs" />
     <Compile Include="Data\ProcessData.cs" />
+    <Compile Include="Kit\FileKit.cs" />
     <Compile Include="Kit\FormKit.cs" />
     <Compile Include="Pages\FormApps.cs">
       <SubType>Form</SubType>

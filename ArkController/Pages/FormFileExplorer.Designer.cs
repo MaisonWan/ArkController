@@ -40,7 +40,13 @@
             this.treeViewMenu = new System.Windows.Forms.TreeView();
             this.imageListFile = new System.Windows.Forms.ImageList(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.listViewExplorer = new System.Windows.Forms.ListView();
+            this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderDatetime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +62,10 @@
             // 
             this.splitContainer1.Panel1.Controls.Add(this.treeViewMenu);
             this.splitContainer1.Panel1MinSize = 200;
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.listViewExplorer);
             this.splitContainer1.Size = new System.Drawing.Size(846, 651);
             this.splitContainer1.SplitterDistance = 200;
             this.splitContainer1.TabIndex = 0;
@@ -90,6 +100,7 @@
             this.treeViewMenu.Size = new System.Drawing.Size(200, 651);
             this.treeViewMenu.TabIndex = 0;
             this.treeViewMenu.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMenu_AfterExpand);
+            this.treeViewMenu.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewMenu_NodeMouseClick);
             // 
             // imageListFile
             // 
@@ -106,6 +117,44 @@
             this.panel1.Size = new System.Drawing.Size(846, 27);
             this.panel1.TabIndex = 1;
             // 
+            // listViewExplorer
+            // 
+            this.listViewExplorer.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderName,
+            this.columnHeaderSize,
+            this.columnHeaderDatetime,
+            this.columnHeaderType});
+            this.listViewExplorer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewExplorer.FullRowSelect = true;
+            this.listViewExplorer.Location = new System.Drawing.Point(0, 0);
+            this.listViewExplorer.Name = "listViewExplorer";
+            this.listViewExplorer.Size = new System.Drawing.Size(642, 651);
+            this.listViewExplorer.SmallImageList = this.imageListFile;
+            this.listViewExplorer.TabIndex = 0;
+            this.listViewExplorer.UseCompatibleStateImageBehavior = false;
+            this.listViewExplorer.View = System.Windows.Forms.View.Details;
+            this.listViewExplorer.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewExplorer_ColumnClick);
+            // 
+            // columnHeaderName
+            // 
+            this.columnHeaderName.Text = "名称";
+            this.columnHeaderName.Width = 256;
+            // 
+            // columnHeaderSize
+            // 
+            this.columnHeaderSize.Text = "大小";
+            this.columnHeaderSize.Width = 127;
+            // 
+            // columnHeaderDatetime
+            // 
+            this.columnHeaderDatetime.Text = "日期";
+            this.columnHeaderDatetime.Width = 126;
+            // 
+            // columnHeaderType
+            // 
+            this.columnHeaderType.Text = "类型";
+            this.columnHeaderType.Width = 125;
+            // 
             // FormFileExplorer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -119,6 +168,7 @@
             this.Text = "文件管理器";
             this.Load += new System.EventHandler(this.FormFileExplorer_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -130,5 +180,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TreeView treeViewMenu;
         private System.Windows.Forms.ImageList imageListFile;
+        private System.Windows.Forms.ListView listViewExplorer;
+        private System.Windows.Forms.ColumnHeader columnHeaderName;
+        private System.Windows.Forms.ColumnHeader columnHeaderSize;
+        private System.Windows.Forms.ColumnHeader columnHeaderDatetime;
+        private System.Windows.Forms.ColumnHeader columnHeaderType;
     }
 }
