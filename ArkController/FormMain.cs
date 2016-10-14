@@ -34,6 +34,7 @@ namespace ArkController
         private FormSystemProperty systemProperty = null;
         private FormSystemCpu systemCpu = null;
         private FormDumpsys dumpsys = null;
+        private FormDeviceSettings deviceSetting = null;
 
         private string batteryFormatInfo = null;
         /// <summary>
@@ -268,6 +269,11 @@ namespace ArkController
         {
             string action = Package.GetOpenDeviceInfoSetting();
             taskThread.SendTask(TaskInfo.Create(TaskType.StartAM, action));
+        }
+
+        private void buttonDeviceSetting_Click(object sender, EventArgs e)
+        {
+            FormKit.ShowDialog(deviceSetting, typeof(FormDeviceSettings));
         }
 
         private void buttonLogcat_Click(object sender, EventArgs e)

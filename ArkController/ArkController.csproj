@@ -101,6 +101,12 @@
     <Compile Include="Pages\FormCommand.Designer.cs">
       <DependentUpon>FormCommand.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\FormDeviceSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\FormDeviceSettings.Designer.cs">
+      <DependentUpon>FormDeviceSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\FormDumpsys.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\FormCommand.resx">
       <DependentUpon>FormCommand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\FormDeviceSettings.resx">
+      <DependentUpon>FormDeviceSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\FormDumpsys.resx">
       <DependentUpon>FormDumpsys.cs</DependentUpon>

@@ -53,6 +53,21 @@ namespace ArkController.Kit
             }
         }
 
+        /// <summary>
+        /// 显示个对话框
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static DialogResult ShowDialog(Form from, Type type)
+        {
+            if (from == null || from.IsDisposed)
+            {
+                from = Create<Form>(type);
+            }
+            return from.ShowDialog();
+        }
+
         public static T Create<T>(Type type)
         {
             //Activator.CreateInstance 反射 根据程序集创建借口或者类
