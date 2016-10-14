@@ -42,6 +42,13 @@ namespace ArkController.Pages
             getNodeList(path, false, new TaskInfo.EventResultHandler(getNodeListResult));
         }
 
+        private void treeViewMenu_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            currentNode = e.Node;
+            string path = e.Node.Tag.ToString();
+            getNodeList(path, false, new TaskInfo.EventResultHandler(getExplorerAndNodeListResult));
+        }
+
         /// <summary>
         /// 得到指定路径下面的文件
         /// </summary>
@@ -55,21 +62,41 @@ namespace ArkController.Pages
             }
             string cmd = string.Format("shell ls -{0}l {1}", includeHideFile ? "a" : "", path);
             TaskInfo t = TaskInfo.Create(TaskType.ExecuteCommand, cmd);
+            t.Tag = path;
             t.ResultHandler = handler;
             taskThread.SendTask(t);
         }
 
+        /// <summary>
+        /// 树状结构结点上结果
+        /// </summary>
+        /// <param name="result"></param>
         private void getNodeListResult(object[] result)
         {
-            List<ExplorerFileInfo> files = explorer.ParserFilesInfo(result[0].ToString());
+            List<ExplorerFileInfo> files = explorer.ParserFilesInfo(result[0].ToString(), result[1].ToString());
             UpdateNodeList add = new UpdateNodeList(updateNodeList);
             this.treeViewMenu.BeginInvoke(add, new object[] { files });
         }
 
+        /// <summary>
+        /// 文件浏览器上数据结果
+        /// </summary>
+        /// <param name="result"></param>
         private void getExplorerListResult(object[] result)
         {
-            List<ExplorerFileInfo> files = explorer.ParserFilesInfo(result[0].ToString());
+            List<ExplorerFileInfo> files = explorer.ParserFilesInfo(result[0].ToString(), result[1].ToString());
             UpdateNodeList add = new UpdateNodeList(updateExplorerList);
+            this.listViewExplorer.BeginInvoke(add, new object[] { files });
+        }
+
+        /// <summary>
+        /// 更新文件目录树和文件浏览器内容
+        /// </summary>
+        /// <param name="result"></param>
+        private void getExplorerAndNodeListResult(object[] result)
+        {
+            List<ExplorerFileInfo> files = explorer.ParserFilesInfo(result[0].ToString(), result[1].ToString());
+            UpdateNodeList add = new UpdateNodeList(updateExplorerAndNodeList);
             this.listViewExplorer.BeginInvoke(add, new object[] { files });
         }
 
@@ -85,8 +112,9 @@ namespace ArkController.Pages
             {
                 if (file.IsFolder)
                 {
-                    string fileName = Encoding.UTF8.GetString(Encoding.Default.GetBytes(file.FileName));
-                    rootNode.Nodes.Add(fileName);
+                    TreeNode node = new TreeNode(file.FileName);
+                    node.Tag = file.FileFullPath;
+                    rootNode.Nodes.Add(node);
                 }
             }
         }
@@ -102,24 +130,48 @@ namespace ArkController.Pages
             this.listViewExplorer.Items.Clear();
             foreach (ExplorerFileInfo file in files)
             {
-                ListViewItem item = new ListViewItem(file.FileName);
-                item.SubItems.Add(file.FileSize > 0 ? FileKit.FormatFileSize(file.FileSize) : "");
-                item.SubItems.Add(file.CreateDateTime.ToString("yyyy-MM-dd HH:mm"));
-                item.SubItems.Add(file.IsFolder ? "文件夹" : "文件");
-                this.listViewExplorer.Items.Add(item);
+                this.listViewExplorer.Items.Add(createListViewItem(file));
             }
             this.listViewExplorer.EndUpdate();
         }
 
-        private void treeViewMenu_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        private ListViewItem createListViewItem(ExplorerFileInfo file)
         {
-            string path = e.Node.Tag.ToString();
-            getNodeList(path, false, new TaskInfo.EventResultHandler(getExplorerListResult));
+            ListViewItem item = new ListViewItem(file.FileName);
+            item.ImageIndex = 1;
+            item.SubItems.Add(file.FileSize > 0 ? FileKit.FormatFileSize(file.FileSize) : "");
+            item.SubItems.Add(file.CreateDateTime.ToString("yyyy-MM-dd HH:mm"));
+            item.SubItems.Add(file.IsFolder ? "文件夹" : "文件");
+            item.Tag = file;
+            return item;
+        }
+
+        /// <summary>
+        /// 更新目录树和文件浏览器
+        /// </summary>
+        /// <param name="files"></param>
+        private void updateExplorerAndNodeList(List<ExplorerFileInfo> files)
+        {
+            updateExplorerList(files);
+            updateNodeList(files);
         }
 
         private void listViewExplorer_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             ListViewKit.OnColumnClickSort(sender, e);
+        }
+
+        private void listViewExplorer_DoubleClick(object sender, EventArgs e)
+        {
+            if (ListViewKit.hasSelectedItem(this.listViewExplorer))
+            {
+                ExplorerFileInfo file = (ExplorerFileInfo)this.listViewExplorer.SelectedItems[0].Tag;
+                if (file.IsFolder)
+                {
+                    string path = file.FileFullPath;
+                    getNodeList(path, false, new TaskInfo.EventResultHandler(getExplorerListResult));
+                }
+            }
         }
     }
 }

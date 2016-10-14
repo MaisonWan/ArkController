@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -16,8 +17,9 @@ namespace ArkController.Data
         /// 解析文件属性
         /// </summary>
         /// <param name="logContent"></param>
+        /// <param name="currentFolder">当前文件夹</param>
         /// <returns></returns>
-        public List<ExplorerFileInfo> ParserFilesInfo(string logContent)
+        public List<ExplorerFileInfo> ParserFilesInfo(string logContent, string currentFolder)
         {
             string[] lines = logContent.Split("\n".ToCharArray());
             List<ExplorerFileInfo> list = new List<ExplorerFileInfo>(lines.Length);
@@ -39,7 +41,9 @@ namespace ArkController.Data
                         fileInfo.FileSize = Convert.ToInt64(match.Groups[4].Value);
                     }
                     fileInfo.CreateDateTime = DateTime.ParseExact(match.Groups[5].Value, "yyyy-MM-dd HH:mm", CultureInfo.CurrentCulture);
-                    fileInfo.FileName = match.Groups[6].Value;
+                    fileInfo.FileName = Encoding.UTF8.GetString(Encoding.Default.GetBytes(match.Groups[6].Value));
+                    // 全路径
+                    fileInfo.FileFullPath = Path.Combine(currentFolder, fileInfo.FileName);
                     list.Add(fileInfo);
                 }
             }

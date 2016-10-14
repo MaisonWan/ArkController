@@ -69,5 +69,15 @@ namespace ArkController.Data
             get { return fileName; }
             set { this.fileName = value; }
         }
+
+        private string fileFullPath = null;
+        /// <summary>
+        /// 文件或者文件夹的全路径
+        /// </summary>
+        public string FileFullPath
+        {
+            get { return fileFullPath; }
+            set { this.fileFullPath = value; }
+        }
     }
 }

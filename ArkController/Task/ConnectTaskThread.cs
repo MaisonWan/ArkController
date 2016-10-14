@@ -135,7 +135,7 @@ namespace ArkController.Task
                 string result = connect.ExecuteAdb(task.Data.ToString(), task.Args == 1 ? false : true);
                 if (task.ResultHandler != null)
                 {
-                    task.ResultHandler.Invoke(result);
+                    task.ResultHandler.Invoke(result, task.Tag);
                 }
                 writeLog(string.Format("执行命令：{0}", task.Data));
             }

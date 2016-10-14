@@ -19,6 +19,7 @@ namespace ArkController.Task
         private int args;
         private object data = null;
         private object[] dataArray = null;
+        private object tag = null;
 
         public TaskInfo(TaskType type)
         {
@@ -86,6 +87,16 @@ namespace ArkController.Task
         {
             set { this.dataArray = value; }
             get { return this.dataArray; }
+        }
+
+        /// <summary>
+        /// 任务携带的标记
+        /// </summary>
+        public object Tag
+        {
+            set { this.tag = value; }
+            get { return this.tag; }
+
         }
 
         /// <summary>
