@@ -38,8 +38,6 @@ namespace ArkController.Pages
         {
             listViewProperties_Resize(sender, e);
             buttonReadSystemProp_Click(sender, e);
-            keyList.Add("aaa");
-            keyList.Add("bbb");
             updateAutoCompleteSource();
         }
 
@@ -132,6 +130,15 @@ namespace ArkController.Pages
             if (this.listViewProperties.SelectedItems.Count > 0)
             {
                 string key = this.listViewProperties.SelectedItems[0].SubItems[0].Text;
+                Clipboard.SetText(key);
+            }
+        }
+
+        private void mToolStripMenuItemCopyValue_Click(object sender, EventArgs e)
+        {
+            if (this.listViewProperties.SelectedItems.Count > 0)
+            {
+                string key = this.listViewProperties.SelectedItems[0].SubItems[1].Text;
                 Clipboard.SetText(key);
             }
         }

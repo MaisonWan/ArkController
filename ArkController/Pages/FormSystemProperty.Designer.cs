@@ -37,7 +37,8 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemCopyKey = new System.Windows.Forms.ToolStripMenuItem();
+            this.mToolStripMenuItemCopyValue = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,6 +87,7 @@
             this.listViewProperties.FullRowSelect = true;
             this.listViewProperties.GridLines = true;
             this.listViewProperties.Location = new System.Drawing.Point(13, 43);
+            this.listViewProperties.MultiSelect = false;
             this.listViewProperties.Name = "listViewProperties";
             this.listViewProperties.Size = new System.Drawing.Size(657, 607);
             this.listViewProperties.TabIndex = 3;
@@ -105,16 +107,24 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemCopy});
+            this.toolStripMenuItemCopyKey,
+            this.mToolStripMenuItemCopyValue});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(117, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(155, 70);
             // 
-            // toolStripMenuItemCopy
+            // toolStripMenuItemCopyKey
             // 
-            this.toolStripMenuItemCopy.Name = "toolStripMenuItemCopy";
-            this.toolStripMenuItemCopy.Size = new System.Drawing.Size(116, 22);
-            this.toolStripMenuItemCopy.Text = "复制(&C)";
-            this.toolStripMenuItemCopy.Click += new System.EventHandler(this.toolStripMenuItemCopy_Click);
+            this.toolStripMenuItemCopyKey.Name = "toolStripMenuItemCopyKey";
+            this.toolStripMenuItemCopyKey.Size = new System.Drawing.Size(154, 22);
+            this.toolStripMenuItemCopyKey.Text = "复制KEY(&K)";
+            this.toolStripMenuItemCopyKey.Click += new System.EventHandler(this.toolStripMenuItemCopy_Click);
+            // 
+            // mToolStripMenuItemCopyValue
+            // 
+            this.mToolStripMenuItemCopyValue.Name = "mToolStripMenuItemCopyValue";
+            this.mToolStripMenuItemCopyValue.Size = new System.Drawing.Size(154, 22);
+            this.mToolStripMenuItemCopyValue.Text = "复制VALUE(&V)";
+            this.mToolStripMenuItemCopyValue.Click += new System.EventHandler(this.mToolStripMenuItemCopyValue_Click);
             // 
             // FormSystemProperty
             // 
@@ -145,6 +155,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCopy;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCopyKey;
+        private System.Windows.Forms.ToolStripMenuItem mToolStripMenuItemCopyValue;
     }
 }
