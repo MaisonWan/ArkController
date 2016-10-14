@@ -27,7 +27,7 @@ namespace ArkController.Data
                 {
                     continue;
                 }
-                Match match = Regex.Match(line.Trim(), @"([drwx-]+)\s*(\w+)\s*(\w+)\s*(\w*)\s*(\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2})\s+(\w+).*");
+                Match match = Regex.Match(line.Trim(), @"([drwx-]+)\s*(\w+)\s*(\w+)\s*(\w*)\s*(\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2})\s+([\w\\.]+).*");
                 if (match.Groups.Count > 5)
                 {
                     ExplorerFileInfo fileInfo = new ExplorerFileInfo();
@@ -44,6 +44,40 @@ namespace ArkController.Data
                 }
             }
             return list;
+        }
+
+        /// <summary>
+        /// 根据类型排序
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public List<ExplorerFileInfo> SortByType(List<ExplorerFileInfo> list)
+        {
+            list.Sort(new ExplorerFileListSort());
+            return list;
+        }
+
+        /// <summary>
+        /// 文件类型排序，相同类型，按照名称排序
+        /// </summary>
+        public class ExplorerFileListSort : IComparer<ExplorerFileInfo>
+        {
+            public int Compare(ExplorerFileInfo x, ExplorerFileInfo y)
+            {
+                if (!(x.IsFolder ^ y.IsFolder))
+                {
+                    return x.FileName.CompareTo(y.FileName);
+                }
+                if (x.IsFolder)
+                {
+                    return -1;
+                }
+                if (y.IsFolder)
+                {
+                    return 1;
+                }
+                return 0;
+            }
         }
     }
 }

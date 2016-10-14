@@ -97,6 +97,7 @@ namespace ArkController.Pages
         /// <param name="files"></param>
         private void updateExplorerList(List<ExplorerFileInfo> files)
         {
+            files = explorer.SortByType(files);
             this.listViewExplorer.BeginUpdate();
             this.listViewExplorer.Items.Clear();
             foreach (ExplorerFileInfo file in files)
