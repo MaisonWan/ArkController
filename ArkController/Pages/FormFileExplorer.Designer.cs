@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("内置存储", new System.Windows.Forms.TreeNode[] {
-            treeNode1});
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("内置SD卡", new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("内置存储", new System.Windows.Forms.TreeNode[] {
+            treeNode5});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("内置SD卡", new System.Windows.Forms.TreeNode[] {
+            treeNode7});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFileExplorer));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeViewMenu = new System.Windows.Forms.TreeView();
@@ -54,15 +54,17 @@
             this.mToolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.mToolStripMenuItemRename = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonPushFile = new System.Windows.Forms.Button();
-            this.buttonBackFolder = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelFileSize = new System.Windows.Forms.Label();
             this.labelFileDatetime = new System.Windows.Forms.Label();
             this.labelFileDesc = new System.Windows.Forms.Label();
             this.labelFileName = new System.Windows.Forms.Label();
-            this.pictureBoxFileIcon = new System.Windows.Forms.PictureBox();
             this.imageListLargeIcon = new System.Windows.Forms.ImageList(this.components);
+            this.mToolStripMenuItemExplorerRefresh = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBoxFileIcon = new System.Windows.Forms.PictureBox();
+            this.buttonExplorerRefresh = new System.Windows.Forms.Button();
+            this.buttonPushFile = new System.Windows.Forms.Button();
+            this.buttonBackFolder = new System.Windows.Forms.Button();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -102,24 +104,24 @@
             this.treeViewMenu.ItemHeight = 22;
             this.treeViewMenu.Location = new System.Drawing.Point(0, 0);
             this.treeViewMenu.Name = "treeViewMenu";
-            treeNode1.Name = "节点0";
-            treeNode1.Text = "";
-            treeNode2.ImageKey = "(默认值)";
-            treeNode2.Name = "innerStorage";
-            treeNode2.SelectedImageKey = "(默认值)";
-            treeNode2.StateImageKey = "folder.png";
-            treeNode2.Tag = "/";
-            treeNode2.Text = "内置存储";
-            treeNode3.Name = "节点2";
-            treeNode3.Text = "";
-            treeNode4.Name = "innerSDCard";
-            treeNode4.SelectedImageKey = "(默认值)";
-            treeNode4.StateImageKey = "folder.png";
-            treeNode4.Tag = "/sdcard/";
-            treeNode4.Text = "内置SD卡";
+            treeNode5.Name = "节点0";
+            treeNode5.Text = "";
+            treeNode6.ImageKey = "(默认值)";
+            treeNode6.Name = "innerStorage";
+            treeNode6.SelectedImageKey = "(默认值)";
+            treeNode6.StateImageKey = "folder.png";
+            treeNode6.Tag = "/";
+            treeNode6.Text = "内置存储";
+            treeNode7.Name = "节点2";
+            treeNode7.Text = "";
+            treeNode8.Name = "innerSDCard";
+            treeNode8.SelectedImageKey = "(默认值)";
+            treeNode8.StateImageKey = "folder.png";
+            treeNode8.Tag = "/sdcard/";
+            treeNode8.Text = "内置SD卡";
             this.treeViewMenu.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2,
-            treeNode4});
+            treeNode6,
+            treeNode8});
             this.treeViewMenu.SelectedImageKey = "folder.png";
             this.treeViewMenu.Size = new System.Drawing.Size(200, 632);
             this.treeViewMenu.TabIndex = 0;
@@ -283,9 +285,10 @@
             this.mToolStripMenuItemCopy,
             this.mToolStripMenuItemExport,
             this.mToolStripMenuItemDelete,
-            this.mToolStripMenuItemRename});
+            this.mToolStripMenuItemRename,
+            this.mToolStripMenuItemExplorerRefresh});
             this.contextMenuStripExplorer.Name = "contextMenuStripExplorer";
-            this.contextMenuStripExplorer.Size = new System.Drawing.Size(162, 114);
+            this.contextMenuStripExplorer.Size = new System.Drawing.Size(162, 136);
             // 
             // mToolStripMenuItemOpen
             // 
@@ -325,38 +328,13 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.buttonExplorerRefresh);
             this.panel1.Controls.Add(this.buttonPushFile);
             this.panel1.Controls.Add(this.buttonBackFolder);
             this.panel1.Location = new System.Drawing.Point(3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(846, 27);
             this.panel1.TabIndex = 1;
-            // 
-            // buttonPushFile
-            // 
-            this.buttonPushFile.Image = global::ArkController.Properties.Resources.badge_plus;
-            this.buttonPushFile.Location = new System.Drawing.Point(206, 0);
-            this.buttonPushFile.Name = "buttonPushFile";
-            this.buttonPushFile.Size = new System.Drawing.Size(101, 26);
-            this.buttonPushFile.TabIndex = 0;
-            this.buttonPushFile.Text = "导入文件";
-            this.buttonPushFile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonPushFile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonPushFile.UseVisualStyleBackColor = true;
-            this.buttonPushFile.Click += new System.EventHandler(this.buttonPushFile_Click);
-            // 
-            // buttonBackFolder
-            // 
-            this.buttonBackFolder.Image = global::ArkController.Properties.Resources.arrow_return;
-            this.buttonBackFolder.Location = new System.Drawing.Point(9, 0);
-            this.buttonBackFolder.Name = "buttonBackFolder";
-            this.buttonBackFolder.Size = new System.Drawing.Size(103, 26);
-            this.buttonBackFolder.TabIndex = 0;
-            this.buttonBackFolder.Text = "返回上一层";
-            this.buttonBackFolder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonBackFolder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonBackFolder.UseVisualStyleBackColor = true;
-            this.buttonBackFolder.Click += new System.EventHandler(this.buttonBackFolder_Click);
             // 
             // panel2
             // 
@@ -403,15 +381,6 @@
             this.labelFileName.Name = "labelFileName";
             this.labelFileName.Size = new System.Drawing.Size(0, 12);
             this.labelFileName.TabIndex = 1;
-            // 
-            // pictureBoxFileIcon
-            // 
-            this.pictureBoxFileIcon.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxFileIcon.Name = "pictureBoxFileIcon";
-            this.pictureBoxFileIcon.Size = new System.Drawing.Size(50, 50);
-            this.pictureBoxFileIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxFileIcon.TabIndex = 0;
-            this.pictureBoxFileIcon.TabStop = false;
             // 
             // imageListLargeIcon
             // 
@@ -492,6 +461,61 @@
             this.imageListLargeIcon.Images.SetKeyName(72, "xsl.png");
             this.imageListLargeIcon.Images.SetKeyName(73, "zip.png");
             // 
+            // mToolStripMenuItemExplorerRefresh
+            // 
+            this.mToolStripMenuItemExplorerRefresh.Name = "mToolStripMenuItemExplorerRefresh";
+            this.mToolStripMenuItemExplorerRefresh.Size = new System.Drawing.Size(161, 22);
+            this.mToolStripMenuItemExplorerRefresh.Text = "刷新(&R)";
+            this.mToolStripMenuItemExplorerRefresh.Click += new System.EventHandler(this.mToolStripMenuItemExplorerRefresh_Click);
+            // 
+            // pictureBoxFileIcon
+            // 
+            this.pictureBoxFileIcon.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxFileIcon.Name = "pictureBoxFileIcon";
+            this.pictureBoxFileIcon.Size = new System.Drawing.Size(50, 50);
+            this.pictureBoxFileIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxFileIcon.TabIndex = 0;
+            this.pictureBoxFileIcon.TabStop = false;
+            // 
+            // buttonExplorerRefresh
+            // 
+            this.buttonExplorerRefresh.Image = global::ArkController.Properties.Resources.refresh;
+            this.buttonExplorerRefresh.Location = new System.Drawing.Point(761, 1);
+            this.buttonExplorerRefresh.Name = "buttonExplorerRefresh";
+            this.buttonExplorerRefresh.Size = new System.Drawing.Size(82, 26);
+            this.buttonExplorerRefresh.TabIndex = 0;
+            this.buttonExplorerRefresh.Text = "刷新";
+            this.buttonExplorerRefresh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonExplorerRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonExplorerRefresh.UseVisualStyleBackColor = true;
+            this.buttonExplorerRefresh.Click += new System.EventHandler(this.buttonExplorerRefresh_Click);
+            // 
+            // buttonPushFile
+            // 
+            this.buttonPushFile.Image = global::ArkController.Properties.Resources.badge_plus;
+            this.buttonPushFile.Location = new System.Drawing.Point(204, 0);
+            this.buttonPushFile.Name = "buttonPushFile";
+            this.buttonPushFile.Size = new System.Drawing.Size(105, 26);
+            this.buttonPushFile.TabIndex = 0;
+            this.buttonPushFile.Text = "上传到设备";
+            this.buttonPushFile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonPushFile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonPushFile.UseVisualStyleBackColor = true;
+            this.buttonPushFile.Click += new System.EventHandler(this.buttonPushFile_Click);
+            // 
+            // buttonBackFolder
+            // 
+            this.buttonBackFolder.Image = global::ArkController.Properties.Resources.arrow_return;
+            this.buttonBackFolder.Location = new System.Drawing.Point(9, 0);
+            this.buttonBackFolder.Name = "buttonBackFolder";
+            this.buttonBackFolder.Size = new System.Drawing.Size(105, 26);
+            this.buttonBackFolder.TabIndex = 0;
+            this.buttonBackFolder.Text = "返回上一层";
+            this.buttonBackFolder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonBackFolder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonBackFolder.UseVisualStyleBackColor = true;
+            this.buttonBackFolder.Click += new System.EventHandler(this.buttonBackFolder_Click);
+            // 
             // FormFileExplorer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -547,5 +571,7 @@
         private System.Windows.Forms.ImageList imageListLargeIcon;
         private System.Windows.Forms.Button buttonBackFolder;
         private System.Windows.Forms.Button buttonPushFile;
+        private System.Windows.Forms.ToolStripMenuItem mToolStripMenuItemExplorerRefresh;
+        private System.Windows.Forms.Button buttonExplorerRefresh;
     }
 }

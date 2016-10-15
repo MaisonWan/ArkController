@@ -302,7 +302,7 @@ namespace ArkController.Pages
 
         private void deleteFileResult(object[] result)
         {
-            getNodeList(this.currentExplorerPath, false, new TaskInfo.EventResultHandler(getExplorerListResult));
+            refreshExplorer();
         }
 
         private void mToolStripMenuItemRename_Click(object sender, EventArgs e)
@@ -349,10 +349,15 @@ namespace ArkController.Pages
 
         private void renameFileResult(object[] result)
         {
-            // getNodeList(this.currentExplorerPath, false, new TaskInfo.EventResultHandler(getExplorerListResult));
             ExplorerFileInfo file = (ExplorerFileInfo)this.listViewExplorer.SelectedItems[0].Tag;
             file.FileName = currentEditAfterLabel;
             file.FileFullPath = Path.Combine(FileKit.GetUpFolder(file.FileFullPath), file.FileName);
+        }
+
+        private void mToolStripMenuItemExplorerRefresh_Click(object sender, EventArgs e)
+        {
+            // 刷新当前文件夹
+            refreshExplorer();
         }
         #endregion
 
@@ -397,10 +402,22 @@ namespace ArkController.Pages
 
         private void pushFileResult(object[] result)
         {
-            getNodeList(currentExplorerPath, false, new TaskInfo.EventResultHandler(getExplorerListResult));
+            refreshExplorer();
+        }
+
+        private void buttonExplorerRefresh_Click(object sender, EventArgs e)
+        {
+            refreshExplorer();
         }
         #endregion
 
+        /// <summary>
+        /// 刷新文件浏览器
+        /// </summary>
+        private void refreshExplorer()
+        {
+            getNodeList(currentExplorerPath, false, new TaskInfo.EventResultHandler(getExplorerListResult));
+        }
         private void listViewExplorer_ItemDrag(object sender, ItemDragEventArgs e)
         {
             ListViewItem item = (ListViewItem)e.Item;
