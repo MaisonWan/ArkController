@@ -76,5 +76,23 @@ namespace ArkController.Kit
             }
             return "folder.png";
         }
+
+        /// <summary>
+        /// 返回上一层目录
+        /// </summary>
+        /// <param name="currentFolder"></param>
+        /// <returns></returns>
+        public static string GetUpFolder(string currentFolder)
+        {
+            if (currentFolder.EndsWith("/"))
+            {
+                if (currentFolder.Length == 1)
+                {
+                    return null;
+                }
+                currentFolder = currentFolder.Substring(0, currentFolder.Length - 1);
+            }
+            return currentFolder.Substring(0, currentFolder.LastIndexOf('/') + 1);
+        }
     }
 }

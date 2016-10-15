@@ -59,13 +59,15 @@
             this.labelFileDatetime = new System.Windows.Forms.Label();
             this.labelFileDesc = new System.Windows.Forms.Label();
             this.labelFileName = new System.Windows.Forms.Label();
-            this.pictureBoxFileIcon = new System.Windows.Forms.PictureBox();
             this.imageListLargeIcon = new System.Windows.Forms.ImageList(this.components);
+            this.pictureBoxFileIcon = new System.Windows.Forms.PictureBox();
+            this.buttonBackFolder = new System.Windows.Forms.Button();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.contextMenuStripTree.SuspendLayout();
             this.contextMenuStripExplorer.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFileIcon)).BeginInit();
             this.SuspendLayout();
@@ -278,7 +280,7 @@
             this.mToolStripMenuItemDelete,
             this.mToolStripMenuItemRename});
             this.contextMenuStripExplorer.Name = "contextMenuStripExplorer";
-            this.contextMenuStripExplorer.Size = new System.Drawing.Size(162, 136);
+            this.contextMenuStripExplorer.Size = new System.Drawing.Size(162, 114);
             // 
             // mToolStripMenuItemOpen
             // 
@@ -316,6 +318,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.buttonBackFolder);
             this.panel1.Location = new System.Drawing.Point(3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(846, 27);
@@ -366,15 +369,6 @@
             this.labelFileName.Name = "labelFileName";
             this.labelFileName.Size = new System.Drawing.Size(0, 12);
             this.labelFileName.TabIndex = 1;
-            // 
-            // pictureBoxFileIcon
-            // 
-            this.pictureBoxFileIcon.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxFileIcon.Name = "pictureBoxFileIcon";
-            this.pictureBoxFileIcon.Size = new System.Drawing.Size(50, 50);
-            this.pictureBoxFileIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxFileIcon.TabIndex = 0;
-            this.pictureBoxFileIcon.TabStop = false;
             // 
             // imageListLargeIcon
             // 
@@ -455,6 +449,28 @@
             this.imageListLargeIcon.Images.SetKeyName(72, "xsl.png");
             this.imageListLargeIcon.Images.SetKeyName(73, "zip.png");
             // 
+            // pictureBoxFileIcon
+            // 
+            this.pictureBoxFileIcon.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxFileIcon.Name = "pictureBoxFileIcon";
+            this.pictureBoxFileIcon.Size = new System.Drawing.Size(50, 50);
+            this.pictureBoxFileIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxFileIcon.TabIndex = 0;
+            this.pictureBoxFileIcon.TabStop = false;
+            // 
+            // buttonBackFolder
+            // 
+            this.buttonBackFolder.Image = global::ArkController.Properties.Resources.arrow_return;
+            this.buttonBackFolder.Location = new System.Drawing.Point(9, 3);
+            this.buttonBackFolder.Name = "buttonBackFolder";
+            this.buttonBackFolder.Size = new System.Drawing.Size(103, 23);
+            this.buttonBackFolder.TabIndex = 0;
+            this.buttonBackFolder.Text = "返回上一层";
+            this.buttonBackFolder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonBackFolder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonBackFolder.UseVisualStyleBackColor = true;
+            this.buttonBackFolder.Click += new System.EventHandler(this.buttonBackFolder_Click);
+            // 
             // FormFileExplorer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -473,6 +489,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.contextMenuStripTree.ResumeLayout(false);
             this.contextMenuStripExplorer.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFileIcon)).EndInit();
@@ -507,5 +524,6 @@
         private System.Windows.Forms.Label labelFileSize;
         private System.Windows.Forms.Label labelFileDatetime;
         private System.Windows.Forms.ImageList imageListLargeIcon;
+        private System.Windows.Forms.Button buttonBackFolder;
     }
 }

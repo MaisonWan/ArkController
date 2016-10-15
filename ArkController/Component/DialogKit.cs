@@ -87,5 +87,33 @@ namespace ArkController.Component
             }
             return null;
         }
+
+        /// <summary>
+        /// 文件夹保存路径
+        /// </summary>
+        /// <returns></returns>
+        public static string ShowSaveFolderDialog()
+        {
+            return ShowSaveFolderDialog(null);
+        }
+
+        /// <summary>
+        /// 选择文件夹路劲
+        /// </summary>
+        /// <param name="defaultPath">默认打开的路径</param>
+        /// <returns></returns>
+        public static string ShowSaveFolderDialog(string defaultPath)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (!string.IsNullOrEmpty(defaultPath))
+            {
+                fbd.SelectedPath = defaultPath;
+            }
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                return fbd.SelectedPath;
+            }
+            return null;
+        }
     }
 }

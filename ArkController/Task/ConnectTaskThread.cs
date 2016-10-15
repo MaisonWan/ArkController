@@ -450,7 +450,7 @@ namespace ArkController.Task
             string localPath = (string)task.DataArray[1];
             string cmd = Package.GetPullAppInstallApkCommand(appPath, localPath);
             string log = connect.ExecuteAdb(cmd);
-            writeLog(string.Format("Pull路径{0}到{1}完成", appPath, localPath));
+            writeLog(string.Format("Pull路径\"{0}\"到\"{1}\"完成", appPath, localPath));
             if (task.ResultHandler != null)
             {
                 task.ResultHandler.Invoke(log);

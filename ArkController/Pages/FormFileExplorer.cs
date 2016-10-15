@@ -23,6 +23,7 @@ namespace ArkController.Pages
         /// <param name="files"></param>
         private delegate void UpdateNodeList(List<ExplorerFileInfo> files);
         private TreeNode currentNode = null;
+        private string currentExplorerPath = null;
         private List<string> iconList = new List<string>();
 
         public FormFileExplorer()
@@ -39,6 +40,10 @@ namespace ArkController.Pages
         private void FormFileExplorer_Load(object sender, EventArgs e)
         {
             this.listViewExplorer.ListViewItemSorter = new ListViewColumnSorter();
+            if (currentExplorerPath == null)
+            {
+                this.buttonBackFolder.Enabled = false;
+            }
         }
 
         private void treeViewMenu_AfterExpand(object sender, TreeViewEventArgs e)
@@ -69,6 +74,7 @@ namespace ArkController.Pages
             {
                 string path = e.Node.Tag.ToString();
                 getNodeList(path, false, new TaskInfo.EventResultHandler(getExplorerAndNodeListResult));
+                this.currentExplorerPath = path;
             }
         }
 
@@ -193,6 +199,8 @@ namespace ArkController.Pages
                 {
                     string path = file.FileFullPath;
                     getNodeList(path, false, new TaskInfo.EventResultHandler(getExplorerListResult));
+                    this.buttonBackFolder.Enabled = true;
+                    this.currentExplorerPath = path;
                 }
             }
         }
@@ -252,19 +260,46 @@ namespace ArkController.Pages
             if (ListViewKit.hasSelectedItem(this.listViewExplorer))
             {
                 ExplorerFileInfo file = (ExplorerFileInfo)this.listViewExplorer.SelectedItems[0].Tag;
+                string savePath = null;
                 if (file.IsFolder)
                 {
                     // 选择文件夹
+                    savePath = DialogKit.ShowSaveFolderDialog();
                 }
                 else
                 {
                     // 选择文件存储路径
+                    savePath = DialogKit.ShowSaveDialog(file.FileName);
                 }
+                pullFileFromDevice(file.FileFullPath, savePath);
             }
         }
 
         #endregion
 
+        private void pullFileFromDevice(string devicePath, string localPath)
+        {
+            TaskInfo t = new TaskInfo(TaskType.PullFile);
+            t.DataArray = new object[] { devicePath, localPath};
+            taskThread.SendTask(t);
+        }
 
+        #region 工具栏按钮
+        private void buttonBackFolder_Click(object sender, EventArgs e)
+        {
+            string path = FileKit.GetUpFolder(currentExplorerPath);
+            if (path != null)
+            {
+                getNodeList(path, false, new TaskInfo.EventResultHandler(getExplorerListResult));
+                this.buttonBackFolder.Enabled = true;
+                if (path == "/")
+                {
+                    this.buttonBackFolder.Enabled = false;
+                }
+                this.currentExplorerPath = path;
+            }
+        }
+
+        #endregion
     }
 }

@@ -295,6 +295,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\arrow_return.png" />
+    <None Include="Resources\return.png" />
     <None Include="Resources\statistics.png" />
     <None Include="Resources\wifi.png" />
     <None Include="Resources\stack.png" />
