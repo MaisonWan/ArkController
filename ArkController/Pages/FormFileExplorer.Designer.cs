@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("内置存储", new System.Windows.Forms.TreeNode[] {
-            treeNode1});
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("内置SD卡", new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("内置存储", new System.Windows.Forms.TreeNode[] {
+            treeNode5});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("内置SD卡", new System.Windows.Forms.TreeNode[] {
+            treeNode7});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFileExplorer));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeViewMenu = new System.Windows.Forms.TreeView();
@@ -99,24 +99,24 @@
             this.treeViewMenu.ItemHeight = 22;
             this.treeViewMenu.Location = new System.Drawing.Point(0, 0);
             this.treeViewMenu.Name = "treeViewMenu";
-            treeNode1.Name = "节点0";
-            treeNode1.Text = "";
-            treeNode2.ImageKey = "(默认值)";
-            treeNode2.Name = "innerStorage";
-            treeNode2.SelectedImageKey = "(默认值)";
-            treeNode2.StateImageKey = "folder.png";
-            treeNode2.Tag = "/";
-            treeNode2.Text = "内置存储";
-            treeNode3.Name = "节点2";
-            treeNode3.Text = "";
-            treeNode4.Name = "innerSDCard";
-            treeNode4.SelectedImageKey = "(默认值)";
-            treeNode4.StateImageKey = "folder.png";
-            treeNode4.Tag = "/sdcard/";
-            treeNode4.Text = "内置SD卡";
+            treeNode5.Name = "节点0";
+            treeNode5.Text = "";
+            treeNode6.ImageKey = "(默认值)";
+            treeNode6.Name = "innerStorage";
+            treeNode6.SelectedImageKey = "(默认值)";
+            treeNode6.StateImageKey = "folder.png";
+            treeNode6.Tag = "/";
+            treeNode6.Text = "内置存储";
+            treeNode7.Name = "节点2";
+            treeNode7.Text = "";
+            treeNode8.Name = "innerSDCard";
+            treeNode8.SelectedImageKey = "(默认值)";
+            treeNode8.StateImageKey = "folder.png";
+            treeNode8.Tag = "/sdcard/";
+            treeNode8.Text = "内置SD卡";
             this.treeViewMenu.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2,
-            treeNode4});
+            treeNode6,
+            treeNode8});
             this.treeViewMenu.SelectedImageKey = "folder.png";
             this.treeViewMenu.Size = new System.Drawing.Size(200, 632);
             this.treeViewMenu.TabIndex = 0;
@@ -278,7 +278,7 @@
             this.mToolStripMenuItemDelete,
             this.mToolStripMenuItemRename});
             this.contextMenuStripExplorer.Name = "contextMenuStripExplorer";
-            this.contextMenuStripExplorer.Size = new System.Drawing.Size(162, 114);
+            this.contextMenuStripExplorer.Size = new System.Drawing.Size(162, 136);
             // 
             // mToolStripMenuItemOpen
             // 
@@ -299,6 +299,7 @@
             this.mToolStripMenuItemExport.Name = "mToolStripMenuItemExport";
             this.mToolStripMenuItemExport.Size = new System.Drawing.Size(161, 22);
             this.mToolStripMenuItemExport.Text = "导出(&Z)";
+            this.mToolStripMenuItemExport.Click += new System.EventHandler(this.mToolStripMenuItemExport_Click);
             // 
             // mToolStripMenuItemDelete
             // 

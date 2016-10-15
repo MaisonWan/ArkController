@@ -246,8 +246,25 @@ namespace ArkController.Pages
         {
             listViewExplorer_DoubleClick(sender, e);
         }
-        
+
+        private void mToolStripMenuItemExport_Click(object sender, EventArgs e)
+        {
+            if (ListViewKit.hasSelectedItem(this.listViewExplorer))
+            {
+                ExplorerFileInfo file = (ExplorerFileInfo)this.listViewExplorer.SelectedItems[0].Tag;
+                if (file.IsFolder)
+                {
+                    // 选择文件夹
+                }
+                else
+                {
+                    // 选择文件存储路径
+                }
+            }
+        }
+
         #endregion
+
 
     }
 }

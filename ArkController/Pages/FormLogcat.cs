@@ -8,6 +8,7 @@ using System.Threading;
 using System.Windows.Forms;
 using ArkController.Data;
 using System.IO;
+using ArkController.Component;
 
 namespace ArkController.Pages
 {
@@ -149,20 +150,12 @@ namespace ArkController.Pages
             string content = this.textBoxContent.Text;
             if (!string.IsNullOrEmpty(content))
             {
-                SaveFileDialog sfd = this.saveFileDialogContent;
-                //设置文件类型 
-                sfd.Filter = "日志文件（*.log）|*.log|文本文件（*.txt）|*.txt";
-                //设置默认文件类型显示顺序 
-                sfd.FilterIndex = 1;
-                sfd.FileName = "logcat_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log";
-                //保存对话框是否记忆上次打开的目录 
-                sfd.RestoreDirectory = true;
-                //点了保存按钮进入 
-                if (sfd.ShowDialog() == DialogResult.OK)
+                string defaultName = "logcat_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log";
+                string savePath = DialogKit.ShowSaveLogDialog(defaultName);
+                if (!string.IsNullOrEmpty(savePath))
                 {
-                    string localFilePath = sfd.FileName.ToString(); //获得文件路径 
-                    FileStream fs = new FileStream(localFilePath, FileMode.Create);
-                    StreamWriter sw = new StreamWriter(fs,Encoding.Default);
+                    FileStream fs = new FileStream(savePath, FileMode.Create);
+                    StreamWriter sw = new StreamWriter(fs, Encoding.Default);
                     sw.Write(content);
                     sw.Close();
                     fs.Close();

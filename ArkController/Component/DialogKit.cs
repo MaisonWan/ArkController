@@ -54,6 +54,17 @@ namespace ArkController.Component
         }
 
         /// <summary>
+        /// 保存文件
+        /// </summary>
+        /// <param name="defaultName"></param>
+        /// <returns></returns>
+        public static string ShowSaveDialog(string defaultName)
+        {
+            string filter = "所有文件(*.*)|*.*";
+            return ShowSaveFileDialog(defaultName, filter);
+        }
+
+        /// <summary>
         /// 保存文件对话框
         /// </summary>
         /// <param name="defaultName">默认文件名字</param>
