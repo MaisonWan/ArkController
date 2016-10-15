@@ -54,14 +54,15 @@
             this.mToolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.mToolStripMenuItemRename = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonPushFile = new System.Windows.Forms.Button();
+            this.buttonBackFolder = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelFileSize = new System.Windows.Forms.Label();
             this.labelFileDatetime = new System.Windows.Forms.Label();
             this.labelFileDesc = new System.Windows.Forms.Label();
             this.labelFileName = new System.Windows.Forms.Label();
-            this.imageListLargeIcon = new System.Windows.Forms.ImageList(this.components);
             this.pictureBoxFileIcon = new System.Windows.Forms.PictureBox();
-            this.buttonBackFolder = new System.Windows.Forms.Button();
+            this.imageListLargeIcon = new System.Windows.Forms.ImageList(this.components);
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -251,6 +252,7 @@
             this.listViewExplorer.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.listViewExplorer_AfterLabelEdit);
             this.listViewExplorer.BeforeLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.listViewExplorer_BeforeLabelEdit);
             this.listViewExplorer.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewExplorer_ColumnClick);
+            this.listViewExplorer.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listViewExplorer_ItemDrag);
             this.listViewExplorer.SelectedIndexChanged += new System.EventHandler(this.listViewExplorer_SelectedIndexChanged);
             this.listViewExplorer.DoubleClick += new System.EventHandler(this.listViewExplorer_DoubleClick);
             // 
@@ -323,11 +325,38 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.buttonPushFile);
             this.panel1.Controls.Add(this.buttonBackFolder);
             this.panel1.Location = new System.Drawing.Point(3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(846, 27);
             this.panel1.TabIndex = 1;
+            // 
+            // buttonPushFile
+            // 
+            this.buttonPushFile.Image = global::ArkController.Properties.Resources.badge_plus;
+            this.buttonPushFile.Location = new System.Drawing.Point(206, 0);
+            this.buttonPushFile.Name = "buttonPushFile";
+            this.buttonPushFile.Size = new System.Drawing.Size(101, 26);
+            this.buttonPushFile.TabIndex = 0;
+            this.buttonPushFile.Text = "导入文件";
+            this.buttonPushFile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonPushFile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonPushFile.UseVisualStyleBackColor = true;
+            this.buttonPushFile.Click += new System.EventHandler(this.buttonPushFile_Click);
+            // 
+            // buttonBackFolder
+            // 
+            this.buttonBackFolder.Image = global::ArkController.Properties.Resources.arrow_return;
+            this.buttonBackFolder.Location = new System.Drawing.Point(9, 0);
+            this.buttonBackFolder.Name = "buttonBackFolder";
+            this.buttonBackFolder.Size = new System.Drawing.Size(103, 26);
+            this.buttonBackFolder.TabIndex = 0;
+            this.buttonBackFolder.Text = "返回上一层";
+            this.buttonBackFolder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonBackFolder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonBackFolder.UseVisualStyleBackColor = true;
+            this.buttonBackFolder.Click += new System.EventHandler(this.buttonBackFolder_Click);
             // 
             // panel2
             // 
@@ -374,6 +403,15 @@
             this.labelFileName.Name = "labelFileName";
             this.labelFileName.Size = new System.Drawing.Size(0, 12);
             this.labelFileName.TabIndex = 1;
+            // 
+            // pictureBoxFileIcon
+            // 
+            this.pictureBoxFileIcon.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxFileIcon.Name = "pictureBoxFileIcon";
+            this.pictureBoxFileIcon.Size = new System.Drawing.Size(50, 50);
+            this.pictureBoxFileIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxFileIcon.TabIndex = 0;
+            this.pictureBoxFileIcon.TabStop = false;
             // 
             // imageListLargeIcon
             // 
@@ -454,28 +492,6 @@
             this.imageListLargeIcon.Images.SetKeyName(72, "xsl.png");
             this.imageListLargeIcon.Images.SetKeyName(73, "zip.png");
             // 
-            // pictureBoxFileIcon
-            // 
-            this.pictureBoxFileIcon.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxFileIcon.Name = "pictureBoxFileIcon";
-            this.pictureBoxFileIcon.Size = new System.Drawing.Size(50, 50);
-            this.pictureBoxFileIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxFileIcon.TabIndex = 0;
-            this.pictureBoxFileIcon.TabStop = false;
-            // 
-            // buttonBackFolder
-            // 
-            this.buttonBackFolder.Image = global::ArkController.Properties.Resources.arrow_return;
-            this.buttonBackFolder.Location = new System.Drawing.Point(9, 3);
-            this.buttonBackFolder.Name = "buttonBackFolder";
-            this.buttonBackFolder.Size = new System.Drawing.Size(103, 23);
-            this.buttonBackFolder.TabIndex = 0;
-            this.buttonBackFolder.Text = "返回上一层";
-            this.buttonBackFolder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonBackFolder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonBackFolder.UseVisualStyleBackColor = true;
-            this.buttonBackFolder.Click += new System.EventHandler(this.buttonBackFolder_Click);
-            // 
             // FormFileExplorer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -530,5 +546,6 @@
         private System.Windows.Forms.Label labelFileDatetime;
         private System.Windows.Forms.ImageList imageListLargeIcon;
         private System.Windows.Forms.Button buttonBackFolder;
+        private System.Windows.Forms.Button buttonPushFile;
     }
 }

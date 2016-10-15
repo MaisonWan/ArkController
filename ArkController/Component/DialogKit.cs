@@ -115,5 +115,22 @@ namespace ArkController.Component
             }
             return null;
         }
+
+        /// <summary>
+        /// 打开文件对话框
+        /// </summary>
+        /// <returns></returns>
+        public static string[] OpenFileDialog()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "所有文件(*.*)|*.*";
+            ofd.RestoreDirectory = true;
+            ofd.FileName = "";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                return ofd.FileNames;
+            }
+            return null;
+        }
     }
 }

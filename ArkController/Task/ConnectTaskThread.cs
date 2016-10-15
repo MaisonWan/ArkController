@@ -109,6 +109,9 @@ namespace ArkController.Task
                 case TaskType.PullFile:
                     handlePullFile(task);
                     break;
+                case TaskType.PushFile:
+                    handlePushFile(task);
+                    break;
             }
         }
 
@@ -450,7 +453,28 @@ namespace ArkController.Task
             string localPath = (string)task.DataArray[1];
             string cmd = Package.GetPullAppInstallApkCommand(appPath, localPath);
             string log = connect.ExecuteAdb(cmd);
-            writeLog(string.Format("Pull路径\"{0}\"到\"{1}\"完成", appPath, localPath));
+            writeLog(string.Format("Pull路径:\"{0}\"到\"{1}\"完成", appPath, localPath));
+            if (task.ResultHandler != null)
+            {
+                task.ResultHandler.Invoke(log);
+            }
+        }
+
+        /// <summary>
+        /// 推送文件到设备上
+        /// </summary>
+        /// <param name="task"></param>
+        private void handlePushFile(TaskInfo task)
+        {
+            if (task.DataArray == null || task.DataArray.Length < 2)
+            {
+                return;
+            }
+            string localPath = (string)task.DataArray[0];
+            string devicePath = (string)task.DataArray[1];
+            string cmd = Package.GetPushFileCommand(devicePath, localPath);
+            string log = connect.ExecuteAdb(cmd);
+            writeLog(string.Format("Push路径:\"{0}\"到\"{1}\"完成", localPath, devicePath));
             if (task.ResultHandler != null)
             {
                 task.ResultHandler.Invoke(log);

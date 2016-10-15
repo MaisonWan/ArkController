@@ -23,7 +23,7 @@ namespace ArkController.Pages
         /// <param name="files"></param>
         private delegate void UpdateNodeList(List<ExplorerFileInfo> files);
         private TreeNode currentNode = null;
-        private string currentExplorerPath = null;
+        private string currentExplorerPath = "/";
         private List<string> iconList = new List<string>();
 
         public FormFileExplorer()
@@ -213,7 +213,7 @@ namespace ArkController.Pages
                 // 预览图上显示
                 this.labelFileName.Text = file.FileName;
                 this.labelFileDatetime.Text = "创建时间：" + file.CreateDateTime.ToString("yyyy-MM-dd HH:mm");
-                this.labelFileSize.Text = "文件大小：" + FileKit.FormatFileSize(file.FileSize);
+                this.labelFileSize.Text = file.FileSize > 0 ? "文件大小：" + FileKit.FormatFileSize(file.FileSize) : "";
                 this.pictureBoxFileIcon.Image = FileKit.GetFileIconImage(this.imageListLargeIcon, Path.GetExtension(file.FileName));
             }
         }
@@ -272,31 +272,6 @@ namespace ArkController.Pages
                     savePath = DialogKit.ShowSaveDialog(file.FileName);
                 }
                 pullFileFromDevice(file.FileFullPath, savePath);
-            }
-        }
-
-        #endregion
-
-        private void pullFileFromDevice(string devicePath, string localPath)
-        {
-            TaskInfo t = new TaskInfo(TaskType.PullFile);
-            t.DataArray = new object[] { devicePath, localPath};
-            taskThread.SendTask(t);
-        }
-
-        #region 工具栏按钮
-        private void buttonBackFolder_Click(object sender, EventArgs e)
-        {
-            string path = FileKit.GetUpFolder(currentExplorerPath);
-            if (path != null)
-            {
-                getNodeList(path, false, new TaskInfo.EventResultHandler(getExplorerListResult));
-                this.buttonBackFolder.Enabled = true;
-                if (path == "/")
-                {
-                    this.buttonBackFolder.Enabled = false;
-                }
-                this.currentExplorerPath = path;
             }
         }
 
@@ -380,6 +355,56 @@ namespace ArkController.Pages
             file.FileFullPath = Path.Combine(FileKit.GetUpFolder(file.FileFullPath), file.FileName);
         }
         #endregion
+
+        private void pullFileFromDevice(string devicePath, string localPath)
+        {
+            TaskInfo t = new TaskInfo(TaskType.PullFile);
+            t.DataArray = new object[] { devicePath, localPath};
+            taskThread.SendTask(t);
+        }
+
+        #region 工具栏按钮
+        private void buttonBackFolder_Click(object sender, EventArgs e)
+        {
+            string path = FileKit.GetUpFolder(currentExplorerPath);
+            if (path != null)
+            {
+                getNodeList(path, false, new TaskInfo.EventResultHandler(getExplorerListResult));
+                this.buttonBackFolder.Enabled = true;
+                if (path == "/")
+                {
+                    this.buttonBackFolder.Enabled = false;
+                }
+                this.currentExplorerPath = path;
+            }
+        }
+
+        private void buttonPushFile_Click(object sender, EventArgs e)
+        {
+            string[] filesPath = DialogKit.OpenFileDialog();
+            if (filesPath == null)
+            {
+                return;
+            }
+            foreach (string filePath in filesPath)
+            {
+                TaskInfo t = new TaskInfo(TaskType.PushFile);
+                t.DataArray = new object[] { filePath, currentExplorerPath };
+                t.ResultHandler = new TaskInfo.EventResultHandler(pushFileResult);
+                taskThread.SendTask(t);
+            }
+        }
+
+        private void pushFileResult(object[] result)
+        {
+            getNodeList(currentExplorerPath, false, new TaskInfo.EventResultHandler(getExplorerListResult));
+        }
+        #endregion
+
+        private void listViewExplorer_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            ListViewItem item = (ListViewItem)e.Item;
+        }
 
     }
 }

@@ -295,6 +295,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\badge_plus.png" />
     <None Include="Resources\arrow_return.png" />
     <None Include="Resources\return.png" />
     <None Include="Resources\statistics.png" />
@@ -376,7 +377,6 @@
     <None Include="bin\Debug\adb\adb.exe" />
     <None Include="Resources\cmd.png" />
     <None Include="Resources\home1.png" />
-    <None Include="Resources\camera1.png" />
     <None Include="Resources\rebot.png" />
     <None Include="Resources\power.png" />
     <None Include="Resources\home.png" />
@@ -386,7 +386,6 @@
     <None Include="Resources\setting_2.png" />
     <None Include="Resources\camera.png" />
     <None Include="Resources\back.png" />
-    <None Include="Resources\about1.png" />
     <None Include="Resources\volume_up.png" />
     <None Include="Resources\volume_down.png" />
     <None Include="Resources\about.png" />

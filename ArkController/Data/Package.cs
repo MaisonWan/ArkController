@@ -141,6 +141,17 @@ namespace ArkController.Data
         }
 
         /// <summary>
+        /// 推送文件到设备
+        /// </summary>
+        /// <param name="deviceLocation"></param>
+        /// <param name="localLocation"></param>
+        /// <returns></returns>
+        public static string GetPushFileCommand(string deviceLocation, string localLocation)
+        {
+            return string.Format("push \"{0}\" \"{1}\"", localLocation, deviceLocation);
+        }
+
+        /// <summary>
         /// 结束该应用所有进程
         /// </summary>
         /// <param name="packageName">包名</param>
