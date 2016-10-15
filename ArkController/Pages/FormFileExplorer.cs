@@ -300,6 +300,36 @@ namespace ArkController.Pages
             }
         }
 
+        private void mToolStripMenuItemDelete_Click(object sender, EventArgs e)
+        {
+            if (ListViewKit.hasSelectedItem(this.listViewExplorer))
+            {
+                ExplorerFileInfo file = (ExplorerFileInfo)this.listViewExplorer.SelectedItems[0].Tag;
+                string message = "确认删除设备上文件" + file.FileName + "?";
+                if (file.IsFolder)
+                {
+                    message = "确认删除设备上文件夹" + file.FileFullPath + ",会删除该文件夹下所有文件";
+                }
+                if (MessageBox.Show(message, "删除提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    deleteFile(file.FileFullPath);
+                }
+            }
+        }
+
+        private void deleteFile(string path)
+        {
+            TaskInfo t = new TaskInfo(TaskType.ExecuteCommand);
+            t.Data = "shell rm -r " + path;
+            t.ResultHandler = new TaskInfo.EventResultHandler(deleteFileResult);
+            taskThread.SendTask(t);
+        }
+
+        private void deleteFileResult(object[] result)
+        {
+            getNodeList(this.currentExplorerPath, false, new TaskInfo.EventResultHandler(getExplorerListResult));
+        }
         #endregion
+
     }
 }
