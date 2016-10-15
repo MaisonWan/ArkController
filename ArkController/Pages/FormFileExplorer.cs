@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using ArkController.Component;
@@ -22,12 +23,17 @@ namespace ArkController.Pages
         /// <param name="files"></param>
         private delegate void UpdateNodeList(List<ExplorerFileInfo> files);
         private TreeNode currentNode = null;
+        private List<string> iconList = new List<string>();
 
         public FormFileExplorer()
         {
             InitializeComponent();
             taskThread = ConnectTaskThread.GetInstance();
             CheckForIllegalCrossThreadCalls = false;
+            foreach (string key in this.imageListLargeIcon.Images.Keys)
+            {
+                iconList.Add(key);
+            }
         }
 
         private void FormFileExplorer_Load(object sender, EventArgs e)
@@ -59,8 +65,11 @@ namespace ArkController.Pages
                 return;
             }
             currentNode = e.Node;
-            string path = e.Node.Tag.ToString();
-            getNodeList(path, false, new TaskInfo.EventResultHandler(getExplorerAndNodeListResult));
+            if (e.Node.Tag != null)
+            {
+                string path = e.Node.Tag.ToString();
+                getNodeList(path, false, new TaskInfo.EventResultHandler(getExplorerAndNodeListResult));
+            }
         }
 
         /// <summary>
@@ -152,7 +161,7 @@ namespace ArkController.Pages
         private ListViewItem createListViewItem(ExplorerFileInfo file)
         {
             ListViewItem item = new ListViewItem(file.FileName);
-            item.ImageIndex = 1;
+            item.ImageKey = FileKit.GetFileIconName(this.imageListFile, Path.GetExtension(file.FileName));
             item.SubItems.Add(file.FileSize > 0 ? FileKit.FormatFileSize(file.FileSize) : "");
             item.SubItems.Add(file.CreateDateTime.ToString("yyyy-MM-dd HH:mm"));
             item.SubItems.Add(file.IsFolder ? "文件夹" : "文件");
@@ -197,6 +206,7 @@ namespace ArkController.Pages
                 this.labelFileName.Text = file.FileName;
                 this.labelFileDatetime.Text = "创建时间：" + file.CreateDateTime.ToString("yyyy-MM-dd HH:mm");
                 this.labelFileSize.Text = "文件大小：" + FileKit.FormatFileSize(file.FileSize);
+                this.pictureBoxFileIcon.Image = FileKit.GetFileIconImage(this.imageListLargeIcon, Path.GetExtension(file.FileName));
             }
         }
 

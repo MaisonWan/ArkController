@@ -38,35 +38,36 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFileExplorer));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeViewMenu = new System.Windows.Forms.TreeView();
+            this.contextMenuStripTree = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mToolStripMenuItemExpand = new System.Windows.Forms.ToolStripMenuItem();
+            this.mToolStripMenuItemRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListFile = new System.Windows.Forms.ImageList(this.components);
             this.listViewExplorer = new System.Windows.Forms.ListView();
             this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderDatetime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.contextMenuStripTree = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mToolStripMenuItemExpand = new System.Windows.Forms.ToolStripMenuItem();
-            this.mToolStripMenuItemRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripExplorer = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mToolStripMenuItemOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.mToolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.mToolStripMenuItemExport = new System.Windows.Forms.ToolStripMenuItem();
             this.mToolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.mToolStripMenuItemRename = new System.Windows.Forms.ToolStripMenuItem();
-            this.mToolStripMenuItemOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.labelFileName = new System.Windows.Forms.Label();
-            this.labelFileDesc = new System.Windows.Forms.Label();
-            this.labelFileDatetime = new System.Windows.Forms.Label();
             this.labelFileSize = new System.Windows.Forms.Label();
+            this.labelFileDatetime = new System.Windows.Forms.Label();
+            this.labelFileDesc = new System.Windows.Forms.Label();
+            this.labelFileName = new System.Windows.Forms.Label();
+            this.pictureBoxFileIcon = new System.Windows.Forms.PictureBox();
+            this.imageListLargeIcon = new System.Windows.Forms.ImageList(this.components);
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.contextMenuStripTree.SuspendLayout();
             this.contextMenuStripExplorer.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFileIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -122,6 +123,30 @@
             this.treeViewMenu.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMenu_AfterExpand);
             this.treeViewMenu.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewMenu_NodeMouseClick);
             // 
+            // contextMenuStripTree
+            // 
+            this.contextMenuStripTree.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mToolStripMenuItemExpand,
+            this.mToolStripMenuItemRefresh});
+            this.contextMenuStripTree.Name = "contextMenuStripTree";
+            this.contextMenuStripTree.Size = new System.Drawing.Size(120, 48);
+            this.contextMenuStripTree.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripTree_Opening);
+            // 
+            // mToolStripMenuItemExpand
+            // 
+            this.mToolStripMenuItemExpand.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold);
+            this.mToolStripMenuItemExpand.Name = "mToolStripMenuItemExpand";
+            this.mToolStripMenuItemExpand.Size = new System.Drawing.Size(119, 22);
+            this.mToolStripMenuItemExpand.Text = "展开(&A)";
+            this.mToolStripMenuItemExpand.Click += new System.EventHandler(this.mToolStripMenuItemExpand_Click);
+            // 
+            // mToolStripMenuItemRefresh
+            // 
+            this.mToolStripMenuItemRefresh.Name = "mToolStripMenuItemRefresh";
+            this.mToolStripMenuItemRefresh.Size = new System.Drawing.Size(119, 22);
+            this.mToolStripMenuItemRefresh.Text = "刷新(&R)";
+            this.mToolStripMenuItemRefresh.Click += new System.EventHandler(this.mToolStripMenuItemRefresh_Click);
+            // 
             // imageListFile
             // 
             this.imageListFile.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListFile.ImageStream")));
@@ -129,6 +154,79 @@
             this.imageListFile.Images.SetKeyName(0, "disk.png");
             this.imageListFile.Images.SetKeyName(1, "folder.png");
             this.imageListFile.Images.SetKeyName(2, "folder_open.png");
+            this.imageListFile.Images.SetKeyName(3, "ac3.png");
+            this.imageListFile.Images.SetKeyName(4, "ai.png");
+            this.imageListFile.Images.SetKeyName(5, "aiff.png");
+            this.imageListFile.Images.SetKeyName(6, "ani.png");
+            this.imageListFile.Images.SetKeyName(7, "asf.png");
+            this.imageListFile.Images.SetKeyName(8, "au.png");
+            this.imageListFile.Images.SetKeyName(9, "avi.png");
+            this.imageListFile.Images.SetKeyName(10, "bat.png");
+            this.imageListFile.Images.SetKeyName(11, "bin.png");
+            this.imageListFile.Images.SetKeyName(12, "bmp.png");
+            this.imageListFile.Images.SetKeyName(13, "bup.png");
+            this.imageListFile.Images.SetKeyName(14, "cab.png");
+            this.imageListFile.Images.SetKeyName(15, "cal.png");
+            this.imageListFile.Images.SetKeyName(16, "cat.png");
+            this.imageListFile.Images.SetKeyName(17, "cur.png");
+            this.imageListFile.Images.SetKeyName(18, "dat.png");
+            this.imageListFile.Images.SetKeyName(19, "dcr.png");
+            this.imageListFile.Images.SetKeyName(20, "der.png");
+            this.imageListFile.Images.SetKeyName(21, "dic.png");
+            this.imageListFile.Images.SetKeyName(22, "dll.png");
+            this.imageListFile.Images.SetKeyName(23, "doc.png");
+            this.imageListFile.Images.SetKeyName(24, "docx.png");
+            this.imageListFile.Images.SetKeyName(25, "dvd.png");
+            this.imageListFile.Images.SetKeyName(26, "dwg.png");
+            this.imageListFile.Images.SetKeyName(27, "dwt.png");
+            this.imageListFile.Images.SetKeyName(28, "fon.png");
+            this.imageListFile.Images.SetKeyName(29, "gif.png");
+            this.imageListFile.Images.SetKeyName(30, "hlp.png");
+            this.imageListFile.Images.SetKeyName(31, "hst.png");
+            this.imageListFile.Images.SetKeyName(32, "html.png");
+            this.imageListFile.Images.SetKeyName(33, "ico.png");
+            this.imageListFile.Images.SetKeyName(34, "ifo.png");
+            this.imageListFile.Images.SetKeyName(35, "inf.png");
+            this.imageListFile.Images.SetKeyName(36, "ini.png");
+            this.imageListFile.Images.SetKeyName(37, "java.png");
+            this.imageListFile.Images.SetKeyName(38, "jif.png");
+            this.imageListFile.Images.SetKeyName(39, "jpg.png");
+            this.imageListFile.Images.SetKeyName(40, "log.png");
+            this.imageListFile.Images.SetKeyName(41, "m4a.png");
+            this.imageListFile.Images.SetKeyName(42, "mmf.png");
+            this.imageListFile.Images.SetKeyName(43, "mmm.png");
+            this.imageListFile.Images.SetKeyName(44, "mov.png");
+            this.imageListFile.Images.SetKeyName(45, "mp2.png");
+            this.imageListFile.Images.SetKeyName(46, "mp2v.png");
+            this.imageListFile.Images.SetKeyName(47, "mp3.png");
+            this.imageListFile.Images.SetKeyName(48, "mp4.png");
+            this.imageListFile.Images.SetKeyName(49, "mpeg.png");
+            this.imageListFile.Images.SetKeyName(50, "msp.png");
+            this.imageListFile.Images.SetKeyName(51, "pdf.png");
+            this.imageListFile.Images.SetKeyName(52, "png.png");
+            this.imageListFile.Images.SetKeyName(53, "ppt.png");
+            this.imageListFile.Images.SetKeyName(54, "pptx.png");
+            this.imageListFile.Images.SetKeyName(55, "psd.png");
+            this.imageListFile.Images.SetKeyName(56, "ra.png");
+            this.imageListFile.Images.SetKeyName(57, "rar.png");
+            this.imageListFile.Images.SetKeyName(58, "reg.png");
+            this.imageListFile.Images.SetKeyName(59, "rtf.png");
+            this.imageListFile.Images.SetKeyName(60, "theme.png");
+            this.imageListFile.Images.SetKeyName(61, "tiff.png");
+            this.imageListFile.Images.SetKeyName(62, "tlb.png");
+            this.imageListFile.Images.SetKeyName(63, "ttf.png");
+            this.imageListFile.Images.SetKeyName(64, "txt.png");
+            this.imageListFile.Images.SetKeyName(65, "vob.png");
+            this.imageListFile.Images.SetKeyName(66, "wav.png");
+            this.imageListFile.Images.SetKeyName(67, "wma.png");
+            this.imageListFile.Images.SetKeyName(68, "wmv.png");
+            this.imageListFile.Images.SetKeyName(69, "wpl.png");
+            this.imageListFile.Images.SetKeyName(70, "wri.png");
+            this.imageListFile.Images.SetKeyName(71, "xls.png");
+            this.imageListFile.Images.SetKeyName(72, "xlsx.png");
+            this.imageListFile.Images.SetKeyName(73, "xml.png");
+            this.imageListFile.Images.SetKeyName(74, "xsl.png");
+            this.imageListFile.Images.SetKeyName(75, "zip.png");
             // 
             // listViewExplorer
             // 
@@ -171,37 +269,6 @@
             this.columnHeaderType.Text = "类型";
             this.columnHeaderType.Width = 125;
             // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(3, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(846, 27);
-            this.panel1.TabIndex = 1;
-            // 
-            // contextMenuStripTree
-            // 
-            this.contextMenuStripTree.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mToolStripMenuItemExpand,
-            this.mToolStripMenuItemRefresh});
-            this.contextMenuStripTree.Name = "contextMenuStripTree";
-            this.contextMenuStripTree.Size = new System.Drawing.Size(120, 48);
-            this.contextMenuStripTree.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripTree_Opening);
-            // 
-            // mToolStripMenuItemExpand
-            // 
-            this.mToolStripMenuItemExpand.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold);
-            this.mToolStripMenuItemExpand.Name = "mToolStripMenuItemExpand";
-            this.mToolStripMenuItemExpand.Size = new System.Drawing.Size(119, 22);
-            this.mToolStripMenuItemExpand.Text = "展开(&A)";
-            this.mToolStripMenuItemExpand.Click += new System.EventHandler(this.mToolStripMenuItemExpand_Click);
-            // 
-            // mToolStripMenuItemRefresh
-            // 
-            this.mToolStripMenuItemRefresh.Name = "mToolStripMenuItemRefresh";
-            this.mToolStripMenuItemRefresh.Size = new System.Drawing.Size(119, 22);
-            this.mToolStripMenuItemRefresh.Text = "刷新(&R)";
-            this.mToolStripMenuItemRefresh.Click += new System.EventHandler(this.mToolStripMenuItemRefresh_Click);
-            // 
             // contextMenuStripExplorer
             // 
             this.contextMenuStripExplorer.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -212,6 +279,13 @@
             this.mToolStripMenuItemRename});
             this.contextMenuStripExplorer.Name = "contextMenuStripExplorer";
             this.contextMenuStripExplorer.Size = new System.Drawing.Size(162, 114);
+            // 
+            // mToolStripMenuItemOpen
+            // 
+            this.mToolStripMenuItemOpen.Name = "mToolStripMenuItemOpen";
+            this.mToolStripMenuItemOpen.Size = new System.Drawing.Size(161, 22);
+            this.mToolStripMenuItemOpen.Text = "打开(&O)";
+            this.mToolStripMenuItemOpen.Click += new System.EventHandler(this.mToolStripMenuItemOpen_Click);
             // 
             // mToolStripMenuItemCopy
             // 
@@ -239,12 +313,12 @@
             this.mToolStripMenuItemRename.Size = new System.Drawing.Size(161, 22);
             this.mToolStripMenuItemRename.Text = "重命名(&W)";
             // 
-            // mToolStripMenuItemOpen
+            // panel1
             // 
-            this.mToolStripMenuItemOpen.Name = "mToolStripMenuItemOpen";
-            this.mToolStripMenuItemOpen.Size = new System.Drawing.Size(161, 22);
-            this.mToolStripMenuItemOpen.Text = "打开(&O)";
-            this.mToolStripMenuItemOpen.Click += new System.EventHandler(this.mToolStripMenuItemOpen_Click);
+            this.panel1.Location = new System.Drawing.Point(3, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(846, 27);
+            this.panel1.TabIndex = 1;
             // 
             // panel2
             // 
@@ -254,37 +328,19 @@
             this.panel2.Controls.Add(this.labelFileDatetime);
             this.panel2.Controls.Add(this.labelFileDesc);
             this.panel2.Controls.Add(this.labelFileName);
-            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.pictureBoxFileIcon);
             this.panel2.Location = new System.Drawing.Point(3, 673);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(846, 56);
             this.panel2.TabIndex = 4;
             // 
-            // pictureBox1
+            // labelFileSize
             // 
-            this.pictureBox1.Image = global::ArkController.Properties.Resources.volume_up;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // labelFileName
-            // 
-            this.labelFileName.AutoSize = true;
-            this.labelFileName.Location = new System.Drawing.Point(69, 12);
-            this.labelFileName.Name = "labelFileName";
-            this.labelFileName.Size = new System.Drawing.Size(0, 12);
-            this.labelFileName.TabIndex = 1;
-            // 
-            // labelFileDesc
-            // 
-            this.labelFileDesc.AutoSize = true;
-            this.labelFileDesc.Location = new System.Drawing.Point(69, 38);
-            this.labelFileDesc.Name = "labelFileDesc";
-            this.labelFileDesc.Size = new System.Drawing.Size(0, 12);
-            this.labelFileDesc.TabIndex = 2;
+            this.labelFileSize.AutoSize = true;
+            this.labelFileSize.Location = new System.Drawing.Point(204, 37);
+            this.labelFileSize.Name = "labelFileSize";
+            this.labelFileSize.Size = new System.Drawing.Size(0, 12);
+            this.labelFileSize.TabIndex = 4;
             // 
             // labelFileDatetime
             // 
@@ -294,13 +350,109 @@
             this.labelFileDatetime.Size = new System.Drawing.Size(0, 12);
             this.labelFileDatetime.TabIndex = 3;
             // 
-            // labelFileSize
+            // labelFileDesc
             // 
-            this.labelFileSize.AutoSize = true;
-            this.labelFileSize.Location = new System.Drawing.Point(204, 37);
-            this.labelFileSize.Name = "labelFileSize";
-            this.labelFileSize.Size = new System.Drawing.Size(0, 12);
-            this.labelFileSize.TabIndex = 4;
+            this.labelFileDesc.AutoSize = true;
+            this.labelFileDesc.Location = new System.Drawing.Point(69, 38);
+            this.labelFileDesc.Name = "labelFileDesc";
+            this.labelFileDesc.Size = new System.Drawing.Size(0, 12);
+            this.labelFileDesc.TabIndex = 2;
+            // 
+            // labelFileName
+            // 
+            this.labelFileName.AutoSize = true;
+            this.labelFileName.Location = new System.Drawing.Point(69, 12);
+            this.labelFileName.Name = "labelFileName";
+            this.labelFileName.Size = new System.Drawing.Size(0, 12);
+            this.labelFileName.TabIndex = 1;
+            // 
+            // pictureBoxFileIcon
+            // 
+            this.pictureBoxFileIcon.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxFileIcon.Name = "pictureBoxFileIcon";
+            this.pictureBoxFileIcon.Size = new System.Drawing.Size(50, 50);
+            this.pictureBoxFileIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxFileIcon.TabIndex = 0;
+            this.pictureBoxFileIcon.TabStop = false;
+            // 
+            // imageListLargeIcon
+            // 
+            this.imageListLargeIcon.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListLargeIcon.ImageStream")));
+            this.imageListLargeIcon.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListLargeIcon.Images.SetKeyName(0, "folder.png");
+            this.imageListLargeIcon.Images.SetKeyName(1, "ac3.png");
+            this.imageListLargeIcon.Images.SetKeyName(2, "ai.png");
+            this.imageListLargeIcon.Images.SetKeyName(3, "aiff.png");
+            this.imageListLargeIcon.Images.SetKeyName(4, "ani.png");
+            this.imageListLargeIcon.Images.SetKeyName(5, "asf.png");
+            this.imageListLargeIcon.Images.SetKeyName(6, "au.png");
+            this.imageListLargeIcon.Images.SetKeyName(7, "avi.png");
+            this.imageListLargeIcon.Images.SetKeyName(8, "bat.png");
+            this.imageListLargeIcon.Images.SetKeyName(9, "bin.png");
+            this.imageListLargeIcon.Images.SetKeyName(10, "bmp.png");
+            this.imageListLargeIcon.Images.SetKeyName(11, "bup.png");
+            this.imageListLargeIcon.Images.SetKeyName(12, "cab.png");
+            this.imageListLargeIcon.Images.SetKeyName(13, "cal.png");
+            this.imageListLargeIcon.Images.SetKeyName(14, "cat.png");
+            this.imageListLargeIcon.Images.SetKeyName(15, "cur.png");
+            this.imageListLargeIcon.Images.SetKeyName(16, "dat.png");
+            this.imageListLargeIcon.Images.SetKeyName(17, "dcr.png");
+            this.imageListLargeIcon.Images.SetKeyName(18, "der.png");
+            this.imageListLargeIcon.Images.SetKeyName(19, "dic.png");
+            this.imageListLargeIcon.Images.SetKeyName(20, "dll.png");
+            this.imageListLargeIcon.Images.SetKeyName(21, "doc.png");
+            this.imageListLargeIcon.Images.SetKeyName(22, "docx.png");
+            this.imageListLargeIcon.Images.SetKeyName(23, "dvd.png");
+            this.imageListLargeIcon.Images.SetKeyName(24, "dwg.png");
+            this.imageListLargeIcon.Images.SetKeyName(25, "dwt.png");
+            this.imageListLargeIcon.Images.SetKeyName(26, "fon.png");
+            this.imageListLargeIcon.Images.SetKeyName(27, "gif.png");
+            this.imageListLargeIcon.Images.SetKeyName(28, "hlp.png");
+            this.imageListLargeIcon.Images.SetKeyName(29, "hst.png");
+            this.imageListLargeIcon.Images.SetKeyName(30, "html.png");
+            this.imageListLargeIcon.Images.SetKeyName(31, "ico.png");
+            this.imageListLargeIcon.Images.SetKeyName(32, "ifo.png");
+            this.imageListLargeIcon.Images.SetKeyName(33, "inf.png");
+            this.imageListLargeIcon.Images.SetKeyName(34, "ini.png");
+            this.imageListLargeIcon.Images.SetKeyName(35, "java.png");
+            this.imageListLargeIcon.Images.SetKeyName(36, "jif.png");
+            this.imageListLargeIcon.Images.SetKeyName(37, "jpg.png");
+            this.imageListLargeIcon.Images.SetKeyName(38, "log.png");
+            this.imageListLargeIcon.Images.SetKeyName(39, "m4a.png");
+            this.imageListLargeIcon.Images.SetKeyName(40, "mmf.png");
+            this.imageListLargeIcon.Images.SetKeyName(41, "mmm.png");
+            this.imageListLargeIcon.Images.SetKeyName(42, "mov.png");
+            this.imageListLargeIcon.Images.SetKeyName(43, "mp2.png");
+            this.imageListLargeIcon.Images.SetKeyName(44, "mp2v.png");
+            this.imageListLargeIcon.Images.SetKeyName(45, "mp3.png");
+            this.imageListLargeIcon.Images.SetKeyName(46, "mp4.png");
+            this.imageListLargeIcon.Images.SetKeyName(47, "mpeg.png");
+            this.imageListLargeIcon.Images.SetKeyName(48, "msp.png");
+            this.imageListLargeIcon.Images.SetKeyName(49, "pdf.png");
+            this.imageListLargeIcon.Images.SetKeyName(50, "png.png");
+            this.imageListLargeIcon.Images.SetKeyName(51, "ppt.png");
+            this.imageListLargeIcon.Images.SetKeyName(52, "pptx.png");
+            this.imageListLargeIcon.Images.SetKeyName(53, "psd.png");
+            this.imageListLargeIcon.Images.SetKeyName(54, "ra.png");
+            this.imageListLargeIcon.Images.SetKeyName(55, "rar.png");
+            this.imageListLargeIcon.Images.SetKeyName(56, "reg.png");
+            this.imageListLargeIcon.Images.SetKeyName(57, "rtf.png");
+            this.imageListLargeIcon.Images.SetKeyName(58, "theme.png");
+            this.imageListLargeIcon.Images.SetKeyName(59, "tiff.png");
+            this.imageListLargeIcon.Images.SetKeyName(60, "tlb.png");
+            this.imageListLargeIcon.Images.SetKeyName(61, "ttf.png");
+            this.imageListLargeIcon.Images.SetKeyName(62, "txt.png");
+            this.imageListLargeIcon.Images.SetKeyName(63, "vob.png");
+            this.imageListLargeIcon.Images.SetKeyName(64, "wav.png");
+            this.imageListLargeIcon.Images.SetKeyName(65, "wma.png");
+            this.imageListLargeIcon.Images.SetKeyName(66, "wmv.png");
+            this.imageListLargeIcon.Images.SetKeyName(67, "wpl.png");
+            this.imageListLargeIcon.Images.SetKeyName(68, "wri.png");
+            this.imageListLargeIcon.Images.SetKeyName(69, "xls.png");
+            this.imageListLargeIcon.Images.SetKeyName(70, "xlsx.png");
+            this.imageListLargeIcon.Images.SetKeyName(71, "xml.png");
+            this.imageListLargeIcon.Images.SetKeyName(72, "xsl.png");
+            this.imageListLargeIcon.Images.SetKeyName(73, "zip.png");
             // 
             // FormFileExplorer
             // 
@@ -322,7 +474,7 @@
             this.contextMenuStripExplorer.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFileIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -348,10 +500,11 @@
         private System.Windows.Forms.ToolStripMenuItem mToolStripMenuItemRename;
         private System.Windows.Forms.ToolStripMenuItem mToolStripMenuItemOpen;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxFileIcon;
         private System.Windows.Forms.Label labelFileDesc;
         private System.Windows.Forms.Label labelFileName;
         private System.Windows.Forms.Label labelFileSize;
         private System.Windows.Forms.Label labelFileDatetime;
+        private System.Windows.Forms.ImageList imageListLargeIcon;
     }
 }
