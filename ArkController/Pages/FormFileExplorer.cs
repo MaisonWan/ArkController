@@ -329,6 +329,56 @@ namespace ArkController.Pages
         {
             getNodeList(this.currentExplorerPath, false, new TaskInfo.EventResultHandler(getExplorerListResult));
         }
+
+        private void mToolStripMenuItemRename_Click(object sender, EventArgs e)
+        {
+            if (ListViewKit.hasSelectedItem(this.listViewExplorer))
+            {
+                this.listViewExplorer.SelectedItems[0].BeginEdit();
+            }
+        }
+
+        private string currentEditBeforeLabel = null;
+        private string currentEditAfterLabel = null;
+        private void listViewExplorer_BeforeLabelEdit(object sender, LabelEditEventArgs e)
+        {
+            currentEditBeforeLabel = e.Label;
+        }
+
+        private void listViewExplorer_AfterLabelEdit(object sender, LabelEditEventArgs e)
+        {
+            if (e.Label == currentEditBeforeLabel)
+            {
+                e.CancelEdit = true;
+            }
+            else
+            {
+                ExplorerFileInfo file = (ExplorerFileInfo)this.listViewExplorer.SelectedItems[0].Tag;
+                currentEditAfterLabel = e.Label;
+                renameFile(file.FileFullPath, Path.Combine(this.currentExplorerPath, e.Label));
+            }
+        }
+
+        /// <summary>
+        /// 文件或者文件夹重命名
+        /// </summary>
+        /// <param name="oldPath"></param>
+        /// <param name="newPath"></param>
+        private void renameFile(string oldPath, string newPath)
+        {
+            TaskInfo t = new TaskInfo(TaskType.ExecuteCommand);
+            t.Data = string.Format("shell rename {0} {1}", oldPath, newPath);
+            t.ResultHandler = new TaskInfo.EventResultHandler(renameFileResult);
+            taskThread.SendTask(t);
+        }
+
+        private void renameFileResult(object[] result)
+        {
+            // getNodeList(this.currentExplorerPath, false, new TaskInfo.EventResultHandler(getExplorerListResult));
+            ExplorerFileInfo file = (ExplorerFileInfo)this.listViewExplorer.SelectedItems[0].Tag;
+            file.FileName = currentEditAfterLabel;
+            file.FileFullPath = Path.Combine(FileKit.GetUpFolder(file.FileFullPath), file.FileName);
+        }
         #endregion
 
     }

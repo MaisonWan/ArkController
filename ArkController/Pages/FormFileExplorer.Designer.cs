@@ -240,6 +240,7 @@
             this.listViewExplorer.ContextMenuStrip = this.contextMenuStripExplorer;
             this.listViewExplorer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewExplorer.FullRowSelect = true;
+            this.listViewExplorer.LabelEdit = true;
             this.listViewExplorer.Location = new System.Drawing.Point(0, 0);
             this.listViewExplorer.Name = "listViewExplorer";
             this.listViewExplorer.Size = new System.Drawing.Size(642, 632);
@@ -247,6 +248,8 @@
             this.listViewExplorer.TabIndex = 0;
             this.listViewExplorer.UseCompatibleStateImageBehavior = false;
             this.listViewExplorer.View = System.Windows.Forms.View.Details;
+            this.listViewExplorer.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.listViewExplorer_AfterLabelEdit);
+            this.listViewExplorer.BeforeLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.listViewExplorer_BeforeLabelEdit);
             this.listViewExplorer.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewExplorer_ColumnClick);
             this.listViewExplorer.SelectedIndexChanged += new System.EventHandler(this.listViewExplorer_SelectedIndexChanged);
             this.listViewExplorer.DoubleClick += new System.EventHandler(this.listViewExplorer_DoubleClick);
@@ -280,7 +283,7 @@
             this.mToolStripMenuItemDelete,
             this.mToolStripMenuItemRename});
             this.contextMenuStripExplorer.Name = "contextMenuStripExplorer";
-            this.contextMenuStripExplorer.Size = new System.Drawing.Size(162, 136);
+            this.contextMenuStripExplorer.Size = new System.Drawing.Size(162, 114);
             // 
             // mToolStripMenuItemOpen
             // 
@@ -316,6 +319,7 @@
             this.mToolStripMenuItemRename.ShortcutKeys = System.Windows.Forms.Keys.F2;
             this.mToolStripMenuItemRename.Size = new System.Drawing.Size(161, 22);
             this.mToolStripMenuItemRename.Text = "重命名(&W)";
+            this.mToolStripMenuItemRename.Click += new System.EventHandler(this.mToolStripMenuItemRename_Click);
             // 
             // panel1
             // 
