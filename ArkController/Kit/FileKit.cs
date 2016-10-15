@@ -33,6 +33,10 @@ namespace ArkController.Kit
             {
                 return string.Format("{0:####0.00} KB", ((Double)fileSize) / 1024);
             }
+            else if (fileSize == 0)
+            {
+                return "";
+            }
             else
             {
                 return string.Format("{0} bytes", fileSize);

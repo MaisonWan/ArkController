@@ -29,7 +29,7 @@ namespace ArkController.Data
                 {
                     continue;
                 }
-                Match match = Regex.Match(line.Trim(), @"([drwx-]+)\s*(\w+)\s*(\w+)\s*(\w*)\s*(\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2})\s+([\w\\.]+).*");
+                Match match = Regex.Match(line.Trim(), @"([drwx-]+)\s*(\w+)\s*(\w+)\s*(\w*)\s*(\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2})\s+([^\s]+)\s?[->]*\s?(.*)");
                 if (match.Groups.Count > 5)
                 {
                     ExplorerFileInfo fileInfo = new ExplorerFileInfo();
@@ -41,7 +41,7 @@ namespace ArkController.Data
                         fileInfo.FileSize = Convert.ToInt64(match.Groups[4].Value);
                     }
                     fileInfo.CreateDateTime = DateTime.ParseExact(match.Groups[5].Value, "yyyy-MM-dd HH:mm", CultureInfo.CurrentCulture);
-                    fileInfo.FileName = Encoding.UTF8.GetString(Encoding.Default.GetBytes(match.Groups[6].Value));
+                    fileInfo.FileName = match.Groups[6].Value;
                     // 全路径
                     fileInfo.FileFullPath = Path.Combine(currentFolder, fileInfo.FileName);
                     list.Add(fileInfo);

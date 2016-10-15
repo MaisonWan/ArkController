@@ -401,7 +401,7 @@ namespace ArkController
         }
         #endregion
 
-        #region 包列表
+        #region 应用列表
         private void buttonPackageList_Click(object sender, EventArgs e)
         {
             int index = this.comboBoxPackageType.SelectedIndex;
@@ -465,6 +465,7 @@ namespace ArkController
         }
         #endregion
 
+        #region 右键菜单
         private void ToolStripMenuItemDetail_Click(object sender, EventArgs e)
         {
             if (ListViewKit.hasSelectedItem(listViewPackage))
@@ -663,6 +664,7 @@ namespace ArkController
             }
         }
 
+        #endregion
         private void buttonDeveloper_Click(object sender, EventArgs e)
         {
             TaskInfo task = TaskInfo.Create(TaskType.StartAM, Package.GetDeveloperSetting());

@@ -37,13 +37,27 @@ namespace ArkController.Pages
 
         private void treeViewMenu_AfterExpand(object sender, TreeViewEventArgs e)
         {
-            currentNode = e.Node;
-            string path = e.Node.Tag.ToString();
+            updateNode(e.Node);
+        }
+
+        /// <summary>
+        /// 更新Node数据
+        /// </summary>
+        /// <param name="node"></param>
+        private void updateNode(TreeNode node)
+        {
+            currentNode = node;
+            string path = node.Tag.ToString();
             getNodeList(path, false, new TaskInfo.EventResultHandler(getNodeListResult));
         }
 
         private void treeViewMenu_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+            this.treeViewMenu.SelectedNode = e.Node;
+            if (e.Button == MouseButtons.Right)
+            {
+                return;
+            }
             currentNode = e.Node;
             string path = e.Node.Tag.ToString();
             getNodeList(path, false, new TaskInfo.EventResultHandler(getExplorerAndNodeListResult));
@@ -173,5 +187,57 @@ namespace ArkController.Pages
                 }
             }
         }
+
+        private void listViewExplorer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ListViewKit.hasSelectedItem(this.listViewExplorer))
+            {
+                ExplorerFileInfo file = (ExplorerFileInfo)this.listViewExplorer.SelectedItems[0].Tag;
+                // 预览图上显示
+                this.labelFileName.Text = file.FileName;
+                this.labelFileDatetime.Text = "创建时间：" + file.CreateDateTime.ToString("yyyy-MM-dd HH:mm");
+                this.labelFileSize.Text = "文件大小：" + FileKit.FormatFileSize(file.FileSize);
+            }
+        }
+
+        #region 目录树的右键菜单
+        private void mToolStripMenuItemExpand_Click(object sender, EventArgs e)
+        {
+            if (this.treeViewMenu.SelectedNode.IsExpanded)
+            {
+                this.treeViewMenu.SelectedNode.Collapse();
+            }
+            else
+            {
+                this.treeViewMenu.SelectedNode.Expand();
+            }
+        }
+
+        private void contextMenuStripTree_Opening(object sender, CancelEventArgs e)
+        {
+            if (this.treeViewMenu.SelectedNode.IsExpanded)
+            {
+                this.mToolStripMenuItemExpand.Text = "折叠(&A)";
+            }
+            else
+            {
+                this.mToolStripMenuItemExpand.Text = "展开(&A)";
+            }
+        }
+
+        private void mToolStripMenuItemRefresh_Click(object sender, EventArgs e)
+        {
+            updateNode(treeViewMenu.SelectedNode);
+        }
+        #endregion
+
+        #region 文件浏览器菜单
+        private void mToolStripMenuItemOpen_Click(object sender, EventArgs e)
+        {
+            listViewExplorer_DoubleClick(sender, e);
+        }
+        
+        #endregion
+
     }
 }
