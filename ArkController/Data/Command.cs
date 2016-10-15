@@ -29,6 +29,8 @@ namespace ArkController.Data
             updateProcessInfo(cmd);
             p.Start();
             string outStr = p.StandardOutput.ReadToEnd();
+            Encoding.Convert(Encoding.Default, Encoding.UTF8, Encoding.Default.GetBytes(outStr));
+            outStr = Encoding.UTF8.GetString(Encoding.Default.GetBytes(outStr));
             p.Close();
             return outStr;
         }
