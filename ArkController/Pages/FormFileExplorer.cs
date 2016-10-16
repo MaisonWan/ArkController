@@ -418,9 +418,49 @@ namespace ArkController.Pages
         {
             getNodeList(currentExplorerPath, false, new TaskInfo.EventResultHandler(getExplorerListResult));
         }
+
         private void listViewExplorer_ItemDrag(object sender, ItemDragEventArgs e)
         {
-            ListViewItem item = (ListViewItem)e.Item;
+            if (ListViewKit.hasSelectedItem(listViewExplorer))
+            {
+                ExplorerFileInfo file = (ExplorerFileInfo)listViewExplorer.SelectedItems[0].Tag;
+                listViewExplorer.DoDragDrop(new DataObject(DataFormats.FileDrop, @"C:\Users\Maison\Pictures\iikura_04_l.jpg"), DragDropEffects.Copy);
+            }
+        }
+
+        private void listViewExplorer_DragDrop(object sender, DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                return;
+            }
+            string file = (string)e.Data.GetData(DataFormats.FileDrop);
+            if (File.Exists(file))
+            {
+
+            }
+            //pullFileFromDevice(file.FileFullPath, "");
+            
+        }
+
+        private void listViewExplorer_DragOver(object sender, DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.None;
+                return;
+            }
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void listViewExplorer_DragLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listViewExplorer_DragEnter(object sender, DragEventArgs e)
+        {
+
         }
 
     }

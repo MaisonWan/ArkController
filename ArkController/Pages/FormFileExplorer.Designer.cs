@@ -53,18 +53,18 @@
             this.mToolStripMenuItemExport = new System.Windows.Forms.ToolStripMenuItem();
             this.mToolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.mToolStripMenuItemRename = new System.Windows.Forms.ToolStripMenuItem();
+            this.mToolStripMenuItemExplorerRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonExplorerRefresh = new System.Windows.Forms.Button();
+            this.buttonPushFile = new System.Windows.Forms.Button();
+            this.buttonBackFolder = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelFileSize = new System.Windows.Forms.Label();
             this.labelFileDatetime = new System.Windows.Forms.Label();
             this.labelFileDesc = new System.Windows.Forms.Label();
             this.labelFileName = new System.Windows.Forms.Label();
-            this.imageListLargeIcon = new System.Windows.Forms.ImageList(this.components);
-            this.mToolStripMenuItemExplorerRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBoxFileIcon = new System.Windows.Forms.PictureBox();
-            this.buttonExplorerRefresh = new System.Windows.Forms.Button();
-            this.buttonPushFile = new System.Windows.Forms.Button();
-            this.buttonBackFolder = new System.Windows.Forms.Button();
+            this.imageListLargeIcon = new System.Windows.Forms.ImageList(this.components);
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -235,6 +235,7 @@
             // 
             // listViewExplorer
             // 
+            this.listViewExplorer.AllowDrop = true;
             this.listViewExplorer.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderName,
             this.columnHeaderSize,
@@ -256,6 +257,10 @@
             this.listViewExplorer.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewExplorer_ColumnClick);
             this.listViewExplorer.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listViewExplorer_ItemDrag);
             this.listViewExplorer.SelectedIndexChanged += new System.EventHandler(this.listViewExplorer_SelectedIndexChanged);
+            this.listViewExplorer.DragDrop += new System.Windows.Forms.DragEventHandler(this.listViewExplorer_DragDrop);
+            this.listViewExplorer.DragEnter += new System.Windows.Forms.DragEventHandler(this.listViewExplorer_DragEnter);
+            this.listViewExplorer.DragOver += new System.Windows.Forms.DragEventHandler(this.listViewExplorer_DragOver);
+            this.listViewExplorer.DragLeave += new System.EventHandler(this.listViewExplorer_DragLeave);
             this.listViewExplorer.DoubleClick += new System.EventHandler(this.listViewExplorer_DoubleClick);
             // 
             // columnHeaderName
@@ -326,6 +331,13 @@
             this.mToolStripMenuItemRename.Text = "重命名(&W)";
             this.mToolStripMenuItemRename.Click += new System.EventHandler(this.mToolStripMenuItemRename_Click);
             // 
+            // mToolStripMenuItemExplorerRefresh
+            // 
+            this.mToolStripMenuItemExplorerRefresh.Name = "mToolStripMenuItemExplorerRefresh";
+            this.mToolStripMenuItemExplorerRefresh.Size = new System.Drawing.Size(161, 22);
+            this.mToolStripMenuItemExplorerRefresh.Text = "刷新(&R)";
+            this.mToolStripMenuItemExplorerRefresh.Click += new System.EventHandler(this.mToolStripMenuItemExplorerRefresh_Click);
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.buttonExplorerRefresh);
@@ -335,6 +347,45 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(846, 27);
             this.panel1.TabIndex = 1;
+            // 
+            // buttonExplorerRefresh
+            // 
+            this.buttonExplorerRefresh.Image = global::ArkController.Properties.Resources.refresh;
+            this.buttonExplorerRefresh.Location = new System.Drawing.Point(761, 1);
+            this.buttonExplorerRefresh.Name = "buttonExplorerRefresh";
+            this.buttonExplorerRefresh.Size = new System.Drawing.Size(82, 26);
+            this.buttonExplorerRefresh.TabIndex = 0;
+            this.buttonExplorerRefresh.Text = "刷新";
+            this.buttonExplorerRefresh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonExplorerRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonExplorerRefresh.UseVisualStyleBackColor = true;
+            this.buttonExplorerRefresh.Click += new System.EventHandler(this.buttonExplorerRefresh_Click);
+            // 
+            // buttonPushFile
+            // 
+            this.buttonPushFile.Image = global::ArkController.Properties.Resources.badge_plus;
+            this.buttonPushFile.Location = new System.Drawing.Point(204, 0);
+            this.buttonPushFile.Name = "buttonPushFile";
+            this.buttonPushFile.Size = new System.Drawing.Size(105, 26);
+            this.buttonPushFile.TabIndex = 0;
+            this.buttonPushFile.Text = "上传到设备";
+            this.buttonPushFile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonPushFile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonPushFile.UseVisualStyleBackColor = true;
+            this.buttonPushFile.Click += new System.EventHandler(this.buttonPushFile_Click);
+            // 
+            // buttonBackFolder
+            // 
+            this.buttonBackFolder.Image = global::ArkController.Properties.Resources.arrow_return;
+            this.buttonBackFolder.Location = new System.Drawing.Point(9, 0);
+            this.buttonBackFolder.Name = "buttonBackFolder";
+            this.buttonBackFolder.Size = new System.Drawing.Size(105, 26);
+            this.buttonBackFolder.TabIndex = 0;
+            this.buttonBackFolder.Text = "返回上一层";
+            this.buttonBackFolder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonBackFolder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonBackFolder.UseVisualStyleBackColor = true;
+            this.buttonBackFolder.Click += new System.EventHandler(this.buttonBackFolder_Click);
             // 
             // panel2
             // 
@@ -381,6 +432,15 @@
             this.labelFileName.Name = "labelFileName";
             this.labelFileName.Size = new System.Drawing.Size(0, 12);
             this.labelFileName.TabIndex = 1;
+            // 
+            // pictureBoxFileIcon
+            // 
+            this.pictureBoxFileIcon.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxFileIcon.Name = "pictureBoxFileIcon";
+            this.pictureBoxFileIcon.Size = new System.Drawing.Size(50, 50);
+            this.pictureBoxFileIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxFileIcon.TabIndex = 0;
+            this.pictureBoxFileIcon.TabStop = false;
             // 
             // imageListLargeIcon
             // 
@@ -460,61 +520,6 @@
             this.imageListLargeIcon.Images.SetKeyName(71, "xml.png");
             this.imageListLargeIcon.Images.SetKeyName(72, "xsl.png");
             this.imageListLargeIcon.Images.SetKeyName(73, "zip.png");
-            // 
-            // mToolStripMenuItemExplorerRefresh
-            // 
-            this.mToolStripMenuItemExplorerRefresh.Name = "mToolStripMenuItemExplorerRefresh";
-            this.mToolStripMenuItemExplorerRefresh.Size = new System.Drawing.Size(161, 22);
-            this.mToolStripMenuItemExplorerRefresh.Text = "刷新(&R)";
-            this.mToolStripMenuItemExplorerRefresh.Click += new System.EventHandler(this.mToolStripMenuItemExplorerRefresh_Click);
-            // 
-            // pictureBoxFileIcon
-            // 
-            this.pictureBoxFileIcon.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxFileIcon.Name = "pictureBoxFileIcon";
-            this.pictureBoxFileIcon.Size = new System.Drawing.Size(50, 50);
-            this.pictureBoxFileIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxFileIcon.TabIndex = 0;
-            this.pictureBoxFileIcon.TabStop = false;
-            // 
-            // buttonExplorerRefresh
-            // 
-            this.buttonExplorerRefresh.Image = global::ArkController.Properties.Resources.refresh;
-            this.buttonExplorerRefresh.Location = new System.Drawing.Point(761, 1);
-            this.buttonExplorerRefresh.Name = "buttonExplorerRefresh";
-            this.buttonExplorerRefresh.Size = new System.Drawing.Size(82, 26);
-            this.buttonExplorerRefresh.TabIndex = 0;
-            this.buttonExplorerRefresh.Text = "刷新";
-            this.buttonExplorerRefresh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonExplorerRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonExplorerRefresh.UseVisualStyleBackColor = true;
-            this.buttonExplorerRefresh.Click += new System.EventHandler(this.buttonExplorerRefresh_Click);
-            // 
-            // buttonPushFile
-            // 
-            this.buttonPushFile.Image = global::ArkController.Properties.Resources.badge_plus;
-            this.buttonPushFile.Location = new System.Drawing.Point(204, 0);
-            this.buttonPushFile.Name = "buttonPushFile";
-            this.buttonPushFile.Size = new System.Drawing.Size(105, 26);
-            this.buttonPushFile.TabIndex = 0;
-            this.buttonPushFile.Text = "上传到设备";
-            this.buttonPushFile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonPushFile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonPushFile.UseVisualStyleBackColor = true;
-            this.buttonPushFile.Click += new System.EventHandler(this.buttonPushFile_Click);
-            // 
-            // buttonBackFolder
-            // 
-            this.buttonBackFolder.Image = global::ArkController.Properties.Resources.arrow_return;
-            this.buttonBackFolder.Location = new System.Drawing.Point(9, 0);
-            this.buttonBackFolder.Name = "buttonBackFolder";
-            this.buttonBackFolder.Size = new System.Drawing.Size(105, 26);
-            this.buttonBackFolder.TabIndex = 0;
-            this.buttonBackFolder.Text = "返回上一层";
-            this.buttonBackFolder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonBackFolder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonBackFolder.UseVisualStyleBackColor = true;
-            this.buttonBackFolder.Click += new System.EventHandler(this.buttonBackFolder_Click);
             // 
             // FormFileExplorer
             // 

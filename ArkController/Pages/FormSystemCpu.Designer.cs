@@ -47,7 +47,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelTimer = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -214,9 +216,9 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::ArkController.Properties.Resources.timer;
-            this.pictureBox1.Location = new System.Drawing.Point(861, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(70, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 21);
+            this.pictureBox1.Size = new System.Drawing.Size(29, 27);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
@@ -227,19 +229,28 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTimer.AutoSize = true;
             this.labelTimer.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelTimer.Location = new System.Drawing.Point(899, 13);
+            this.labelTimer.Location = new System.Drawing.Point(101, 9);
             this.labelTimer.Name = "labelTimer";
             this.labelTimer.Size = new System.Drawing.Size(71, 15);
             this.labelTimer.TabIndex = 15;
             this.labelTimer.Text = "00:00:00";
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.labelTimer);
+            this.panel1.Location = new System.Drawing.Point(791, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(179, 31);
+            this.panel1.TabIndex = 16;
             // 
             // FormSystemCpu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 788);
-            this.Controls.Add(this.labelTimer);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labelUserSum);
             this.Controls.Add(this.labelUserPercent);
@@ -260,6 +271,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormSystemCpu_FormClosing);
             this.Load += new System.EventHandler(this.FormSystemCpu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,5 +297,6 @@
         private System.Windows.Forms.Timer timerTask;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label labelTimer;
+        private System.Windows.Forms.Panel panel1;
     }
 }
