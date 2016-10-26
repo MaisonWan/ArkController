@@ -67,7 +67,7 @@
             this.toolStripButtonAbout = new System.Windows.Forms.ToolStripButton();
             this.tabControlHomePage = new System.Windows.Forms.TabControl();
             this.tabPageDeviceInfo = new System.Windows.Forms.TabPage();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.deviceInfoInputMethodControlTab = new ArkController.Component.DeviceInfoControl();
             this.pictureBoxBattery = new System.Windows.Forms.PictureBox();
             this.labelDevice = new System.Windows.Forms.Label();
             this.labelModel = new System.Windows.Forms.Label();
@@ -152,13 +152,11 @@
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipBattery = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
-            this.deviceInfoInputMethodControlTab = new ArkController.Component.DeviceInfoInputMethodControl();
             this.groupBox2.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.toolStripKibot.SuspendLayout();
             this.tabControlHomePage.SuspendLayout();
             this.tabPageDeviceInfo.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBattery)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPageKeyboard.SuspendLayout();
@@ -507,7 +505,7 @@
             // tabPageDeviceInfo
             // 
             this.tabPageDeviceInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.tabPageDeviceInfo.Controls.Add(this.groupBox7);
+            this.tabPageDeviceInfo.Controls.Add(this.deviceInfoInputMethodControlTab);
             this.tabPageDeviceInfo.Controls.Add(this.pictureBoxBattery);
             this.tabPageDeviceInfo.Controls.Add(this.labelDevice);
             this.tabPageDeviceInfo.Controls.Add(this.labelModel);
@@ -524,15 +522,12 @@
             this.tabPageDeviceInfo.ToolTipText = "显示当前设备的基本信息";
             this.tabPageDeviceInfo.UseVisualStyleBackColor = true;
             // 
-            // groupBox7
+            // deviceInfoInputMethodControlTab
             // 
-            this.groupBox7.Controls.Add(this.deviceInfoInputMethodControlTab);
-            this.groupBox7.Location = new System.Drawing.Point(16, 123);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(560, 83);
-            this.groupBox7.TabIndex = 12;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "输入法";
+            this.deviceInfoInputMethodControlTab.Location = new System.Drawing.Point(16, 108);
+            this.deviceInfoInputMethodControlTab.Name = "deviceInfoInputMethodControlTab";
+            this.deviceInfoInputMethodControlTab.Size = new System.Drawing.Size(1080, 403);
+            this.deviceInfoInputMethodControlTab.TabIndex = 0;
             // 
             // pictureBoxBattery
             // 
@@ -1479,14 +1474,6 @@
             this.toolTipBattery.IsBalloon = true;
             this.toolTipBattery.ReshowDelay = 100;
             // 
-            // deviceInfoInputMethodControlTab
-            // 
-            this.deviceInfoInputMethodControlTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.deviceInfoInputMethodControlTab.Location = new System.Drawing.Point(3, 17);
-            this.deviceInfoInputMethodControlTab.Name = "deviceInfoInputMethodControlTab";
-            this.deviceInfoInputMethodControlTab.Size = new System.Drawing.Size(554, 63);
-            this.deviceInfoInputMethodControlTab.TabIndex = 0;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1513,7 +1500,6 @@
             this.tabControlHomePage.ResumeLayout(false);
             this.tabPageDeviceInfo.ResumeLayout(false);
             this.tabPageDeviceInfo.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBattery)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPageKeyboard.ResumeLayout(false);
@@ -1661,8 +1647,7 @@
         private System.Windows.Forms.Button buttonWifi;
         private System.Windows.Forms.Button buttonDeviceSetting;
         private System.Windows.Forms.Button buttonCpuAndMem;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private Component.DeviceInfoInputMethodControl deviceInfoInputMethodControlTab;
+        private Component.DeviceInfoControl deviceInfoInputMethodControlTab;
     }
 }
 
