@@ -695,6 +695,7 @@ namespace ArkController
                 task.ResultHandler = new TaskInfo.EventResultHandler(selectDeviceResult);
                 taskThread.SendTask(task);
                 updateBatteryInfo();
+                this.deviceInfoInputMethodControlTab.OnConnectDevice();
             }
         }
 

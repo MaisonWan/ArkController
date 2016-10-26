@@ -70,6 +70,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Component\DeviceInfoInputMethodControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Component\DeviceInfoInputMethodControl.Designer.cs">
+      <DependentUpon>DeviceInfoInputMethodControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Component\DialogKit.cs" />
     <Compile Include="Component\ImageButtonControl.cs">
       <SubType>UserControl</SubType>
@@ -84,7 +90,6 @@
       <DependentUpon>KeyboardControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Component\ListViewKit.cs" />
-    <Compile Include="Component\SystemIcon.cs" />
     <Compile Include="Data\DeviceManager.cs" />
     <Compile Include="Data\ExplorerManager.cs" />
     <Compile Include="Data\ExplorerFileInfo.cs" />
@@ -204,6 +209,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Kit\Protect.cs" />
     <Compile Include="Task\TaskType.cs" />
+    <EmbeddedResource Include="Component\DeviceInfoInputMethodControl.resx">
+      <DependentUpon>DeviceInfoInputMethodControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Component\ImageButtonControl.resx">
       <DependentUpon>ImageButtonControl.cs</DependentUpon>
     </EmbeddedResource>
