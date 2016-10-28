@@ -126,6 +126,12 @@
     <Compile Include="Pages\FormFileExplorer.Designer.cs">
       <DependentUpon>FormFileExplorer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\FormImagePreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\FormImagePreview.Designer.cs">
+      <DependentUpon>FormImagePreview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\FormPackageDump.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\FormFileExplorer.resx">
       <DependentUpon>FormFileExplorer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\FormImagePreview.resx">
+      <DependentUpon>FormImagePreview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\FormLogcat.resx">
       <DependentUpon>FormLogcat.cs</DependentUpon>

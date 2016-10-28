@@ -42,18 +42,18 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.labelFocusActivity = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.pictureBoxScreenShot = new System.Windows.Forms.PictureBox();
             this.labelDevice = new System.Windows.Forms.Label();
             this.labelModel = new System.Windows.Forms.Label();
             this.labelDeviceInfo = new System.Windows.Forms.Label();
             this.labelProduct = new System.Windows.Forms.Label();
-            this.pictureBoxBattery = new System.Windows.Forms.PictureBox();
             this.toolTipBattery = new System.Windows.Forms.ToolTip(this.components);
+            this.pictureBoxBattery = new System.Windows.Forms.PictureBox();
+            this.pictureBoxScreenShot = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScreenShot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBattery)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScreenShot)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -77,9 +77,9 @@
             // 
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.labelCurrentInputMethod);
-            this.groupBox1.Location = new System.Drawing.Point(17, 308);
+            this.groupBox1.Location = new System.Drawing.Point(17, 290);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(478, 112);
+            this.groupBox1.Size = new System.Drawing.Size(967, 112);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "输入法";
@@ -94,7 +94,7 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.labelSystemDate);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(17, 113);
+            this.groupBox2.Location = new System.Drawing.Point(17, 95);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(967, 124);
             this.groupBox2.TabIndex = 3;
@@ -158,7 +158,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.labelFocusActivity);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Location = new System.Drawing.Point(17, 243);
+            this.groupBox3.Location = new System.Drawing.Point(17, 225);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(967, 59);
             this.groupBox3.TabIndex = 4;
@@ -182,21 +182,11 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "顶层Activity：";
             // 
-            // pictureBoxScreenShot
-            // 
-            this.pictureBoxScreenShot.Image = global::ArkController.Properties.Resources.phone;
-            this.pictureBoxScreenShot.Location = new System.Drawing.Point(17, 23);
-            this.pictureBoxScreenShot.Name = "pictureBoxScreenShot";
-            this.pictureBoxScreenShot.Size = new System.Drawing.Size(143, 84);
-            this.pictureBoxScreenShot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxScreenShot.TabIndex = 10;
-            this.pictureBoxScreenShot.TabStop = false;
-            // 
             // labelDevice
             // 
             this.labelDevice.AutoSize = true;
             this.labelDevice.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelDevice.Location = new System.Drawing.Point(187, 77);
+            this.labelDevice.Location = new System.Drawing.Point(112, 68);
             this.labelDevice.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.labelDevice.MinimumSize = new System.Drawing.Size(0, 21);
             this.labelDevice.Name = "labelDevice";
@@ -207,7 +197,7 @@
             // 
             this.labelModel.AutoSize = true;
             this.labelModel.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelModel.Location = new System.Drawing.Point(187, 59);
+            this.labelModel.Location = new System.Drawing.Point(112, 50);
             this.labelModel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.labelModel.MinimumSize = new System.Drawing.Size(0, 21);
             this.labelModel.Name = "labelModel";
@@ -218,7 +208,7 @@
             // 
             this.labelDeviceInfo.AutoSize = true;
             this.labelDeviceInfo.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelDeviceInfo.Location = new System.Drawing.Point(187, 23);
+            this.labelDeviceInfo.Location = new System.Drawing.Point(112, 14);
             this.labelDeviceInfo.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.labelDeviceInfo.MinimumSize = new System.Drawing.Size(0, 21);
             this.labelDeviceInfo.Name = "labelDeviceInfo";
@@ -229,24 +219,12 @@
             // 
             this.labelProduct.AutoSize = true;
             this.labelProduct.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelProduct.Location = new System.Drawing.Point(187, 41);
+            this.labelProduct.Location = new System.Drawing.Point(112, 32);
             this.labelProduct.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.labelProduct.MinimumSize = new System.Drawing.Size(0, 21);
             this.labelProduct.Name = "labelProduct";
             this.labelProduct.Size = new System.Drawing.Size(0, 21);
             this.labelProduct.TabIndex = 14;
-            // 
-            // pictureBoxBattery
-            // 
-            this.pictureBoxBattery.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxBattery.Image = global::ArkController.Properties.Resources.battery_5;
-            this.pictureBoxBattery.Location = new System.Drawing.Point(884, 41);
-            this.pictureBoxBattery.Name = "pictureBoxBattery";
-            this.pictureBoxBattery.Size = new System.Drawing.Size(100, 50);
-            this.pictureBoxBattery.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxBattery.TabIndex = 15;
-            this.pictureBoxBattery.TabStop = false;
             // 
             // toolTipBattery
             // 
@@ -254,6 +232,29 @@
             this.toolTipBattery.InitialDelay = 500;
             this.toolTipBattery.IsBalloon = true;
             this.toolTipBattery.ReshowDelay = 100;
+            // 
+            // pictureBoxBattery
+            // 
+            this.pictureBoxBattery.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxBattery.Image = global::ArkController.Properties.Resources.battery_5;
+            this.pictureBoxBattery.Location = new System.Drawing.Point(884, 21);
+            this.pictureBoxBattery.Name = "pictureBoxBattery";
+            this.pictureBoxBattery.Size = new System.Drawing.Size(100, 50);
+            this.pictureBoxBattery.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxBattery.TabIndex = 15;
+            this.pictureBoxBattery.TabStop = false;
+            // 
+            // pictureBoxScreenShot
+            // 
+            this.pictureBoxScreenShot.Image = global::ArkController.Properties.Resources.phone;
+            this.pictureBoxScreenShot.Location = new System.Drawing.Point(17, 3);
+            this.pictureBoxScreenShot.Name = "pictureBoxScreenShot";
+            this.pictureBoxScreenShot.Size = new System.Drawing.Size(81, 84);
+            this.pictureBoxScreenShot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxScreenShot.TabIndex = 10;
+            this.pictureBoxScreenShot.TabStop = false;
+            this.pictureBoxScreenShot.Click += new System.EventHandler(this.pictureBoxScreenShot_Click);
             // 
             // DeviceInfoControl
             // 
@@ -278,8 +279,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScreenShot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBattery)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScreenShot)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

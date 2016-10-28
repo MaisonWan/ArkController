@@ -35,7 +35,7 @@ namespace ArkController
         private FormSystemCpu systemCpu = null;
         private FormDumpsys dumpsys = null;
         private FormDeviceSettings deviceSetting = null;
-
+        
         /// <summary>
         /// 添加自动完成数据到textbox
         /// </summary>

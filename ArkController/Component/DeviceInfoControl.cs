@@ -9,12 +9,15 @@ using System.Windows.Forms;
 using ArkController.Task;
 using ArkController.Data;
 using System.IO;
+using ArkController.Pages;
+using ArkController.Kit;
 
 namespace ArkController.Component
 {
     public partial class DeviceInfoControl : UserControl
     {
         private ConnectTaskThread taskThread = null;
+        private FormImagePreview imagePreview = null;
         private string batteryFormatInfo = null;
         private string screenShotPath = null;
 
@@ -50,6 +53,13 @@ namespace ArkController.Component
             }
         }
 
+        private void pictureBoxScreenShot_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(screenShotPath))
+            {
+                imagePreview = (FormImagePreview)FormKit.Show(imagePreview, typeof(FormImagePreview), new object[] { screenShotPath });
+            }
+        }
         #region 屏幕名称电池
         /// <summary>
         /// 获取设备信息
@@ -121,7 +131,9 @@ namespace ArkController.Component
         {
             if (result != null)
             {
-                this.pictureBoxScreenShot.Image = (Image)result[0];
+                Image image = (Image)result[0];
+                this.pictureBoxScreenShot.Image = image;
+                //this.pictureBoxScreenShot.Width = (image.Width * pictureBoxScreenShot.Height / image.Height);
             }
         }
         #endregion
@@ -200,5 +212,6 @@ namespace ArkController.Component
             this.labelFocusActivity.Text = result[0].ToString();
         }
         #endregion
+
     }
 }
