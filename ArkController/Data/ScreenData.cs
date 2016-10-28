@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using ArkController.Kit;
 
@@ -15,6 +16,22 @@ namespace ArkController.Data
         public ScreenData(IConnect connect)
         {
             this.connect = connect;
+        }
+
+        /// <summary>
+        /// 得到屏幕截图路径
+        /// </summary>
+        /// <returns></returns>
+        public static string GetScreemShotPath()
+        {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string appDataPath = path + @"\ArkController\Screen";
+            if (!Directory.Exists(appDataPath))
+            {
+                Directory.CreateDirectory(appDataPath);
+            }
+            string localPath = appDataPath + @"\screenshot";
+            return localPath;
         }
 
         /// <summary>

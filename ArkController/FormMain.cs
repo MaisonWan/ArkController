@@ -36,7 +36,6 @@ namespace ArkController
         private FormDumpsys dumpsys = null;
         private FormDeviceSettings deviceSetting = null;
 
-        private string batteryFormatInfo = null;
         /// <summary>
         /// 添加自动完成数据到textbox
         /// </summary>
@@ -106,32 +105,6 @@ namespace ArkController
             else
             {
                 this.toolStripComboBoxDeviceList.SelectedIndex = 0;
-            }
-        }
-
-        /// <summary>
-        /// 初始化工具显示
-        /// </summary>
-        private void updateBatteryInfo()
-        {
-            TaskInfo task = new TaskInfo(TaskType.BatteryInfo);
-            task.ResultHandler = new TaskInfo.EventResultHandler(updateBatteryInfoReuslt);
-            taskThread.SendTask(task);
-        }
-
-        /// <summary>
-        /// 电池信息的返回
-        /// </summary>
-        /// <param name="data"></param>
-        private void updateBatteryInfoReuslt(object[] data)
-        {
-            if (data[0].GetType() == typeof(Bitmap))
-            {
-                this.pictureBoxBattery.Image = (Image)data[0];
-            }
-            if (data[1].GetType() == typeof(string))
-            {
-                batteryFormatInfo = data[1].ToString();
             }
         }
 
@@ -677,37 +650,13 @@ namespace ArkController
             aboutBox.ShowDialog();
         }
 
-        private void pictureBoxBattery_MouseEnter(object sender, EventArgs e)
-        {
-            if (batteryFormatInfo != null)
-            {
-                this.toolTipBattery.SetToolTip(this.pictureBoxBattery, batteryFormatInfo);
-            }
-        }
-
         private void toolStripComboBoxDeviceList_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = this.toolStripComboBoxDeviceList.SelectedIndex;
             if (index > 0)
             {
-                TaskInfo task = new TaskInfo(TaskType.CurrentDeviceInfo);
-                task.Data = this.toolStripComboBoxDeviceList.Items[index].ToString();
-                task.ResultHandler = new TaskInfo.EventResultHandler(selectDeviceResult);
-                taskThread.SendTask(task);
-                updateBatteryInfo();
-                this.deviceInfoInputMethodControlTab.OnConnectDevice();
-            }
-        }
-
-        private void selectDeviceResult(object result)
-        {
-            string[] values = (string[])result;
-            if (values != null && values.Length == 4)
-            {
-                this.labelDeviceInfo.Text = values[0];
-                this.labelProduct.Text = "Product:" + values[1];
-                this.labelModel.Text = "Model:" + values[2];
-                this.labelDevice.Text = "Device:" + values[3];
+                string deviceSn = this.toolStripComboBoxDeviceList.Items[index].ToString();
+                this.deviceInfoInputMethodControlTab.OnConnectDevice(deviceSn);
             }
         }
 

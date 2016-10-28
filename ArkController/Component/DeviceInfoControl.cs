@@ -8,12 +8,15 @@ using System.Text;
 using System.Windows.Forms;
 using ArkController.Task;
 using ArkController.Data;
+using System.IO;
 
 namespace ArkController.Component
 {
     public partial class DeviceInfoControl : UserControl
     {
         private ConnectTaskThread taskThread = null;
+        private string batteryFormatInfo = null;
+        private string screenShotPath = null;
 
         public DeviceInfoControl()
         {
@@ -28,13 +31,100 @@ namespace ArkController.Component
         /// <summary>
         /// 
         /// </summary>
-        public void OnConnectDevice()
+        public void OnConnectDevice(string sn)
         {
+            loadDeivceInfo(sn);
+            loadBatteryInfo();
             loadSystemDate();
             loadScreenInfo();
             loadFocusActivity();
             loadCurrentInputMethod();
+            loadScreenShot();// 屏幕截图最慢，最后做
         }
+
+        private void pictureBoxBattery_MouseEnter(object sender, EventArgs e)
+        {
+            if (batteryFormatInfo != null)
+            {
+                this.toolTipBattery.SetToolTip(this.pictureBoxBattery, batteryFormatInfo);
+            }
+        }
+
+        #region 屏幕名称电池
+        /// <summary>
+        /// 获取设备信息
+        /// </summary>
+        /// <param name="sn"></param>
+        private void loadDeivceInfo(string sn)
+        {
+            TaskInfo task = new TaskInfo(TaskType.CurrentDeviceInfo);
+            task.Data = sn;
+            task.ResultHandler = new TaskInfo.EventResultHandler(loadDeivceInfoResult);
+            taskThread.SendTask(task);
+        }
+
+        private void loadDeivceInfoResult(object result)
+        {
+            string[] values = (string[])result;
+            if (values != null && values.Length == 4)
+            {
+                this.labelDeviceInfo.Text = values[0];
+                this.labelProduct.Text = "Product:" + values[1];
+                this.labelModel.Text = "Model:" + values[2];
+                this.labelDevice.Text = "Device:" + values[3];
+            }
+        }
+
+        /// <summary>
+        /// 获取电量
+        /// </summary>
+        private void loadBatteryInfo()
+        {
+            TaskInfo task = new TaskInfo(TaskType.BatteryInfo);
+            task.ResultHandler = new TaskInfo.EventResultHandler(updateBatteryInfoReuslt);
+            taskThread.SendTask(task);
+        }
+
+        /// <summary>
+        /// 电池信息的返回
+        /// </summary>
+        /// <param name="data"></param>
+        private void updateBatteryInfoReuslt(object[] data)
+        {
+            if (data[0].GetType() == typeof(Bitmap))
+            {
+                this.pictureBoxBattery.Image = (Image)data[0];
+            }
+            if (data[1].GetType() == typeof(string))
+            {
+                batteryFormatInfo = data[1].ToString();
+            }
+        }
+
+        /// <summary>
+        /// 载入屏幕截图
+        /// </summary>
+        private void loadScreenShot()
+        {
+            this.screenShotPath = ScreenData.GetScreemShotPath();
+            File.Delete(this.screenShotPath);
+            TaskInfo t = TaskInfo.Create(TaskType.ScreenShot, this.screenShotPath);
+            t.ResultHandler = new TaskInfo.EventResultHandler(getScreenShotResult);
+            taskThread.SendTask(t);
+        }
+
+        /// <summary>
+        /// 截图返回结果
+        /// </summary>
+        /// <param name="result"></param>
+        private void getScreenShotResult(object[] result)
+        {
+            if (result != null)
+            {
+                this.pictureBoxScreenShot.Image = (Image)result[0];
+            }
+        }
+        #endregion
 
         #region 系统
         /// <summary>

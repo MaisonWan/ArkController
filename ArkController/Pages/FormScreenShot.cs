@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using ArkController.Kit;
 using ArkController.Task;
 using System.Drawing.Imaging;
+using ArkController.Data;
 
 namespace ArkController.Pages
 {
@@ -103,7 +104,7 @@ namespace ArkController.Pages
 
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
-            this.screenShotPath = GetScreemShotPath();
+            this.screenShotPath = ScreenData.GetScreemShotPath();
             File.Delete(this.screenShotPath);
             TaskInfo t = TaskInfo.Create(TaskType.ScreenShot, this.screenShotPath);
             t.ResultHandler = new TaskInfo.EventResultHandler(getScreenShotResult);
@@ -120,22 +121,6 @@ namespace ArkController.Pages
             {
                 this.pictureBox1.Image = (Image)result[0];
             }
-        }
-
-        /// <summary>
-        /// 得到屏幕截图路径
-        /// </summary>
-        /// <returns></returns>
-        private string GetScreemShotPath()
-        {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            string appDataPath = path + @"\ArkController\Screen";
-            if (!Directory.Exists(appDataPath))
-            {
-                Directory.CreateDirectory(appDataPath);
-            }
-            string localPath = appDataPath + @"\screenshot";
-            return localPath;
         }
 
         private void buttonClip_Click(object sender, EventArgs e)

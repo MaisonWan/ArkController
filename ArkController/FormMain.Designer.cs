@@ -68,12 +68,6 @@
             this.tabControlHomePage = new System.Windows.Forms.TabControl();
             this.tabPageDeviceInfo = new System.Windows.Forms.TabPage();
             this.deviceInfoInputMethodControlTab = new ArkController.Component.DeviceInfoControl();
-            this.pictureBoxBattery = new System.Windows.Forms.PictureBox();
-            this.labelDevice = new System.Windows.Forms.Label();
-            this.labelModel = new System.Windows.Forms.Label();
-            this.labelDeviceInfo = new System.Windows.Forms.Label();
-            this.labelProduct = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPageKeyboard = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.buttonVolumeUp = new System.Windows.Forms.Button();
@@ -150,15 +144,12 @@
             this.toolStripMenuItemSystem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolTipBattery = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox2.SuspendLayout();
             this.contextMenuStripListview.SuspendLayout();
             this.toolStripKibot.SuspendLayout();
             this.tabControlHomePage.SuspendLayout();
             this.tabPageDeviceInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBattery)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPageKeyboard.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -506,12 +497,6 @@
             // 
             this.tabPageDeviceInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.tabPageDeviceInfo.Controls.Add(this.deviceInfoInputMethodControlTab);
-            this.tabPageDeviceInfo.Controls.Add(this.pictureBoxBattery);
-            this.tabPageDeviceInfo.Controls.Add(this.labelDevice);
-            this.tabPageDeviceInfo.Controls.Add(this.labelModel);
-            this.tabPageDeviceInfo.Controls.Add(this.labelDeviceInfo);
-            this.tabPageDeviceInfo.Controls.Add(this.labelProduct);
-            this.tabPageDeviceInfo.Controls.Add(this.pictureBox1);
             this.tabPageDeviceInfo.ImageKey = "info.png";
             this.tabPageDeviceInfo.Location = new System.Drawing.Point(4, 44);
             this.tabPageDeviceInfo.Name = "tabPageDeviceInfo";
@@ -524,75 +509,10 @@
             // 
             // deviceInfoInputMethodControlTab
             // 
-            this.deviceInfoInputMethodControlTab.Location = new System.Drawing.Point(16, 108);
+            this.deviceInfoInputMethodControlTab.Location = new System.Drawing.Point(6, 6);
             this.deviceInfoInputMethodControlTab.Name = "deviceInfoInputMethodControlTab";
-            this.deviceInfoInputMethodControlTab.Size = new System.Drawing.Size(1080, 403);
+            this.deviceInfoInputMethodControlTab.Size = new System.Drawing.Size(1087, 505);
             this.deviceInfoInputMethodControlTab.TabIndex = 0;
-            // 
-            // pictureBoxBattery
-            // 
-            this.pictureBoxBattery.Image = global::ArkController.Properties.Resources.battery_5;
-            this.pictureBoxBattery.Location = new System.Drawing.Point(959, 36);
-            this.pictureBoxBattery.Name = "pictureBoxBattery";
-            this.pictureBoxBattery.Size = new System.Drawing.Size(100, 50);
-            this.pictureBoxBattery.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxBattery.TabIndex = 11;
-            this.pictureBoxBattery.TabStop = false;
-            this.pictureBoxBattery.MouseEnter += new System.EventHandler(this.pictureBoxBattery_MouseEnter);
-            // 
-            // labelDevice
-            // 
-            this.labelDevice.AutoSize = true;
-            this.labelDevice.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelDevice.Location = new System.Drawing.Point(90, 72);
-            this.labelDevice.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.labelDevice.MinimumSize = new System.Drawing.Size(0, 21);
-            this.labelDevice.Name = "labelDevice";
-            this.labelDevice.Size = new System.Drawing.Size(0, 21);
-            this.labelDevice.TabIndex = 10;
-            // 
-            // labelModel
-            // 
-            this.labelModel.AutoSize = true;
-            this.labelModel.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelModel.Location = new System.Drawing.Point(90, 54);
-            this.labelModel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.labelModel.MinimumSize = new System.Drawing.Size(0, 21);
-            this.labelModel.Name = "labelModel";
-            this.labelModel.Size = new System.Drawing.Size(0, 21);
-            this.labelModel.TabIndex = 10;
-            // 
-            // labelDeviceInfo
-            // 
-            this.labelDeviceInfo.AutoSize = true;
-            this.labelDeviceInfo.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelDeviceInfo.Location = new System.Drawing.Point(90, 18);
-            this.labelDeviceInfo.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.labelDeviceInfo.MinimumSize = new System.Drawing.Size(0, 21);
-            this.labelDeviceInfo.Name = "labelDeviceInfo";
-            this.labelDeviceInfo.Size = new System.Drawing.Size(0, 21);
-            this.labelDeviceInfo.TabIndex = 10;
-            // 
-            // labelProduct
-            // 
-            this.labelProduct.AutoSize = true;
-            this.labelProduct.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelProduct.Location = new System.Drawing.Point(90, 36);
-            this.labelProduct.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.labelProduct.MinimumSize = new System.Drawing.Size(0, 21);
-            this.labelProduct.Name = "labelProduct";
-            this.labelProduct.Size = new System.Drawing.Size(0, 21);
-            this.labelProduct.TabIndex = 10;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ArkController.Properties.Resources.phone;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 18);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(68, 84);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
             // 
             // tabPageKeyboard
             // 
@@ -1467,13 +1387,6 @@
             this.ToolStripMenuItemAbout.Text = "关于(&A)";
             this.ToolStripMenuItemAbout.Click += new System.EventHandler(this.toolStripButtonAbout_Click);
             // 
-            // toolTipBattery
-            // 
-            this.toolTipBattery.AutoPopDelay = 10000;
-            this.toolTipBattery.InitialDelay = 500;
-            this.toolTipBattery.IsBalloon = true;
-            this.toolTipBattery.ReshowDelay = 100;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1499,9 +1412,6 @@
             this.toolStripKibot.PerformLayout();
             this.tabControlHomePage.ResumeLayout(false);
             this.tabPageDeviceInfo.ResumeLayout(false);
-            this.tabPageDeviceInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBattery)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPageKeyboard.ResumeLayout(false);
             this.tabPageKeyboard.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -1578,14 +1488,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button buttonMenu;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label labelProduct;
-        private System.Windows.Forms.Label labelDevice;
-        private System.Windows.Forms.Label labelModel;
-        private System.Windows.Forms.Label labelDeviceInfo;
         private System.Windows.Forms.TabPage tabPageProcess;
-        private System.Windows.Forms.PictureBox pictureBoxBattery;
-        private System.Windows.Forms.ToolTip toolTipBattery;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBoxDeviceList;
         private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
