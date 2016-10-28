@@ -79,7 +79,13 @@ namespace ArkController.Kit
         {
             string cmdshot = "shell screencap -p /sdcard/screenshot.png";
             string pullFile = "pull /sdcard/screenshot.png \"" + localPath + "\"";
-            File.Delete(localPath);
+            try
+            {
+                File.Delete(localPath);
+            }
+            catch
+            {
+            }
             string r = ExecuteAdb(cmdshot);
             ExecuteAdb(pullFile);
             //StreamReader reader = ExecuteAdbStream(cmdshot, true);
@@ -105,9 +111,7 @@ namespace ArkController.Kit
                 Image image = Image.FromStream(fs);
                 fs.Close();
                 return image;
-                //return true;
             }
-            //return false;
             return null;
         }
 

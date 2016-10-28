@@ -19,6 +19,13 @@ namespace ArkController.Pages
             this.imagePath = imagePath;
         }
 
+        public FormImagePreview(Image image)
+        {
+            InitializeComponent();
+            this.pictureBoxPreview.Image = image;
+            resizeForm();
+        }
+
         public FormImagePreview()
         {
             InitializeComponent();

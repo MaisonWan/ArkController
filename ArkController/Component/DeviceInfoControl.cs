@@ -57,7 +57,8 @@ namespace ArkController.Component
         {
             if (!string.IsNullOrEmpty(screenShotPath))
             {
-                imagePreview = (FormImagePreview)FormKit.Show(imagePreview, typeof(FormImagePreview), new object[] { screenShotPath });
+                Image image = pictureBoxScreenShot.Image;
+                imagePreview = (FormImagePreview)FormKit.Show(imagePreview, typeof(FormImagePreview), new object[] { image });
             }
         }
         #region 屏幕名称电池
@@ -117,7 +118,14 @@ namespace ArkController.Component
         private void loadScreenShot()
         {
             this.screenShotPath = ScreenData.GetScreemShotPath();
-            File.Delete(this.screenShotPath);
+            try
+            {
+                File.Delete(this.screenShotPath);
+            }
+            catch
+            {
+
+            }
             TaskInfo t = TaskInfo.Create(TaskType.ScreenShot, this.screenShotPath);
             t.ResultHandler = new TaskInfo.EventResultHandler(getScreenShotResult);
             taskThread.SendTask(t);
@@ -212,6 +220,16 @@ namespace ArkController.Component
             this.labelFocusActivity.Text = result[0].ToString();
         }
         #endregion
+
+        /// <summary>
+        /// 刷新屏幕截图
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonRefreshScreen_Click(object sender, EventArgs e)
+        {
+            loadScreenShot();
+        }
 
     }
 }

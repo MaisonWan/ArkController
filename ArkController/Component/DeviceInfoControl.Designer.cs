@@ -47,6 +47,7 @@
             this.labelDeviceInfo = new System.Windows.Forms.Label();
             this.labelProduct = new System.Windows.Forms.Label();
             this.toolTipBattery = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonRefreshScreen = new System.Windows.Forms.Button();
             this.pictureBoxBattery = new System.Windows.Forms.PictureBox();
             this.pictureBoxScreenShot = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
@@ -186,7 +187,7 @@
             // 
             this.labelDevice.AutoSize = true;
             this.labelDevice.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelDevice.Location = new System.Drawing.Point(112, 68);
+            this.labelDevice.Location = new System.Drawing.Point(122, 68);
             this.labelDevice.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.labelDevice.MinimumSize = new System.Drawing.Size(0, 21);
             this.labelDevice.Name = "labelDevice";
@@ -197,7 +198,7 @@
             // 
             this.labelModel.AutoSize = true;
             this.labelModel.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelModel.Location = new System.Drawing.Point(112, 50);
+            this.labelModel.Location = new System.Drawing.Point(122, 50);
             this.labelModel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.labelModel.MinimumSize = new System.Drawing.Size(0, 21);
             this.labelModel.Name = "labelModel";
@@ -208,7 +209,7 @@
             // 
             this.labelDeviceInfo.AutoSize = true;
             this.labelDeviceInfo.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelDeviceInfo.Location = new System.Drawing.Point(112, 14);
+            this.labelDeviceInfo.Location = new System.Drawing.Point(122, 14);
             this.labelDeviceInfo.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.labelDeviceInfo.MinimumSize = new System.Drawing.Size(0, 21);
             this.labelDeviceInfo.Name = "labelDeviceInfo";
@@ -219,7 +220,7 @@
             // 
             this.labelProduct.AutoSize = true;
             this.labelProduct.Font = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelProduct.Location = new System.Drawing.Point(112, 32);
+            this.labelProduct.Location = new System.Drawing.Point(122, 32);
             this.labelProduct.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.labelProduct.MinimumSize = new System.Drawing.Size(0, 21);
             this.labelProduct.Name = "labelProduct";
@@ -232,6 +233,17 @@
             this.toolTipBattery.InitialDelay = 500;
             this.toolTipBattery.IsBalloon = true;
             this.toolTipBattery.ReshowDelay = 100;
+            // 
+            // buttonRefreshScreen
+            // 
+            this.buttonRefreshScreen.BackgroundImage = global::ArkController.Properties.Resources.refresh1;
+            this.buttonRefreshScreen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonRefreshScreen.Location = new System.Drawing.Point(17, 3);
+            this.buttonRefreshScreen.Name = "buttonRefreshScreen";
+            this.buttonRefreshScreen.Size = new System.Drawing.Size(25, 25);
+            this.buttonRefreshScreen.TabIndex = 16;
+            this.buttonRefreshScreen.UseVisualStyleBackColor = true;
+            this.buttonRefreshScreen.Click += new System.EventHandler(this.buttonRefreshScreen_Click);
             // 
             // pictureBoxBattery
             // 
@@ -248,7 +260,7 @@
             // pictureBoxScreenShot
             // 
             this.pictureBoxScreenShot.Image = global::ArkController.Properties.Resources.phone;
-            this.pictureBoxScreenShot.Location = new System.Drawing.Point(17, 3);
+            this.pictureBoxScreenShot.Location = new System.Drawing.Point(35, 3);
             this.pictureBoxScreenShot.Name = "pictureBoxScreenShot";
             this.pictureBoxScreenShot.Size = new System.Drawing.Size(81, 84);
             this.pictureBoxScreenShot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -260,6 +272,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonRefreshScreen);
             this.Controls.Add(this.pictureBoxBattery);
             this.Controls.Add(this.labelDevice);
             this.Controls.Add(this.labelModel);
@@ -308,5 +321,6 @@
         private System.Windows.Forms.Label labelProduct;
         private System.Windows.Forms.PictureBox pictureBoxBattery;
         private System.Windows.Forms.ToolTip toolTipBattery;
+        private System.Windows.Forms.Button buttonRefreshScreen;
     }
 }
