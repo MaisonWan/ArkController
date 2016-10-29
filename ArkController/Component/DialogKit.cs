@@ -72,20 +72,12 @@ namespace ArkController.Component
         /// <returns></returns>
         public static string ShowSaveFileDialog(string defaultName, string filterName)
         {
-            SaveFileDialog sfd = new SaveFileDialog();
-            //设置文件类型
-            sfd.Filter = filterName;
-            //设置默认文件类型显示顺序 
-            sfd.FilterIndex = 1;
-            sfd.FileName = defaultName;
-            //保存对话框是否记忆上次打开的目录 
-            sfd.RestoreDirectory = true;
-            //点了保存按钮进入 
-            if (sfd.ShowDialog() == DialogResult.OK)
+            SaveFileDialog sfd = GetSaveFileDialog(defaultName, filterName);
+            if (sfd == null)
             {
-                return sfd.FileName.ToString(); //获得文件路径 
+                return null; 
             }
-            return null;
+            return sfd.FileName.ToString();//获得文件路径 
         }
 
         /// <summary>

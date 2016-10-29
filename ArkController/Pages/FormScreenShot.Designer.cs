@@ -34,7 +34,6 @@
             this.buttonRotate = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonQuit = new System.Windows.Forms.Button();
-            this.saveFileDialogImage = new System.Windows.Forms.SaveFileDialog();
             this.buttonClip = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -135,7 +134,6 @@
         private System.Windows.Forms.Button buttonRotate;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonQuit;
-        private System.Windows.Forms.SaveFileDialog saveFileDialogImage;
         private System.Windows.Forms.Button buttonClip;
     }
 }
