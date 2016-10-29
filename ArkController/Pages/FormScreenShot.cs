@@ -57,7 +57,6 @@ namespace ArkController.Pages
         #region 保存对话框
         private void ShowSaveFileDialog()
         {
-            //string localFilePath, fileNameExt, newFileName, FilePath; 
             SaveFileDialog sfd = this.saveFileDialogImage;
             //设置文件类型 
             sfd.Filter = "PNG（*.png）|*.png|JPEG（*.jpg）|*.jpg|BMP（*.bmp）|*.bmp|Gif（*.gif）|*.gif|TIFF（*.tiff）|*.tiff|EXIF（*.exif）|*.exif";
