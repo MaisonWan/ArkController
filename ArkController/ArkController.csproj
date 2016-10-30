@@ -94,6 +94,7 @@
     <Compile Include="Data\ExplorerManager.cs" />
     <Compile Include="Data\ExplorerFileInfo.cs" />
     <Compile Include="Data\ProcessData.cs" />
+    <Compile Include="Data\SystemProperty.cs" />
     <Compile Include="Kit\FileKit.cs" />
     <Compile Include="Kit\FormKit.cs" />
     <Compile Include="Pages\FormApps.cs">

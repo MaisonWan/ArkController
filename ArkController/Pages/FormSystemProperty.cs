@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using ArkController.Data;
 
 namespace ArkController.Pages
 {
@@ -61,29 +62,25 @@ namespace ArkController.Pages
         private void readSystemPropResult(object[] result)
         {
             string content = (string)result[0];
-            string[] lines = content.Split("\n".ToCharArray());
+            List<KeyValuePair<string, string>> list = SystemProperty.Parser(content);
             this.listViewProperties.BeginUpdate();
             this.listViewProperties.Items.Clear();
             this.keyList.Clear();
             // 是否需要过滤
             bool needFilter = this.checkBoxFilter.Checked && !string.IsNullOrEmpty(this.textBoxFilter.Text);
 
-            foreach (string line in lines)
+            foreach (KeyValuePair<string, string> line in list)
             {
-                string[] keyValue = line.Trim().Split(": ".ToCharArray());
-                if (keyValue.Length == 3)
+                string key = line.Key;
+                string value = line.Value;
+                this.keyList.Add(key);
+                // 需要过滤，并且包含这个关键词
+                if (!needFilter || key.Contains(this.textBoxFilter.Text))
                 {
-                    string key = keyValue[0].Replace("[", "").Replace("]", "");
-                    string value = keyValue[2].Replace("[", "").Replace("]", "");
-                    this.keyList.Add(key);
-                    // 需要过滤，并且包含这个关键词
-                    if (!needFilter || key.Contains(this.textBoxFilter.Text))
-                    {
-                        ListViewItem item = new ListViewItem(key);
-                        value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(value));
-                        item.SubItems.Add(value);
-                        this.listViewProperties.Items.Add(item);
-                    }
+                    ListViewItem item = new ListViewItem(key);
+                    value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(value));
+                    item.SubItems.Add(value);
+                    this.listViewProperties.Items.Add(item);
                 }
             }
             this.listViewProperties.EndUpdate();
