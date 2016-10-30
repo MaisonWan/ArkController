@@ -33,6 +33,7 @@
             this.contextMenuStripImage = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mToolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.mToolStripMenuItemSaveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.mToolStripMenuItemRotate = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             this.contextMenuStripImage.SuspendLayout();
             this.SuspendLayout();
@@ -51,10 +52,11 @@
             // contextMenuStripImage
             // 
             this.contextMenuStripImage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mToolStripMenuItemRotate,
             this.mToolStripMenuItemCopy,
             this.mToolStripMenuItemSaveAs});
             this.contextMenuStripImage.Name = "contextMenuStripImage";
-            this.contextMenuStripImage.Size = new System.Drawing.Size(153, 70);
+            this.contextMenuStripImage.Size = new System.Drawing.Size(153, 92);
             // 
             // mToolStripMenuItemCopy
             // 
@@ -69,6 +71,13 @@
             this.mToolStripMenuItemSaveAs.Size = new System.Drawing.Size(152, 22);
             this.mToolStripMenuItemSaveAs.Text = "另存为(&S)";
             this.mToolStripMenuItemSaveAs.Click += new System.EventHandler(this.mToolStripMenuItemSaveAs_Click);
+            // 
+            // mToolStripMenuItemRotate
+            // 
+            this.mToolStripMenuItemRotate.Name = "mToolStripMenuItemRotate";
+            this.mToolStripMenuItemRotate.Size = new System.Drawing.Size(152, 22);
+            this.mToolStripMenuItemRotate.Text = "旋转(&R)";
+            this.mToolStripMenuItemRotate.Click += new System.EventHandler(this.mToolStripMenuItemRotate_Click);
             // 
             // FormImagePreview
             // 
@@ -97,5 +106,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStripImage;
         private System.Windows.Forms.ToolStripMenuItem mToolStripMenuItemCopy;
         private System.Windows.Forms.ToolStripMenuItem mToolStripMenuItemSaveAs;
+        private System.Windows.Forms.ToolStripMenuItem mToolStripMenuItemRotate;
     }
 }

@@ -62,8 +62,7 @@ namespace ArkController.Pages
             }
             else
             {
-                this.Width = imageWidth;
-                this.Height = imageHeight;
+                this.ClientSize = new Size(imageWidth, imageHeight);
             }
             int x = (r.Width - this.Width) / 2;
             int y = (r.Height - this.Height) / 2;
@@ -137,6 +136,14 @@ namespace ArkController.Pages
                 this.pictureBoxPreview.Image.Save(path, format);
             }
         }
+        private void mToolStripMenuItemRotate_Click(object sender, EventArgs e)
+        {
+            Image img = pictureBoxPreview.Image;
+            img.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            this.pictureBoxPreview.Image = img;
+            resizeForm();
+        }
+
         #endregion
 
     }
