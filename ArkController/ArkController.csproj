@@ -151,6 +151,12 @@
     <Compile Include="Pages\FormSystemCpu.Designer.cs">
       <DependentUpon>FormSystemCpu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\FormSystemDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\FormSystemDate.Designer.cs">
+      <DependentUpon>FormSystemDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\FormSystemProperty.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\FormSystemCpu.resx">
       <DependentUpon>FormSystemCpu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\FormSystemDate.resx">
+      <DependentUpon>FormSystemDate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\FormSystemProperty.resx">
       <DependentUpon>FormSystemProperty.cs</DependentUpon>
