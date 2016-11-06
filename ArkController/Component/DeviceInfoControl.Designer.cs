@@ -50,6 +50,8 @@
             this.buttonRefreshScreen = new System.Windows.Forms.Button();
             this.pictureBoxBattery = new System.Windows.Forms.PictureBox();
             this.pictureBoxScreenShot = new System.Windows.Forms.PictureBox();
+            this.buttonDateSetting = new System.Windows.Forms.Button();
+            this.buttonDensity = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -91,6 +93,8 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.buttonDensity);
+            this.groupBox2.Controls.Add(this.buttonDateSetting);
             this.groupBox2.Controls.Add(this.labelScreenDensity);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.labelScreenSize);
@@ -107,7 +111,7 @@
             // labelScreenDensity
             // 
             this.labelScreenDensity.AutoSize = true;
-            this.labelScreenDensity.Location = new System.Drawing.Point(483, 17);
+            this.labelScreenDensity.Location = new System.Drawing.Point(595, 17);
             this.labelScreenDensity.Name = "labelScreenDensity";
             this.labelScreenDensity.Size = new System.Drawing.Size(0, 12);
             this.labelScreenDensity.TabIndex = 5;
@@ -115,7 +119,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(425, 17);
+            this.label4.Location = new System.Drawing.Point(537, 17);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 12);
             this.label4.TabIndex = 4;
@@ -124,7 +128,7 @@
             // labelScreenSize
             // 
             this.labelScreenSize.AutoSize = true;
-            this.labelScreenSize.Location = new System.Drawing.Point(339, 17);
+            this.labelScreenSize.Location = new System.Drawing.Point(451, 17);
             this.labelScreenSize.Name = "labelScreenSize";
             this.labelScreenSize.Size = new System.Drawing.Size(0, 12);
             this.labelScreenSize.TabIndex = 3;
@@ -132,7 +136,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(292, 17);
+            this.label3.Location = new System.Drawing.Point(404, 17);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 2;
@@ -270,6 +274,28 @@
             this.pictureBoxScreenShot.TabStop = false;
             this.pictureBoxScreenShot.Click += new System.EventHandler(this.pictureBoxScreenShot_Click);
             // 
+            // buttonDateSetting
+            // 
+            this.buttonDateSetting.BackgroundImage = global::ArkController.Properties.Resources.settings_1;
+            this.buttonDateSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonDateSetting.Location = new System.Drawing.Point(294, 9);
+            this.buttonDateSetting.Name = "buttonDateSetting";
+            this.buttonDateSetting.Size = new System.Drawing.Size(29, 28);
+            this.buttonDateSetting.TabIndex = 6;
+            this.buttonDateSetting.UseVisualStyleBackColor = true;
+            this.buttonDateSetting.Click += new System.EventHandler(this.buttonDateSetting_Click);
+            // 
+            // buttonDensity
+            // 
+            this.buttonDensity.BackgroundImage = global::ArkController.Properties.Resources.settings_1;
+            this.buttonDensity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonDensity.Location = new System.Drawing.Point(674, 9);
+            this.buttonDensity.Name = "buttonDensity";
+            this.buttonDensity.Size = new System.Drawing.Size(29, 28);
+            this.buttonDensity.TabIndex = 6;
+            this.buttonDensity.UseVisualStyleBackColor = true;
+            this.buttonDensity.Click += new System.EventHandler(this.buttonDensity_Click);
+            // 
             // DeviceInfoControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -324,5 +350,7 @@
         private System.Windows.Forms.PictureBox pictureBoxBattery;
         private System.Windows.Forms.ToolTip toolTipBattery;
         private System.Windows.Forms.Button buttonRefreshScreen;
+        private System.Windows.Forms.Button buttonDateSetting;
+        private System.Windows.Forms.Button buttonDensity;
     }
 }

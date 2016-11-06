@@ -20,6 +20,8 @@ namespace ArkController.Component
         private FormImagePreview imagePreview = null;
         private string batteryFormatInfo = null;
         private string screenShotPath = null;
+        private FormSystemDate systemDate = null;
+        private FormScreenSize screenSize = null;
 
         public DeviceInfoControl()
         {
@@ -229,6 +231,22 @@ namespace ArkController.Component
         private void buttonRefreshScreen_Click(object sender, EventArgs e)
         {
             loadScreenShot();
+        }
+
+        private void buttonDateSetting_Click(object sender, EventArgs e)
+        {
+            if (FormKit.ShowDialog(systemDate, typeof(FormSystemDate)) == DialogResult.OK)
+            {
+                loadSystemDate();
+            }
+        }
+
+        private void buttonDensity_Click(object sender, EventArgs e)
+        {
+            if (FormKit.ShowDialog(screenSize, typeof(FormScreenSize)) == DialogResult.OK)
+            {
+                loadScreenInfo();
+            }
         }
 
     }
