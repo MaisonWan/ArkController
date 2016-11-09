@@ -44,17 +44,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 72);
+            this.pictureBox1.Location = new System.Drawing.Point(1, 41);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(823, 565);
+            this.pictureBox1.Size = new System.Drawing.Size(846, 611);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // buttonRefresh
             // 
-            this.buttonRefresh.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonRefresh.Location = new System.Drawing.Point(44, 27);
+            this.buttonRefresh.Location = new System.Drawing.Point(54, 12);
             this.buttonRefresh.Name = "buttonRefresh";
             this.buttonRefresh.Size = new System.Drawing.Size(75, 23);
             this.buttonRefresh.TabIndex = 1;
@@ -64,8 +63,7 @@
             // 
             // buttonRotate
             // 
-            this.buttonRotate.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonRotate.Location = new System.Drawing.Point(193, 27);
+            this.buttonRotate.Location = new System.Drawing.Point(203, 12);
             this.buttonRotate.Name = "buttonRotate";
             this.buttonRotate.Size = new System.Drawing.Size(75, 23);
             this.buttonRotate.TabIndex = 1;
@@ -76,7 +74,7 @@
             // buttonSave
             // 
             this.buttonSave.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonSave.Location = new System.Drawing.Point(358, 27);
+            this.buttonSave.Location = new System.Drawing.Point(368, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 1;
@@ -86,8 +84,8 @@
             // 
             // buttonQuit
             // 
-            this.buttonQuit.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonQuit.Location = new System.Drawing.Point(681, 27);
+            this.buttonQuit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonQuit.Location = new System.Drawing.Point(691, 12);
             this.buttonQuit.Name = "buttonQuit";
             this.buttonQuit.Size = new System.Drawing.Size(75, 23);
             this.buttonQuit.TabIndex = 1;
@@ -97,8 +95,8 @@
             // 
             // buttonClip
             // 
-            this.buttonClip.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonClip.Location = new System.Drawing.Point(514, 27);
+            this.buttonClip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonClip.Location = new System.Drawing.Point(524, 12);
             this.buttonClip.Name = "buttonClip";
             this.buttonClip.Size = new System.Drawing.Size(75, 23);
             this.buttonClip.TabIndex = 2;
