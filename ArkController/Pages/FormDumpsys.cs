@@ -114,5 +114,13 @@ namespace ArkController.Pages
         {
             this.textBoxContent.Clear();
         }
+
+        private void textBoxContent_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.A)
+            {
+                ((TextBox)sender).SelectAll();
+            }
+        }
     }
 }

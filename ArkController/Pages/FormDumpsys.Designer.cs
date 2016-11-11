@@ -32,8 +32,8 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.listViewItems = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.textBoxContent = new System.Windows.Forms.TextBox();
             this.buttonLogSave = new System.Windows.Forms.Button();
+            this.textBoxContent = new System.Windows.Forms.TextBox();
             this.buttonLogClear = new System.Windows.Forms.Button();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -86,6 +86,18 @@
             this.columnHeader1.Text = "项目";
             this.columnHeader1.Width = 226;
             // 
+            // buttonLogSave
+            // 
+            this.buttonLogSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonLogSave.BackgroundImage = global::ArkController.Properties.Resources.save;
+            this.buttonLogSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonLogSave.Location = new System.Drawing.Point(680, 3);
+            this.buttonLogSave.Name = "buttonLogSave";
+            this.buttonLogSave.Size = new System.Drawing.Size(30, 30);
+            this.buttonLogSave.TabIndex = 2;
+            this.buttonLogSave.UseVisualStyleBackColor = true;
+            this.buttonLogSave.Click += new System.EventHandler(this.buttonLogSave_Click);
+            // 
             // textBoxContent
             // 
             this.textBoxContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -100,18 +112,7 @@
             this.textBoxContent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxContent.Size = new System.Drawing.Size(709, 659);
             this.textBoxContent.TabIndex = 0;
-            // 
-            // buttonLogSave
-            // 
-            this.buttonLogSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonLogSave.BackgroundImage = global::ArkController.Properties.Resources.save;
-            this.buttonLogSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonLogSave.Location = new System.Drawing.Point(680, 3);
-            this.buttonLogSave.Name = "buttonLogSave";
-            this.buttonLogSave.Size = new System.Drawing.Size(30, 30);
-            this.buttonLogSave.TabIndex = 2;
-            this.buttonLogSave.UseVisualStyleBackColor = true;
-            this.buttonLogSave.Click += new System.EventHandler(this.buttonLogSave_Click);
+            this.textBoxContent.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxContent_KeyUp);
             // 
             // buttonLogClear
             // 
