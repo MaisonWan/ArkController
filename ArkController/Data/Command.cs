@@ -28,9 +28,8 @@ namespace ArkController.Data
         {
             updateProcessInfo(cmd);
             p.Start();
-            string outStr = p.StandardOutput.ReadToEnd();
-            Encoding.Convert(Encoding.Default, Encoding.UTF8, Encoding.Default.GetBytes(outStr));
-            outStr = Encoding.UTF8.GetString(Encoding.Default.GetBytes(outStr));
+            StreamReader reader = new StreamReader(p.StandardOutput.BaseStream, Encoding.UTF8);
+            string outStr = reader.ReadToEnd();
             p.Close();
             return outStr;
         }
@@ -61,7 +60,7 @@ namespace ArkController.Data
             loopLogcat = true;
             updateProcessInfo(cmd);
             p.Start();
-            StreamReader reader = p.StandardOutput;
+            StreamReader reader = new StreamReader(p.StandardOutput.BaseStream, Encoding.UTF8);
             string line = reader.ReadLine();//每次读取一行
             while (loopLogcat && !reader.EndOfStream)
             {
