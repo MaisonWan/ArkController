@@ -139,7 +139,7 @@ namespace ArkController.Component
         /// <param name="result"></param>
         private void getScreenShotResult(object[] result)
         {
-            if (result != null)
+            if (result != null && result[0] != null)
             {
                 Image image = (Image)result[0];
                 this.pictureBoxScreenShot.Image = image;
