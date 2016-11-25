@@ -1,6 +1,8 @@
-﻿using System;
+﻿using ArkController.Data;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -50,9 +52,9 @@ namespace ArkController.Kit
         /// </summary>
         /// <param name="fileExp">文件扩展名</param>
         /// <returns></returns>
-        public static Image GetFileIconImage(ImageList imageList, string fileExp)
+        public static Image GetFileIconImage(ImageList imageList, ExplorerFileInfo fileInfo)
         {
-            return imageList.Images[GetFileIconName(imageList, fileExp)];
+            return imageList.Images[GetFileIconName(imageList, fileInfo)];
         }
 
         /// <summary>
@@ -61,11 +63,16 @@ namespace ArkController.Kit
         /// <param name="imageList"></param>
         /// <param name="fileExp"></param>
         /// <returns></returns>
-        public static string GetFileIconName(ImageList imageList, string fileExp)
+        public static string GetFileIconName(ImageList imageList, ExplorerFileInfo fileInfo)
         {
-            if (string.IsNullOrEmpty(fileExp))
+            if (fileInfo != null && fileInfo.IsFolder)
             {
                 return "folder.png";
+            }
+            string fileExp = Path.GetExtension(fileInfo.FileName);
+            if (string.IsNullOrEmpty(fileExp))
+            {
+                return "unknown.png"; // 没有扩展名的文件
             }
             foreach (string key in imageList.Images.Keys)
             {
@@ -74,7 +81,7 @@ namespace ArkController.Kit
                     return key;
                 }
             }
-            return "folder.png";
+            return "unknown.png"; // 有扩展名，但是不认识
         }
 
         /// <summary>

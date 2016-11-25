@@ -167,7 +167,7 @@ namespace ArkController.Pages
         private ListViewItem createListViewItem(ExplorerFileInfo file)
         {
             ListViewItem item = new ListViewItem(file.FileName);
-            item.ImageKey = FileKit.GetFileIconName(this.imageListFile, Path.GetExtension(file.FileName));
+            item.ImageKey = FileKit.GetFileIconName(this.imageListFile, file);
             item.SubItems.Add(file.FileSize > 0 ? FileKit.FormatFileSize(file.FileSize) : "");
             item.SubItems.Add(file.CreateDateTime.ToString("yyyy-MM-dd HH:mm"));
             item.SubItems.Add(file.IsFolder ? "文件夹" : "文件");
@@ -214,7 +214,7 @@ namespace ArkController.Pages
                 this.labelFileName.Text = file.FileName;
                 this.labelFileDatetime.Text = "创建时间：" + file.CreateDateTime.ToString("yyyy-MM-dd HH:mm");
                 this.labelFileSize.Text = file.FileSize > 0 ? "文件大小：" + FileKit.FormatFileSize(file.FileSize) : "";
-                this.pictureBoxFileIcon.Image = FileKit.GetFileIconImage(this.imageListLargeIcon, Path.GetExtension(file.FileName));
+                this.pictureBoxFileIcon.Image = FileKit.GetFileIconImage(this.imageListLargeIcon, file);
             }
         }
 
