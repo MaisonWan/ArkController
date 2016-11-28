@@ -25,6 +25,8 @@ namespace ArkController.Pages
         private TreeNode currentNode = null;
         private string currentExplorerPath = "/";
         private List<string> iconList = new List<string>();
+        private int willDeleteFileCount = 0; // 计划删除几个文件
+        private int hasDeleteFileCount = 0;// 已经删除了几个文件
 
         public FormFileExplorer()
         {
@@ -277,17 +279,28 @@ namespace ArkController.Pages
 
         private void mToolStripMenuItemDelete_Click(object sender, EventArgs e)
         {
-            if (ListViewKit.hasSelectedItem(this.listViewExplorer))
+            int selectFileCount = this.listViewExplorer.SelectedItems.Count;
+            if (selectFileCount > 0)
             {
                 ExplorerFileInfo file = (ExplorerFileInfo)this.listViewExplorer.SelectedItems[0].Tag;
                 string message = "确认删除设备上文件" + file.FileName + "?";
-                if (file.IsFolder)
+                if (selectFileCount > 1)
+                {
+                    message = "确认删除选择的文件或者文件夹?";
+                }
+                else if (file.IsFolder)
                 {
                     message = "确认删除设备上文件夹" + file.FileFullPath + ",会删除该文件夹下所有文件";
                 }
                 if (MessageBox.Show(message, "删除提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    deleteFile(file.FileFullPath);
+                    willDeleteFileCount = selectFileCount;
+                    hasDeleteFileCount = 0;
+                    for (int i = 0; i < selectFileCount; i++)
+                    {
+                        ExplorerFileInfo f = (ExplorerFileInfo)this.listViewExplorer.SelectedItems[i].Tag;
+                        deleteFile(f.FileFullPath);
+                    }
                 }
             }
         }
@@ -302,7 +315,12 @@ namespace ArkController.Pages
 
         private void deleteFileResult(object[] result)
         {
-            refreshExplorer();
+            hasDeleteFileCount++;
+            // 执行删除完文件，刷新列表
+            if (hasDeleteFileCount == willDeleteFileCount)
+            {
+                refreshExplorer();
+            }
         }
 
         private void mToolStripMenuItemRename_Click(object sender, EventArgs e)
