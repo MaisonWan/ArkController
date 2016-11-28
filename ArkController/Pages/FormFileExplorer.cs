@@ -267,6 +267,7 @@ namespace ArkController.Pages
                 {
                     // 选择文件夹
                     savePath = DialogKit.ShowSaveFolderDialog();
+                    savePath = Path.Combine(savePath, Path.GetFileName(file.FileFullPath));
                 }
                 else
                 {
