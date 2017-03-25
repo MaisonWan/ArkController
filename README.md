@@ -1,11 +1,16 @@
 ## Ark Controller
-Ark Controller is the Android Controller in Windows platform. You can view from [GitHub Page](https://maisonwan.github.io/ArkController/) to get detail information about Ark Controller. 
+Ark Controller是基于adb封装的Android控制器，运行在Windows系统之上。详情查看[GitHub Page](https://maisonwan.github.io/ArkController/) 
 
 
-### Markdown
+### 连接设备
+等待设备连接，获取可以连接设备列表，封装命令
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+```connect
+等待设备连接
+`adb shell wait-for-device devices`
+```
 
+###下面测试
 ```markdown
 Syntax highlighted code block
 
