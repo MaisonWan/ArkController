@@ -13,7 +13,7 @@ adb wait-for-device devices
 ### 设备信息
 设备信息包括，设备编码、名称、日期、分辨率、当前应用、输入法和屏幕截图。
 
-```device info
+```deviceinfo
 屏幕截图
 adb shell screencap -p <device_path>     -device_path设备路径
 
@@ -46,7 +46,6 @@ adb shell wm size <width>x<height>    -width，height屏幕宽高
 
 重置屏幕分辨率
 adb shell wm size reset
-
 ```
 
 ### 按键控制
