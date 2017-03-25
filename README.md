@@ -57,13 +57,12 @@ adb shell input keyevent <keycode>     -keycode按键的编码
 
 模拟输入文本
 adb shell input text <"text">     -text即为要输入的文本
-
 ```
 
 ### 应用列表
 获取设备上安装的应用列表，按照类型过滤，应用包名过滤。
 
-```program list
+```programlist
 获取应用列表
 adb shell pm list package [-f] [-i] [-s] [-3]    -f安装位置，-i程序类型，-s系统程序，-3第三方程序
 
