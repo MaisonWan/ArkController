@@ -12,6 +12,7 @@ adb wait-for-device devices
 
 ### 设备信息
 设备信息包括，设备编码、名称、日期、分辨率、当前应用、输入法和屏幕截图。
+
 ```device info
 屏幕截图
 adb shell screencap -p <device_path>     -device_path设备路径
@@ -50,6 +51,7 @@ adb shell wm size reset
 
 ### 按键控制
 模拟系统按键，常用返回、主页、电源，重启，声音按键，以及字母和数字按键的模拟。
+
 ```key
 模拟按键输入
 adb shell input keyevent <keycode>     -keycode按键的编码
@@ -61,6 +63,7 @@ adb shell input text <"text">     -text即为要输入的文本
 
 ### 应用列表
 获取设备上安装的应用列表，按照类型过滤，应用包名过滤。
+
 ```program list
 获取应用列表
 adb shell pm list package [-f] [-i] [-s] [-3]    -f安装位置，-i程序类型，-s系统程序，-3第三方程序
@@ -89,6 +92,7 @@ adb shell pm unhide <package>
 
 ### 进程列表
 查看进程列表，进程类型，杀掉进程
+
 ```ps
 获取进程
 adb shell ps
@@ -96,6 +100,7 @@ adb shell ps
 
 ### Logcat
 控制输出logcat的日志和过滤
+
 ```logcat
 过滤logcat输出
 adb logcat -v time *:[level] -level包含 V，D，I，W，E，F，S，分别代表不同级别的log
