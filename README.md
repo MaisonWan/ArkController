@@ -10,6 +10,10 @@ Ark Controller是基于adb封装的Android控制器，运行在Windows系统之�
 ```connect
 等待设备连接
 adb wait-for-device devices
+
+重启adb
+adb kill-server
+adb start-server
 ```
 
 ### 设备信息
@@ -20,7 +24,7 @@ adb wait-for-device devices
 adb shell screencap -p <device_path>     -device_path设备路径
 
 屏幕录制
-shell screenrecord --size [size]  --time-limit [limit] --verbose [path]
+shell screenrecord --size <size>  --time-limit <limit> --verbose <path>
 
 拉取文件
 adb pull <device_path> <local>   -device_path设备路径, local本地路径
@@ -35,7 +39,9 @@ adb shell date
 adb shell dumpsys activity | grep "mFocusedActivity"
 
 系统输入法
-adb shell ime list -s
+adb shell ime list [-a] [-s]
+-a 查看所有输入法
+-s 简要信息.
 
 获取屏幕像素密度
 adb shell wm density
@@ -62,6 +68,9 @@ adb shell input keyevent <keycode>     -keycode按键的编码
 
 模拟输入文本
 adb shell input text <"text">     -text即为要输入的文本
+
+重启系统
+adb reboot [bootloader|recovery]   -重启设备, 直接进入到bootloader或者recovery模式
 ```
 
 ### 应用列表
@@ -69,7 +78,11 @@ adb shell input text <"text">     -text即为要输入的文本
 
 ```programlist
 获取应用列表
-adb shell pm list package [-f] [-i] [-s] [-3]    -f安装位置，-i程序类型，-s系统程序，-3第三方程序
+adb shell pm list package [-f] [-i] [-s] [-3]    
+'-f' 安装位置
+'-i' 程序类型
+'-s' 系统程序
+'-3' 第三方程序
 
 打开应用详细信息
 adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:<package>
@@ -115,17 +128,16 @@ adb shell ps
 监测应用对于CPU和内存占用
 
 ```cpu
-shell top [-m] <num> [-d] <interval> -s <sortcol> [-t]
+adb shell top [-m] <num> [-d] <interval> -s <sortcol> [-t]
 '-m' 显示的进程数量
 '-d' 刷新的间隔时间
 '-s' 排序的列名，支持cpu，vss，rss，thr
 '-t' 是否显示线程信息
 
 对于单个进程的内存占用监测，使用了命令
-shell dumpsys meminfo <process>
+adb shell dumpsys meminfo <process>
 process 进程名
 ```
-
 
 ### Logcat
 控制输出logcat的日志和过滤
@@ -135,8 +147,32 @@ process 进程名
 adb logcat -v time *:[level] -level包含 V，D，I，W，E，F，S，分别代表不同级别的log
 ```
 
+### 系统属性
+查看系统内部的属性
+
+```pro
+adb shell getprop
+```
+
+### 文件管理
+系统文件管理，使用的命令
+
+```file
+显示文件列表
+adb shell ls [-a] [-l] <path>
+'-a' 显示隐藏文件
+'-l' 文件列表
+
+删除文件
+adb shell rm [-r] <filepath>
+'-r' 删除文件夹以及里面的文件
+
+重命名文件
+adb shell rename <oldpath> <newpath>
+```
+
 ### 打开系统内置界面
-使用命令shell am start -a [action] action主要支持的如下：
+使用命令adb shell am start -a [action] action主要支持的如下：
 
 ```open-action
 android.settings.AIRPLANE_MODE_SETTINGS
