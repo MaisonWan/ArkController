@@ -19,6 +19,9 @@ adb wait-for-device devices
 屏幕截图
 adb shell screencap -p <device_path>     -device_path设备路径
 
+屏幕录制
+shell screenrecord --size [size]  --time-limit [limit] --verbose [path]
+
 拉取文件
 adb pull <device_path> <local>   -device_path设备路径, local本地路径
 
@@ -104,6 +107,36 @@ adb shell ps
 ```logcat
 过滤logcat输出
 adb logcat -v time *:[level] -level包含 V，D，I，W，E，F，S，分别代表不同级别的log
+```
+
+### 打开系统内置界面
+使用命令shell am start -a [action] action主要支持的如下：
+
+```open-action
+android.settings.AIRPLANE_MODE_SETTINGS
+android.settings.APN_SETTINGS
+android.settings.APPLICATION_DEVELOPMENT_SETTINGS
+android.settings.APPLICATION_SETTINGS
+android.settings.BLUETOOTH_SETTINGS
+android.settings.DATA_ROAMING_SETTINGS
+android.settings.DATE_SETTINGS
+android.settings.DISPLAY_SETTINGS
+android.settings.INPUT_METHOD_SETTINGS
+android.settings.INTERNAL_STORAGE_SETTINGS
+android.settings.LOCALE_SETTINGS
+android.settings.LOCATION_SOURCE_SETTINGS
+android.settings.MANAGE_APPLICATIONS_SETTINGS
+android.settings.MEMORY_CARD_SETTINGS
+android.settings.NETWORK_OPERATOR_SETTINGS
+android.settings.QUICK_LAUNCH_SETTINGS
+android.settings.SECURITY_SETTINGS
+android.settings.SETTINGS
+android.settings.SOUND_SETTINGS
+android.settings.SYNC_SETTINGS
+android.settings.USER_DICTIONARY_SETTINGS
+android.settings.WIFI_IP_SETTINGS
+android.settings.WIFI_SETTINGS
+android.settings.WIRELESS_SETTINGS
 ```
 
 ### 支持
