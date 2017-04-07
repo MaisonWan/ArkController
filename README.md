@@ -91,6 +91,16 @@ adb shell pm hide <package>
 
 恢复应用
 adb shell pm unhide <package>
+
+安装应用
+adb install [-l] [-r] [-s] <file>
+'-l' 锁定该程序
+'-r' 重新安装该程序，保存数据
+'-s' 安装在SD卡内，而不是设备内部存储
+
+卸载应用
+adb uninstall [-k] <package>
+'-k' 不删除程序运行所产生的数据和缓存目录(如软件的数据库文件)
 ```
 
 ### 进程列表
@@ -99,6 +109,17 @@ adb shell pm unhide <package>
 ```ps
 获取进程
 adb shell ps
+```
+
+### 性能监测
+监测应用对于CPU和内存占用
+
+```cpu
+shell top [-m] <num> [-d] <interval> -s <sortcol> [-t]
+'-m' 显示的进程数量
+'-d' 刷新的间隔时间
+'-s' 排序的列名，支持cpu，vss，rss，thr
+'-t' 是否显示线程信息
 ```
 
 ### Logcat
