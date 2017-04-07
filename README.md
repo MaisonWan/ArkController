@@ -1,6 +1,8 @@
 ## Ark Controller
 Ark Controller是基于adb封装的Android控制器，运行在Windows系统之上。详情查看[GitHub Page](https://maisonwan.github.io/ArkController/) 
 
+![image](images/screenshot.png)
+
 
 ### 连接设备
 等待设备连接，获取可以连接设备列表
@@ -104,6 +106,5 @@ adb shell ps
 adb logcat -v time *:[level] -level包含 V，D，I，W，E，F，S，分别代表不同级别的log
 ```
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### 支持
+[maisonwan@gmail.com](mailto://maisonwan@gmail.com)
