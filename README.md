@@ -120,7 +120,12 @@ shell top [-m] <num> [-d] <interval> -s <sortcol> [-t]
 '-d' 刷新的间隔时间
 '-s' 排序的列名，支持cpu，vss，rss，thr
 '-t' 是否显示线程信息
+
+对于单个进程的内存占用监测，使用了命令
+shell dumpsys meminfo <process>
+process 进程名
 ```
+
 
 ### Logcat
 控制输出logcat的日志和过滤
@@ -161,4 +166,4 @@ android.settings.WIRELESS_SETTINGS
 ```
 
 ### 支持
-[maisonwan@gmail.com](mailto://maisonwan@gmail.com)
+为了解决异步与adb通信的问题，该程序中仿照Android中Handler与Looper的机制，设计了一套异步消息队列的架构，解决了点击和处理速度不同造成的背压问题，但是暂时还没解决消息插队的问题，如果有其他好的建议，欢迎拍砖 [maisonwan@gmail.com](mailto://maisonwan@gmail.com)
